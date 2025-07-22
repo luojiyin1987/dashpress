@@ -173,6 +173,10 @@
     "tsup": "^6.2.2",
     "typescript": "^4.9.5"
   },
+  "overrides": {
+    "form-data": "^4.0.0",
+    "node-fetch": "^3.0.0"
+  },
   "engines": {
     "node": ">=16"
   }
