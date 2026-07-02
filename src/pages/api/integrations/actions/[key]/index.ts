@@ -20,7 +20,7 @@ export default requestHandler(
 
       return await integrationsApiService.activateIntegration(
         validatedRequest.requestQuery,
-        validatedRequest.requestBody
+        validatedRequest.requestBody,
       );
     },
     PATCH: async (getValidatedRequest) => {
@@ -38,7 +38,7 @@ export default requestHandler(
 
       return await integrationsApiService.updateIntegrationConfig(
         validatedRequest.requestQuery,
-        validatedRequest.requestBody
+        validatedRequest.requestBody,
       );
     },
     DELETE: async (getValidatedRequest) => {
@@ -50,7 +50,7 @@ export default requestHandler(
       ]);
 
       return await integrationsApiService.deactivateIntegration(
-        validatedRequest.requestQuery
+        validatedRequest.requestQuery,
       );
     },
   },
@@ -59,5 +59,5 @@ export default requestHandler(
       _type: "canUser",
       body: UserPermissions.CAN_MANAGE_APP_CREDENTIALS,
     },
-  ]
+  ],
 );

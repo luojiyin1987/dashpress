@@ -3,8 +3,8 @@ import type { ISuccessfullAuthenticationResponse } from "@/shared/types/auth/por
 export const getPortalAuthenticationResponse = async (
   username: string,
   getAuthToken: (
-    username: string
-  ) => Promise<ISuccessfullAuthenticationResponse>
+    username: string,
+  ) => Promise<ISuccessfullAuthenticationResponse>,
 ) => {
   return await getAuthToken(username);
 };

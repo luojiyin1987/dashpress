@@ -36,7 +36,7 @@ export function FormActions({ entity }: { entity: string }) {
   const activeIntegration = useActiveIntegrations();
   const integrationsList = useIntegrationsList();
   const domainMessages = useDomainMessages(
-    LANG_DOMAINS.INTEGRATIONS.FORM_ACTIONS
+    LANG_DOMAINS.INTEGRATIONS.FORM_ACTIONS,
   );
   const dataEndpoint = LIST_ENTITY_FORM_ACTIONS(entity);
 
@@ -80,7 +80,7 @@ export function FormActions({ entity }: { entity: string }) {
       deleteFormActionMutation,
       domainMessages.TEXT_LANG.DELETE,
       domainMessages.TEXT_LANG.EDIT,
-    ]
+    ],
   );
 
   const columns: IFETableColumn<IFormAction>[] = [
@@ -177,7 +177,7 @@ export function FormActions({ entity }: { entity: string }) {
           }}
           entity={entity}
           initialValues={tableData.data.find(
-            ({ id }) => id === currentFormActionId
+            ({ id }) => id === currentFormActionId,
           )}
           formAction={
             currentFormActionId === NEW_ACTION_ITEM ? "create" : "update"

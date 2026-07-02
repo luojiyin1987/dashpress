@@ -11,7 +11,7 @@ import { useEntityContextState } from "./useEntityContextState";
 export const useTableState = (
   contextKey: string,
   persistentFilters: IDataTableProps["persistentFilters"],
-  defaultTableState?: IDataTableProps["defaultTableState"]
+  defaultTableState?: IDataTableProps["defaultTableState"],
 ) => {
   /*
    We want to key the entity state based on the entity since NextJS reuses the same component
@@ -20,7 +20,7 @@ export const useTableState = (
    */
   const [paginatedDataState, setPaginatedDataState] = useEntityContextState(
     contextKey,
-    defaultTableState
+    defaultTableState,
   );
 
   /*
@@ -36,7 +36,7 @@ export const useTableState = (
     Like export and share state
   */
   const setGlobalTableState = useCurrentTableStateStore(
-    (state) => state.setTableState
+    (state) => state.setTableState,
   );
 
   /*

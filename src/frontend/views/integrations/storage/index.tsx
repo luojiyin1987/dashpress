@@ -14,7 +14,7 @@ import { GeneralStorageSettings } from "./General";
 
 export function StorageIntegrations() {
   const fileStorageDomainMessages = useDomainMessages(
-    LANG_DOMAINS.INTEGRATIONS.FILE_STORAGE
+    LANG_DOMAINS.INTEGRATIONS.FILE_STORAGE,
   );
   useSetPageDetails({
     pageTitle: fileStorageDomainMessages.TEXT_LANG.TITLE,

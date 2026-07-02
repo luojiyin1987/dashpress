@@ -57,7 +57,7 @@ interface DateFilterOption {
 
 const makeDateFilterOption = (
   filterValue: DATE_FILTER_VALUE,
-  value: number
+  value: number,
 ): DateFilterOption => {
   if (filterValue === DATE_FILTER_VALUE.BEGINNING_OF_YEAR) {
     return { value: filterValue, label: msg`Start of year` };

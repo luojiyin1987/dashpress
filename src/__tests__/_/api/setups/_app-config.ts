@@ -13,7 +13,7 @@ const TEST_APP_CONFIG: Partial<Record<string, unknown>> = {
 };
 
 export const setupAppConfigTestData = async (
-  appConfig: Partial<Record<string, unknown>> = TEST_APP_CONFIG
+  appConfig: Partial<Record<string, unknown>> = TEST_APP_CONFIG,
 ) => {
   const configPersistenceService =
     createConfigDomainPersistenceService("app-config");

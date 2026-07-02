@@ -19,7 +19,7 @@ describe("pages/admin/[entity]/config/relations", () => {
           entity: "entity-1",
           tab: "labels",
         },
-      })
+      }),
     );
   });
 
@@ -28,7 +28,7 @@ describe("pages/admin/[entity]/config/relations", () => {
       render(
         <TestProviders>
           <EntityRelationsSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const currentTab = await screen.findByRole("tabpanel", {
@@ -37,19 +37,19 @@ describe("pages/admin/[entity]/config/relations", () => {
 
       await waitFor(() => {
         expect(
-          within(currentTab).getByLabelText("related-entity-2")
+          within(currentTab).getByLabelText("related-entity-2"),
         ).toHaveValue("Custom Label For Entity 2");
       });
 
       expect(within(currentTab).getByLabelText("related-entity-3")).toHaveValue(
-        ""
+        "",
       );
       expect(within(currentTab).getByLabelText("related-entity-4")).toHaveValue(
-        "Custom Label For Entity 4"
+        "Custom Label For Entity 4",
       );
 
       expect(
-        within(currentTab).queryByLabelText("hidden-related-entity-5")
+        within(currentTab).queryByLabelText("hidden-related-entity-5"),
       ).not.toBeInTheDocument();
     });
 
@@ -57,7 +57,7 @@ describe("pages/admin/[entity]/config/relations", () => {
       render(
         <TestProviders>
           <EntityRelationsSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const currentTab = await screen.findByRole("tabpanel", {
@@ -65,26 +65,26 @@ describe("pages/admin/[entity]/config/relations", () => {
       });
 
       await userEvent.clear(
-        await within(currentTab).findByLabelText("related-entity-2")
+        await within(currentTab).findByLabelText("related-entity-2"),
       );
 
       await userEvent.type(
         within(currentTab).getByLabelText("related-entity-3"),
-        "Custom Label For Entity 3"
+        "Custom Label For Entity 3",
       );
 
       await userEvent.type(
         within(currentTab).getByLabelText("related-entity-4"),
-        "Updated"
+        "Updated",
       );
 
       await userEvent.click(
         within(currentTab).getByRole("button", {
           name: "Save Relation Labels",
-        })
+        }),
       );
       expect(await getToastMessage()).toBe(
-        "Relation Labels Saved Successfully"
+        "Relation Labels Saved Successfully",
       );
     });
 
@@ -92,7 +92,7 @@ describe("pages/admin/[entity]/config/relations", () => {
       render(
         <TestProviders>
           <EntityRelationsSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const currentTab = await screen.findByRole("tabpanel", {
@@ -101,15 +101,15 @@ describe("pages/admin/[entity]/config/relations", () => {
 
       await waitFor(() => {
         expect(
-          within(currentTab).getByLabelText("related-entity-2")
+          within(currentTab).getByLabelText("related-entity-2"),
         ).toHaveValue("");
       });
 
       expect(within(currentTab).getByLabelText("related-entity-3")).toHaveValue(
-        "Custom Label For Entity 3"
+        "Custom Label For Entity 3",
       );
       expect(within(currentTab).getByLabelText("related-entity-4")).toHaveValue(
-        "Custom Label For Entity 4Updated"
+        "Custom Label For Entity 4Updated",
       );
     });
   });

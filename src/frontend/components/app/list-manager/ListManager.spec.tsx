@@ -30,7 +30,7 @@ describe("ListManager", () => {
       <ListManager
         {...{ ...defaultProps }}
         render={(item) => ({ label: item.name })}
-      />
+      />,
     );
 
     expect(screen.getByText("Foo")).toBeInTheDocument();
@@ -43,7 +43,7 @@ describe("ListManager", () => {
         {...{ ...defaultProps }}
         getLabel={(name) => `${name} + Label`}
         render={(item) => ({ label: item.label })}
-      />
+      />,
     );
 
     expect(screen.getByText("Foo + Label")).toBeInTheDocument();
@@ -57,7 +57,7 @@ describe("ListManager", () => {
           {...{ ...defaultProps }}
           render={(item) => ({ label: item.name })}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.queryByPlaceholderText("Search")).not.toBeInTheDocument();
@@ -69,11 +69,11 @@ describe("ListManager", () => {
         <ListManager
           {...{ ...defaultProps }}
           items={loadedDataState(
-            Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` }))
+            Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` })),
           )}
           render={(item) => ({ label: item.name })}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.getByPlaceholderText("Search")).toBeInTheDocument();
@@ -85,12 +85,12 @@ describe("ListManager", () => {
         <ListManager
           {...{ ...defaultProps }}
           items={loadedDataState(
-            Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` }))
+            Array.from({ length: 11 }, (_, i) => ({ name: `foo${i}` })),
           )}
           getLabel={(name) => `1-${name}`}
           render={(item) => ({ label: item.label })}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     fireEvent.change(screen.getByPlaceholderText("Search"), {
@@ -129,7 +129,7 @@ describe("ListManager", () => {
           }}
           render={(item) => ({ label: item.label })}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.getByText("No Item Has Been Added Yet")).toBeInTheDocument();

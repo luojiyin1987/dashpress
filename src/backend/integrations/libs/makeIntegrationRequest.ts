@@ -6,7 +6,7 @@ interface IConfig {
 
 export const makeIntegrationRequest = async (
   method: "POST" | "PUT" | "PATCH" | "DELETE" | "GET",
-  configuration: IConfig
+  configuration: IConfig,
 ) => {
   const response = await fetch(configuration.url, {
     method,

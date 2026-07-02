@@ -31,7 +31,7 @@ export function WidgetHeader({
   hasRelativeDate,
 }: IProps) {
   const [setWidgetRelativeDate] = useDashboardWidgetRelativeDateStore(
-    (store) => [store.setWidgetRelativeDate]
+    (store) => [store.setWidgetRelativeDate],
   );
   const domainMessages = useDomainMessages(LANG_DOMAINS.DASHBOARD.WIDGETS);
 

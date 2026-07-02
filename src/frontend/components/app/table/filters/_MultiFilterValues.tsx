@@ -21,14 +21,14 @@ export function MultiFilterValues({
     <>
       {values.map((value) => {
         const label = options.find(
-          (option) => String(option.value) === String(value)
+          (option) => String(option.value) === String(value),
         )?.label;
         return (
           <div key={value} className="mb-1 mr-1 inline-flex">
             <div
               className={cn(
                 buttonVariants({ variant: "soft", size: "sm" }),
-                "rounded-r-none hover:bg-primary-alpha hover:text-primary-alpha-text"
+                "rounded-r-none hover:bg-primary-alpha hover:text-primary-alpha-text",
               )}
             >
               {label || value}

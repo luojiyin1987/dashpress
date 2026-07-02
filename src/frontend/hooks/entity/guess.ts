@@ -8,12 +8,12 @@ import type {
 } from "@/shared/validations/types";
 
 export const getFieldTypeBoundedValidations = (
-  fieldType: FormFieldTypes
+  fieldType: FormFieldTypes,
 ): IFieldValidationItem[] =>
   typescriptSafeObjectDotEntries(ENTITY_VALIDATION_CONFIG)
     .filter(
       ([, config]) =>
-        config.isBoundToType && config.isBoundToType.includes(fieldType)
+        config.isBoundToType && config.isBoundToType.includes(fieldType),
     )
     .map(([key, config]) => ({
       validationType: key as ValidationsBoundToType,

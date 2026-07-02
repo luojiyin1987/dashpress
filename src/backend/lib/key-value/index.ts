@@ -9,7 +9,7 @@ interface IStorage {
 export class KeyValueStoreApiService<T> {
   constructor(
     private readonly key: KeyValueDomain,
-    private readonly _keyValueStorePersistenceService: AbstractConfigDataPersistenceService<IStorage>
+    private readonly _keyValueStorePersistenceService: AbstractConfigDataPersistenceService<IStorage>,
   ) {}
 
   async clearItem() {
@@ -25,7 +25,7 @@ export class KeyValueStoreApiService<T> {
   async getItem(): Promise<T | null> {
     const data = await this._keyValueStorePersistenceService.getItem(
       this.key,
-      null
+      null,
     );
     if (!data) {
       return null;
@@ -38,10 +38,10 @@ const keyValueStorePersistenceService =
   createConfigDomainPersistenceService<IStorage>("key-value");
 
 export function createKeyValueDomainPersistenceService<T>(
-  keyValueDomain: KeyValueDomain
+  keyValueDomain: KeyValueDomain,
 ) {
   return new KeyValueStoreApiService<T>(
     keyValueDomain,
-    keyValueStorePersistenceService
+    keyValueStorePersistenceService,
   );
 }

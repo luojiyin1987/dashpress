@@ -19,7 +19,7 @@ export const ENTITY_RELATIONS_ENDPOINT = (entity: string) =>
 const useEntitiesListLabel = (entitiesList: DataStateKeys<ILabelValue[]>) => {
   const getEntitiesDictionPlurals = useEntityDictionPlurals(
     entitiesList.data,
-    "value"
+    "value",
   );
 
   return {
@@ -85,9 +85,9 @@ export const useEntityToOneReferenceFields = (entity: string) =>
         input
           .filter(
             ({ type, inverseToOneField }) =>
-              type === "toOne" && !inverseToOneField
+              type === "toOne" && !inverseToOneField,
           )
-          .map(({ field, table }) => [field, table])
+          .map(({ field, table }) => [field, table]),
       );
     },
     defaultData: {},

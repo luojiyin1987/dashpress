@@ -26,7 +26,7 @@ export const ENTITY_CRUD_LABELS: Record<CrudViewsKeys, MessageDescriptor> = {
 };
 
 export const useEntityActionMenuItems = (
-  slugEntity: string
+  slugEntity: string,
 ): IMenuActionItem[] => {
   const router = useRouter();
 

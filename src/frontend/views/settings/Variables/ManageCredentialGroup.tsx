@@ -56,7 +56,7 @@ export function ManageCredentialGroup({
 
   useToastActionQueryError(
     revealedCredentials.error,
-    group === IntegrationsConfigurationGroup.Credentials
+    group === IntegrationsConfigurationGroup.Credentials,
   );
 
   const userHasPermission = useUserHasPermission();
@@ -68,11 +68,11 @@ export function ManageCredentialGroup({
   };
 
   const domainMessages = useDomainMessages(
-    INTEGRATIONS_GROUP_CRUD_CONFIG[group].domainDiction
+    INTEGRATIONS_GROUP_CRUD_CONFIG[group].domainDiction,
   );
 
   const documentationActionButton = useDocumentationActionButton(
-    domainMessages.TEXT_LANG.TITLE
+    domainMessages.TEXT_LANG.TITLE,
   );
 
   const MemoizedAction = useCallback(
@@ -101,7 +101,7 @@ export function ManageCredentialGroup({
       deleteConfigurationMutation,
       domainMessages.TEXT_LANG.DELETE,
       domainMessages.TEXT_LANG.EDIT,
-    ]
+    ],
   );
 
   const canManageAction = !(
@@ -116,34 +116,34 @@ export function ManageCredentialGroup({
         revealedCredentials.data !== undefined));
 
   const actionItems:
-    | Pick<IPageDetails, "actionItems" | "secondaryActionItems">
-    | undefined = useMemo(() => {
-    if (group !== currentTab) {
-      return undefined;
-    }
+    Pick<IPageDetails, "actionItems" | "secondaryActionItems"> | undefined =
+    useMemo(() => {
+      if (group !== currentTab) {
+        return undefined;
+      }
 
-    return {
-      actionItems: showManageAction
-        ? [
-            {
-              id: `add-${showManageAction ? "true" : "false"}`,
-              action: () => {
-                setCurrentConfigItem(NEW_CONFIG_ITEM);
+      return {
+        actionItems: showManageAction
+          ? [
+              {
+                id: `add-${showManageAction ? "true" : "false"}`,
+                action: () => {
+                  setCurrentConfigItem(NEW_CONFIG_ITEM);
+                },
+                systemIcon: "Plus",
+                label: domainMessages.TEXT_LANG.CREATE,
               },
-              systemIcon: "Plus",
-              label: domainMessages.TEXT_LANG.CREATE,
-            },
-          ]
-        : [],
-      secondaryActionItems: [documentationActionButton],
-    };
-  }, [
-    group,
-    currentTab,
-    showManageAction,
-    domainMessages.TEXT_LANG.CREATE,
-    documentationActionButton,
-  ]);
+            ]
+          : [],
+        secondaryActionItems: [documentationActionButton],
+      };
+    }, [
+      group,
+      currentTab,
+      showManageAction,
+      domainMessages.TEXT_LANG.CREATE,
+      documentationActionButton,
+    ]);
 
   useSetCurrentActionItems(actionItems);
 
@@ -227,7 +227,7 @@ export function ManageCredentialGroup({
           <KeyValueForm
             group={group}
             initialValues={tableData.data.find(
-              ({ key }) => key === currentConfigItem
+              ({ key }) => key === currentConfigItem,
             )}
             onSubmit={async (values: { key: string; value: string }) => {
               await upsertConfigurationMutation.mutateAsync(values);

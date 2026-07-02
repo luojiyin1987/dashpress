@@ -11,7 +11,7 @@ export function renderHook(
   options: {
     initialProps?: () => void;
     wrapper?: JSXElementConstructor<{ children: ReactElement }>;
-  } = {}
+  } = {},
 ) {
   const { initialProps, wrapper } = options;
   const result = createRef<null>() as MutableRefObject<any>;
@@ -33,12 +33,12 @@ export function renderHook(
 
   const { rerender: baseRerender } = render(
     <TestComponent renderCallbackProps={initialProps} />,
-    { wrapper }
+    { wrapper },
   );
 
   function rerender(rerenderCallbackProps?: () => void) {
     return baseRerender(
-      <TestComponent renderCallbackProps={rerenderCallbackProps} />
+      <TestComponent renderCallbackProps={rerenderCallbackProps} />,
     );
   }
 

@@ -15,7 +15,7 @@ export interface ITableColumn {
   Header:
     | MessageDescriptor
     | ((
-        headerContext: HeaderContext<Record<string, unknown>, unknown>
+        headerContext: HeaderContext<Record<string, unknown>, unknown>,
       ) => ReactNode);
   accessor: string;
   disableSortBy?: boolean;

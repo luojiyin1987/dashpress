@@ -25,8 +25,8 @@ export const useCanUserPerformCrudAction = (entity: string) => {
       !userHasPermission(
         META_USER_PERMISSIONS.APPLIED_CAN_ACCESS_ENTITY(
           entity,
-          ACTION_CONFIG_MAP[action]
-        )
+          ACTION_CONFIG_MAP[action],
+        ),
       )
     ) {
       return false;

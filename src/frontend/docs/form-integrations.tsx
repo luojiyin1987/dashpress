@@ -11,7 +11,7 @@ import { DocumentationRoot } from "./_base";
 export function FormIntegrationsDocumentation() {
   const { _ } = useLingui();
   const domainMessages = useDomainMessages(
-    LANG_DOMAINS.INTEGRATIONS.FORM_ACTIONS
+    LANG_DOMAINS.INTEGRATIONS.FORM_ACTIONS,
   );
   return (
     <DocumentationRoot>

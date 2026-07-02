@@ -43,13 +43,13 @@ export const useEntityDataDetails = ({
       errorMessage: entityCrudConfig.TEXT_LANG.NOT_FOUND,
       enabled: column !== SYSTEM_LOADING_VALUE && !!entityId,
       defaultData: {},
-    }
+    },
   );
 };
 
 const buildFilterCountQueryString = (
   entity: string,
-  queryFilter: FieldQueryFilter[]
+  queryFilter: FieldQueryFilter[],
 ) =>
   `${ENTITY_COUNT_PATH(entity)}?${qs.stringify({
     filters: queryFilter,
@@ -57,26 +57,26 @@ const buildFilterCountQueryString = (
 
 export const useEntityFilterCount = (
   entity: string,
-  filters: FieldQueryFilter[] | DataStates.Loading
+  filters: FieldQueryFilter[] | DataStates.Loading,
 ) => {
   return useApi<{ count: number }>(
     buildFilterCountQueryString(
       entity,
-      filters === DataStates.Loading ? [] : filters
+      filters === DataStates.Loading ? [] : filters,
     ),
     {
       errorMessage: CRUD_CONFIG_NOT_FOUND(`${entity} count`),
       enabled: filters !== DataStates.Loading,
       defaultData: { count: 0 },
-    }
+    },
   );
 };
 
 export const useEntitiesFilterCount = (
-  entityFilters: { entity: string; filters: FieldQueryFilter[]; id: string }[]
+  entityFilters: { entity: string; filters: FieldQueryFilter[]; id: string }[],
 ) => {
   const filterHashMap = Object.fromEntries(
-    entityFilters.map(({ id, ...rest }) => [id, rest])
+    entityFilters.map(({ id, ...rest }) => [id, rest]),
   );
 
   return useApiQueries<{ id: string }, { count: number }>({
@@ -91,19 +91,19 @@ export const useEntitiesFilterCount = (
 
 export const useEntityReferenceCount = (
   entities: string[],
-  reference: { entity: string; entityId: string }
+  reference: { entity: string; entityId: string },
 ) => {
   const multipleEntityReferenceFields =
     useMultipleEntityReferenceFields(entities);
 
   const entitiesReferences = typescriptSafeObjectDotEntries(
-    multipleEntityReferenceFields.data || {}
+    multipleEntityReferenceFields.data || {},
   )
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     .filter(([_, requestResponse]) => !requestResponse.isLoading)
     .map(([entity, requestResponse]) => {
       const referenceField = requestResponse.data.find(
-        ({ table }) => table === reference.entity
+        ({ table }) => table === reference.entity,
       )?.field;
       return {
         entity,
@@ -117,7 +117,7 @@ export const useEntityReferenceCount = (
     pathFn: (entity) => {
       const queryFilter: FieldQueryFilter = {
         id: entitiesReferences.find(
-          (entityReference) => entity === entityReference.entity
+          (entityReference) => entity === entityReference.entity,
         ).referenceField,
         value: {
           operator: FilterOperators.EQUAL_TO,
@@ -141,7 +141,7 @@ export function useEntityDataCreationMutation(
   option?: {
     hideSuccessMessage?: boolean;
     onSuccessActionWithFormData?: (id: string) => void;
-  }
+  },
 ) {
   const entityCrudConfig = useEntityCrudConfig(entity);
   const router = useRouter();
@@ -170,7 +170,7 @@ export function useEntityDataCreationMutation(
 
 export function useEntityDataUpdationMutation(
   entity: string,
-  entityId: string
+  entityId: string,
 ) {
   const entityCrudConfig = useEntityCrudConfig(entity);
   const metadata = useEntityMetadataDetails({ entity, entityId });
@@ -196,7 +196,7 @@ export function useEntityDataDeletionMutation(
     entityId: string;
     entity: string;
   },
-  redirectTo?: string
+  redirectTo?: string,
 ) {
   const router = useRouter();
   const entityCrudConfig = useEntityCrudConfig(entity);

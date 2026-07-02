@@ -37,7 +37,7 @@ export function IntermediateCheckBox({
         "size-4 cursor-pointer self-center rounded-sm text-primary",
         {
           "cursor-not-allowed text-muted": disabled,
-        }
+        },
       )}
       tabIndex={0}
       onMouseDown={(e) => {

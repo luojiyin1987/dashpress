@@ -48,7 +48,7 @@ export function SideBar({ isFullWidth, setIsFullWidth }: IProps) {
     const newValue: Record<string, string> = { ...activeItem, [depth]: value };
 
     const newValueFiltered = Object.fromEntries(
-      typescriptSafeObjectDotEntries(newValue).filter(([key]) => +key <= depth)
+      typescriptSafeObjectDotEntries(newValue).filter(([key]) => +key <= depth),
     ) as Record<string, string>;
 
     setActiveItem$1(newValueFiltered);
@@ -60,7 +60,7 @@ export function SideBar({ isFullWidth, setIsFullWidth }: IProps) {
         setIsFullWidth(!isFullWidth);
       }
     },
-    [isFullWidth]
+    [isFullWidth],
   );
 
   useEffect(() => {
@@ -138,7 +138,7 @@ export function SideBar({ isFullWidth, setIsFullWidth }: IProps) {
                 "inline-block size-8 text-white transition-transform",
                 {
                   "rotate-180": isFullWidth,
-                }
+                },
               )}
               aria-label="Toggle Side Bar"
             />

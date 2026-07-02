@@ -18,7 +18,7 @@ const compareString = (value1: string, value2: string) =>
 
 export function useFEPagination<T>(
   endPoint: string,
-  dataState: IPaginatedDataState<T>
+  dataState: IPaginatedDataState<T>,
 ): UseQueryResult<PaginatedData<T>> {
   return useQuery<PaginatedData<T>>({
     queryKey: getQueryCachekey(endPoint),
@@ -81,7 +81,7 @@ export function useFEPagination<T>(
         totalRecords: totalReturnData,
         data: returnData.slice(
           (dataState.pageIndex - 1) * pageSize,
-          dataState.pageIndex * pageSize
+          dataState.pageIndex * pageSize,
         ),
       };
     },

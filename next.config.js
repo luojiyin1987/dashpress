@@ -8,9 +8,6 @@ const nextConfigBase = require("./next.config.base");
 const nextConfig = {
   ...nextConfigBase,
   reactStrictMode: true,
-  experimental: {
-    swcPlugins: [["@lingui/swc-plugin", {}]],
-  },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.po$/,

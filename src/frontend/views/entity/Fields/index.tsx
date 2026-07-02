@@ -41,14 +41,14 @@ export function EntityFieldsSettings() {
   const tabFromUrl = useRouteParam("tab");
   const changeTabParam = useChangeRouterParam("tab");
   const domainMessages = useAppConfigurationDomainMessages(
-    "entity_columns_labels"
+    "entity_columns_labels",
   );
 
   const entity = useEntitySlug();
   const entityFieldLists = useEntityFieldLists(entity);
   const entityFieldLabelsMap = useEntityConfiguration(
     "entity_columns_labels",
-    entity
+    entity,
   );
 
   const getEntityFieldLabels = useEntityFieldLabels(entity);
@@ -68,22 +68,22 @@ export function EntityFieldsSettings() {
 
   const upsertEntityFieldsMapMutation = useUpsertConfigurationMutation(
     "entity_columns_labels",
-    entity
+    entity,
   );
 
   const upsertEntityTypesMapMutation = useUpsertConfigurationMutation(
     "entity_columns_types",
-    entity
+    entity,
   );
 
   const upsertEntityValidationsMutation = useUpsertConfigurationMutation(
     "entity_validations",
-    entity
+    entity,
   );
 
   const upsertEntitySelectionsMutation = useUpsertConfigurationMutation(
     "entity_selections",
-    entity
+    entity,
   );
 
   const documentationActionButton = useDocumentationActionButton(TITLE_MSG);
@@ -160,17 +160,17 @@ export function EntityFieldsSettings() {
                     onSubmit={async (data) => {
                       if (data.typesChanged) {
                         await upsertEntityTypesMapMutation.mutateAsync(
-                          data.types
+                          data.types,
                         );
                       }
                       if (data.validationsChanged) {
                         await upsertEntityValidationsMutation.mutateAsync(
-                          data.validations
+                          data.validations,
                         );
                       }
                       if (data.selectionsChanged) {
                         await upsertEntitySelectionsMutation.mutateAsync(
-                          data.selections || {}
+                          data.selections || {},
                         );
                       }
                     }}

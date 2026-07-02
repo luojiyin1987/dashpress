@@ -3,7 +3,7 @@ import { evalJavascriptStringSafely } from "@/shared/lib/script-runner";
 
 export const runFormFieldState = <T>(
   fieldStateString: string,
-  scriptProps: ISchemaFormScriptProps<T>
+  scriptProps: ISchemaFormScriptProps<T>,
 ) => {
   if (!fieldStateString) {
     return {};
@@ -11,7 +11,7 @@ export const runFormFieldState = <T>(
 
   const response = evalJavascriptStringSafely(
     fieldStateString,
-    scriptProps as unknown as Record<string, unknown>
+    scriptProps as unknown as Record<string, unknown>,
   );
 
   if (typeof response !== "object") {
@@ -22,14 +22,14 @@ export const runFormFieldState = <T>(
 
 export const runFormBeforeSubmit = <T>(
   beforeSubmitString: string,
-  scriptProps: ISchemaFormScriptProps<T>
+  scriptProps: ISchemaFormScriptProps<T>,
 ) => {
   if (!beforeSubmitString) {
     return scriptProps.formValues;
   }
   const response = evalJavascriptStringSafely(
     beforeSubmitString,
-    scriptProps as unknown as Record<string, unknown>
+    scriptProps as unknown as Record<string, unknown>,
   );
 
   if (!response) {

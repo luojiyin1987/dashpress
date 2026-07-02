@@ -38,13 +38,13 @@ export function UsersLinkToDatabase() {
   const { backLink } = useNavigationStack();
 
   const documentationActionButton = useDocumentationActionButton(
-    domainMessages.TEXT_LANG.TITLE
+    domainMessages.TEXT_LANG.TITLE,
   );
   const [entity, setEntity] = useState("");
 
   const userToDatabaseLink = useAppConfiguration("users_to_database_link");
   const upsertConfigurationMutation = useUpsertConfigurationMutation(
-    "users_to_database_link"
+    "users_to_database_link",
   );
 
   useEffect(() => {

@@ -20,7 +20,7 @@ const BreadcrumbList = React.forwardRef<
     ref={ref}
     className={cn(
       "flex flex-wrap items-center gap-1 break-words text-xs text-main",
-      className
+      className,
     )}
     {...props}
   />

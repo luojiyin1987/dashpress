@@ -19,7 +19,7 @@ describe("pages/admin/settings/theme", () => {
     render(
       <TestProviders>
         <ThemeSettings />
-      </TestProviders>
+      </TestProviders>,
     );
     await waitFor(() => {
       expect(screen.getByLabelText("Color Scheme")).toHaveValue("#4b38b3");
@@ -30,7 +30,7 @@ describe("pages/admin/settings/theme", () => {
     render(
       <TestProviders>
         <ThemeSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     fireEvent.input(screen.getByLabelText("Color Scheme"), {
@@ -38,7 +38,7 @@ describe("pages/admin/settings/theme", () => {
     });
 
     await userEvent.click(
-      screen.getByRole("button", { name: "Save Theme Settings" })
+      screen.getByRole("button", { name: "Save Theme Settings" }),
     );
 
     expect(await getToastMessage()).toBe("Theme Settings Saved Successfully");
@@ -48,7 +48,7 @@ describe("pages/admin/settings/theme", () => {
     render(
       <TestProviders>
         <ThemeSettings />
-      </TestProviders>
+      </TestProviders>,
     );
     await waitFor(() => {
       expect(screen.getByLabelText("Color Scheme")).toHaveValue("#123456");

@@ -5,7 +5,7 @@ import type { DataCrudKeys } from "@/shared/types/data";
 
 export function usePortalHiddenEntityColumns(
   entity: string,
-  crudKey: DataCrudKeys
+  crudKey: DataCrudKeys,
 ): DataStateKeys<string[]> {
   noop(entity, crudKey);
   return loadedDataState<string[]>([]);

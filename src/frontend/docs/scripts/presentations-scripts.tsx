@@ -20,7 +20,8 @@ export function PresentationScriptDocumentation() {
       <ul>
         <li>
           {" "}
-          <code>$.value</code> - This is the current value you are transforming{" "}
+          <code>$.value</code> - This is the current value you are
+          transforming{" "}
         </li>
         <li>
           {" "}

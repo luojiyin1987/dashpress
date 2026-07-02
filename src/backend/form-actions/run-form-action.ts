@@ -14,11 +14,11 @@ export const runFormAction = async (
   entity: string,
   dataEventAction: DataEventActions,
   getData: () => Promise<Record<string, unknown>>,
-  authProfile: IAccountProfile
+  authProfile: IAccountProfile,
 ) => {
   const formActions = await formActionsApiService.listEntityFormActions(entity);
   const actionsToRun = formActions.filter(
-    (action) => action.trigger === dataEventAction
+    (action) => action.trigger === dataEventAction,
   );
 
   if (actionsToRun.length === 0) {
@@ -37,9 +37,8 @@ export const runFormAction = async (
     const actionConfiguration =
       await integrationsApiService.getIntegrationCredentials(integration);
 
-    const connection = await ACTION_INTEGRATIONS[integration].connect(
-      actionConfiguration
-    );
+    const connection =
+      await ACTION_INTEGRATIONS[integration].connect(actionConfiguration);
 
     const compiledConfiguration = Object.fromEntries(
       typescriptSafeObjectDotEntries(configuration || {}).map(
@@ -51,13 +50,13 @@ export const runFormAction = async (
             [INTEGRATIONS_GROUP_CONFIG.credentials.prefix]: credentials,
             auth,
           }),
-        ]
-      )
+        ],
+      ),
     );
 
     await ACTION_INTEGRATIONS[integration].performsImplementation[action].do(
       connection,
-      compiledConfiguration
+      compiledConfiguration,
     );
   }
 };

@@ -8,10 +8,10 @@ const replaceRandomCharaters = (envContent: string) => {
     (reducedEnvContent, currentKey) => {
       return reducedEnvContent.replace(
         `${currentKey}=RANDOM_CHARACTERS`,
-        `${currentKey}=${randomstring.generate(128)}`
+        `${currentKey}=${randomstring.generate(128)}`,
       );
     },
-    envContent
+    envContent,
   );
 };
 
@@ -30,24 +30,24 @@ const replaceRandomCharaters = (envContent: string) => {
 
     const envContent: string = fs.readFileSync(
       path.join(__dirname, "../.env.example"),
-      "utf8"
+      "utf8",
     );
 
     fs.writeFileSync(
       path.join(process.cwd(), "./.env.local"),
-      replaceRandomCharaters(envContent)
+      replaceRandomCharaters(envContent),
     );
   };
 
   const copyEnvHere = () => {
     const envContent: string = fs.readFileSync(
       path.join(process.cwd(), "./.env.local"),
-      "utf8"
+      "utf8",
     );
 
     fs.writeFileSync(
       path.join(__dirname, "../.env.local"),
-      `${envContent}\nCURRENT_WORKING_DIRECTORY=${process.cwd()}`
+      `${envContent}\nCURRENT_WORKING_DIRECTORY=${process.cwd()}`,
     );
   };
 
@@ -86,12 +86,12 @@ const replaceRandomCharaters = (envContent: string) => {
   console.log(`
 - ${terminalLink(
     "💗 Show us support by dropping a ✨ at github.com/dashpresshq/dashpress",
-    "https://github.com/dashpresshq/dashpress"
+    "https://github.com/dashpresshq/dashpress",
   )}
 
 - ${terminalLink(
     "💬 If you have questions? Join our community",
-    "https://discord.gg/aV6DxwXhzN"
+    "https://discord.gg/aV6DxwXhzN",
   )}
       `);
 
@@ -100,7 +100,7 @@ const replaceRandomCharaters = (envContent: string) => {
   });
 
   console.log(
-    `🚀 Application started successfully at ${terminalLink(endpoint, endpoint)}`
+    `🚀 Application started successfully at ${terminalLink(endpoint, endpoint)}`,
   );
 
   process.stdout.write("\n");

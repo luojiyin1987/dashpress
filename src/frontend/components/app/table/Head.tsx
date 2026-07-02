@@ -29,7 +29,7 @@ export function TableHead({ table }: IProps) {
           {headerGroup.headers.map((header) => {
             const view = flexRender(
               header.column.columnDef.header,
-              header.getContext()
+              header.getContext(),
             );
             const { filter } = header.column.columnDef.meta as IColumnMeta;
             const isSorted = header.column.getIsSorted();
@@ -51,7 +51,7 @@ export function TableHead({ table }: IProps) {
                           {
                             "rotate-180": isSorted === "desc",
                             "opacity-100 text-primary": !!isSorted,
-                          }
+                          },
                         )}
                         size={18}
                         aria-label={`Sort By ${view} ${

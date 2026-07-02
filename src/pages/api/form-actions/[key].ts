@@ -15,7 +15,7 @@ export default requestHandler(
       ]);
 
       return await formActionsApiService.listEntityFormActions(
-        validatedRequest.requestQuery
+        validatedRequest.requestQuery,
       );
     },
     PATCH: async (getValidatedRequest) => {
@@ -32,7 +32,7 @@ export default requestHandler(
 
       return await formActionsApiService.updateFormAction(
         validatedRequest.requestQuery,
-        validatedRequest.requestBody
+        validatedRequest.requestBody,
       );
     },
     DELETE: async (getValidatedRequest) => {
@@ -44,7 +44,7 @@ export default requestHandler(
       ]);
 
       return await formActionsApiService.deleteFormAction(
-        validatedRequest.requestQuery
+        validatedRequest.requestQuery,
       );
     },
   },
@@ -53,5 +53,5 @@ export default requestHandler(
       _type: "canUser",
       body: UserPermissions.CAN_CONFIGURE_APP,
     },
-  ]
+  ],
 );

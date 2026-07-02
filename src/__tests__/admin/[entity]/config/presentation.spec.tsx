@@ -19,14 +19,14 @@ describe("pages/admin/[entity]/config/presentation", () => {
       query: {
         entity: "entity-1",
       },
-    })
+    }),
   );
 
   it("should show current section value", async () => {
     render(
       <TestProviders>
         <EntityPresentationScriptSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await waitFor(() => {
@@ -38,22 +38,22 @@ describe("pages/admin/[entity]/config/presentation", () => {
     render(
       <TestProviders>
         <EntityPresentationScriptSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(
       screen.getByLabelText("Script"),
-      "return 'Hannah Frederick'"
+      "return 'Hannah Frederick'",
     );
 
     await userEvent.click(
       screen.getByRole("button", {
         name: "Save Presentation Scripts",
-      })
+      }),
     );
 
     expect(await getToastMessage()).toBe(
-      "Presentation Scripts Saved Successfully"
+      "Presentation Scripts Saved Successfully",
     );
 
     await closeAllToasts();
@@ -63,12 +63,12 @@ describe("pages/admin/[entity]/config/presentation", () => {
     render(
       <TestProviders>
         <EntityPresentationScriptSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await waitFor(() => {
       expect(screen.getByLabelText("Script")).toHaveValue(
-        "return 'Hannah Frederick'"
+        "return 'Hannah Frederick'",
       );
     });
   });
@@ -77,7 +77,7 @@ describe("pages/admin/[entity]/config/presentation", () => {
     render(
       <TestProviders>
         <EntityPresentationScriptSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(screen.getByLabelText("Script"), "invalid");
@@ -85,10 +85,10 @@ describe("pages/admin/[entity]/config/presentation", () => {
     await userEvent.click(
       screen.getByRole("button", {
         name: "Save Presentation Scripts",
-      })
+      }),
     );
     expect(await getToastMessage()).toBe(
-      `Could not parse Javascript•Expression: \\n•JS-Error: SyntaxError: Unexpected identifier`
+      `Could not parse Javascript•Expression: \\n•JS-Error: SyntaxError: Unexpected identifier`,
     );
 
     await closeAllToasts();
@@ -98,12 +98,12 @@ describe("pages/admin/[entity]/config/presentation", () => {
     render(
       <TestProviders>
         <EntityPresentationScriptSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await waitFor(() => {
       expect(screen.getByLabelText("Script")).toHaveValue(
-        "return 'Hannah Frederick'"
+        "return 'Hannah Frederick'",
       );
     });
   });
@@ -112,7 +112,7 @@ describe("pages/admin/[entity]/config/presentation", () => {
     render(
       <TestProviders>
         <EntityPresentationScriptSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.clear(screen.getByLabelText("Script"));
@@ -120,10 +120,10 @@ describe("pages/admin/[entity]/config/presentation", () => {
     await userEvent.click(
       screen.getByRole("button", {
         name: "Save Presentation Scripts",
-      })
+      }),
     );
     expect(await getToastMessage()).toBe(
-      "Presentation Scripts Saved Successfully"
+      "Presentation Scripts Saved Successfully",
     );
   });
 
@@ -131,7 +131,7 @@ describe("pages/admin/[entity]/config/presentation", () => {
     render(
       <TestProviders>
         <EntityPresentationScriptSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await waitFor(() => {

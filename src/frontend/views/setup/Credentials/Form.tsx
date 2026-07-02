@@ -40,7 +40,7 @@ export function CredentialsSetupForm({
                 <FormSelect
                   label={msg`Database Type`}
                   selectData={typescriptSafeObjectDotKeys(
-                    DATA_SOURCES_CONFIG
+                    DATA_SOURCES_CONFIG,
                   ).map((dataSourceType) => ({
                     label: msg`${upperCaseFirstLetter(dataSourceType)}`,
                     value: dataSourceType,

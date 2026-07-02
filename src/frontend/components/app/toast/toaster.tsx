@@ -58,7 +58,7 @@ export function Toaster() {
                       "self-start",
                       spectrumVariants({
                         spectrum: variant,
-                      })
+                      }),
                     )}
                   >
                     {_(action.label)}

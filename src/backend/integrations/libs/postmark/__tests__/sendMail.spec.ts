@@ -19,7 +19,7 @@ describe("POSTMARK => SEND_MAIL", () => {
         subject: "some-subject",
         body: "<p>some-body</p>",
         senderEmail: "some-email",
-      }
+      },
     );
 
     expect(fetch).toHaveBeenCalledWith("https://api.postmarkapp.com/email", {

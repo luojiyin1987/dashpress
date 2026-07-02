@@ -24,10 +24,10 @@ describe("pages/admin/[entity]/config/crud", () => {
               isId: true,
               type: "number",
             },
-          ])
+          ]),
         );
-      }
-    )
+      },
+    ),
   );
   const replaceMock = jest.fn();
 
@@ -40,18 +40,18 @@ describe("pages/admin/[entity]/config/crud", () => {
       query: {
         entity: "entity-1",
       },
-    })
+    }),
   );
 
   it("should defaults to table", async () => {
     render(
       <TestProviders>
         <EntityCrudSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(
-      await screen.findByRole("tab", { selected: true })
+      await screen.findByRole("tab", { selected: true }),
     ).toHaveTextContent("Table");
   });
 
@@ -64,13 +64,13 @@ describe("pages/admin/[entity]/config/crud", () => {
     render(
       <TestProviders>
         <EntityCrudSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(
       screen.queryByRole("button", {
         name: `Enable ${tab} Functionality`,
-      })
+      }),
     ).not.toBeInTheDocument();
 
     await userEvent.click(screen.getByRole("tab", { name: tab }));
@@ -80,11 +80,11 @@ describe("pages/admin/[entity]/config/crud", () => {
     expect(
       await screen.findByRole("button", {
         name: `Enable ${tab} Functionality`,
-      })
+      }),
     ).toBeInTheDocument();
 
     expect(replaceMock).toHaveBeenCalledWith(
-      `/hello-there?foo=bar&tab=${sluggify(tab)}`
+      `/hello-there?foo=bar&tab=${sluggify(tab)}`,
     );
   });
 
@@ -98,43 +98,43 @@ describe("pages/admin/[entity]/config/crud", () => {
           entity: "entity-1",
           tab: "delete",
         },
-      })
+      }),
     );
 
     render(
       <TestProviders>
         <EntityCrudSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(
       await screen.findByRole("button", {
         name: "Enable Delete Functionality",
-      })
+      }),
     ).toBeInTheDocument();
 
     expect(
       screen.getByRole("tab", {
         selected: true,
-      })
+      }),
     ).toHaveTextContent("Delete");
 
     await userEvent.click(screen.getByRole("tab", { name: "Table" }));
 
     expect(screen.getByRole("tab", { selected: true })).toHaveTextContent(
-      "Table"
+      "Table",
     );
 
     expect(
       screen.queryByRole("button", {
         name: "Enable Delete Functionality",
-      })
+      }),
     ).not.toBeInTheDocument();
 
     expect(
       screen.getByRole("tab", {
         selected: true,
-      })
+      }),
     ).toHaveTextContent("Table");
 
     expect(replaceMock$1).toHaveBeenCalledWith("/?tab=table");

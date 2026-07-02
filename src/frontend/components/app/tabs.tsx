@@ -25,7 +25,7 @@ export function Tabs({ contents, currentTab, onChange }: IProps) {
   const { _ } = useLingui();
 
   const [activeTab, setActiveTab$1] = useState<string>(
-    sluggify(currentTab || _(contents[0].id))
+    sluggify(currentTab || _(contents[0].id)),
   );
 
   const setActiveTab = (id: string) => {

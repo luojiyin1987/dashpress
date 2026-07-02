@@ -11,7 +11,7 @@ export const minLength = (min: number) => (value: string) =>
 
 type ValidatorsTypes = (
   value: string,
-  allValues?: Record<string, unknown>
+  allValues?: Record<string, unknown>,
 ) => string | Promise<string | undefined> | undefined;
 
 export const composeValidators =
@@ -19,5 +19,5 @@ export const composeValidators =
   (value: string, allValues: Record<string, unknown>) =>
     validators.reduce(
       (error: any, validator) => error || validator(value, allValues),
-      undefined
+      undefined,
     );

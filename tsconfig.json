@@ -11,19 +11,22 @@
     "module": "esnext",
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "experimentalDecorators": true,
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
     "noImplicitReturns": true,
-    "baseUrl": "./src",
     "strict": false,
+    "types": ["jest", "node", "testing-library__jest-dom"],
     "isolatedModules": true,
     "paths": {
-      "@/components/*": ["./frontend/components/*"],
-      "@/tests/*": ["./__tests__/_/*"],
-      "@/*": ["./*"]
+      "@/components/*": ["./src/frontend/components/*"],
+      "@/tests/*": ["./src/__tests__/_/*"],
+      "@/*": ["./src/*"],
+      "translations/*": ["./src/translations/*"],
+      "shared/*": ["./src/shared/*"],
+      "bin/*": ["./src/bin/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

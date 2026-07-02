@@ -8,7 +8,7 @@ export default requestHandler(
       const validatedRequest = await getValidatedRequest(["entity"]);
 
       return await entitiesApiController.listAllEntityRelations(
-        validatedRequest.entity
+        validatedRequest.entity,
       );
     },
   },
@@ -17,5 +17,5 @@ export default requestHandler(
       _type: "canUser",
       body: UserPermissions.CAN_CONFIGURE_APP,
     },
-  ]
+  ],
 );

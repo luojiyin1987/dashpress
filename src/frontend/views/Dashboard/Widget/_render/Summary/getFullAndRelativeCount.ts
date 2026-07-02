@@ -6,7 +6,7 @@ import type { ISummaryCardWidgetData } from "./types";
 
 export const getFullAndRelativeCount = (
   fullCount$1: number | string,
-  relativeCount$1?: number | string
+  relativeCount$1?: number | string,
 ): [string, string, "up" | "down" | "side"] => {
   const fullCount = Number(fullCount$1);
 
@@ -24,7 +24,7 @@ export const getFullAndRelativeCount = (
   const difference = fullCount - relativeCount;
 
   const percentage = Math.abs(
-    ((fullCount - relativeCount) / relativeCount) * 100
+    ((fullCount - relativeCount) / relativeCount) * 100,
   );
 
   return [
@@ -46,7 +46,7 @@ const extractNumber = (data: number | { count?: number }): number => {
 };
 
 export const splitSummaryCardWidgetDataToRelativeCount = (
-  summaryCardWidgetData: ISummaryCardWidgetData
+  summaryCardWidgetData: ISummaryCardWidgetData,
 ): [number, number] => {
   if (typeof summaryCardWidgetData === "number") {
     return [summaryCardWidgetData, undefined];

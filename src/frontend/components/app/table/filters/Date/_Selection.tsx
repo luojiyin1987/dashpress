@@ -8,7 +8,7 @@ import { DATE_FILTER_OPTIONS } from "./constants";
 
 const getOptionValue = (value: string) => {
   const dateOption = DATE_FILTER_OPTIONS.find(
-    (option) => option.value === value
+    (option) => option.value === value,
   );
   return dateOption?.countLimit ? `1:${value}` : value;
 };
@@ -33,7 +33,7 @@ const getCountValue = (filterValue: string) => {
 const getOptionCountLimit = (filterValue: string) => {
   const value = filterValue.split(":")[1];
   const dateOption = DATE_FILTER_OPTIONS.find(
-    (option) => option.value === value
+    (option) => option.value === value,
   );
   return dateOption?.countLimit || 1;
 };
@@ -63,7 +63,7 @@ export function DateSelection({
           name="select-count"
           options={Array.from(
             { length: getOptionCountLimit(currentFilterValue) },
-            (_, k) => `${k + 1}`
+            (_, k) => `${k + 1}`,
           ).map((count) => ({
             label: fakeMessageDescriptor(count),
             value: count,

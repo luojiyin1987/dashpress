@@ -20,25 +20,25 @@ describe("pages/admin/[entity]/config/persistent-query", () => {
       query: {
         entity: "entity-1",
       },
-    })
+    }),
   );
 
   it("should save persistent queries", async () => {
     render(
       <TestProviders>
         <EntityPersistentQuerySettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.click(
       await screen.findByRole("button", {
         name: "Add Filter",
-      })
+      }),
     );
 
     await userEvent.type(
       await screen.findByLabelText("Field"),
-      "entity-1-string-field"
+      "entity-1-string-field",
     );
     await userEvent.keyboard("{Enter}");
 
@@ -50,7 +50,7 @@ describe("pages/admin/[entity]/config/persistent-query", () => {
     await userEvent.click(
       screen.getByRole("button", {
         name: "Save Persistent Query",
-      })
+      }),
     );
 
     expect(await getToastMessage()).toBe("Persistent Query Saved Successfully");
@@ -60,23 +60,23 @@ describe("pages/admin/[entity]/config/persistent-query", () => {
     const { container } = render(
       <TestProviders>
         <EntityPersistentQuerySettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(
-      container.querySelector(`input[name="children[0].children[0].id"]`)
+      container.querySelector(`input[name="children[0].children[0].id"]`),
     ).toHaveValue("entity-1-string-field");
 
     expect(
       container.querySelector(
-        `input[name="children[0].children[0].value.operator"]`
-      )
+        `input[name="children[0].children[0].value.operator"]`,
+      ),
     ).toHaveValue("e");
 
     expect(
       container.querySelector(
-        `input[name="children[0].children[0].value.value"]`
-      )
+        `input[name="children[0].children[0].value.value"]`,
+      ),
     ).toHaveValue("equal-value");
   });
 
@@ -84,18 +84,18 @@ describe("pages/admin/[entity]/config/persistent-query", () => {
     const { container } = render(
       <TestProviders>
         <EntityPersistentQuerySettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.click(
       await screen.findByRole("button", {
         name: "Add Nested Filter",
-      })
+      }),
     );
 
     await userEvent.type(
       screen.getAllByLabelText("Field")[1],
-      "entity-1-date-field"
+      "entity-1-date-field",
     );
     await userEvent.keyboard("{Enter}");
 
@@ -104,39 +104,39 @@ describe("pages/admin/[entity]/config/persistent-query", () => {
 
     await userEvent.type(
       screen.getAllByLabelText("Value")[1],
-      "less-than-value"
+      "less-than-value",
     );
 
     await userEvent.click(
       screen.getByRole("button", {
         name: "Add Nested Filter",
-      })
+      }),
     );
 
     await userEvent.click(
       screen.getAllByRole("button", {
         name: "Remove Nested Filter",
-      })[2]
+      })[2],
     );
 
     expect(
-      container.querySelector(`input[name="children[0].operator__and"]`)
+      container.querySelector(`input[name="children[0].operator__and"]`),
     ).toBeChecked();
 
     expect(
-      container.querySelector(`input[name="children[0].operator__or"`)
+      container.querySelector(`input[name="children[0].operator__or"`),
     ).not.toBeChecked();
 
     await userEvent.click(
       screen.getAllByRole("option", {
         name: "OR",
-      })[0]
+      })[0],
     );
 
     await userEvent.click(
       screen.getByRole("button", {
         name: "Save Persistent Query",
-      })
+      }),
     );
   });
 
@@ -144,30 +144,30 @@ describe("pages/admin/[entity]/config/persistent-query", () => {
     const { container } = render(
       <TestProviders>
         <EntityPersistentQuerySettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.click(
       await screen.findByRole("button", {
         name: "Add Filter",
-      })
+      }),
     );
     expect(
-      container.querySelector(`input[name="operator__and"]`)
+      container.querySelector(`input[name="operator__and"]`),
     ).toBeChecked();
     expect(
-      container.querySelector(`input[name="operator__or"]`)
+      container.querySelector(`input[name="operator__or"]`),
     ).not.toBeChecked();
 
     await userEvent.click(
       screen.getAllByRole("option", {
         name: "OR",
-      })[1]
+      })[1],
     );
 
     await userEvent.type(
       screen.getAllByLabelText("Field")[2],
-      "entity-1-number-field"
+      "entity-1-number-field",
     );
     await userEvent.keyboard("{Enter}");
 
@@ -179,7 +179,7 @@ describe("pages/admin/[entity]/config/persistent-query", () => {
     await userEvent.click(
       screen.getByRole("button", {
         name: "Save Persistent Query",
-      })
+      }),
     );
   });
 
@@ -187,67 +187,67 @@ describe("pages/admin/[entity]/config/persistent-query", () => {
     const { container } = render(
       <TestProviders>
         <EntityPersistentQuerySettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(
-      container.querySelector(`input[name="children[0].children[0].id"]`)
+      container.querySelector(`input[name="children[0].children[0].id"]`),
     ).toHaveValue("entity-1-string-field");
 
     expect(
       container.querySelector(
-        `input[name="children[0].children[0].value.operator"]`
-      )
+        `input[name="children[0].children[0].value.operator"]`,
+      ),
     ).toHaveValue("e");
 
     expect(
       container.querySelector(
-        `input[name="children[0].children[0].value.value"]`
-      )
+        `input[name="children[0].children[0].value.value"]`,
+      ),
     ).toHaveValue("equal-value");
 
     expect(
-      container.querySelector(`input[name="children[0].children[1].id"]`)
+      container.querySelector(`input[name="children[0].children[1].id"]`),
     ).toHaveValue("entity-1-date-field");
 
     expect(
       container.querySelector(
-        `input[name="children[0].children[1].value.operator"]`
-      )
+        `input[name="children[0].children[1].value.operator"]`,
+      ),
     ).toHaveValue("l");
 
     expect(
       container.querySelector(
-        `input[name="children[0].children[1].value.value"]`
-      )
+        `input[name="children[0].children[1].value.value"]`,
+      ),
     ).toHaveValue("less-than-value");
 
     expect(
-      container.querySelector(`input[name="children[0].operator__and"]`)
+      container.querySelector(`input[name="children[0].operator__and"]`),
     ).not.toBeChecked();
 
     expect(
-      container.querySelector(`input[name="children[0].operator__or"`)
+      container.querySelector(`input[name="children[0].operator__or"`),
     ).toBeChecked();
 
     expect(
-      container.querySelector(`input[name="children[1].children[0].id"]`)
+      container.querySelector(`input[name="children[1].children[0].id"]`),
     ).toHaveValue("entity-1-number-field");
 
     expect(
       container.querySelector(
-        `input[name="children[1].children[0].value.operator"]`
-      )
+        `input[name="children[1].children[0].value.operator"]`,
+      ),
     ).toHaveValue("s");
 
     expect(
       container.querySelector(
-        `input[name="children[1].children[0].value.value"]`
-      )
+        `input[name="children[1].children[0].value.value"]`,
+      ),
     ).toBeNull();
 
     expect(
-      container.querySelector(`input[name="operator__and"]`)
+      container.querySelector(`input[name="operator__and"]`),
     ).not.toBeChecked();
     expect(container.querySelector(`input[name="operator__or"]`)).toBeChecked();
   });
@@ -256,23 +256,23 @@ describe("pages/admin/[entity]/config/persistent-query", () => {
     render(
       <TestProviders>
         <EntityPersistentQuerySettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.click(
       screen.getAllByRole("button", {
         name: "Remove Nested Filter",
-      })[0]
+      })[0],
     );
     await userEvent.click(
       screen.getAllByRole("button", {
         name: "Remove Nested Filter",
-      })[0]
+      })[0],
     );
     await userEvent.click(
       screen.getAllByRole("button", {
         name: "Remove Nested Filter",
-      })[0]
+      })[0],
     );
 
     expect(screen.queryByLabelText("Field")).not.toBeInTheDocument();
@@ -283,7 +283,7 @@ describe("pages/admin/[entity]/config/persistent-query", () => {
     await userEvent.click(
       screen.getByRole("button", {
         name: "Save Persistent Query",
-      })
+      }),
     );
   });
 
@@ -291,7 +291,7 @@ describe("pages/admin/[entity]/config/persistent-query", () => {
     render(
       <TestProviders>
         <EntityPersistentQuerySettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.queryByLabelText("Field")).not.toBeInTheDocument();

@@ -70,7 +70,7 @@ export function ListUsers() {
       domainMessages.TEXT_LANG.DELETE,
       domainMessages.TEXT_LANG.EDIT,
       userDeletionMutation,
-    ]
+    ],
   );
 
   const columns: IFETableColumn<IAccountProfile>[] = [

@@ -106,7 +106,7 @@ const buildFilterConfigFromType = (prop: {
 };
 
 export const useTableColumns = (
-  entity: string
+  entity: string,
 ): Partial<DataStateKeys<ITableColumn[]>> => {
   const portalTableColumns = usePortalTableColumns(entity);
   const getEntityFieldLabels = useEntityFieldLabels(entity);
@@ -116,7 +116,7 @@ export const useTableColumns = (
   const evaluateScriptContext = useEvaluateScriptContext();
   const entityPresentationScript = useEntityConfiguration(
     "entity_presentation_script",
-    entity
+    entity,
   );
 
   const idField = useEntityIdField(entity);
@@ -179,7 +179,7 @@ export const useTableColumns = (
               row: row.original,
               value: value$1,
               ...evaluateScriptContext,
-            }
+            },
           );
 
           const specialDataTypeRender = viewSpecialDataTypes({
@@ -219,7 +219,7 @@ export const useTableColumns = (
         },
       };
       return tableColumn;
-    }
+    },
   );
 
   if (actionButtons.length > 0) {

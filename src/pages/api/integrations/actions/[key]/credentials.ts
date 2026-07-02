@@ -15,7 +15,7 @@ export default requestHandler(
       ]);
 
       return await integrationsApiService.getIntegrationCredentials(
-        validatedRequest.requestQuery
+        validatedRequest.requestQuery,
       );
     },
   },
@@ -27,5 +27,5 @@ export default requestHandler(
     {
       _type: "withPassword",
     },
-  ]
+  ],
 );

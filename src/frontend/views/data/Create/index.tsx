@@ -39,12 +39,12 @@ export function EntityCreate() {
 
   const entityFormExtension = useEntityConfiguration(
     "entity_form_extension",
-    entity
+    entity,
   );
 
   const scriptInitialValues = runInitialValuesScript(
     entityFormExtension.data.initialValues,
-    evaluateScriptContext
+    evaluateScriptContext,
   );
 
   return (

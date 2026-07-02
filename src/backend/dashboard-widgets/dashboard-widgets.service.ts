@@ -35,7 +35,7 @@ import {
 
 const runAsyncJavascriptString = async (
   javascriptString: string,
-  context: Record<string, unknown>
+  context: Record<string, unknown>,
 ) => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const AsyncFunction = async function X() {}.constructor;
@@ -57,13 +57,13 @@ export class DashboardWidgetsApiService {
     private readonly _entitiesApiService: EntitiesApiService,
     private readonly _listOrderApiService: ListOrderApiService,
     private readonly _rolesApiService: RolesApiService,
-    private readonly _rDBMSApiDataService: RDBMSDataApiService
+    private readonly _rDBMSApiDataService: RDBMSDataApiService,
   ) {}
 
   async runScript(
     script$1: string,
     currentUser: IAccountProfile,
-    relativeDate?: string
+    relativeDate?: string,
   ) {
     if (!script$1) {
       return "{}";
@@ -71,7 +71,7 @@ export class DashboardWidgetsApiService {
 
     const script = script$1.replaceAll(
       `$.${WIDGET_SCRIPT_RELATIVE_TIME_MARKER}`,
-      relativeDateNotationToActualDate(relativeDate).toISOString()
+      relativeDateNotationToActualDate(relativeDate).toISOString(),
     );
 
     return (
@@ -87,11 +87,10 @@ export class DashboardWidgetsApiService {
   async runWidgetScript(
     widgetId: string,
     currentUser: IAccountProfile,
-    relativeDate: string
+    relativeDate: string,
   ) {
-    const widget = await this._dashboardWidgetsPersistenceService.getItemOrFail(
-      widgetId
-    );
+    const widget =
+      await this._dashboardWidgetsPersistenceService.getItemOrFail(widgetId);
     return await this.runScript(widget.script, currentUser, relativeDate);
   }
 
@@ -100,13 +99,13 @@ export class DashboardWidgetsApiService {
 
     const defaultWidgets = await mutateGeneratedDashboardWidgets(
       await this.generateDashboardWidgets(entitiesToShow),
-      entitiesToShow
+      entitiesToShow,
     );
 
     for (const widget of defaultWidgets) {
       await this._dashboardWidgetsPersistenceService.createItem(
         widget.id,
-        widget
+        widget,
       );
     }
 
@@ -132,7 +131,7 @@ export class DashboardWidgetsApiService {
           const dateField =
             await this._entitiesApiService.getEntityFirstFieldType(
               entity.value,
-              "date"
+              "date",
             );
 
           const plainCountQuery = (await RDBMSDataApiService.getInstance())
@@ -161,7 +160,7 @@ return [actual[0], relative[0]];
 `
               : `return await $.query(${queryQuote}${plainCountQuery}${queryQuote})`,
           };
-        })
+        }),
     );
 
     const firstEntity = entitiesToShow[0];
@@ -185,15 +184,14 @@ return [actual[0], relative[0]];
   };
 
   private async listDashboardWidgetsToShow(dashboardId: string) {
-    const widgetList = await this._listOrderApiService.getItemOrder(
-      dashboardId
-    );
+    const widgetList =
+      await this._listOrderApiService.getItemOrder(dashboardId);
     if (widgetList.length === 0) {
       return await this.generateDefaultDashboardWidgets(dashboardId);
     }
 
     const widgets = Object.values(
-      await this._dashboardWidgetsPersistenceService.getAllItemsIn(widgetList)
+      await this._dashboardWidgetsPersistenceService.getAllItemsIn(widgetList),
     );
 
     return sortListByOrder(widgetList, widgets, "id");
@@ -201,17 +199,20 @@ return [actual[0], relative[0]];
 
   async listDashboardWidgets(
     dashboardId: string,
-    userRole: string
+    userRole: string,
   ): Promise<IWidgetConfig[]> {
     if (
       dashboardId !== HOME_DASHBOARD_KEY &&
       !(await this._rolesApiService.canRoleDoThis(
         userRole,
-        PORTAL_DASHBOARD_PERMISSION(dashboardId, GranularEntityPermissions.Show)
+        PORTAL_DASHBOARD_PERMISSION(
+          dashboardId,
+          GranularEntityPermissions.Show,
+        ),
       ))
     ) {
       throw new BadRequestError(
-        "You can't view this dashboard or it doesn't exist"
+        "You can't view this dashboard or it doesn't exist",
       );
     }
 
@@ -221,7 +222,7 @@ return [actual[0], relative[0]];
   async createWidget(widget: IWidgetConfig, dashboardId: string) {
     await this._dashboardWidgetsPersistenceService.createItem(
       widget.id,
-      widget
+      widget,
     );
 
     await this._listOrderApiService.appendToList(dashboardId, widget.id);
@@ -256,5 +257,5 @@ export const dashboardWidgetsApiService = new DashboardWidgetsApiService(
   entitiesApiService,
   listOrderApiService,
   rolesApiService,
-  rDBMSDataApiService
+  rDBMSDataApiService,
 );

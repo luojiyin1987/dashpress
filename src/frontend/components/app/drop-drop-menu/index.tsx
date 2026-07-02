@@ -31,7 +31,7 @@ export function DropDownMenu({
   className,
 }: IProps) {
   const [currentMenuItem, setCurrentMenuItem] = useState<IMenuActionItem>(
-    menuItems$1[0]
+    menuItems$1[0],
   );
 
   const menuItems: IMenuActionItem[] = useMemo(() => {

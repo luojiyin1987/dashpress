@@ -3,7 +3,7 @@ import { AbstractConfigDataPersistenceService } from "./AbstractConfigDataPersis
 import type { ConfigDomain } from "./types";
 
 export class MemoryConfigDataPersistenceAdaptor<
-  T
+  T,
 > extends AbstractConfigDataPersistenceService<T> {
   private static data: Record<string, Record<string, any>> = {};
 
@@ -43,17 +43,17 @@ export class MemoryConfigDataPersistenceAdaptor<
 
   async getAllItemsIn(itemIds: string[]) {
     const allItems = MemoryConfigDataPersistenceAdaptor.getDomainData(
-      this._configDomain
+      this._configDomain,
     );
 
     return Object.fromEntries(
-      itemIds.map((itemId) => [itemId, allItems[itemId]])
+      itemIds.map((itemId) => [itemId, allItems[itemId]]),
     );
   }
 
   async _getItem(key: string) {
     const currentItem = MemoryConfigDataPersistenceAdaptor.getDomainData(
-      this._configDomain
+      this._configDomain,
     )[key];
     if (currentItem) {
       return currentItem;
@@ -63,7 +63,7 @@ export class MemoryConfigDataPersistenceAdaptor<
 
   async _persistItem(key: string, data: T) {
     const domainData = MemoryConfigDataPersistenceAdaptor.getDomainData(
-      this._configDomain
+      this._configDomain,
     );
     domainData[key] = data;
     this.persistDomainData(domainData);
@@ -71,7 +71,7 @@ export class MemoryConfigDataPersistenceAdaptor<
 
   async _removeItem(key: string): Promise<void> {
     const domainData = MemoryConfigDataPersistenceAdaptor.getDomainData(
-      this._configDomain
+      this._configDomain,
     );
 
     delete domainData[key];
@@ -81,7 +81,7 @@ export class MemoryConfigDataPersistenceAdaptor<
 
   async saveAllItems(keyField: keyof T, data: T[]) {
     this.persistDomainData(
-      Object.fromEntries(data.map((datum) => [datum[keyField], datum]))
+      Object.fromEntries(data.map((datum) => [datum[keyField], datum])),
     );
   }
 }

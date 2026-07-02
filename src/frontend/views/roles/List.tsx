@@ -61,7 +61,7 @@ export function ListRoles() {
       domainMessages.TEXT_LANG.DELETE,
       domainMessages.TEXT_LANG.EDIT,
       roleDeletionMutation,
-    ]
+    ],
   );
   const columns: IFETableColumn<IRolesList>[] = [
     {

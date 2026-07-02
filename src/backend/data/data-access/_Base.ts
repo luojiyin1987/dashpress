@@ -11,44 +11,44 @@ export abstract class BaseDataAccessService<T> {
 
   abstract count(
     entity: string,
-    queryFilter: QueryFilterSchema
+    queryFilter: QueryFilterSchema,
   ): Promise<number>;
 
   abstract list(
     entity: string,
     select: string[],
     queryFilter: QueryFilterSchema,
-    dataFetchingModifiers: IPaginationFilters
+    dataFetchingModifiers: IPaginationFilters,
   ): Promise<unknown[]>;
 
   abstract read<K>(
     entity: string,
     select: string[],
-    query: Record<string, unknown>
+    query: Record<string, unknown>,
   ): Promise<K>;
 
   abstract create(
     entity: string,
     data: Record<string, unknown>,
-    primaryField: string
+    primaryField: string,
   ): Promise<string | number>;
 
   abstract update(
     entity: string,
     query: Record<string, unknown>,
-    data: Record<string, unknown>
+    data: Record<string, unknown>,
   ): Promise<void>;
 
   abstract delete(
     entity: string,
-    query: Record<string, unknown>
+    query: Record<string, unknown>,
   ): Promise<void>;
 
   filterOperatorToQuery(
     query: T,
     column: string,
     { operator, value, value2 }: IColumnFilterBag<unknown>,
-    groupOperator: "and" | "or"
+    groupOperator: "and" | "or",
   ): T {
     if (!operator || !column) {
       return query;
@@ -81,7 +81,7 @@ export abstract class BaseDataAccessService<T> {
         return operatorConfig[QueryOperators.GREATER_THAN](
           query,
           column,
-          value
+          value,
         );
 
       case FilterOperators.CONTAINS:
@@ -94,7 +94,7 @@ export abstract class BaseDataAccessService<T> {
         return operatorConfig[QueryOperators.NOT_IN](
           query,
           column,
-          value as string[]
+          value as string[],
         );
 
       case FilterOperators.NOT_EQUAL:
@@ -111,10 +111,10 @@ export abstract class BaseDataAccessService<T> {
 
       case FilterOperators.DATE: {
         const firstTime = relativeDateNotationToActualDate(
-          (value as string) || DATE_FILTER_VALUE.BEGINNING_OF_TIME_VALUE
+          (value as string) || DATE_FILTER_VALUE.BEGINNING_OF_TIME_VALUE,
         );
         const secondTime = relativeDateNotationToActualDate(
-          (value2 as string) || DATE_FILTER_VALUE.NOW
+          (value2 as string) || DATE_FILTER_VALUE.NOW,
         );
         const timeBetween: [Date, Date] =
           firstTime.getTime() < secondTime.getTime()
@@ -123,7 +123,7 @@ export abstract class BaseDataAccessService<T> {
         return operatorConfig[QueryOperators.BETWEEN](
           query,
           column,
-          timeBetween
+          timeBetween,
         );
       }
     }

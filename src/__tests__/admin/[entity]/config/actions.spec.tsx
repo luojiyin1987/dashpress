@@ -24,7 +24,7 @@ describe("pages/admin/[entity]/config/actions", () => {
         query: {
           entity: "test-entity",
         },
-      })
+      }),
     );
   });
 
@@ -32,7 +32,7 @@ describe("pages/admin/[entity]/config/actions", () => {
     render(
       <TestProviders>
         <EntityFormActionsSettings />x
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(await screen.findByRole("table")).toBeInTheDocument();
@@ -52,11 +52,11 @@ describe("pages/admin/[entity]/config/actions", () => {
     render(
       <TestProviders>
         <EntityFormActionsSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.click(
-      await screen.findByRole("button", { name: "Add New Form Action" })
+      await screen.findByRole("button", { name: "Add New Form Action" }),
     );
 
     const dialog = screen.getByRole("dialog");
@@ -64,35 +64,35 @@ describe("pages/admin/[entity]/config/actions", () => {
     await selectCombobox("Trigger", "On Create");
 
     await userEvent.click(
-      within(dialog).getByRole("option", { name: "Slack" })
+      within(dialog).getByRole("option", { name: "Slack" }),
     );
 
     expect(
-      within(dialog).queryByRole("option", { name: "Non Activated Actions" })
+      within(dialog).queryByRole("option", { name: "Non Activated Actions" }),
     ).not.toBeInTheDocument();
 
     await selectCombobox("Action", "Send Message");
 
     await userEvent.type(
       await within(dialog).findByLabelText("Slack: Channel"),
-      "{{ CONSTANTS.SLACK_CHANNEL }}"
+      "{{ CONSTANTS.SLACK_CHANNEL }}",
     );
 
     await userEvent.type(
       within(dialog).getByLabelText("Slack: Message"),
-      "Hello how are you"
+      "Hello how are you",
     );
 
     await userEvent.click(screen.getByLabelText("Slack: Should Notify"));
 
     await userEvent.click(
-      within(dialog).getByRole("button", { name: "Create Form Action" })
+      within(dialog).getByRole("button", { name: "Create Form Action" }),
     );
 
     expect(await getToastMessage()).toBe("Form Action Created Successfully");
 
     expect(
-      screen.queryByRole("button", { name: "Create Form Action" })
+      screen.queryByRole("button", { name: "Create Form Action" }),
     ).not.toBeInTheDocument();
 
     expect(await getTableRows(screen.getByRole("table")))
@@ -113,7 +113,7 @@ describe("pages/admin/[entity]/config/actions", () => {
     render(
       <TestProviders>
         <EntityFormActionsSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(await screen.findByRole("table")).toBeInTheDocument();
@@ -123,18 +123,18 @@ describe("pages/admin/[entity]/config/actions", () => {
     await userEvent.click(
       within(tableRows[4]).getByRole("button", {
         name: "Edit Form Action",
-      })
+      }),
     );
 
     const dialog = screen.getByRole("dialog");
     //
 
     expect(
-      within(dialog).getByRole("combobox", { name: "Trigger" })
+      within(dialog).getByRole("combobox", { name: "Trigger" }),
     ).toHaveTextContent("On Create");
 
     expect(
-      within(dialog).getByRole("option", { selected: true })
+      within(dialog).getByRole("option", { selected: true }),
     ).toHaveTextContent("Slack");
 
     // expect(
@@ -144,18 +144,18 @@ describe("pages/admin/[entity]/config/actions", () => {
     // await selectCombobox("Action", "Send Message");
 
     expect(
-      within(dialog).getByRole("combobox", { name: "Action" })
+      within(dialog).getByRole("combobox", { name: "Action" }),
     ).toHaveTextContent("Send Message");
 
     expect(
-      within(dialog).getByRole("combobox", { name: "Trigger" })
+      within(dialog).getByRole("combobox", { name: "Trigger" }),
     ).toHaveTextContent("On Create");
 
     expect(await within(dialog).findByLabelText("Slack: Channel")).toHaveValue(
-      "{ CONSTANTS.SLACK_CHANNEL }}"
+      "{ CONSTANTS.SLACK_CHANNEL }}",
     );
     expect(within(dialog).getByLabelText("Slack: Message")).toHaveValue(
-      "Hello how are you"
+      "Hello how are you",
     );
     expect(within(dialog).getByLabelText("Slack: Should Notify")).toBeChecked();
   });
@@ -164,7 +164,7 @@ describe("pages/admin/[entity]/config/actions", () => {
     render(
       <TestProviders>
         <EntityFormActionsSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(await screen.findByRole("table")).toBeInTheDocument();
@@ -174,7 +174,7 @@ describe("pages/admin/[entity]/config/actions", () => {
     await userEvent.click(
       within(tableRows[4]).getByRole("button", {
         name: "Edit Form Action",
-      })
+      }),
     );
 
     const dialog = screen.getByRole("dialog");
@@ -187,16 +187,16 @@ describe("pages/admin/[entity]/config/actions", () => {
 
     await userEvent.type(
       await within(dialog).findByLabelText("SMTP: From"),
-      "{{ CONSTANTS.MAIL_FROM }}"
+      "{{ CONSTANTS.MAIL_FROM }}",
     );
 
     await userEvent.type(
       within(dialog).getByLabelText("SMTP: To"),
-      "to@gmail.com"
+      "to@gmail.com",
     );
 
     await userEvent.click(
-      within(dialog).getByRole("button", { name: "Update Form Action" })
+      within(dialog).getByRole("button", { name: "Update Form Action" }),
     );
 
     expect(await getToastMessage()).toBe("Form Action Updated Successfully");
@@ -219,7 +219,7 @@ describe("pages/admin/[entity]/config/actions", () => {
     render(
       <TestProviders>
         <EntityFormActionsSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(await screen.findByRole("table")).toBeInTheDocument();
@@ -229,28 +229,28 @@ describe("pages/admin/[entity]/config/actions", () => {
     await userEvent.click(
       within(tableRows[4]).getByRole("button", {
         name: "Edit Form Action",
-      })
+      }),
     );
 
     const dialog = screen.getByRole("dialog");
     //
     expect(
-      within(dialog).getByTestId("react-select__trigger")
+      within(dialog).getByTestId("react-select__trigger"),
     ).toHaveTextContent("On Delete");
 
     expect(
-      within(dialog).getByRole("option", { selected: true })
+      within(dialog).getByRole("option", { selected: true }),
     ).toHaveTextContent("SMTP");
 
     expect(
-      within(dialog).getByTestId("react-select__action")
+      within(dialog).getByTestId("react-select__action"),
     ).toHaveTextContent("Send Mail - smtp");
 
     expect(await within(dialog).findByLabelText("SMTP: From")).toHaveValue(
-      "{ CONSTANTS.MAIL_FROM }}"
+      "{ CONSTANTS.MAIL_FROM }}",
     );
     expect(within(dialog).getByLabelText("SMTP: To")).toHaveValue(
-      "to@gmail.com"
+      "to@gmail.com",
     );
   });
 
@@ -258,7 +258,7 @@ describe("pages/admin/[entity]/config/actions", () => {
     render(
       <TestProviders>
         <EntityFormActionsSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(await screen.findByRole("table")).toBeInTheDocument();
@@ -270,7 +270,7 @@ describe("pages/admin/[entity]/config/actions", () => {
     await userEvent.click(
       within(tableRows[1]).getByRole("button", {
         name: "Delete Form Action",
-      })
+      }),
     );
 
     await confirmDelete();

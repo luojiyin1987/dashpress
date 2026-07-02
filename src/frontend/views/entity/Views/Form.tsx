@@ -41,7 +41,7 @@ function TabForm({ tableColumns, values, initialValues }: IProps) {
   });
 
   const columns = tableColumns.filter(
-    ({ accessor }) => ACTIONS_ACCESSOR !== accessor
+    ({ accessor }) => ACTIONS_ACCESSOR !== accessor,
   );
 
   return (

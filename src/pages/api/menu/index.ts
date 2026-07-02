@@ -7,7 +7,7 @@ export default requestHandler({
     const validatedRequest = await getValidatedRequest(["authenticatedUser"]);
 
     return await navigationMenuApiService.getMenuItems(
-      (validatedRequest.authenticatedUser as IAccountProfile).role
+      (validatedRequest.authenticatedUser as IAccountProfile).role,
     );
   },
 });

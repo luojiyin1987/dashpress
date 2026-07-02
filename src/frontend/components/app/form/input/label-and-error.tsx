@@ -77,7 +77,7 @@ export const generateClassNames = (meta: FieldMetaState<any>): string =>
   });
 
 export const generateFormArias = (
-  meta?: FieldMetaState<any>
+  meta?: FieldMetaState<any>,
 ): Record<string, string> => {
   const formArias = {};
 

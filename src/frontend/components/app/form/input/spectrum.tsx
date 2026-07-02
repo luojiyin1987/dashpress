@@ -23,7 +23,7 @@ export function SpectrumColorInputField({
               "mb-0 flex size-8 cursor-pointer items-center justify-center rounded-full border-4 p-0 text-center outline-none",
               spectrumVariants({
                 spectrum,
-              })
+              }),
             )}
             aria-label={spectrum}
             type="button"

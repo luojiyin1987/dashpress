@@ -4,7 +4,7 @@ import { usersApiService } from "@/backend/users/users.service";
 import type { ValidationImplType } from "./types";
 
 export const withPasswordValidationImpl: ValidationImplType<void> = async (
-  req
+  req,
 ) => {
   try {
     await usersApiService.checkUserPassword({

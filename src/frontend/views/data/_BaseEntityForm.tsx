@@ -40,7 +40,7 @@ type IProps = {
 
 export const useEntityFormEditableFields = (
   entity: string,
-  crudAction: "create" | "update"
+  crudAction: "create" | "update",
 ): DataStateKeys<string[]> => {
   const isEntityFieldMutatable = useIsEntityFieldMutatable(crudAction);
   const entityCrudFields = useEntityCrudFields(entity, crudAction);
@@ -72,19 +72,19 @@ export function BaseEntityForm({
   const entityFieldSelections = useEntityFieldSelections(entity);
   const entityFieldTypesMap = useEntityConfiguration(
     "entity_columns_types",
-    entity
+    entity,
   );
 
   const editableFields = useEntityFormEditableFields(entity, crudAction);
 
   const extendEntityFormConfig = usePortalExtendEntityFormConfig(
     entity,
-    crudAction
+    crudAction,
   );
 
   const entityFormExtension = useEntityConfiguration(
     "entity_form_extension",
-    entity
+    entity,
   );
   const entityToOneReferenceFields = useEntityToOneReferenceFields(entity);
 
@@ -124,7 +124,7 @@ export function BaseEntityForm({
         }
 
         return [field, value];
-      })
+      }),
     );
   }, [initialValuesData, editableFields.data]);
 

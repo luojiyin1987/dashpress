@@ -50,7 +50,7 @@ describe("pages/admin/settings/dashboard", () => {
       render(
         <TestProviders>
           <ManageDashboard />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const widgets = await screen.findByLabelText("Dashboard Widgets");
@@ -58,7 +58,7 @@ describe("pages/admin/settings/dashboard", () => {
       Array.from((widgets.firstChild as HTMLElement).children).forEach(
         async (element, index) => {
           expect(element).toHaveAccessibleName(order[index]);
-        }
+        },
       );
     });
 
@@ -66,7 +66,7 @@ describe("pages/admin/settings/dashboard", () => {
       render(
         <TestProviders>
           <ManageDashboard />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await screen.findByLabelText("Foo Table Widget");
@@ -79,7 +79,7 @@ describe("pages/admin/settings/dashboard", () => {
       Array.from((widgets.firstChild as HTMLElement).children).forEach(
         async (element, index) => {
           expect(element).toHaveAccessibleName(order[index]);
-        }
+        },
       );
     });
 
@@ -87,7 +87,7 @@ describe("pages/admin/settings/dashboard", () => {
       render(
         <TestProviders>
           <Dashboard />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await screen.findByLabelText("Foo Table Widget");

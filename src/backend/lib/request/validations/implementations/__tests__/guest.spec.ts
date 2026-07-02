@@ -12,7 +12,7 @@ const handler = requestHandler(
     {
       _type: "guest",
     },
-  ]
+  ],
 );
 
 describe("Request Validations => guestValidationImpl", () => {

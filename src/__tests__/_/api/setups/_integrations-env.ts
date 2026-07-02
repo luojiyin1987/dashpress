@@ -11,7 +11,7 @@ const TEST_ENVS: Record<string, string> = {
 
 export const setupIntegrationsEnvTestData = async () => {
   const configPersistenceService = createConfigDomainPersistenceService<string>(
-    "environment-variables"
+    "environment-variables",
   );
 
   await configPersistenceService.resetToEmpty();

@@ -4,7 +4,7 @@ import { UserPermissions } from "@/shared/constants/user";
 import type { IntegrationsConfigurationGroup } from "@/shared/types/integrations";
 
 export const integrationsConfigurationListRequestHandler = (
-  group: IntegrationsConfigurationGroup
+  group: IntegrationsConfigurationGroup,
 ) => {
   return requestHandler(
     {
@@ -17,6 +17,6 @@ export const integrationsConfigurationListRequestHandler = (
         _type: "canUser",
         body: UserPermissions.CAN_CONFIGURE_APP,
       },
-    ]
+    ],
   );
 };

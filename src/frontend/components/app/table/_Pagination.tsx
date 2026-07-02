@@ -19,7 +19,7 @@ interface IProps {
 
 const className = cn(
   buttonVariants({ variant: "ghost" }),
-  "border border-primary-alpha text-primary hover:bg-primary-alpha hover:text-primary-alpha-text"
+  "border border-primary-alpha text-primary hover:bg-primary-alpha hover:text-primary-alpha-text",
 );
 
 export function TablePagination({

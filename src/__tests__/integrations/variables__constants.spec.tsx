@@ -23,7 +23,7 @@ describe("pages/integrations/variables => constants", () => {
       query: {
         key: "foo",
       },
-    })
+    }),
   );
 
   describe("list", () => {
@@ -31,15 +31,15 @@ describe("pages/integrations/variables => constants", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       expect(
         await getTableRows(
           await within(
-            screen.getByRole("tabpanel", { name: "Constants" })
-          ).findByRole("table")
-        )
+            screen.getByRole("tabpanel", { name: "Constants" }),
+          ).findByRole("table"),
+        ),
       ).toMatchInlineSnapshot(`
         [
           "Key|Value|Action",
@@ -56,10 +56,10 @@ describe("pages/integrations/variables => constants", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
       await userEvent.click(
-        await screen.findByRole("button", { name: "Add New Constant" })
+        await screen.findByRole("button", { name: "Add New Constant" }),
       );
 
       const dialog = await screen.findByRole("dialog");
@@ -74,7 +74,7 @@ describe("pages/integrations/variables => constants", () => {
       await userEvent.click(
         within(dialog).getByRole("button", {
           name: "Create Constant",
-        })
+        }),
       );
 
       expect(await getToastMessage()).toBe("Constant Saved Successfully");
@@ -84,15 +84,15 @@ describe("pages/integrations/variables => constants", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       expect(
         await getTableRows(
           within(screen.getByRole("tabpanel", { name: "Constants" })).getByRole(
-            "table"
-          )
-        )
+            "table",
+          ),
+        ),
       ).toMatchInlineSnapshot(`
         [
           "Key|Value|Action",
@@ -109,11 +109,11 @@ describe("pages/integrations/variables => constants", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const table = within(
-        screen.getByRole("tabpanel", { name: "Constants" })
+        screen.getByRole("tabpanel", { name: "Constants" }),
       ).getByRole("table");
 
       const tableRows = await within(table).findAllByRole("row");
@@ -121,7 +121,7 @@ describe("pages/integrations/variables => constants", () => {
       await userEvent.click(
         within(tableRows[1]).getByRole("button", {
           name: "Edit Constant",
-        })
+        }),
       );
 
       await waitPointerEvents();
@@ -135,7 +135,7 @@ describe("pages/integrations/variables => constants", () => {
       await userEvent.type(within(dialog).getByLabelText("Value"), "/updated");
 
       await userEvent.click(
-        within(dialog).getByRole("button", { name: "Update Constant" })
+        within(dialog).getByRole("button", { name: "Update Constant" }),
       );
 
       expect(await getToastMessage()).toBe("Constant Saved Successfully");
@@ -147,15 +147,15 @@ describe("pages/integrations/variables => constants", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       expect(
         await getTableRows(
           within(screen.getByRole("tabpanel", { name: "Constants" })).getByRole(
-            "table"
-          )
-        )
+            "table",
+          ),
+        ),
       ).toMatchInlineSnapshot(`
         [
           "Key|Value|Action",
@@ -172,11 +172,11 @@ describe("pages/integrations/variables => constants", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const table = within(
-        screen.getByRole("tabpanel", { name: "Constants" })
+        screen.getByRole("tabpanel", { name: "Constants" }),
       ).getByRole("table");
 
       const tableRows = await within(table).findAllByRole("row");
@@ -186,7 +186,7 @@ describe("pages/integrations/variables => constants", () => {
       await userEvent.click(
         within(tableRows[2]).getByRole("button", {
           name: "Delete Constant",
-        })
+        }),
       );
 
       await confirmDelete();

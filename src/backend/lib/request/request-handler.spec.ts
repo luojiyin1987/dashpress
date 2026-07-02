@@ -29,7 +29,7 @@ describe("/api/requestHandler", () => {
           _type: "guest",
           method: ["GET"],
         },
-      ]
+      ],
     );
     const { req, res } = createAuthenticatedMocks({
       method: "POST",

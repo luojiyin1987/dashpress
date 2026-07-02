@@ -37,7 +37,7 @@ export default requestHandler(
     {
       _type: "notAllowedOnDemo",
     },
-  ]
+  ],
 );
 
 export const config: PageConfig = {

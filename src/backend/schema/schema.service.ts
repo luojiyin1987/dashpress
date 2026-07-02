@@ -16,7 +16,7 @@ export class SchemasApiService {
 
   constructor(
     private _schemaConfigDataPersistenceService: AbstractConfigDataPersistenceService<IDBSchema>,
-    private _credentialsService: CredentialsApiService
+    private _credentialsService: CredentialsApiService,
   ) {}
 
   async runOnLoad() {
@@ -27,7 +27,7 @@ export class SchemasApiService {
     const dbSchema = await this.getDBSchema();
 
     return await this._schemaConfigDataPersistenceService.getItemLastUpdated(
-      dbSchema[0].name
+      dbSchema[0].name,
     );
   }
 
@@ -58,7 +58,7 @@ export class SchemasApiService {
   private async doIntrospection() {
     const dbCredentials =
       await this._credentialsService.useGroupValue<IDataSourceCredentials>(
-        DATABASE_CREDENTIAL_GROUP
+        DATABASE_CREDENTIAL_GROUP,
       );
 
     const schema = await introspect(dbCredentials);
@@ -107,11 +107,11 @@ export class SchemasApiService {
               const joinTable = relation.relatedTable;
 
               const joinTableDetails = rawEntity.find(
-                (eachRawEntity) => eachRawEntity.name === joinTable
+                (eachRawEntity) => eachRawEntity.name === joinTable,
               );
 
               const otherRelation = joinTableDetails.relations.find(
-                (relationEntity) => relationEntity.relatedTable === entity.name
+                (relationEntity) => relationEntity.relatedTable === entity.name,
               );
 
               joinColumnOptions = [
@@ -149,5 +149,5 @@ const schemaPersistenceService =
 
 export const schemasApiService = new SchemasApiService(
   schemaPersistenceService,
-  credentialsApiService
+  credentialsApiService,
 );

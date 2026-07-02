@@ -13,7 +13,7 @@ export const useIsEntityFieldMutatable = (crudKey: CrudViewsKeys) => {
     if (
       (crudKey === "create" || crudKey === "update") &&
       [metaDataColumns.data.createdAt, metaDataColumns.data.updatedAt].includes(
-        entityField.name
+        entityField.name,
       )
     ) {
       return false;

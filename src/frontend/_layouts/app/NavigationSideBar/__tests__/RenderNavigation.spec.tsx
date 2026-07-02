@@ -61,26 +61,26 @@ describe("<RenderNavigation />", () => {
   server.use(
     rest.get(BASE_TEST_URL("/api/menu"), async (_, res, ctx) => {
       return res(ctx.json(navigationItems));
-    })
+    }),
   );
 
   it("should render all first level items", async () => {
     render(
       <TestProviders>
         <SideBar isFullWidth setIsFullWidth={jest.fn()} />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(await screen.findByText("Header")).toBeInTheDocument();
 
     expect(screen.getByRole("link", { name: "App Settings" })).toHaveAttribute(
       "href",
-      "/admin/settings/entities"
+      "/admin/settings/entities",
     );
 
     expect(screen.getByRole("link", { name: "External Link" })).toHaveAttribute(
       "href",
-      "https://external.com"
+      "https://external.com",
     );
   });
 
@@ -88,17 +88,17 @@ describe("<RenderNavigation />", () => {
     render(
       <TestProviders>
         <SideBar isFullWidth={false} setIsFullWidth={jest.fn()} />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.queryByText("Header")).not.toBeInTheDocument();
 
     expect(
-      screen.queryByRole("link", { name: "Settings" })
+      screen.queryByRole("link", { name: "Settings" }),
     ).not.toBeInTheDocument();
 
     expect(
-      screen.queryByRole("button", { name: "Entity" })
+      screen.queryByRole("button", { name: "Entity" }),
     ).not.toBeInTheDocument();
   });
 
@@ -106,26 +106,26 @@ describe("<RenderNavigation />", () => {
     render(
       <TestProviders>
         <SideBar isFullWidth setIsFullWidth={jest.fn()} />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.getByText("Header")).toBeInTheDocument();
 
     expect(
-      screen.queryByRole("link", { name: "Entity Table" })
+      screen.queryByRole("link", { name: "Entity Table" }),
     ).not.toBeInTheDocument();
 
     await userEvent.click(screen.getByRole("button", { name: "Entity" }));
 
     expect(screen.getByRole("link", { name: "Entity Table" })).toHaveAttribute(
       "href",
-      "/admin/entity-id"
+      "/admin/entity-id",
     );
 
     await userEvent.click(screen.getByRole("button", { name: "Entity" }));
 
     expect(
-      screen.queryByRole("link", { name: "Entity Table" })
+      screen.queryByRole("link", { name: "Entity Table" }),
     ).not.toBeInTheDocument();
   });
 });

@@ -90,7 +90,7 @@ export function BaseEntitySettingsLayout({ children, actionItems }: IProps) {
 
   const menuItems = useMutateBaseEntitySettingsMenu(
     entity,
-    baseMenuItems(entity)
+    baseMenuItems(entity),
   );
 
   return (

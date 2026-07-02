@@ -11,7 +11,7 @@ const TEST_USERS: IAccountUser[] = [
 ];
 
 export const setupUsersTestData = async (
-  testUsers: IAccountUser[] | false = TEST_USERS
+  testUsers: IAccountUser[] | false = TEST_USERS,
 ) => {
   const configPersistenceService =
     createConfigDomainPersistenceService<IAccountUser>("users");

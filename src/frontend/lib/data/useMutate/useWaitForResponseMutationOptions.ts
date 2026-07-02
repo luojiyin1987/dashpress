@@ -20,7 +20,7 @@ const PASS_DATA_FROM_HANDLER_ERROR_MESSAGE =
   "Please return in the mutation what data you want to pass to the success handlers";
 
 export function useWaitForResponseMutationOptions<V, R = void>(
-  options: IWaitForResponseMutationOptions<V, R>
+  options: IWaitForResponseMutationOptions<V, R>,
 ) {
   const queryClient = useQueryClient();
   const { toast } = useToast();
@@ -54,7 +54,7 @@ export function useWaitForResponseMutationOptions<V, R = void>(
         title: msg`Request Failed`,
         description: fakeMessageDescriptor(
           error.message ||
-            "Something went wrong. Please try again or contact your adminstrator."
+            "Something went wrong. Please try again or contact your adminstrator.",
         ),
       });
     },

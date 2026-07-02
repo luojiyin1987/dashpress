@@ -7,13 +7,15 @@ describe("getBestErrorMessage", () => {
 
   it("should return the error message if there is a error message", () => {
     expect(getBestErrorMessage({ message: "custom message" })).toEqual(
-      "custom message"
+      "custom message",
     );
   });
 
   it("should return the response error if there is a repsonse error", () => {
     expect(
-      getBestErrorMessage({ response: { data: { message: "custom message" } } })
+      getBestErrorMessage({
+        response: { data: { message: "custom message" } },
+      }),
     ).toEqual("custom message");
   });
 
@@ -21,15 +23,15 @@ describe("getBestErrorMessage", () => {
     expect(
       getBestErrorMessage({
         response: { data: { message: "Internal server error" } },
-      })
+      }),
     ).toEqual(
-      "Oops! Something Went Wrong On Our End, Our Engineers Are Already Notified And Are Working On It. Please Check Back Shortly"
+      "Oops! Something Went Wrong On Our End, Our Engineers Are Already Notified And Are Working On It. Please Check Back Shortly",
     );
   });
 
   it("should override 'Network Error'", () => {
     expect(
-      getBestErrorMessage({ response: { data: { message: "Network Error" } } })
+      getBestErrorMessage({ response: { data: { message: "Network Error" } } }),
     ).toEqual("No Network Connection. Please Check Your Network And Try Again");
   });
 });

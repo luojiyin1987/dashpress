@@ -17,7 +17,7 @@ describe("<ViewStateMachine />", () => {
         <ViewStateMachine error={null} loading loader={<p>Loading</p>}>
           <p>Content</p>
         </ViewStateMachine>
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.getByText("Loading")).toBeInTheDocument();
@@ -30,7 +30,7 @@ describe("<ViewStateMachine />", () => {
         <ViewStateMachine error={null} loading={false} loader={<p>Loading</p>}>
           <p>Content</p>
         </ViewStateMachine>
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.queryByText("Loading")).not.toBeInTheDocument();
@@ -47,7 +47,7 @@ describe("<ViewStateMachine />", () => {
         >
           <p>Content</p>
         </ViewStateMachine>
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.queryByText("Loading")).not.toBeInTheDocument();

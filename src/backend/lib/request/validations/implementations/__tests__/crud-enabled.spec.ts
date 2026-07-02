@@ -268,7 +268,7 @@ describe("Request Validations => crudEnabledValidationImpl", () => {
           permissions: [
             META_USER_PERMISSIONS.APPLIED_CAN_ACCESS_ENTITY(
               "tests",
-              GranularEntityPermissions.Show
+              GranularEntityPermissions.Show,
             ),
           ],
         },
@@ -292,7 +292,7 @@ describe("Request Validations => crudEnabledValidationImpl", () => {
           permissions: [
             META_USER_PERMISSIONS.APPLIED_CAN_ACCESS_ENTITY(
               "base-model",
-              GranularEntityPermissions.Show
+              GranularEntityPermissions.Show,
             ),
           ],
         },

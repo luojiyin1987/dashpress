@@ -33,7 +33,7 @@ export function EntityUpdate() {
 
   const entityDataUpdationMutation = useEntityDataUpdationMutation(
     entity,
-    entityId
+    entityId,
   );
 
   const actionItems = useEntityActionMenuItems(entity);

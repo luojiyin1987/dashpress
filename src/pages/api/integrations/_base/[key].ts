@@ -47,7 +47,7 @@ const checks = (group: IntegrationsConfigurationGroup): ValidationKeys[] => {
 };
 
 export const integrationsConfigurationDetailsRequestHandler = (
-  group: IntegrationsConfigurationGroup
+  group: IntegrationsConfigurationGroup,
 ) => {
   return requestHandler(
     {
@@ -65,7 +65,7 @@ export const integrationsConfigurationDetailsRequestHandler = (
         return await integrationsConfigurationApiController.upsert(
           group,
           validatedRequest.requestQuery,
-          validatedRequest.requestBody
+          validatedRequest.requestBody,
         );
       },
       DELETE: async (getValidatedRequest) => {
@@ -77,11 +77,11 @@ export const integrationsConfigurationDetailsRequestHandler = (
         ]);
         return await integrationsConfigurationApiController.delete(
           group,
-          validatedRequest.requestQuery
+          validatedRequest.requestQuery,
         );
       },
     },
 
-    checks(group)
+    checks(group),
   );
 };

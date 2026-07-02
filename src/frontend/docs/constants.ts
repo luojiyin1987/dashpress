@@ -21,7 +21,7 @@ export const useDocumentationCanvasStore =
   }));
 
 export const useDocumentationActionButton = (
-  title: MessageDescriptor
+  title: MessageDescriptor,
 ): IGroupActionButton => {
   const canvasStore = useDocumentationCanvasStore();
 

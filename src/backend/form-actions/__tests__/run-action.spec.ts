@@ -227,7 +227,7 @@ describe("Run Action", () => {
             "Content-Type": "application/json",
           },
           method: "POST",
-        }
+        },
       );
     });
   });

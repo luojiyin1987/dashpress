@@ -13,7 +13,7 @@ export default requestHandler(
       return await dashboardWidgetsApiService.runScript(
         validatedRequest.requestBody.script,
         validatedRequest.authenticatedUser as IAccountProfile,
-        validatedRequest.requestBody.relativeDate
+        validatedRequest.requestBody.relativeDate,
       );
     },
     GET: async (getValidatedRequest) => {
@@ -24,7 +24,7 @@ export default requestHandler(
       return await dashboardWidgetsApiService.runWidgetScript(
         validatedRequest.requestQueries.widgetId,
         validatedRequest.authenticatedUser as IAccountProfile,
-        validatedRequest.requestQueries.relativeDate
+        validatedRequest.requestQueries.relativeDate,
       );
     },
   },
@@ -38,5 +38,5 @@ export default requestHandler(
       _type: "canUser",
       body: UserPermissions.CAN_MANAGE_DASHBOARD,
     },
-  ]
+  ],
 );

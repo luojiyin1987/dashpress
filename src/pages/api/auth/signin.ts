@@ -12,7 +12,7 @@ export default requestHandler(
         },
       ]);
       return await usersApiService.tryAuthenticate(
-        validatedRequest.requestBody
+        validatedRequest.requestBody,
       );
     },
   },
@@ -20,5 +20,5 @@ export default requestHandler(
     {
       _type: "guest",
     },
-  ]
+  ],
 );

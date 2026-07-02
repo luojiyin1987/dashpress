@@ -15,7 +15,7 @@ import { usePasswordStore } from "../password.store";
 
 export const useStorageIntegrationsList = () => {
   const domainMessages = useDomainMessages(
-    LANG_DOMAINS.INTEGRATIONS.FILE_STORAGE
+    LANG_DOMAINS.INTEGRATIONS.FILE_STORAGE,
   );
   return useApi<IStorageIntegration[]>("/api/integrations/storage/list", {
     errorMessage: domainMessages.TEXT_LANG.NOT_FOUND,
@@ -47,13 +47,13 @@ export const useStorageCredentialsConfiguration = () => {
       errorMessage: CRUD_CONFIG_NOT_FOUND(`Storage Credentials`),
       enabled: !!rootPassword,
       defaultData: undefined,
-    }
+    },
   );
 };
 
 export function useActivateStorageMutation() {
   const domainMessages = useDomainMessages(
-    LANG_DOMAINS.INTEGRATIONS.FILE_STORAGE
+    LANG_DOMAINS.INTEGRATIONS.FILE_STORAGE,
   );
   return useWaitForResponseMutationOptions<{
     storageKey: string;
@@ -62,7 +62,7 @@ export function useActivateStorageMutation() {
     mutationFn: async (configuration) =>
       await ApiRequest.POST(
         ACTIVE_STORAGE_INTEGRATIONS_ENDPOINT,
-        configuration
+        configuration,
       ),
     endpoints: [
       ACTIVE_STORAGE_INTEGRATIONS_ENDPOINT,

@@ -15,7 +15,7 @@ export default requestHandler(
       ]);
       return await usersApiService.changePassword(
         (validatedRequest.authenticatedUser as IAccountProfile).username,
-        validatedRequest.requestBody
+        validatedRequest.requestBody,
       );
     },
   },
@@ -23,5 +23,5 @@ export default requestHandler(
     {
       _type: "notAllowedOnDemo",
     },
-  ]
+  ],
 );

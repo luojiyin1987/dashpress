@@ -26,11 +26,11 @@ export function EntityPersistentQuerySettings() {
 
   const upsertPeristentQueryMutation = useUpsertConfigurationMutation(
     "persistent_query",
-    entity
+    entity,
   );
 
   const documentationActionButton = useDocumentationActionButton(
-    domainMessages.TEXT_LANG.TITLE
+    domainMessages.TEXT_LANG.TITLE,
   );
 
   const peristentQuery = useEntityConfiguration("persistent_query", entity);

@@ -10,14 +10,14 @@ import { ManageCredentialGroup } from "./ManageCredentialGroup";
 
 export function BaseManageVariables() {
   const [currentTab, setCurrentTab] = useState<IntegrationsConfigurationGroup>(
-    IntegrationsConfigurationGroup.Constants
+    IntegrationsConfigurationGroup.Constants,
   );
   const constantsDomainMessages = useDomainMessages(
-    INTEGRATIONS_GROUP_CRUD_CONFIG.constants.domainDiction
+    INTEGRATIONS_GROUP_CRUD_CONFIG.constants.domainDiction,
   );
 
   const credentialsDomainMessages = useDomainMessages(
-    INTEGRATIONS_GROUP_CRUD_CONFIG.credentials.domainDiction
+    INTEGRATIONS_GROUP_CRUD_CONFIG.credentials.domainDiction,
   );
 
   return (

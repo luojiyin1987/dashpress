@@ -3,9 +3,8 @@ const DEFAULT_ERROR_MESSAGE =
 
 export const getBestErrorMessage = (
   errorResponse:
-    | string
-    | { message?: string; response?: { data?: { message?: string } } },
-  defaultErrorMessage?: string
+    string | { message?: string; response?: { data?: { message?: string } } },
+  defaultErrorMessage?: string,
 ): string => {
   if (typeof errorResponse === "string") {
     return errorResponse;

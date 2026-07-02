@@ -32,11 +32,11 @@ export function EntityDictionSettings() {
     entity,
     {
       otherEndpoints: [NAVIGATION_MENU_ENDPOINT],
-    }
+    },
   );
 
   const documentationActionButton = useDocumentationActionButton(
-    domainMessages.TEXT_LANG.TITLE
+    domainMessages.TEXT_LANG.TITLE,
   );
 
   useSetPageDetails({

@@ -46,16 +46,16 @@ export function EntitiesSettings() {
     "",
     {
       otherEndpoints: [ACTIVE_ENTITIES_ENDPOINT, NAVIGATION_MENU_ENDPOINT],
-    }
+    },
   );
 
   const getEntitiesDictionPlurals = useEntityDictionPlurals(
     entitiesList.data,
-    "value"
+    "value",
   );
 
   const documentationActionButton = useDocumentationActionButton(
-    domainMessages.TEXT_LANG.TITLE
+    domainMessages.TEXT_LANG.TITLE,
   );
 
   const error = entitiesList.error || entitiesToHide.error;

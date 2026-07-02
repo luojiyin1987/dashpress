@@ -3,7 +3,7 @@ import { BadRequestError } from "@/backend/lib/errors";
 
 export const validateEntityFields = async (
   entity: string,
-  fields: string[]
+  fields: string[],
 ) => {
   // If no entity is provided, we assume that the request is for the app itself
   if (!entity) {

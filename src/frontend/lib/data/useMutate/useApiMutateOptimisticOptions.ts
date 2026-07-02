@@ -39,7 +39,7 @@ function useApiMutate<T>(endpoint: string) {
 }
 
 export function useApiMutateOptimisticOptions<T, V, R = void>(
-  options: IApiMutateOptions<T, V, R>
+  options: IApiMutateOptions<T, V, R>,
 ) {
   const apiMutate = useApiMutate<T>(options.dataQueryPath);
   const queryClient = useQueryClient();
@@ -72,7 +72,7 @@ export function useApiMutateOptimisticOptions<T, V, R = void>(
     onError: (
       error: { message: string },
       formData: V,
-      oldData: T | undefined
+      oldData: T | undefined,
     ) => {
       noop(formData, error);
       apiMutate.reset(oldData);
@@ -81,7 +81,7 @@ export function useApiMutateOptimisticOptions<T, V, R = void>(
         title: msg`Request Failed`,
         description: fakeMessageDescriptor(
           error.message ||
-            "Something went wrong. Please try again or contact your adminstrator."
+            "Something went wrong. Please try again or contact your adminstrator.",
         ),
       });
     },

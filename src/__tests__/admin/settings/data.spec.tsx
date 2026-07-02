@@ -21,7 +21,7 @@ describe("pages/admin/settings/data", () => {
       render(
         <TestProviders>
           <GeneralDataSettings />
-        </TestProviders>
+        </TestProviders>,
       );
       await waitFor(() => {
         expect(screen.getByLabelText("Created At")).toHaveValue("created_at");
@@ -33,18 +33,18 @@ describe("pages/admin/settings/data", () => {
       render(
         <TestProviders>
           <GeneralDataSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.type(screen.getByLabelText("Created At"), "-created");
       await userEvent.type(screen.getByLabelText("Updated At"), "-updated");
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Save Metadata Columns" })
+        screen.getByRole("button", { name: "Save Metadata Columns" }),
       );
 
       expect(await getToastMessage()).toBe(
-        "Metadata Columns Saved Successfully"
+        "Metadata Columns Saved Successfully",
       );
     });
 
@@ -52,15 +52,15 @@ describe("pages/admin/settings/data", () => {
       render(
         <TestProviders>
           <GeneralDataSettings />
-        </TestProviders>
+        </TestProviders>,
       );
       await waitFor(() => {
         expect(screen.getByLabelText("Created At")).toHaveValue(
-          "created_at-created"
+          "created_at-created",
         );
       });
       expect(screen.getByLabelText("Updated At")).toHaveValue(
-        "updated_at-updated"
+        "updated_at-updated",
       );
     });
   });
@@ -70,7 +70,7 @@ describe("pages/admin/settings/data", () => {
       render(
         <TestProviders>
           <GeneralDataSettings />
-        </TestProviders>
+        </TestProviders>,
       );
       await waitFor(() => {
         expect(screen.getByLabelText("Format")).toHaveValue("do MMM yyyy");
@@ -81,7 +81,7 @@ describe("pages/admin/settings/data", () => {
       render(
         <TestProviders>
           <GeneralDataSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await closeAllToasts();
@@ -91,7 +91,7 @@ describe("pages/admin/settings/data", () => {
       await userEvent.type(screen.getByLabelText("Format"), "yyyy MMM do");
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Save Date Format" })
+        screen.getByRole("button", { name: "Save Date Format" }),
       );
 
       expect(await getToastMessage()).toBe("Date Format Saved Successfully");
@@ -101,7 +101,7 @@ describe("pages/admin/settings/data", () => {
       render(
         <TestProviders>
           <GeneralDataSettings />
-        </TestProviders>
+        </TestProviders>,
       );
       await waitFor(() => {
         expect(screen.getByLabelText("Format")).toHaveValue("yyyy MMM do");
@@ -113,7 +113,7 @@ describe("pages/admin/settings/data", () => {
         render(
           <TestProviders>
             <GeneralDataSettings />
-          </TestProviders>
+          </TestProviders>,
         );
 
         await userEvent.clear(screen.getByLabelText("Format"));
@@ -121,11 +121,11 @@ describe("pages/admin/settings/data", () => {
         await userEvent.type(screen.getByLabelText("Format"), "yyYXXYY");
 
         await userEvent.click(
-          screen.getByRole("button", { name: "Save Date Format" })
+          screen.getByRole("button", { name: "Save Date Format" }),
         );
 
         expect(await getToastMessage()).toBe(
-          `Invalid Date FormatPlease go to https://date-fns.org/docs/format to see valid formats`
+          `Invalid Date FormatPlease go to https://date-fns.org/docs/format to see valid formats`,
         );
 
         await closeAllToasts();
@@ -135,7 +135,7 @@ describe("pages/admin/settings/data", () => {
         render(
           <TestProviders>
             <GeneralDataSettings />
-          </TestProviders>
+          </TestProviders>,
         );
         await waitFor(() => {
           expect(screen.getByLabelText("Format")).toHaveValue("yyyy MMM do");

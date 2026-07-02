@@ -5,7 +5,7 @@ describe("SENDINBLUE_ACTION_INTEGRATION", () => {
     expect(
       await SENDINBLUE_ACTION_INTEGRATION.connect({
         apiKey: "some-apikey",
-      })
+      }),
     ).toMatchInlineSnapshot(`
       {
         "apiKey": "some-apikey",

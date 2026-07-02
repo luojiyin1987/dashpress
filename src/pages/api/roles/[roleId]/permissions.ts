@@ -15,7 +15,7 @@ export default requestHandler(
         },
       ]);
       return await rolesApiController.getRolePermissions(
-        validatedRequest.requestQuery
+        validatedRequest.requestQuery,
       );
     },
 
@@ -28,7 +28,7 @@ export default requestHandler(
       ]);
       return await rolesApiController.removePermissions(
         validatedRequest.requestQueries.roleId,
-        ensureIsArray(validatedRequest.requestQueries.permissions)
+        ensureIsArray(validatedRequest.requestQueries.permissions),
       );
     },
 
@@ -45,7 +45,7 @@ export default requestHandler(
       ]);
       return await rolesApiController.addPermissions(
         validatedRequest.requestQuery,
-        validatedRequest.requestBody
+        validatedRequest.requestBody,
       );
     },
   },
@@ -54,5 +54,5 @@ export default requestHandler(
       _type: "canUser",
       body: UserPermissions.CAN_MANAGE_PERMISSIONS,
     },
-  ]
+  ],
 );

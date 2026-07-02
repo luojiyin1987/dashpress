@@ -5,6 +5,6 @@ import type { ISuccessfullAuthenticationResponse } from "@/shared/types/auth/por
 export const useHandleNoTokenAuthResponse = () => {
   return (
     authResponse: ISuccessfullAuthenticationResponse,
-    formData: ISignInForm
+    formData: ISignInForm,
   ) => noop(authResponse, formData);
 };

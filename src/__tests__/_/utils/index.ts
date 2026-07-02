@@ -25,7 +25,7 @@ export const confirmDelete = async () => {
 
   await userEvent.click(
     await within(confirmBox).findByRole("button", { name: "Continue" }),
-    { pointerEventsCheck: PointerEventsCheckLevel.Never }
+    { pointerEventsCheck: PointerEventsCheckLevel.Never },
   );
 };
 

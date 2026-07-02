@@ -21,7 +21,7 @@ export class EntitiesApiService {
   constructor(
     private _schemasApiService: SchemasApiService,
     private _configurationApiService: ConfigurationApiService,
-    private _rolesApiService: RolesApiService
+    private _rolesApiService: RolesApiService,
   ) {}
 
   private async getDBSchemaModels(): Promise<Record<string, IDBSchema>> {
@@ -29,7 +29,7 @@ export class EntitiesApiService {
       (await this._schemasApiService.getDBSchema()).map((model) => [
         model.name,
         model,
-      ])
+      ]),
     );
   }
 
@@ -47,7 +47,7 @@ export class EntitiesApiService {
 
   async getEntityFirstFieldType(
     entity: string,
-    fieldType: IEntityField["type"]
+    fieldType: IEntityField["type"],
   ): Promise<string | undefined> {
     const allFields = await this.getEntityFields(entity);
     return allFields.find(({ type }) => {
@@ -61,18 +61,18 @@ export class EntitiesApiService {
 
   async getEntityPrimaryField(entity: string): Promise<string> {
     const primaryField = (await this.getEntityFields(entity)).filter(
-      ({ isId }) => isId
+      ({ isId }) => isId,
     );
 
     if (primaryField.length === 0) {
       throw new BadRequestError(
-        "This entity doesn't have a primary key. Kindly ask your administrator to add one then restart the application and this error will go away."
+        "This entity doesn't have a primary key. Kindly ask your administrator to add one then restart the application and this error will go away.",
       );
     }
 
     if (primaryField.length > 1) {
       throw new BadRequestError(
-        "This entity has multiple primary keys. Kindly ask your administrator to fix this issue by ensuring only ONE primary key exists then restart the application and this error will go away."
+        "This entity has multiple primary keys. Kindly ask your administrator to fix this issue by ensuring only ONE primary key exists then restart the application and this error will go away.",
       );
     }
 
@@ -85,12 +85,12 @@ export class EntitiesApiService {
 
   async getAllowedCrudsFieldsToShow(
     entity: string,
-    crudKey: DataCrudKeys
+    crudKey: DataCrudKeys,
   ): Promise<string[]> {
     const [configHiddenFields, entityFields] = await Promise.all([
       this._configurationApiService.show(
         CRUD_HIDDEN_KEY_CONFIG[crudKey],
-        entity
+        entity,
       ),
       this.getEntityFields(entity),
     ]);
@@ -98,7 +98,7 @@ export class EntitiesApiService {
     const portalHiddenFields = await PortalFieldsFilterService.getFieldsToHide(
       entity,
       crudKey,
-      entityFields.map(({ name }) => name)
+      entityFields.map(({ name }) => name),
     );
 
     const hiddenFields = [...configHiddenFields, ...portalHiddenFields];
@@ -108,7 +108,7 @@ export class EntitiesApiService {
     }
 
     const hiddenFieldsMap = Object.fromEntries(
-      hiddenFields.map((field) => [field, 1])
+      hiddenFields.map((field) => [field, 1]),
     );
 
     return entityFields
@@ -134,25 +134,25 @@ export class EntitiesApiService {
   }
 
   async getEntityValidRelations(
-    entity: string
+    entity: string,
   ): Promise<IDBSchema["relations"]> {
     const [entityRelations, disabledEntities, hiddenEntity] = await Promise.all(
       [
         this.getEntityRelations(entity),
         this._configurationApiService.show("disabled_entities"),
         this._configurationApiService.show("hidden_entity_relations", entity),
-      ]
+      ],
     );
 
     return entityRelations.filter(
       ({ table }) =>
-        !disabledEntities.includes(table) && !hiddenEntity.includes(table)
+        !disabledEntities.includes(table) && !hiddenEntity.includes(table),
     );
   }
 
   async getEntityRelationsForUserRole(
     entity: string,
-    userRole: string
+    userRole: string,
   ): Promise<IEntityRelation[]> {
     const [validRelations, entityLabels, entityOrders] = await Promise.all([
       this.getEntityValidRelations(entity),
@@ -164,13 +164,13 @@ export class EntitiesApiService {
       await this._rolesApiService.filterPermittedEntities(
         userRole,
         validRelations,
-        "table"
+        "table",
       );
 
     const allowedEntityRelation = sortListByOrder(
       entityOrders,
       allowedEntityRelation$1,
-      "table"
+      "table",
     );
 
     return allowedEntityRelation.map((relation) => {
@@ -193,5 +193,5 @@ export class EntitiesApiService {
 export const entitiesApiService = new EntitiesApiService(
   schemasApiService,
   configurationApiService,
-  rolesApiService
+  rolesApiService,
 );

@@ -6,7 +6,7 @@ import { IntermediateCheckBox } from ".";
 describe("IntermediateCheckBox", () => {
   it("should render checked state correctly", () => {
     render(
-      <IntermediateCheckBox state="checked" onClick={jest.fn} label="Test " />
+      <IntermediateCheckBox state="checked" onClick={jest.fn} label="Test " />,
     );
 
     expect(screen.getByRole("checkbox", { name: "Test" })).toBeChecked();
@@ -14,7 +14,11 @@ describe("IntermediateCheckBox", () => {
 
   it("should render un-checked state correctly", () => {
     render(
-      <IntermediateCheckBox state="unchecked" onClick={jest.fn} label="Test " />
+      <IntermediateCheckBox
+        state="unchecked"
+        onClick={jest.fn}
+        label="Test "
+      />,
     );
 
     expect(screen.getByRole("checkbox", { name: "Test" })).not.toBeChecked();
@@ -22,18 +26,18 @@ describe("IntermediateCheckBox", () => {
 
   it("should render partial state correctly", () => {
     render(
-      <IntermediateCheckBox state="partial" onClick={jest.fn} label="Test " />
+      <IntermediateCheckBox state="partial" onClick={jest.fn} label="Test " />,
     );
 
     expect(
-      screen.getByRole("checkbox", { name: "Test" })
+      screen.getByRole("checkbox", { name: "Test" }),
     ).toBePartiallyChecked();
   });
 
   it("should call onClick with the correct state when pressed", async () => {
     const onClick = jest.fn();
     render(
-      <IntermediateCheckBox state="partial" onClick={onClick} label="Test " />
+      <IntermediateCheckBox state="partial" onClick={onClick} label="Test " />,
     );
 
     await userEvent.click(screen.getByRole("checkbox", { name: "Test" }));

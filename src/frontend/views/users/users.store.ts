@@ -74,7 +74,7 @@ export function useResetUserPasswordMutation() {
     mutationFn: async (data) =>
       await ApiRequest.PATCH(
         USERS_ENDPOINT_CONFIG.CUSTOM(username, "reset-password"),
-        data
+        data,
       ),
     endpoints: [],
     successMessage: { description: msg`Password Reset Successfully` },

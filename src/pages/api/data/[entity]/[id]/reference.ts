@@ -15,7 +15,7 @@ export default requestHandler({
 
     return await dataApiController.referenceData(
       validatedRequest.entity,
-      validatedRequest.entityId
+      validatedRequest.entityId,
     );
   },
 });

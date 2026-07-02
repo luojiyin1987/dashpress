@@ -25,7 +25,7 @@ export function SummaryWidget({ config, data }: IProps) {
 
   const [fullCount$1, relativeCount$1, direction] = getFullAndRelativeCount(
     relativeData[0],
-    relativeData[1]
+    relativeData[1],
   );
 
   const fullIcon = systemIconToSVG(icon);

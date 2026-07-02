@@ -28,7 +28,7 @@ import { FieldSelectionCanvas } from "./FieldsSelection";
 import { FieldValidationCanvas } from "./FieldsValidation";
 
 const FIELD_TYPES_CONFIG_MAP_AS_SELECTION = typescriptSafeObjectDotEntries(
-  FIELD_TYPES_CONFIG_MAP
+  FIELD_TYPES_CONFIG_MAP,
 )
   .map(([key, { typeIsNotChangeAble, label }]) => ({
     label,
@@ -38,7 +38,7 @@ const FIELD_TYPES_CONFIG_MAP_AS_SELECTION = typescriptSafeObjectDotEntries(
   .sort((a, b) => b.order - a.order);
 
 const listOfEntitiesThatCantBeChanged = typescriptSafeObjectDotEntries(
-  FIELD_TYPES_CONFIG_MAP
+  FIELD_TYPES_CONFIG_MAP,
 )
   .filter(([, value]) => value.typeIsNotChangeAble)
   .map(([key]) => key);
@@ -54,7 +54,7 @@ interface IValues {
 
 const resetBoundedValidation = (
   validations: IFieldValidationItem[],
-  newType: FormFieldTypes
+  newType: FormFieldTypes,
 ): IFieldValidationItem[] => [
   ...getFieldTypeBoundedValidations(newType),
   ...validations.filter(({ fromType }) => !fromType),
@@ -76,11 +76,11 @@ export function FieldsTypeForm({
   const memoIzedInitialValuesSoItDoesFlickerOnSubmit = useMemo(
     () => initialValues,
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [JSON.stringify(initialValues)]
+    [JSON.stringify(initialValues)],
   );
 
   const domainMessages = useAppConfigurationDomainMessages(
-    "entity_columns_types"
+    "entity_columns_types",
   );
 
   const [showFieldValidations, setShowFieldValidations] = useState("");
@@ -130,18 +130,18 @@ export function FieldsTypeForm({
                   return (
                     <FormSelect
                       label={msg`${getEntityFieldLabels(
-                        name
+                        name,
                       )} [${values.validations[name]
                         .map(({ validationType }) => validationType)
                         .join(",")}]`}
                       placeholder={msg`Select ${getEntityFieldLabels(
-                        name
+                        name,
                       )} Type`}
                       selectData={FIELD_TYPES_CONFIG_MAP_AS_SELECTION}
                       rightActions={rightActions}
                       disabledOptions={listOfEntitiesThatCantBeChanged}
                       disabled={listOfEntitiesThatCantBeChanged.includes(
-                        formProps.input.value as FormFieldTypes
+                        formProps.input.value as FormFieldTypes,
                       )}
                       meta={formProps.meta}
                       input={{
@@ -153,7 +153,7 @@ export function FieldsTypeForm({
                             ...values.validations,
                             [name]: resetBoundedValidation(
                               values.validations[name],
-                              value
+                              value,
                             ),
                           });
                         },
@@ -178,7 +178,7 @@ export function FieldsTypeForm({
           </form>
           <OffCanvas
             title={msg`${getEntityFieldLabels(
-              showFieldValidations
+              showFieldValidations,
             )} Validations`}
             size="md"
             onClose={() => setShowFieldValidations("")}

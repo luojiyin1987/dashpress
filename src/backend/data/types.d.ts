@@ -13,13 +13,13 @@ export interface IDataApiService {
     entity: string,
     select: string[],
     queryFilter: QueryFilterSchema,
-    dataFetchingModifiers: IPaginationFilters
+    dataFetchingModifiers: IPaginationFilters,
   ): Promise<Record<string, unknown>[]>;
 
   readData(
     entity: string,
     select: string[],
-    query: QueryFilterSchema
+    query: QueryFilterSchema,
   ): Promise<Record<string, unknown>>;
 
   countData(entity: string, queryFilter: QueryFilterSchema): Promise<number>;
@@ -27,20 +27,20 @@ export interface IDataApiService {
   create(
     entity: string,
     data: Record<string, unknown>,
-    accountProfile: IAccountProfile
+    accountProfile: IAccountProfile,
   ): Promise<number | string>;
 
   update(
     entity: string,
     dataId: string,
     data: Record<string, unknown>,
-    accountProfile: IAccountProfile
+    accountProfile: IAccountProfile,
   ): Promise<void>;
 
   delete(
     entity: string,
     id: string,
-    accountProfile: IAccountProfile
+    accountProfile: IAccountProfile,
   ): Promise<void>;
 
   referenceData(entity: string, id: string): Promise<string>;
@@ -48,6 +48,6 @@ export interface IDataApiService {
   tableData(
     entity: string,
     queryFilters: QueryFilterSchema,
-    paginationFilters: IPaginationFilters
+    paginationFilters: IPaginationFilters,
   ): Promise<PaginatedData<unknown>>;
 }

@@ -32,7 +32,7 @@ export class ErrorBoundary extends Component<
           action={{
             action: () => {
               window.open(
-                "https://github.com/dashpresshq/dashpress/issues/new?labels=bug&template=01_BUG_REPORT.md&title=bug%3A+"
+                "https://github.com/dashpresshq/dashpress/issues/new?labels=bug&template=01_BUG_REPORT.md&title=bug%3A+",
               );
             },
             Icon: GitHub,

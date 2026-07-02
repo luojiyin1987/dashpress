@@ -30,13 +30,13 @@ import {
 } from "./Portal";
 
 const mapPermissionStringToLabelValue = (
-  permissions: Record<string, { label: MessageDescriptor; order: number }>
+  permissions: Record<string, { label: MessageDescriptor; order: number }>,
 ) => {
   return typescriptSafeObjectDotEntries(permissions).map(
     ([permission, config]) => ({
       value: permission,
       ...config,
-    })
+    }),
   );
 };
 
@@ -58,7 +58,7 @@ export function RolePermissions() {
   const changeTabParam = useChangeRouterParam("tab");
 
   const documentationActionButton = useDocumentationActionButton(
-    LANG_DOMAINS.ACCOUNT.PERMISSIONS.plural
+    LANG_DOMAINS.ACCOUNT.PERMISSIONS.plural,
   );
 
   useSetPageDetails({

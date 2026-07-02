@@ -14,7 +14,7 @@ import type { IFilterProps } from "./types";
 
 type FilterHasValueImplFnType = (filterValue: IColumnFilterBag<any>) => boolean;
 type FilterComponentFnType = (
-  props: IFilterProps<IColumnFilterBag<any>, any>
+  props: IFilterProps<IColumnFilterBag<any>, any>,
 ) => ReactElement;
 
 export const FilterTypesConfigBag: Record<

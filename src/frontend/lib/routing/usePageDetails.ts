@@ -36,7 +36,7 @@ export const useSetPageDetails = (
   pageDetails: Omit<
     IPageDetails,
     "pageLink" | "actionItems" | "secondaryActionItems"
-  >
+  >,
 ) => {
   const router = useRouter();
   const setPageDetails = usePageDetailsStore((store) => store.setPageDetails);
@@ -55,11 +55,10 @@ export const useSetPageDetails = (
 
 export const useSetCurrentActionItems = (
   pageDetails:
-    | Pick<IPageDetails, "actionItems" | "secondaryActionItems">
-    | undefined
+    Pick<IPageDetails, "actionItems" | "secondaryActionItems"> | undefined,
 ) => {
   const setPartialPageDetails = usePageDetailsStore(
-    (store) => store.setPartialPageDetails
+    (store) => store.setPartialPageDetails,
   );
   useEffect(() => {
     if (pageDetails) {

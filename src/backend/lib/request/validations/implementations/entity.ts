@@ -13,7 +13,7 @@ export const getEntityFromRequest = (req: NextApiRequest) => {
 
 export const entityValidationImpl: ValidationImplType<string> = async (
   req,
-  isConfigRequest
+  isConfigRequest,
 ) => {
   const entity = getEntityFromRequest(req);
 

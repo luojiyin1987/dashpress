@@ -23,7 +23,7 @@ describe("pages/users", () => {
         Component={Foo}
         pageProps={{ title: "Hello" }}
         router={jest.fn as any}
-      />
+      />,
     );
 
     expect(screen.getByText("Hello")).toBeInTheDocument();

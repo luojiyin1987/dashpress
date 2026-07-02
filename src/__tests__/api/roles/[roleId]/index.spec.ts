@@ -71,7 +71,7 @@ describe("/api/roles/[roleId]/index", () => {
 
     await accountDetailsHandler(
       accountDetailsRequest.req,
-      accountDetailsRequest.res
+      accountDetailsRequest.res,
     );
 
     expect(accountDetailsRequest.res._getJSONData().role).toBe("viewer");
@@ -143,7 +143,7 @@ describe("/api/roles/[roleId]/index", () => {
 
     await permissionsHandler(
       permissionsRequest$2.req,
-      permissionsRequest$2.res
+      permissionsRequest$2.res,
     );
 
     expect(permissionsRequest$2.res._getStatusCode()).toBe(404);
@@ -158,7 +158,7 @@ describe("/api/roles/[roleId]/index", () => {
 
     await accountDetailsHandler(
       accountDetailsRequest.req,
-      accountDetailsRequest.res
+      accountDetailsRequest.res,
     );
 
     expect(accountDetailsRequest.res._getJSONData().role).toBe("update-role");

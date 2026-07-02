@@ -11,7 +11,7 @@ export default requestHandler({
 
     return await entitiesApiService.getEntityRelationsForUserRole(
       validatedRequest.entity,
-      (validatedRequest.authenticatedUser as IAccountProfile).role
+      (validatedRequest.authenticatedUser as IAccountProfile).role,
     );
   },
 });

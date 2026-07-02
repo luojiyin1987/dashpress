@@ -15,7 +15,7 @@ const handler = requestHandler(
     {
       _type: "withPassword",
     },
-  ]
+  ],
 );
 
 describe("Request Validations => withPasswordValidationImpl", () => {

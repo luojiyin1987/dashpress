@@ -26,7 +26,7 @@ export function StorageCredentialsSettings() {
   const storageList = useStorageIntegrationsList();
   const activeStorageIntegration = useActiveStorageIntegration();
   const fileStorageDomainMessages = useDomainMessages(
-    LANG_DOMAINS.INTEGRATIONS.FILE_STORAGE
+    LANG_DOMAINS.INTEGRATIONS.FILE_STORAGE,
   );
 
   const activateStorageMutation = useActivateStorageMutation();

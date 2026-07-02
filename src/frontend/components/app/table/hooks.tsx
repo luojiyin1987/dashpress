@@ -43,7 +43,7 @@ export const useInternalColumns = (columns: ITableColumn[]) => {
 export function useSyncTableState<T>(
   table: Table<Record<string, unknown>>,
   overridePaginatedDataState: IPaginatedDataState<T> | undefined,
-  syncPaginatedDataStateOut: (params: IPaginatedDataState<T>) => void
+  syncPaginatedDataStateOut: (params: IPaginatedDataState<T>) => void,
 ) {
   const resetPage = useToggle(true);
   const tableState = internalTableStateToStandard<T>(table.getState());
@@ -78,7 +78,7 @@ export function useSyncTableState<T>(
 
     if (overridePaginatedDataState.filters) {
       table.setColumnFilters(
-        overridePaginatedDataState.filters as unknown as Updater<ColumnFiltersState>
+        overridePaginatedDataState.filters as unknown as Updater<ColumnFiltersState>,
       );
     }
 

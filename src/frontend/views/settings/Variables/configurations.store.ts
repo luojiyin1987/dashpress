@@ -20,17 +20,17 @@ import type { IKeyValue } from "@/shared/types/options";
 import { INTEGRATIONS_GROUP_CRUD_CONFIG } from "./constants";
 
 export const INTEGRATIONS_GROUP_ENDPOINT = (
-  group: IntegrationsConfigurationGroup
+  group: IntegrationsConfigurationGroup,
 ) => `/api/integrations/${group}`;
 
 const REVEAL_CREDENTIALS_ENDPOINT = `/api/integrations/credentials/reveal`;
 
 export function useIntegrationConfigurationUpsertationMutation(
-  group: IntegrationsConfigurationGroup
+  group: IntegrationsConfigurationGroup,
 ) {
   const rootPassword = usePasswordStore((state) => state.password);
   const domainMessages = useDomainMessages(
-    INTEGRATIONS_GROUP_CRUD_CONFIG[group].domainDiction
+    INTEGRATIONS_GROUP_CRUD_CONFIG[group].domainDiction,
   );
   return useWaitForResponseMutationOptions<{ key: string; value: string }>({
     mutationFn: async (data) =>
@@ -46,18 +46,18 @@ export function useIntegrationConfigurationUpsertationMutation(
 }
 
 export function useIntegrationConfigurationDeletionMutation(
-  group: IntegrationsConfigurationGroup
+  group: IntegrationsConfigurationGroup,
 ) {
   const rootPassword = usePasswordStore((state) => state.password);
   const domainMessages = useDomainMessages(
-    INTEGRATIONS_GROUP_CRUD_CONFIG[group].domainDiction
+    INTEGRATIONS_GROUP_CRUD_CONFIG[group].domainDiction,
   );
   return useApiMutateOptimisticOptions<IKeyValue[], string>({
     mutationFn: async (key) =>
       await ApiRequest.DELETE(
         `/api/integrations/${group}/${key}${objectToQueryParams({
           _password: rootPassword,
-        })}`
+        })}`,
       ),
     dataQueryPath: INTEGRATIONS_GROUP_ENDPOINT(group),
     otherEndpoints: rootPassword ? [REVEAL_CREDENTIALS_ENDPOINT] : [],
@@ -67,7 +67,7 @@ export function useIntegrationConfigurationDeletionMutation(
 }
 
 export const useRevealedCredentialsList = (
-  group: IntegrationsConfigurationGroup
+  group: IntegrationsConfigurationGroup,
 ) => {
   const rootPassword = usePasswordStore((state) => state.password);
   const queryClient = useQueryClient();
@@ -85,7 +85,7 @@ export const useRevealedCredentialsList = (
       enabled:
         group === IntegrationsConfigurationGroup.Credentials && !!rootPassword,
       defaultData: undefined,
-    }
+    },
   );
 
   useEffect(() => {
@@ -93,10 +93,10 @@ export const useRevealedCredentialsList = (
       queryClient.setQueryData(
         getQueryCachekey(
           INTEGRATIONS_GROUP_ENDPOINT(
-            IntegrationsConfigurationGroup.Credentials
-          )
+            IntegrationsConfigurationGroup.Credentials,
+          ),
         ),
-        response.data
+        response.data,
       );
     }
   }, [response.data]);

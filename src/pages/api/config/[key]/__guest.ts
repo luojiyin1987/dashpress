@@ -14,7 +14,7 @@ export default requestHandler(
       ]);
 
       return await configurationApiController.showGuestConfig(
-        validatedRequest.requestQuery
+        validatedRequest.requestQuery,
       );
     },
   },
@@ -22,5 +22,5 @@ export default requestHandler(
     {
       _type: "anyBody",
     },
-  ]
+  ],
 );

@@ -7,7 +7,7 @@ export class HashService {
 
   static async compare(
     plainString: string,
-    hashedString: string
+    hashedString: string,
   ): Promise<boolean> {
     return await bcrypt.compare(plainString, hashedString);
   }

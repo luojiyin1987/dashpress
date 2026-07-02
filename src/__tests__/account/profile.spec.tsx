@@ -19,7 +19,7 @@ describe("pages/account/profile", () => {
     render(
       <TestProviders>
         <AccountProfile />
-      </TestProviders>
+      </TestProviders>,
     );
     await waitFor(() => {
       expect(screen.getByLabelText("Name")).toHaveValue("Root User");
@@ -30,7 +30,7 @@ describe("pages/account/profile", () => {
     render(
       <TestProviders>
         <AccountProfile />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.clear(screen.getByLabelText("Name"));
@@ -38,7 +38,7 @@ describe("pages/account/profile", () => {
     await userEvent.type(screen.getByLabelText("Name"), "Updated Name");
 
     await userEvent.click(
-      screen.getByRole("button", { name: "Save Account Profile" })
+      screen.getByRole("button", { name: "Save Account Profile" }),
     );
 
     expect(await getToastMessage()).toBe("Account Profile Saved Successfully");
@@ -48,7 +48,7 @@ describe("pages/account/profile", () => {
     render(
       <TestProviders>
         <AccountProfile />
-      </TestProviders>
+      </TestProviders>,
     );
     await waitFor(() => {
       expect(screen.getByLabelText("Name")).toHaveValue("Updated Name");

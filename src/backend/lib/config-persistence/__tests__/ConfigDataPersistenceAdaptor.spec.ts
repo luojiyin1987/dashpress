@@ -26,7 +26,7 @@ const PERSITENT_ADAPTORS: {
       TEST_DOMAIN,
       new ConfigApiService({
         DO_NOT_BOOSTRAP_CONFIG: true,
-      })
+      }),
     ),
   },
   {
@@ -35,7 +35,7 @@ const PERSITENT_ADAPTORS: {
       TEST_DOMAIN,
       new ConfigApiService({
         DO_NOT_BOOSTRAP_CONFIG: true,
-      })
+      }),
     ),
   },
   {
@@ -45,7 +45,7 @@ const PERSITENT_ADAPTORS: {
       new ConfigApiService({
         DO_NOT_BOOSTRAP_CONFIG: true,
         CONFIG_ADAPTOR_CONNECTION_STRING: "sqlite3:./test-adaptor.sqlite",
-      })
+      }),
     ),
   },
   {
@@ -55,7 +55,7 @@ const PERSITENT_ADAPTORS: {
       new ConfigApiService({
         DO_NOT_BOOSTRAP_CONFIG: true,
         CONFIG_ADAPTOR_CONNECTION_STRING: "redis://localhost",
-      })
+      }),
     ),
   },
 ];
@@ -65,7 +65,7 @@ describe.each(PERSITENT_ADAPTORS)(
   ({ adaptor, title }) => {
     it("should get create new item when persisting", async () => {
       expect(
-        await adaptor.persistItem("foo", { age: 5, id: "foo", name: "Hello" })
+        await adaptor.persistItem("foo", { age: 5, id: "foo", name: "Hello" }),
       ).toBeUndefined();
     });
 
@@ -117,7 +117,7 @@ describe.each(PERSITENT_ADAPTORS)(
         await adaptor.resetState("id", [
           { age: 1, id: "id-1", name: "First Item" },
           { age: 2, id: "id-2", name: "Second Item" },
-        ])
+        ]),
       ).toBeUndefined();
     });
 
@@ -155,5 +155,5 @@ describe.each(PERSITENT_ADAPTORS)(
         "id-3": { age: 3, id: "id-3", name: "Third Item" },
       });
     });
-  }
+  },
 );

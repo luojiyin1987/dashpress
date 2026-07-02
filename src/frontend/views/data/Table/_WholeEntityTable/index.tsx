@@ -42,7 +42,7 @@ export function WholeEntityTable({
             ...(dataState.filters as FieldQueryFilter[]),
             ...persistentFilters,
           ],
-        }))
+        })),
   );
 
   const dataTableProps = {

@@ -1,7 +1,7 @@
 export const matchOtherField = (
   value: unknown,
   parameter?: unknown,
-  allValues?: Record<string, unknown>
+  allValues?: Record<string, unknown>,
 ) => {
   return value === allValues[parameter as string];
 };
@@ -9,7 +9,7 @@ export const matchOtherField = (
 export const lessThanOtherField = (
   value: unknown,
   parameter?: unknown,
-  allValues?: Record<string, unknown>
+  allValues?: Record<string, unknown>,
 ) => {
   return value < allValues[parameter as string];
 };
@@ -17,7 +17,7 @@ export const lessThanOtherField = (
 export const greaterThanOtherField = (
   value: unknown,
   parameter?: unknown,
-  allValues?: Record<string, unknown>
+  allValues?: Record<string, unknown>,
 ) => {
   return value > allValues[parameter as string];
 };
@@ -25,7 +25,7 @@ export const greaterThanOtherField = (
 export const doesntMatchOtherField = (
   value: unknown,
   parameter?: unknown,
-  allValues?: Record<string, unknown>
+  allValues?: Record<string, unknown>,
 ) => {
   return value !== allValues[parameter as string];
 };

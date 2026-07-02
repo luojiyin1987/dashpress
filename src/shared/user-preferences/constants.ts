@@ -5,8 +5,7 @@ import {
 } from "./portal";
 
 export type UserPreferencesKeys =
-  | BaseUserPreferencesKeys
-  | PortalUserPreferencesKeys;
+  BaseUserPreferencesKeys | PortalUserPreferencesKeys;
 
 export const USER_PREFERENCES_CONFIG = {
   ...PORTAL_CONFIGURATION_KEYS,
@@ -17,4 +16,4 @@ export const USER_PREFERENCES_CONFIG = {
 };
 
 export type UserPreferencesValueType<T extends UserPreferencesKeys> =
-  typeof USER_PREFERENCES_CONFIG[T]["defaultValue"];
+  (typeof USER_PREFERENCES_CONFIG)[T]["defaultValue"];

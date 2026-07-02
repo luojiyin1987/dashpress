@@ -8,7 +8,7 @@ export const authenticatedUserValidationImpl: ValidationImplType<
 > = async (req) => {
   progammingError(
     "A non authenticated route tried to access user from request",
-    !req.user
+    !req.user,
   );
 
   return req.user;

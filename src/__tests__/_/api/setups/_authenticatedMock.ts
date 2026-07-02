@@ -17,25 +17,25 @@ const authorizedHeader = (token: string) => ({
 });
 
 export const createUnAuthenticatedMocks = (
-  mock: RequestOptions
+  mock: RequestOptions,
 ): Mocks<any, any> => {
   return createMocks({ ...mock });
 };
 
 export const createAuthenticatedMocks = (
-  mock: RequestOptions
+  mock: RequestOptions,
 ): Mocks<any, any> => {
   return createMocks({ ...mock, ...authorizedHeader(ROOT_USER_AUTH_TOKEN) });
 };
 
 export const createAuthenticatedViewerMocks = (
-  mock: RequestOptions
+  mock: RequestOptions,
 ): Mocks<any, any> => {
   return createMocks({ ...mock, ...authorizedHeader(VIEWER_AUTH_TOKEN) });
 };
 
 export const createAuthenticatedCustomRoleMocks = (
-  mock: RequestOptions
+  mock: RequestOptions,
 ): Mocks<any, any> => {
   return createMocks({ ...mock, ...authorizedHeader(CUSTOM_ROLE_AUTH_TOKEN) });
 };

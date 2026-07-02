@@ -20,17 +20,17 @@ describe("pages/admin/settings/site", () => {
     render(
       <TestProviders>
         <SiteSettings />
-      </TestProviders>
+      </TestProviders>,
     );
     await waitFor(() => {
       expect(screen.getByLabelText("Name")).toHaveValue("DashPress");
     });
     expect(screen.getByLabelText("Home Link")).toHaveValue("/");
     expect(screen.getByLabelText("Small Logo")).toHaveValue(
-      "/assets/images/logo.png"
+      "/assets/images/logo.png",
     );
     expect(screen.getByLabelText("Large Logo")).toHaveValue(
-      "/assets/images/full-logo.png"
+      "/assets/images/full-logo.png",
     );
   });
 
@@ -38,7 +38,7 @@ describe("pages/admin/settings/site", () => {
     render(
       <TestProviders>
         <SiteSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(screen.getByLabelText("Name"), "Updated");
@@ -47,7 +47,7 @@ describe("pages/admin/settings/site", () => {
     await userEvent.type(screen.getByLabelText("Large Logo"), "Updated");
 
     await userEvent.click(
-      screen.getByRole("button", { name: "Save Site Settings" })
+      screen.getByRole("button", { name: "Save Site Settings" }),
     );
 
     expect(await getToastMessage()).toBe("Site Settings Saved Successfully");
@@ -57,17 +57,17 @@ describe("pages/admin/settings/site", () => {
     render(
       <TestProviders>
         <SiteSettings />
-      </TestProviders>
+      </TestProviders>,
     );
     await waitFor(() => {
       expect(screen.getByLabelText("Name")).toHaveValue("DashPressUpdated");
     });
     expect(screen.getByLabelText("Home Link")).toHaveValue("/Updated");
     expect(screen.getByLabelText("Small Logo")).toHaveValue(
-      "/assets/images/logo.pngUpdated"
+      "/assets/images/logo.pngUpdated",
     );
     expect(screen.getByLabelText("Large Logo")).toHaveValue(
-      "/assets/images/full-logo.pngUpdated"
+      "/assets/images/full-logo.pngUpdated",
     );
   });
 });

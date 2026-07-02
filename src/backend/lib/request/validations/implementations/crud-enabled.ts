@@ -58,13 +58,13 @@ const EntityCrudCheck: Record<
 
 export const crudEnabledValidationImpl: ValidationImplType<void> = async (
   req,
-  action: unknown
+  action: unknown,
 ) => {
   progammingError("Please provide the action for the CRUD check", !action);
 
   progammingError(
     "Invalid action for crud-enabled check",
-    !EntityCrudCheck[action as DataActionType]
+    !EntityCrudCheck[action as DataActionType],
   );
 
   const actionType = action as DataActionType;
@@ -78,7 +78,7 @@ export const crudEnabledValidationImpl: ValidationImplType<void> = async (
     ]
   ) {
     throw new ForbiddenError(
-      `Action '${actionType}' has been disabled for '${entity}'`
+      `Action '${actionType}' has been disabled for '${entity}'`,
     );
   }
 
@@ -87,8 +87,8 @@ export const crudEnabledValidationImpl: ValidationImplType<void> = async (
       req.user.role,
       META_USER_PERMISSIONS.APPLIED_CAN_ACCESS_ENTITY(
         entity,
-        EntityCrudCheck[actionType].granularPermission
-      )
+        EntityCrudCheck[actionType].granularPermission,
+      ),
     ))
   ) {
     throw new NotFoundError(ERROR_MESSAGE);

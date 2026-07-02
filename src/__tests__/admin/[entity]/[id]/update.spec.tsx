@@ -16,7 +16,7 @@ describe("pages/admin/[entity]/update", () => {
         query: {
           entity: "entity-1",
         },
-      })
+      }),
     );
   });
 
@@ -24,7 +24,7 @@ describe("pages/admin/[entity]/update", () => {
     render(
       <TestProviders>
         <EntityUpdate />
-      </TestProviders>
+      </TestProviders>,
     );
     await waitFor(() => {
       expect(screen.getByText("Edit Singular entity-1")).toBeInTheDocument();

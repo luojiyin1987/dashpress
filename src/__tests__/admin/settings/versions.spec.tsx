@@ -18,7 +18,7 @@ describe("pages/admin/settings/version", () => {
     render(
       <TestProviders>
         <VersionInfo />
-      </TestProviders>
+      </TestProviders>,
     );
     await waitFor(() => {
       expect(screen.getByText("key1")).toBeInTheDocument();

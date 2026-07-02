@@ -10,7 +10,7 @@ import { createConfigDomainPersistenceService } from "../lib/config-persistence"
 
 export class UserPreferencesApiService {
   constructor(
-    private _userPreferencesPersistenceService: AbstractConfigDataPersistenceService<unknown>
+    private _userPreferencesPersistenceService: AbstractConfigDataPersistenceService<unknown>,
   ) {}
 
   private makeId({
@@ -22,13 +22,13 @@ export class UserPreferencesApiService {
   }) {
     return this._userPreferencesPersistenceService.mergeKeyWithSecondaryKey(
       username,
-      key
+      key,
     );
   }
 
   async show<T extends UserPreferencesKeys>(
     username: string,
-    key: T
+    key: T,
   ): Promise<{ data: UserPreferencesValueType<T> }> {
     return {
       data: (await this._userPreferencesPersistenceService.getItem(
@@ -36,7 +36,7 @@ export class UserPreferencesApiService {
           key: this.validateUserPreferencesKeys(key),
           username,
         }),
-        USER_PREFERENCES_CONFIG[key].defaultValue
+        USER_PREFERENCES_CONFIG[key].defaultValue,
       )) as UserPreferencesValueType<T>,
     };
   }
@@ -44,14 +44,14 @@ export class UserPreferencesApiService {
   async upsert<T extends UserPreferencesKeys>(
     username: string,
     key: T,
-    value: UserPreferencesValueType<T>
+    value: UserPreferencesValueType<T>,
   ): Promise<void> {
     return await this._userPreferencesPersistenceService.upsertItem(
       this.makeId({
         key: this.validateUserPreferencesKeys(key),
         username,
       }),
-      value
+      value,
     );
   }
 
@@ -69,5 +69,5 @@ const userPreferencesPersistenceService =
   createConfigDomainPersistenceService("users-preferences");
 
 export const userPreferencesApiService = new UserPreferencesApiService(
-  userPreferencesPersistenceService
+  userPreferencesPersistenceService,
 );

@@ -11,7 +11,7 @@ export async function connectionManager<T, K>(
   implementation: {
     make: (credentials: T) => K;
     verify: (connection: K) => Promise<void>;
-  }
+  },
 ): Promise<K> {
   const savedConnection = SAVED_CONNECTIONS[getConnectionHashKey(credentials)];
 

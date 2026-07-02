@@ -6,7 +6,7 @@ import type { IDataTableProps } from "../types";
 
 export const useEntityContextState = (
   contextKey: string,
-  defaultTableState: IDataTableProps["defaultTableState"]
+  defaultTableState: IDataTableProps["defaultTableState"],
 ) => {
   const pristineState = { ...DEFAULT_TABLE_STATE, ...defaultTableState };
 
@@ -14,7 +14,7 @@ export const useEntityContextState = (
     useContextState<IPaginatedDataState<any>>(
       "entities",
       contextKey,
-      pristineState
+      pristineState,
     );
 
   return [entityPaginatedDataState, setEntityPaginatedDataState] as const;

@@ -36,10 +36,10 @@ describe("pages/admin/[entity]/config/crud", () => {
               name: `hidden-field-1`,
               type: "string",
             },
-          ])
+          ]),
         );
-      }
-    )
+      },
+    ),
   );
 
   const useRouter = jest.spyOn(require("next/router"), "useRouter");
@@ -58,7 +58,7 @@ describe("pages/admin/[entity]/config/crud", () => {
             entity: "entity-1",
             tab: id,
           },
-        })
+        }),
       );
     });
 
@@ -66,7 +66,7 @@ describe("pages/admin/[entity]/config/crud", () => {
       render(
         <TestProviders>
           <EntityCrudSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const currentTab = await screen.findByRole("tabpanel", { name: tab });
@@ -75,18 +75,18 @@ describe("pages/admin/[entity]/config/crud", () => {
         expect(
           within(currentTab).getByRole("switch", {
             name: "Hidden Field 1",
-          })
+          }),
         ).not.toBeChecked();
       });
 
       expect(
-        await within(currentTab).findByRole("switch", { name: "Field 1" })
+        await within(currentTab).findByRole("switch", { name: "Field 1" }),
       ).toBeChecked();
 
       expect(
         within(currentTab).getByRole("switch", {
           name: "Field 2",
-        })
+        }),
       ).toBeChecked();
     });
 
@@ -94,28 +94,28 @@ describe("pages/admin/[entity]/config/crud", () => {
       render(
         <TestProviders>
           <EntityCrudSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const currentTab = screen.getByRole("tabpanel", { name: tab });
 
       await userEvent.click(
-        await within(currentTab).findByRole("switch", { name: "Field 1" })
+        await within(currentTab).findByRole("switch", { name: "Field 1" }),
       );
 
       await userEvent.click(
-        within(currentTab).getByRole("switch", { name: "Field 2" })
+        within(currentTab).getByRole("switch", { name: "Field 2" }),
       );
       await userEvent.click(
-        within(currentTab).getByRole("switch", { name: "Field 2" })
+        within(currentTab).getByRole("switch", { name: "Field 2" }),
       );
 
       await userEvent.click(
-        within(currentTab).getByRole("switch", { name: "Hidden Field 1" })
+        within(currentTab).getByRole("switch", { name: "Hidden Field 1" }),
       );
 
       expect((await screen.findAllByRole("status"))[0]).toHaveTextContent(
-        `${tab} Columns Settings Saved Successfully`
+        `${tab} Columns Settings Saved Successfully`,
       );
     });
 
@@ -123,27 +123,27 @@ describe("pages/admin/[entity]/config/crud", () => {
       render(
         <TestProviders>
           <EntityCrudSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const currentTab = screen.getByRole("tabpanel", { name: tab });
 
       await waitFor(async () => {
         expect(
-          await within(currentTab).findByRole("switch", { name: "Field 1" })
+          await within(currentTab).findByRole("switch", { name: "Field 1" }),
         ).not.toBeChecked();
       });
 
       expect(
         await within(currentTab).findByRole("switch", {
           name: "Field 2",
-        })
+        }),
       ).toBeChecked();
 
       expect(
         within(currentTab).getByRole("switch", {
           name: "Hidden Field 1",
-        })
+        }),
       ).toBeChecked();
     });
   });
@@ -155,19 +155,19 @@ describe("pages/admin/[entity]/config/crud", () => {
         query: {
           entity: "entity-1",
         },
-      })
+      }),
     );
 
     render(
       <TestProviders>
         <EntityCrudSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(
       screen.queryByRole("switch", {
         name: "Primary",
-      })
+      }),
     ).not.toBeInTheDocument();
 
     await userEvent.click(screen.getByRole("tab", { name: "Details" }));
@@ -175,7 +175,7 @@ describe("pages/admin/[entity]/config/crud", () => {
     expect(
       screen.queryByRole("switch", {
         name: "Primary",
-      })
+      }),
     ).not.toBeInTheDocument();
 
     await userEvent.click(screen.getByRole("tab", { name: "Create" }));
@@ -183,7 +183,7 @@ describe("pages/admin/[entity]/config/crud", () => {
     expect(
       screen.queryByRole("switch", {
         name: "Primary",
-      })
+      }),
     ).not.toBeInTheDocument();
 
     await userEvent.click(screen.getByRole("tab", { name: "Update" }));
@@ -191,7 +191,7 @@ describe("pages/admin/[entity]/config/crud", () => {
     expect(
       screen.queryByRole("switch", {
         name: "Primary",
-      })
+      }),
     ).not.toBeInTheDocument();
   });
 
@@ -203,29 +203,29 @@ describe("pages/admin/[entity]/config/crud", () => {
           entity: "entity-1",
           tab: "delete",
         },
-      })
+      }),
     );
 
     render(
       <TestProviders>
         <EntityCrudSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(
-      await screen.findByRole("tab", { selected: true })
+      await screen.findByRole("tab", { selected: true }),
     ).toHaveTextContent("Delete");
 
     expect(
       screen.queryByRole("switch", {
         name: "Primary",
-      })
+      }),
     ).not.toBeInTheDocument();
 
     expect(
       screen.queryByRole("switch", {
         name: "Field 1",
-      })
+      }),
     ).not.toBeInTheDocument();
   });
 });

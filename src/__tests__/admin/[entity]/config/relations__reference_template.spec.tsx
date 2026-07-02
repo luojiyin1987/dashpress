@@ -18,7 +18,7 @@ describe("pages/admin/[entity]/config/relations", () => {
         query: {
           entity: "entity-1",
         },
-      })
+      }),
     );
   });
 
@@ -27,11 +27,11 @@ describe("pages/admin/[entity]/config/relations", () => {
       render(
         <TestProviders>
           <EntityRelationsSettings />
-        </TestProviders>
+        </TestProviders>,
       );
       await waitFor(() => {
         expect(screen.getByLabelText("Display Format")).toHaveValue(
-          "entity-1 - {{ name }}"
+          "entity-1 - {{ name }}",
         );
       });
     });
@@ -40,7 +40,7 @@ describe("pages/admin/[entity]/config/relations", () => {
       render(
         <TestProviders>
           <EntityRelationsSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const currentTab = await screen.findByRole("tabpanel", {
@@ -48,22 +48,22 @@ describe("pages/admin/[entity]/config/relations", () => {
       });
 
       await userEvent.clear(
-        await within(currentTab).findByLabelText("Display Format")
+        await within(currentTab).findByLabelText("Display Format"),
       );
 
       await userEvent.type(
         within(currentTab).getByLabelText("Display Format"),
-        "{{ this-entity-does-not-exist }}"
+        "{{ this-entity-does-not-exist }}",
       );
 
       await userEvent.click(
         within(currentTab).getByRole("button", {
           name: "Save Relation Template",
-        })
+        }),
       );
 
       expect(within(currentTab).getByRole("alert")).toHaveTextContent(
-        "'this-entity-does-not-exist' is not a valid entity field. Valid fields are 'entity-1-id-field', 'entity-1-reference-field', 'entity-1-string-field', 'entity-1-number-field', 'entity-1-boolean-field', 'entity-1-date-field', 'entity-1-enum-field'"
+        "'this-entity-does-not-exist' is not a valid entity field. Valid fields are 'entity-1-id-field', 'entity-1-reference-field', 'entity-1-string-field', 'entity-1-number-field', 'entity-1-boolean-field', 'entity-1-date-field', 'entity-1-enum-field'",
       );
     });
 
@@ -71,7 +71,7 @@ describe("pages/admin/[entity]/config/relations", () => {
       render(
         <TestProviders>
           <EntityRelationsSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const currentTab = await screen.findByRole("tabpanel", {
@@ -79,21 +79,21 @@ describe("pages/admin/[entity]/config/relations", () => {
       });
 
       await userEvent.clear(
-        await within(currentTab).findByLabelText("Display Format")
+        await within(currentTab).findByLabelText("Display Format"),
       );
 
       await userEvent.type(
         within(currentTab).getByLabelText("Display Format"),
-        "{{{{ entity-1-id-field }} - {{{{ entity-1-string-field }} hello"
+        "{{{{ entity-1-id-field }} - {{{{ entity-1-string-field }} hello",
       );
 
       await userEvent.click(
         within(currentTab).getByRole("button", {
           name: "Save Relation Template",
-        })
+        }),
       );
       expect(await getToastMessage()).toBe(
-        "Relation Template Saved Successfully"
+        "Relation Template Saved Successfully",
       );
     });
 
@@ -101,11 +101,11 @@ describe("pages/admin/[entity]/config/relations", () => {
       render(
         <TestProviders>
           <EntityRelationsSettings />
-        </TestProviders>
+        </TestProviders>,
       );
       await waitFor(() => {
         expect(screen.getByLabelText("Display Format")).toHaveValue(
-          "{{ entity-1-id-field }} - {{ entity-1-string-field }} hello"
+          "{{ entity-1-id-field }} - {{ entity-1-string-field }} hello",
         );
       });
     });

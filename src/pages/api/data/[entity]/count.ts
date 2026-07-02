@@ -14,7 +14,7 @@ export default requestHandler({
     ]);
     return await dataApiController.countData(
       validatedRequest.entity,
-      validatedRequest.queryFilters
+      validatedRequest.queryFilters,
     );
   },
 });

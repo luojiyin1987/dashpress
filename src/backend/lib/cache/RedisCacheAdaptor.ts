@@ -18,8 +18,8 @@ export class RedisCacheAdaptor extends AbstractCacheService {
     }
     this.redisConnection = await getRedisConnection(
       this._configApiService.getConfigValue(
-        ConfigKeys.CACHE_ADAPTOR_CONNECTION_STRING
-      )
+        ConfigKeys.CACHE_ADAPTOR_CONNECTION_STRING,
+      ),
     );
     return this.redisConnection;
   }

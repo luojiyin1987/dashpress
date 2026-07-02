@@ -56,15 +56,15 @@ describe("Table Filters", () => {
       render(<TestComponent type={type} />);
 
       await user.click(
-        screen.getByRole("button", { name: "Filter Test Column By Search" })
+        screen.getByRole("button", { name: "Filter Test Column By Search" }),
       );
 
       await user.click(screen.getByRole("combobox"));
 
       expect(
         (await screen.findAllByRole("option")).map(
-          (option) => option.textContent
-        )
+          (option) => option.textContent,
+        ),
       ).toMatchInlineSnapshot(`
           [
             "Contains",
@@ -78,7 +78,7 @@ describe("Table Filters", () => {
       render(<TestComponent type={type} />);
 
       await user.click(
-        screen.getByRole("button", { name: "Filter Test Column By Search" })
+        screen.getByRole("button", { name: "Filter Test Column By Search" }),
       );
 
       await user.type(screen.getByPlaceholderText("Search"), "Hello");
@@ -110,20 +110,20 @@ describe("Table Filters", () => {
             value: "Default Value",
           }}
           type={type}
-        />
+        />,
       );
 
       await userEvent.click(
         screen.getByRole("button", {
           name: "Filter Test Column By Search Is Active",
-        })
+        }),
       );
 
       expect(screen.getByPlaceholderText("Search")).toHaveValue(
-        "Default Value"
+        "Default Value",
       );
       expect(
-        screen.getByRole("combobox", { name: "Select Filter Operator" })
+        screen.getByRole("combobox", { name: "Select Filter Operator" }),
       ).toHaveValue("n");
 
       await userEvent.type(screen.getByPlaceholderText("Search"), " Updated");
@@ -144,7 +144,7 @@ describe("Table Filters", () => {
       render(<TestComponent type={type} />);
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Filter Test Column By Number" })
+        screen.getByRole("button", { name: "Filter Test Column By Number" }),
       );
 
       expect(screen.getAllByRole("option").map((option) => option.textContent))
@@ -163,12 +163,12 @@ describe("Table Filters", () => {
       render(<TestComponent type={type} />);
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Filter Test Column By Number" })
+        screen.getByRole("button", { name: "Filter Test Column By Number" }),
       );
 
       await userEvent.type(
         screen.getByRole("spinbutton", { name: "Value 1" }),
-        "123"
+        "123",
       );
 
       await waitFor(() => {
@@ -180,12 +180,12 @@ describe("Table Filters", () => {
 
       await userEvent.selectOptions(
         screen.getByRole("combobox", { name: "Select Filter Operator" }),
-        "Between"
+        "Between",
       );
 
       await userEvent.type(
         screen.getByRole("spinbutton", { name: "Value 2" }),
-        "456"
+        "456",
       );
 
       await waitFor(() => {
@@ -206,34 +206,34 @@ describe("Table Filters", () => {
             value2: "78",
           }}
           type={type}
-        />
+        />,
       );
 
       await userEvent.click(
         screen.getByRole("button", {
           name: "Filter Test Column By Number Is Active",
-        })
+        }),
       );
 
       expect(screen.getByRole("spinbutton", { name: "Value 1" })).toHaveValue(
-        56
+        56,
       );
 
       expect(screen.getByRole("spinbutton", { name: "Value 2" })).toHaveValue(
-        78
+        78,
       );
 
       expect(
-        screen.getByRole("combobox", { name: "Select Filter Operator" })
+        screen.getByRole("combobox", { name: "Select Filter Operator" }),
       ).toHaveValue("b");
 
       await userEvent.type(
         screen.getByRole("spinbutton", { name: "Value 1" }),
-        "1"
+        "1",
       );
       await userEvent.type(
         screen.getByRole("spinbutton", { name: "Value 2" }),
-        "2"
+        "2",
       );
 
       await waitFor(() => {
@@ -253,7 +253,7 @@ describe("Table Filters", () => {
       render(<TestComponent type={type} />);
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Filter Test Column By Id" })
+        screen.getByRole("button", { name: "Filter Test Column By Id" }),
       );
 
       await user.click(screen.getByRole("combobox"));
@@ -261,7 +261,7 @@ describe("Table Filters", () => {
       expect(
         screen
           .getAllByRole("option", { hidden: true })
-          .map((option) => option.textContent)
+          .map((option) => option.textContent),
       ).toMatchInlineSnapshot(`
           [
             "Equal",
@@ -273,7 +273,7 @@ describe("Table Filters", () => {
       render(<TestComponent type={type} />);
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Filter Test Column By Id" })
+        screen.getByRole("button", { name: "Filter Test Column By Id" }),
       );
 
       await userEvent.type(
@@ -281,7 +281,7 @@ describe("Table Filters", () => {
         "12345",
         {
           pointerEventsCheck: PointerEventsCheckLevel.Never,
-        }
+        },
       );
 
       await waitFor(() => {
@@ -292,7 +292,7 @@ describe("Table Filters", () => {
       });
 
       expect(
-        screen.queryByRole("combobox", { name: "Select Filter Operator" })
+        screen.queryByRole("combobox", { name: "Select Filter Operator" }),
       ).not.toBeInTheDocument();
     });
 
@@ -304,13 +304,13 @@ describe("Table Filters", () => {
             value: "789",
           }}
           type={type}
-        />
+        />,
       );
 
       await userEvent.click(
         screen.getByRole("button", {
           name: "Filter Test Column By Id Is Active",
-        })
+        }),
       );
 
       expect(screen.getByPlaceholderText("Enter value")).toHaveValue("789");
@@ -347,7 +347,7 @@ describe("Table Filters", () => {
       render(<TestComponent type={type} />);
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Filter Test Column By Boolean" })
+        screen.getByRole("button", { name: "Filter Test Column By Boolean" }),
       );
 
       await user.click(screen.getByRole("combobox"));
@@ -366,12 +366,12 @@ describe("Table Filters", () => {
       render(<TestComponent type={type} />);
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Filter Test Column By Boolean" })
+        screen.getByRole("button", { name: "Filter Test Column By Boolean" }),
       );
 
       await userEvent.selectOptions(
         screen.getByRole("combobox", { name: "Select Boolean" }),
-        "True Option"
+        "True Option",
       );
 
       await waitFor(() => {
@@ -383,7 +383,7 @@ describe("Table Filters", () => {
 
       await userEvent.selectOptions(
         screen.getByRole("combobox", { name: "Select Boolean" }),
-        "False Option"
+        "False Option",
       );
 
       await waitFor(() => {
@@ -395,7 +395,7 @@ describe("Table Filters", () => {
 
       await userEvent.selectOptions(
         screen.getByRole("combobox", { name: "Select Boolean" }),
-        "--- Select Value ---"
+        "--- Select Value ---",
       );
 
       await waitFor(() => {
@@ -405,7 +405,7 @@ describe("Table Filters", () => {
       });
 
       expect(
-        screen.queryByRole("combobox", { name: "Select Filter Operator" })
+        screen.queryByRole("combobox", { name: "Select Filter Operator" }),
       ).not.toBeInTheDocument();
     });
 
@@ -417,22 +417,22 @@ describe("Table Filters", () => {
             value: false,
           }}
           type={type}
-        />
+        />,
       );
 
       await userEvent.click(
         screen.getByRole("button", {
           name: "Filter Test Column By Boolean Is Active",
-        })
+        }),
       );
 
       expect(
-        screen.getByRole("combobox", { name: "Select Boolean" })
+        screen.getByRole("combobox", { name: "Select Boolean" }),
       ).toHaveValue("false");
 
       await userEvent.selectOptions(
         screen.getByRole("combobox", { name: "Select Boolean" }),
-        "True Option"
+        "True Option",
       );
 
       await waitFor(() => {
@@ -467,7 +467,7 @@ describe("Table Filters", () => {
       render(<TestComponent type={type} />);
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Filter Test Column By Status" })
+        screen.getByRole("button", { name: "Filter Test Column By Status" }),
       );
 
       await user.click(screen.getAllByRole("combobox")[0]);
@@ -485,23 +485,23 @@ describe("Table Filters", () => {
       render(<TestComponent type={type} />);
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Filter Test Column By Status" })
+        screen.getByRole("button", { name: "Filter Test Column By Status" }),
       );
 
       await userEvent.type(
         await screen.findByLabelText("Select Status"),
-        "Option 1 Label"
+        "Option 1 Label",
       );
 
       await userEvent.keyboard("{Enter}");
 
       await userEvent.clear(
-        screen.getByRole("button", { name: "Select Status" })
+        screen.getByRole("button", { name: "Select Status" }),
       );
 
       await userEvent.type(
         screen.getByRole("button", { name: "Select Status" }),
-        "Option 2 Label"
+        "Option 2 Label",
       );
 
       await userEvent.keyboard("{Enter}");
@@ -513,12 +513,12 @@ describe("Table Filters", () => {
             value: ["option-1", "option-2"],
           });
         },
-        { timeout: 10000 }
+        { timeout: 10000 },
       );
 
       await userEvent.selectOptions(
         screen.getByRole("combobox", { name: "Select Filter Operator" }),
-        "Is Not In"
+        "Is Not In",
       );
 
       await waitFor(() => {
@@ -537,18 +537,18 @@ describe("Table Filters", () => {
             value: ["option-3"],
           }}
           type={type}
-        />
+        />,
       );
 
       await userEvent.click(
         screen.getByRole("button", {
           name: "Filter Test Column By Status Is Active",
-        })
+        }),
       );
 
       await userEvent.type(
         await screen.findByLabelText("Select Status"),
-        "Option 1 Label"
+        "Option 1 Label",
       );
 
       await userEvent.keyboard("{Enter}");
@@ -562,7 +562,7 @@ describe("Table Filters", () => {
         },
         {
           timeout: 5000,
-        }
+        },
       );
     });
   });
@@ -571,7 +571,7 @@ describe("Table Filters", () => {
     render(<TestComponent type={{ _type: "string", bag: undefined }} />);
 
     await userEvent.click(
-      screen.getByRole("button", { name: "Filter Test Column By Search" })
+      screen.getByRole("button", { name: "Filter Test Column By Search" }),
     );
 
     await userEvent.type(screen.getByPlaceholderText("Search"), "Hello");

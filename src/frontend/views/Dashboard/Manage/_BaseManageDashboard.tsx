@@ -88,7 +88,7 @@ export function BaseManageDashboard({ dashboardId, doneLink, title }: IProps) {
                       deleteDashboardWidgetMutation.mutate(config.id),
                     setId: NAVIGATION_LINKS.DASHBOARD.WIDGET.UPDATE(
                       dashboardId,
-                      config.id
+                      config.id,
                     ),
                   }}
                 />

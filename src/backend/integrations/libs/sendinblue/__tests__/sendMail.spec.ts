@@ -20,7 +20,7 @@ describe("SEND_IN_BLUE => SEND_MAIL", () => {
         body: "<p>some-body</p>",
         senderEmail: "some-email",
         senderName: "some-name",
-      }
+      },
     );
 
     expect(fetch).toHaveBeenCalledWith(
@@ -33,7 +33,7 @@ describe("SEND_IN_BLUE => SEND_MAIL", () => {
           "X-Postmark-Server-Token": "api-key:some-apikey",
         },
         method: "POST",
-      }
+      },
     );
   });
 });

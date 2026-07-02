@@ -30,7 +30,7 @@ export function EntitiesSelection({
   hiddenList,
 }: IProps) {
   const { toggleSelection, setMultiple, isSelected } = useStringSelections(
-    `${selectionKey}--entities-selection`
+    `${selectionKey}--entities-selection`,
   );
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export function EntitiesSelection({
       items={loadedDataState(
         allList.map((listItem) => ({
           name: listItem,
-        }))
+        })),
       )}
       listLengthGuess={15}
       labelField="name"

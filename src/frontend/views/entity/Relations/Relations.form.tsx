@@ -22,7 +22,7 @@ export function EntityRelationsForm({
   entityFields: string[];
 }) {
   const domainMessages = useAppConfigurationDomainMessages(
-    "entity_relation_template"
+    "entity_relation_template",
   );
 
   return (
@@ -34,7 +34,7 @@ export function EntityRelationsForm({
         const error: Partial<IRelationsSettings> = {};
         const fields = getFieldsOffFormat(values.format);
         const invalidField = fields.find(
-          (field) => !entityFields.includes(field)
+          (field) => !entityFields.includes(field),
         );
         if (invalidField) {
           const validFields = entityFields.map((field) => ` '${field}'`);

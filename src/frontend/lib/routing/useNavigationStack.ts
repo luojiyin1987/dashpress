@@ -18,7 +18,7 @@ interface INavigationItem {
 
 const handleHistoryMutation = (
   oldHistory: INavigationItem[],
-  newEntry: INavigationItem
+  newEntry: INavigationItem,
 ): INavigationItem[] => {
   if (oldHistory.length === 0) {
     return [newEntry];
@@ -33,7 +33,7 @@ const handleHistoryMutation = (
   }
 
   const historyIndex = oldHistory.findIndex(
-    (old) => old.link === newEntry.link
+    (old) => old.link === newEntry.link,
   );
 
   if (historyIndex === -1) {
@@ -118,6 +118,6 @@ export const useNavigationStack = () => {
           }
         : undefined,
     }),
-    [typeof window, history, pageTitle, viewKey, pageLink]
+    [typeof window, history, pageTitle, viewKey, pageLink],
   );
 };

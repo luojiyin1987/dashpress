@@ -15,7 +15,7 @@ export default requestHandler({
     ]);
     return await userPreferencesApiService.show(
       (validatedRequest.authenticatedUser as IAccountProfile).username,
-      validatedRequest.requestQuery
+      validatedRequest.requestQuery,
     );
   },
   PUT: async (getValidatedRequest) => {
@@ -33,7 +33,7 @@ export default requestHandler({
     return await userPreferencesApiService.upsert(
       (validatedRequest.authenticatedUser as IAccountProfile).username,
       validatedRequest.requestQuery,
-      validatedRequest.requestBody.data
+      validatedRequest.requestBody.data,
     );
   },
 });

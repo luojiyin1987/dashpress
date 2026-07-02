@@ -10,15 +10,15 @@ import { usersApiService } from "./users.service";
 export class UsersApiController {
   constructor(
     private _usersService: UsersApiService,
-    private _rolesService: RolesApiService
+    private _rolesService: RolesApiService,
   ) {}
 
   async getAuthenticatedUserBag(
-    authenticatedUsername: string
+    authenticatedUsername: string,
   ): Promise<IAuthenticatedUserBag> {
     try {
       const accountProfile = await this._usersService.getAccountProfile(
-        authenticatedUsername
+        authenticatedUsername,
       );
       const [permissions, linkedProfile] = await Promise.all([
         this._rolesService.getRolePermissions(accountProfile.role),
@@ -31,7 +31,7 @@ export class UsersApiController {
     } catch (error) {
       throw new UnauthorizedError(
         error.message,
-        REQUEST_ERROR_CODES.NOT_AUTHENTICATED
+        REQUEST_ERROR_CODES.NOT_AUTHENTICATED,
       );
     }
   }
@@ -39,5 +39,5 @@ export class UsersApiController {
 
 export const usersApiController = new UsersApiController(
   usersApiService,
-  rolesApiService
+  rolesApiService,
 );

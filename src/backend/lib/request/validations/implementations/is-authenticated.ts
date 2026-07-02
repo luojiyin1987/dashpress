@@ -8,21 +8,21 @@ const NO_AUTH_ERROR_CODE = REQUEST_ERROR_CODES.NOT_AUTHENTICATED;
 
 export const isAuthenticatedValidationImpl: ValidationImplType<void> = async (
   req,
-  protectedRoute: boolean
+  protectedRoute: boolean,
 ) => {
   try {
     const authHeader = req.headers.authorization;
     if (!authHeader) {
       throw new UnauthorizedError(
         "No authorization token provided",
-        NO_AUTH_ERROR_CODE
+        NO_AUTH_ERROR_CODE,
       );
     }
     const authToken = authHeader.slice(7);
     if (!authToken) {
       throw new UnauthorizedError(
         "The authorization token provided is empty",
-        NO_AUTH_ERROR_CODE
+        NO_AUTH_ERROR_CODE,
       );
     }
     try {
@@ -38,7 +38,7 @@ export const isAuthenticatedValidationImpl: ValidationImplType<void> = async (
   if (req.user && !protectedRoute) {
     throw new UnauthorizedError(
       "You are already authenticated, Please logout to continue with request",
-      REQUEST_ERROR_CODES.ALREADY_AUTHENTICATED
+      REQUEST_ERROR_CODES.ALREADY_AUTHENTICATED,
     );
   }
 };

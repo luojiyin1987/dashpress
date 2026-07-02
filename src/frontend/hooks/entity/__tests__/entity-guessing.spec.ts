@@ -53,7 +53,7 @@ describe("guessEntityValidations", () => {
     expect(
       guessEntityValidations({
         isRequired: true,
-      })
+      }),
     ).toMatchInlineSnapshot(`
       [
         {
@@ -72,7 +72,7 @@ describe("guessEntityValidations", () => {
     expect(
       guessEntityValidations({
         length: 50,
-      })
+      }),
     ).toMatchInlineSnapshot(`
       [
         {
@@ -95,7 +95,7 @@ describe("guessEntityValidations", () => {
       guessEntityValidations({
         isRequired: true,
         length: 40,
-      })
+      }),
     ).toMatchInlineSnapshot(`
       [
         {

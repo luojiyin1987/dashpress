@@ -21,5 +21,5 @@ export default requestHandler(
     {
       _type: "anyBody",
     },
-  ]
+  ],
 );

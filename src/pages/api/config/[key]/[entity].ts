@@ -19,7 +19,7 @@ export default requestHandler(
       ]);
       return await configurationApiController.showConfig(
         validatedRequest.requestQuery,
-        validatedRequest.entity
+        validatedRequest.entity,
       );
     },
     PUT: async (getValidatedRequest) => {
@@ -40,7 +40,7 @@ export default requestHandler(
       return await configurationApiController.upsertConfig(
         validatedRequest.requestQuery,
         validatedRequest.requestBody.data,
-        validatedRequest.entity
+        validatedRequest.entity,
       );
     },
   },
@@ -50,5 +50,5 @@ export default requestHandler(
       _type: "canUser",
       body: UserPermissions.CAN_CONFIGURE_APP,
     },
-  ]
+  ],
 );

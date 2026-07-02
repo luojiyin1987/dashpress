@@ -11,7 +11,7 @@ const CACHE_ADAPTORS: {
   {
     title: "Memory",
     adaptor: new MemoryCacheAdaptor(
-      new ConfigApiService({ DO_NOT_BOOSTRAP_CONFIG: false })
+      new ConfigApiService({ DO_NOT_BOOSTRAP_CONFIG: false }),
     ),
   },
   {
@@ -20,7 +20,7 @@ const CACHE_ADAPTORS: {
       new ConfigApiService({
         DO_NOT_BOOSTRAP_CONFIG: false,
         CACHE_ADAPTOR_CONNECTION_STRING: "redis://localhost",
-      })
+      }),
     ),
   },
 ];

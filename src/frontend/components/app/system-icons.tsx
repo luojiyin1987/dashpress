@@ -30,7 +30,7 @@ export const SystemIcon = forwardRef<HTMLElement, IProps>(
         dangerouslySetInnerHTML={{ __html: iconSvg }}
       />
     );
-  }
+  },
 );
 
 export const GrabIcon = forwardRef<

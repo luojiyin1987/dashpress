@@ -14,7 +14,7 @@ const GUEST_PATH = "__guest";
 export const configurationApiPath = (
   key: AppConfigurationKeys,
   entity?: string,
-  method: "GET" | "PUT" = "GET"
+  method: "GET" | "PUT" = "GET",
 ) => {
   if (entity) {
     return `/api/config/${key}/${entity}`;
@@ -48,7 +48,7 @@ export function useAppConfiguration<T extends AppConfigurationKeys>(key: T) {
 export function useEntityConfiguration<T extends AppConfigurationKeys>(
   key: T,
   entity: string,
-  forceDefaultValue?: AppConfigurationValueType<T>
+  forceDefaultValue?: AppConfigurationValueType<T>,
 ) {
   const domainMessages = useAppConfigurationDomainMessages(key);
 
@@ -61,13 +61,13 @@ export function useEntityConfiguration<T extends AppConfigurationKeys>(
       errorMessage: domainMessages.TEXT_LANG.NOT_FOUND,
       defaultData:
         forceDefaultValue || (APP_CONFIGURATION_CONFIG[key].defaultValue as T),
-    }
+    },
   );
 }
 
 export const useMultipleEntityConfiguration = <T extends AppConfigurationKeys>(
   entities: string[],
-  key: T
+  key: T,
 ) => {
   return useApiQueries<{ entity: string }, AppConfigurationValueType<T>>({
     input: entities.map((entity) => ({ entity })),
@@ -84,7 +84,7 @@ interface IUpsertConfigMutationOptions {
 export function useUpsertConfigurationMutation<T extends AppConfigurationKeys>(
   key: T,
   entity?: string,
-  mutationOptions?: IUpsertConfigMutationOptions
+  mutationOptions?: IUpsertConfigMutationOptions,
 ) {
   const domainMessages = useAppConfigurationDomainMessages(key);
 

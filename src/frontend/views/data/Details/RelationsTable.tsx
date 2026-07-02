@@ -33,7 +33,7 @@ export function EntityRelationTable() {
   const childEntityRelations = useEntityReferenceFields(childEntity);
 
   const referenceField = childEntityRelations.data.find(
-    ({ table }) => table === parentEntity
+    ({ table }) => table === parentEntity,
   )?.field;
 
   const menuItems = useTableMenuItems(childEntity, {
@@ -44,7 +44,7 @@ export function EntityRelationTable() {
   const title = entityDataReference.isLoading
     ? childEntityCrudConfig.TEXT_LANG.SINGULAR
     : msg`${entityDataReference.data} - ${_(
-        childEntityCrudConfig.TEXT_LANG.TITLE
+        childEntityCrudConfig.TEXT_LANG.TITLE,
       )}`;
 
   useSetPageDetails({
@@ -52,7 +52,7 @@ export function EntityRelationTable() {
     viewKey: ENTITY_DETAILS_VIEW_KEY(parentEntity),
     permission: META_USER_PERMISSIONS.APPLIED_CAN_ACCESS_ENTITY(
       childEntity,
-      GranularEntityPermissions.Show
+      GranularEntityPermissions.Show,
     ),
   });
 

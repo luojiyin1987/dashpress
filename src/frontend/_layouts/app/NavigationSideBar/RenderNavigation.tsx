@@ -160,7 +160,7 @@ export function RenderNavigation({
                     "mb-2 ml-1 mr-0 mt-5 text-[11px] font-semibold uppercase text-white",
                     {
                       hidden: !isFullWidth,
-                    }
+                    },
                   )}
                 >
                   {title}
@@ -178,7 +178,7 @@ export function RenderNavigation({
                     {
                       "bg-[oklch(0%_0_0/10%)]": isActive,
                       "px-3": isFullWidth,
-                    }
+                    },
                   )}
                 >
                   {children && children.length > 0 ? (
@@ -195,7 +195,7 @@ export function RenderNavigation({
                         <div className="flex w-full items-center justify-between">
                           <p
                             className={cn(
-                              "ml-2 text-[0.8125rem] text-white transition-all"
+                              "ml-2 text-[0.8125rem] text-white transition-all",
                             )}
                           >
                             {title}
@@ -205,7 +205,7 @@ export function RenderNavigation({
                               "ml-0 cursor-pointer transition-all",
                               {
                                 "rotate-90": isActive,
-                              }
+                              },
                             )}
                             size={16}
                           />
@@ -229,7 +229,7 @@ export function RenderNavigation({
                       {isFullWidth && (
                         <p
                           className={cn(
-                            "ml-2 text-[0.8125rem] text-white transition-all"
+                            "ml-2 text-[0.8125rem] text-white transition-all",
                           )}
                         >
                           {title}
@@ -251,7 +251,7 @@ export function RenderNavigation({
               )}
             </li>
           );
-        }
+        },
       )}
     </ul>
   );

@@ -26,11 +26,11 @@ export function TableViewsSettings() {
 
   const upsertTableViewsMutation = useUpsertConfigurationMutation(
     "table_views",
-    entity
+    entity,
   );
 
   const documentationActionButton = useDocumentationActionButton(
-    domainMessages.TEXT_LANG.TITLE
+    domainMessages.TEXT_LANG.TITLE,
   );
 
   const tableViews = useEntityConfiguration("table_views", entity);

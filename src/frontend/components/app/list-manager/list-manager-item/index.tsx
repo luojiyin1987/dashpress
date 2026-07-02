@@ -96,7 +96,7 @@ export function ListManagerItem({
                 onClick$1();
               }}
             />
-          )
+          ),
         )}
         {toggle && (
           <FormSwitch
@@ -115,7 +115,7 @@ export function ListManagerItem({
         "relative flex cursor-pointer items-center justify-between border-b border-border bg-base p-2 text-main hover:bg-hover",
         {
           "text-muted bg-base pointer-events-none": disabled,
-        }
+        },
       )}
     >
       {content}

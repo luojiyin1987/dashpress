@@ -8,5 +8,5 @@ export const getQueryCachekey = (endPoint: string) =>
 
 export const getPaginatedDataCachekey = (
   endPoint: string,
-  dataState: IPaginatedDataState<unknown>
+  dataState: IPaginatedDataState<unknown>,
 ) => [...getQueryCachekey(endPoint), JSON.stringify(dataState)];

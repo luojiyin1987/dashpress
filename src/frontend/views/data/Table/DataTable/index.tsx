@@ -57,7 +57,7 @@ export function BaseDataTable({
           : empty
       }
       columns={columns.filter(
-        (column) => !skipColumns.includes(column.accessor)
+        (column) => !skipColumns.includes(column.accessor),
       )}
     />
   );

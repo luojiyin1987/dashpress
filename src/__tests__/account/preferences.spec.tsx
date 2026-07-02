@@ -20,7 +20,7 @@ describe("pages/account/preferences", () => {
     render(
       <TestProviders>
         <UserPreferences />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await waitForSkeletonsToVanish();
@@ -28,17 +28,17 @@ describe("pages/account/preferences", () => {
     expect(localStorage.getItem("theme")).toBeNull();
 
     expect(screen.getByRole("combobox", { name: "Theme" })).toHaveTextContent(
-      "System"
+      "System",
     );
 
     await selectCombobox("Theme", "Light");
 
     await userEvent.click(
-      screen.getByRole("button", { name: "Save Account Preferences" })
+      screen.getByRole("button", { name: "Save Account Preferences" }),
     );
 
     expect(screen.getByRole("combobox", { name: "Theme" })).toHaveTextContent(
-      "Light"
+      "Light",
     );
 
     expect(localStorage.getItem("theme")).toBe("light");

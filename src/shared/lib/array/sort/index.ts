@@ -1,7 +1,7 @@
 export function sortListByOrder<T, K extends keyof T>(
   order: string[],
   itemsToOrder: T[],
-  key: K
+  key: K,
 ): T[] {
   const indexOf = (entry: T) => {
     const index = order.indexOf(entry[key] as unknown as string);

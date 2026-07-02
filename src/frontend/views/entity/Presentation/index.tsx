@@ -47,22 +47,22 @@ export function EntityPresentationScriptSettings() {
   const entity = useEntitySlug();
   const entityPresentationScript = useEntityConfiguration(
     "entity_presentation_script",
-    entity
+    entity,
   );
   const { toast } = useToast();
 
   const domainMessages = useAppConfigurationDomainMessages(
-    "entity_presentation_script"
+    "entity_presentation_script",
   );
 
   const upsertConfigurationMutation = useUpsertConfigurationMutation(
     "entity_presentation_script",
-    entity
+    entity,
   );
   const evaluateScriptContext = useEvaluateScriptContext();
 
   const documentationActionButton = useDocumentationActionButton(
-    domainMessages.TEXT_LANG.TITLE
+    domainMessages.TEXT_LANG.TITLE,
   );
 
   useSetPageDetails({

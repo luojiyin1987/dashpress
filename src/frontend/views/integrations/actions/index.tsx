@@ -25,11 +25,11 @@ export function ActionsIntegrations() {
   const activeActionsList = useActiveIntegrations();
 
   const integrationDetail = integrationsList.data.find(
-    ({ key }) => key === currentKey
+    ({ key }) => key === currentKey,
   );
 
   const activeAction = activeActionsList.data.find(
-    (integration) => integration === currentKey
+    (integration) => integration === currentKey,
   );
 
   useSetPageDetails({

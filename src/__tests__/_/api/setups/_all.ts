@@ -45,7 +45,7 @@ export const setupAllTestData = async (domains: DomainTypes[]) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .map(([_, testDataImpl]) => {
         return testDataImpl();
-      })
+      }),
   );
 };
 

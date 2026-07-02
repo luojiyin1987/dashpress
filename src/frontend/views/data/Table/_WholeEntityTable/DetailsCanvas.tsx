@@ -41,7 +41,7 @@ export function DetailsCanvas() {
           className="w-full"
           action={NAVIGATION_LINKS.ENTITY.DETAILS(
             detailsCanvasEntity,
-            detailsCanvasId
+            detailsCanvasId,
           )}
         />
       </OffCanvas>

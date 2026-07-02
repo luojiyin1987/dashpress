@@ -25,11 +25,11 @@ describe("pages/account/logout", () => {
     render(
       <TestProviders>
         <AccountPassword />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.click(
-      await screen.findByRole("option", { name: "Log Out" })
+      await screen.findByRole("option", { name: "Log Out" }),
     );
 
     await waitFor(() => {

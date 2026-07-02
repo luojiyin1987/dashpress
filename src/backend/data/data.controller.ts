@@ -12,12 +12,12 @@ export class DataApiController {
   async tableData(
     entity: string,
     queryFilters: QueryFilterSchema,
-    paginationFilters: IPaginationFilters
+    paginationFilters: IPaginationFilters,
   ) {
     return await this._dataApiService.tableData(
       entity,
       queryFilters,
-      paginationFilters
+      paginationFilters,
     );
   }
 
@@ -28,14 +28,14 @@ export class DataApiController {
   async showData(
     entity: string,
     id: string | number,
-    column?: string
+    column?: string,
   ): Promise<Record<string, unknown>> {
     return await this._dataApiService.showData(entity, id, column);
   }
 
   async countData(
     entity: string,
-    queryFilters: QueryFilterSchema
+    queryFilters: QueryFilterSchema,
   ): Promise<{ count: number }> {
     return {
       count: await this._dataApiService.countData(entity, queryFilters),
@@ -49,7 +49,7 @@ export class DataApiController {
   async createData(
     entity: string,
     data: Record<string, unknown>,
-    accountProfile: IAccountProfile
+    accountProfile: IAccountProfile,
   ): Promise<{ id: string | number }> {
     return {
       id: await this._dataApiService.create(entity, data, accountProfile),
@@ -60,7 +60,7 @@ export class DataApiController {
     entity: string,
     id: string,
     data: Record<string, unknown>,
-    accountProfile: IAccountProfile
+    accountProfile: IAccountProfile,
   ): Promise<void> {
     return await this._dataApiService.update(entity, id, data, accountProfile);
   }
@@ -68,7 +68,7 @@ export class DataApiController {
   async deleteData(
     entity: string,
     id: string,
-    accountProfile: IAccountProfile
+    accountProfile: IAccountProfile,
   ): Promise<void> {
     await this._dataApiService.delete(entity, id, accountProfile);
   }

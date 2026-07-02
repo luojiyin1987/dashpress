@@ -15,7 +15,7 @@ export default requestHandler(
         },
       ]);
       return await usersApiService.getAccountProfile(
-        validatedRequest.requestQuery
+        validatedRequest.requestQuery,
       );
     },
 
@@ -29,7 +29,7 @@ export default requestHandler(
       ]);
       return await usersApiService.removeUser(
         validatedRequest.requestQuery,
-        (validatedRequest.authenticatedUser as IAccountProfile).username
+        (validatedRequest.authenticatedUser as IAccountProfile).username,
       );
     },
     PATCH: async (getValidatedRequest) => {
@@ -45,7 +45,7 @@ export default requestHandler(
       ]);
       return await usersApiService.updateUser(
         validatedRequest.requestQuery,
-        validatedRequest.requestBody
+        validatedRequest.requestBody,
       );
     },
   },
@@ -54,5 +54,5 @@ export default requestHandler(
       _type: "canUser",
       body: UserPermissions.CAN_MANAGE_USERS,
     },
-  ]
+  ],
 );

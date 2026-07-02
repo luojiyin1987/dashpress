@@ -2,7 +2,7 @@ import { typescriptSafeObjectDotEntries } from "@/shared/lib/objects";
 
 export function objectToQueryParams(
   data?: Record<string, undefined | string | string[] | number | number[]>,
-  includePrefix = true
+  includePrefix = true,
 ) {
   const params = new URLSearchParams();
 
@@ -12,7 +12,7 @@ export function objectToQueryParams(
     }
     if (Array.isArray(value)) {
       value.forEach((item: string | number) =>
-        params.append(key, String(item))
+        params.append(key, String(item)),
       );
     } else {
       params.append(key, String(value));

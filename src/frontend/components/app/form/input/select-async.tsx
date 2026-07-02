@@ -33,12 +33,12 @@ export function AsyncFormSelect(props: IProps) {
     debounceSearch ? `${url}?search=${debounceSearch}` : url,
     {
       defaultData: [],
-    }
+    },
   );
 
   const currentLabelFromSelection = useMemo(() => {
     const isValueInFirstDataLoad = fullData.data.find(
-      ({ value }: ILabelValue) => String(value) === String(input.value)
+      ({ value }: ILabelValue) => String(value) === String(input.value),
     );
 
     if (isValueInFirstDataLoad) {
@@ -46,7 +46,7 @@ export function AsyncFormSelect(props: IProps) {
     }
 
     const isValueInSelectionOptions = selectOptions.data.find(
-      ({ value }: ILabelValue) => String(value) === String(input.value)
+      ({ value }: ILabelValue) => String(value) === String(input.value),
     );
 
     if (isValueInSelectionOptions) {
@@ -69,7 +69,7 @@ export function AsyncFormSelect(props: IProps) {
       setDebounceSearch(search);
     },
     700,
-    [search]
+    [search],
   );
 
   if (fullData.error || selectOptions.error) {

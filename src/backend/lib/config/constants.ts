@@ -19,11 +19,11 @@ const tokenValidations = (value: unknown, label: string) => {
 const optionsValidation = (
   value: unknown,
   label: string,
-  options: string[]
+  options: string[],
 ) => {
   if (!options.includes(value as ConfigAdaptorTypes)) {
     throw new Error(
-      `Invalid ${label} name provided '${value}'. Valid values are ${options}`
+      `Invalid ${label} name provided '${value}'. Valid values are ${options}`,
     );
   }
 };
@@ -43,7 +43,7 @@ export const ConfigBag: Record<ConfigKeys, IConfigBag> = {
       optionsValidation(
         value,
         "Config Adaptor",
-        Object.values(ConfigAdaptorTypes)
+        Object.values(ConfigAdaptorTypes),
       );
     },
   },
@@ -55,7 +55,7 @@ export const ConfigBag: Record<ConfigKeys, IConfigBag> = {
       optionsValidation(
         value,
         "Cache Adaptor",
-        Object.values(CacheAdaptorTypes)
+        Object.values(CacheAdaptorTypes),
       ),
   },
   CONFIG_ADAPTOR_CONNECTION_STRING: {

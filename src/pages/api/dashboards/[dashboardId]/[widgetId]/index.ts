@@ -11,7 +11,7 @@ export default requestHandler(
       ]);
       return await dashboardWidgetsApiService.updateWidget(
         validatedRequest.requestQuery,
-        validatedRequest.requestBody
+        validatedRequest.requestBody,
       );
     },
     DELETE: async (getValidatedRequest) => {
@@ -19,7 +19,7 @@ export default requestHandler(
         { _type: "requestQueries", options: ["widgetId", "dashboardId"] },
       ]);
       return await dashboardWidgetsApiService.removeWidget(
-        validatedRequest.requestQueries
+        validatedRequest.requestQueries,
       );
     },
   },
@@ -31,5 +31,5 @@ export default requestHandler(
       _type: "canUser",
       body: UserPermissions.CAN_MANAGE_DASHBOARD,
     },
-  ]
+  ],
 );

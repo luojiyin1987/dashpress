@@ -24,7 +24,7 @@ describe("/api/error/handling", () => {
         {
           _type: "guest",
         },
-      ]
+      ],
     )(req, res);
 
     expect(res._getStatusCode()).toBe(400);
@@ -57,7 +57,7 @@ describe("/api/error/handling", () => {
         {
           _type: "guest",
         },
-      ]
+      ],
     )(req, res);
 
     expect(res._getStatusCode()).toBe(404);
@@ -87,7 +87,7 @@ describe("/api/error/handling", () => {
         {
           _type: "guest",
         },
-      ]
+      ],
     )(req, res);
 
     expect(res._getStatusCode()).toBe(401);
@@ -113,7 +113,7 @@ describe("/api/error/handling", () => {
         GET: async () => {
           throw new ForbiddenError(
             "Access to resource is denied",
-            "DEMO_ERROR_CODE"
+            "DEMO_ERROR_CODE",
           );
         },
       },
@@ -121,7 +121,7 @@ describe("/api/error/handling", () => {
         {
           _type: "guest",
         },
-      ]
+      ],
     )(req, res);
 
     expect(res._getStatusCode()).toBe(403);
@@ -152,7 +152,7 @@ describe("/api/error/handling", () => {
         {
           _type: "guest",
         },
-      ]
+      ],
     )(req, res);
 
     expect(res._getStatusCode()).toBe(500);

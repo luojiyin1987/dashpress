@@ -14,8 +14,7 @@ import { DEFAULT_SYSTEM_SETTINGS } from "./system";
 import type { IEntityCrudSettings } from "./types";
 
 export type AppConfigurationKeys =
-  | BaseAppConfigurationKeys
-  | PortalAppConfigurationKeys;
+  BaseAppConfigurationKeys | PortalAppConfigurationKeys;
 
 export const APP_CONFIGURATION_CONFIG = {
   ...PORTAL_APP_CONFIGURATION_CONFIG,
@@ -206,4 +205,4 @@ export const APP_CONFIGURATION_CONFIG = {
 };
 
 export type AppConfigurationValueType<T extends AppConfigurationKeys> =
-  typeof APP_CONFIGURATION_CONFIG[T]["defaultValue"];
+  (typeof APP_CONFIGURATION_CONFIG)[T]["defaultValue"];

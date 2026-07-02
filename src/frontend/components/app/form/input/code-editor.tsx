@@ -42,7 +42,7 @@ export function FormCodeEditor(formInput: IFormCodeEditor) {
           {
             "bg-soft": disabled,
           },
-          styles.root
+          styles.root,
         )}
       >
         <Editor

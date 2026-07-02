@@ -30,7 +30,7 @@ describe("pages/auth", () => {
   useRouter.mockImplementation(
     USE_ROUTER_PARAMS({
       replaceMock: jest.fn(),
-    })
+    }),
   );
 
   describe("Demo Credentials", () => {
@@ -53,11 +53,11 @@ describe("pages/auth", () => {
       render(
         <TestProviders>
           <SignIn />
-        </TestProviders>
+        </TestProviders>,
       );
 
       expect(
-        screen.queryByLabelText("Demo App Credentials")
+        screen.queryByLabelText("Demo App Credentials"),
       ).not.toBeInTheDocument();
     });
 
@@ -66,11 +66,11 @@ describe("pages/auth", () => {
       render(
         <TestProviders>
           <SignIn />
-        </TestProviders>
+        </TestProviders>,
       );
 
       expect(
-        await screen.findByLabelText("Demo App Credentials")
+        await screen.findByLabelText("Demo App Credentials"),
       ).toHaveTextContent("Username is rootPassword is password");
     });
   });
@@ -81,7 +81,7 @@ describe("pages/auth", () => {
     render(
       <TestProviders>
         <SignIn />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await waitFor(() => {
@@ -98,16 +98,16 @@ describe("pages/auth", () => {
     render(
       <TestProviders>
         <SignIn />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(
       await screen.findByLabelText("Username"),
-      "Invalid Username"
+      "Invalid Username",
     );
     await userEvent.type(
       await screen.findByLabelText("Password"),
-      "Invalid Password"
+      "Invalid Password",
     );
 
     await userEvent.click(screen.getByRole("button", { name: "Sign In" }));
@@ -123,7 +123,7 @@ describe("pages/auth", () => {
     render(
       <TestProviders>
         <SignIn />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(await screen.findByLabelText("Username"), "user");
@@ -132,7 +132,7 @@ describe("pages/auth", () => {
     await userEvent.click(screen.getByRole("button", { name: "Sign In" }));
 
     expect(localStorage.getItem(AuthActions.JWT_TOKEN_STORAGE_KEY)).toBe(
-      "some valid jwt token"
+      "some valid jwt token",
     );
     await waitFor(() => {
       expect(window.location.replace).toHaveBeenCalledWith("/");

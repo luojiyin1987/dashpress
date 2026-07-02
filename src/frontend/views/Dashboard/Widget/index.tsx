@@ -15,12 +15,12 @@ interface IProps {
 export const DashboardWidget = forwardRef<HTMLDivElement, IProps>(
   function DashboardWidgetCmp({ config, setting }, ref) {
     const widgetRelativeDate = useDashboardWidgetRelativeDateStore(
-      (store) => store.widgetRelativeDate
+      (store) => store.widgetRelativeDate,
     );
 
     const data = useDasboardWidgetScriptData(
       config.id,
-      widgetRelativeDate[config.id]
+      widgetRelativeDate[config.id],
     );
 
     return (
@@ -31,5 +31,5 @@ export const DashboardWidget = forwardRef<HTMLDivElement, IProps>(
         data={data}
       />
     );
-  }
+  },
 );

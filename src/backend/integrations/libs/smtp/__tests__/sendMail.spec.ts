@@ -22,7 +22,7 @@ describe("SMTP => SEND_MAIL", () => {
         body: "<p>some-body</p>",
         senderEmail: "some-email",
         senderName: "some-name",
-      }
+      },
     );
 
     expect(sendMailJestFn).toHaveBeenCalledWith({

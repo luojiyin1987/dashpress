@@ -95,7 +95,7 @@ export const SystemIcons = {
 export type SystemIconsKeys = keyof typeof SystemIcons | "none";
 
 export const SystemIconsList = typescriptSafeObjectDotKeys(SystemIcons).sort(
-  (a, b) => a.localeCompare(b)
+  (a, b) => a.localeCompare(b),
 ) as unknown as SystemIconsKeys[];
 
 export const systemIconToSVG = (icon: string, strokeWidth = 2) => {

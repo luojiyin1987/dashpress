@@ -30,7 +30,7 @@ describe("AppLayout", () => {
     render(
       <TestProviders>
         <AppLayout>Foo Content</AppLayout>
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.getByText("Foo Content")).toBeInTheDocument();
@@ -52,11 +52,11 @@ describe("AppLayout", () => {
       render(
         <TestProviders>
           <AppLayout>Foo</AppLayout>
-        </TestProviders>
+        </TestProviders>,
       );
 
       expect(
-        screen.queryByRole("link", { name: "Star us on Github" })
+        screen.queryByRole("link", { name: "Star us on Github" }),
       ).not.toBeInTheDocument();
     });
 
@@ -67,11 +67,11 @@ describe("AppLayout", () => {
       render(
         <TestProviders>
           <AppLayout>Foo</AppLayout>
-        </TestProviders>
+        </TestProviders>,
       );
 
       expect(
-        await screen.findByRole("link", { name: "Star us on Github" })
+        await screen.findByRole("link", { name: "Star us on Github" }),
       ).toHaveAttribute("href", "https://github.com/dashpresshq/dashpress");
     });
   });
@@ -85,25 +85,25 @@ describe("AppLayout", () => {
       expect(screen.getByLabelText("Toggle Profile Menu")).toBeInTheDocument();
       expect(await screen.findByText("Hi, Root User")).toBeInTheDocument();
       expect(
-        await screen.findByRole("link", { name: "Menu Item 1" })
+        await screen.findByRole("link", { name: "Menu Item 1" }),
       ).toBeInTheDocument();
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Toggle Side Bar" })
+        screen.getByRole("button", { name: "Toggle Side Bar" }),
       );
 
       expect(screen.getByAltText("small logo")).toBeInTheDocument();
       expect(screen.queryByAltText("full logo")).not.toBeInTheDocument();
       expect(
-        screen.queryByLabelText("Toggle Profile Menu")
+        screen.queryByLabelText("Toggle Profile Menu"),
       ).not.toBeInTheDocument();
       expect(screen.queryByText("Hi, Root User")).not.toBeInTheDocument();
       expect(
-        screen.queryByRole("link", { name: "Menu Item 1" })
+        screen.queryByRole("link", { name: "Menu Item 1" }),
       ).not.toBeInTheDocument();
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Toggle Side Bar" })
+        screen.getByRole("button", { name: "Toggle Side Bar" }),
       );
 
       expect(screen.getByAltText("full logo")).toBeInTheDocument();
@@ -111,7 +111,7 @@ describe("AppLayout", () => {
       expect(screen.getByLabelText("Toggle Profile Menu")).toBeInTheDocument();
       expect(screen.getByText("Hi, Root User")).toBeInTheDocument();
       expect(
-        screen.getByRole("link", { name: "Menu Item 1" })
+        screen.getByRole("link", { name: "Menu Item 1" }),
       ).toBeInTheDocument();
     });
 
@@ -119,11 +119,11 @@ describe("AppLayout", () => {
       render(<TestProviders>{getAppLayout(<p>Foo</p>)}</TestProviders>);
 
       await userEvent.click(
-        await screen.findByLabelText("Toggle Profile Menu")
+        await screen.findByLabelText("Toggle Profile Menu"),
       );
 
       expect(
-        await screen.findByRole("option", { name: "My Account" })
+        await screen.findByRole("option", { name: "My Account" }),
       ).toHaveAttribute("href", "/account/profile");
     });
   });

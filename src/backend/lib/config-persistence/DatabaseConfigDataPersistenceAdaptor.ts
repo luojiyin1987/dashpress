@@ -10,7 +10,7 @@ import type { ConfigDomain } from "./types";
 
 const CONFIG_TABLE_NAME = CONFIG_TABLE_PREFIX("config");
 export class DatabaseConfigDataPersistenceAdaptor<
-  T
+  T,
 > extends AbstractConfigDataPersistenceService<T> {
   static _dbInstance: Knex | null = null;
 
@@ -25,13 +25,13 @@ export class DatabaseConfigDataPersistenceAdaptor<
 
     DatabaseConfigDataPersistenceAdaptor._dbInstance = await getDbConnection(
       this._configApiService.getConfigValue(
-        ConfigKeys.CONFIG_ADAPTOR_CONNECTION_STRING
-      )
+        ConfigKeys.CONFIG_ADAPTOR_CONNECTION_STRING,
+      ),
     );
 
     if (
       !(await DatabaseConfigDataPersistenceAdaptor._dbInstance.schema.hasTable(
-        CONFIG_TABLE_NAME
+        CONFIG_TABLE_NAME,
       ))
     ) {
       await DatabaseConfigDataPersistenceAdaptor._dbInstance.schema.createTableIfNotExists(
@@ -52,7 +52,7 @@ export class DatabaseConfigDataPersistenceAdaptor<
           table.string("updated_by");
 
           table.unique(["domain", "key"]);
-        }
+        },
       );
     }
 
@@ -60,7 +60,9 @@ export class DatabaseConfigDataPersistenceAdaptor<
   }
 
   async _resetToEmpty() {
-    await (await this.getDbInstance())(CONFIG_TABLE_NAME)
+    await (
+      await this.getDbInstance()
+    )(CONFIG_TABLE_NAME)
       .where("domain", "=", this._configDomain)
       .del();
   }
@@ -75,7 +77,7 @@ export class DatabaseConfigDataPersistenceAdaptor<
     const items = await query;
 
     return Object.fromEntries(
-      items.map(({ value, key }) => [key, JSON.parse(value)])
+      items.map(({ value, key }) => [key, JSON.parse(value)]),
     );
   }
 
@@ -84,14 +86,16 @@ export class DatabaseConfigDataPersistenceAdaptor<
   }
 
   async getAllItemsIn(itemIds: string[]) {
-    const items = await (await this.getDbInstance())
+    const items = await (
+      await this.getDbInstance()
+    )
       .select(["value", "key"])
       .whereIn("key", itemIds)
       .where("domain", "=", this._configDomain)
       .from(CONFIG_TABLE_NAME);
 
     return Object.fromEntries(
-      items.map(({ key, value }) => [key, JSON.parse(value)])
+      items.map(({ key, value }) => [key, JSON.parse(value)]),
     );
   }
 
@@ -113,7 +117,9 @@ export class DatabaseConfigDataPersistenceAdaptor<
 
   async getItemLastUpdated(key: string) {
     try {
-      const queryResponse = await (await this.getDbInstance())
+      const queryResponse = await (
+        await this.getDbInstance()
+      )
         .table(CONFIG_TABLE_NAME)
         .select(["updated_at"])
         .where({ key })
@@ -156,7 +162,9 @@ export class DatabaseConfigDataPersistenceAdaptor<
   }
 
   async _removeItem(key: string): Promise<void> {
-    await (await this.getDbInstance())(CONFIG_TABLE_NAME)
+    await (
+      await this.getDbInstance()
+    )(CONFIG_TABLE_NAME)
       .where("domain", "=", this._configDomain)
       .where({ key })
       .del();
@@ -172,7 +180,7 @@ export class DatabaseConfigDataPersistenceAdaptor<
         value: JSON.stringify(value),
         created_at: new Date(),
         updated_at: new Date(),
-      }))
+      })),
     );
   }
 }

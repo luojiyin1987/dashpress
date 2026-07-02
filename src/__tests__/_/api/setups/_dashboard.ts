@@ -32,7 +32,7 @@ const TEST_DASHBOARDS: Array<IWidgetConfig> = [
 ];
 
 export const setupDashboardTestData = async (
-  testDashboard: IWidgetConfig[] = TEST_DASHBOARDS
+  testDashboard: IWidgetConfig[] = TEST_DASHBOARDS,
 ) => {
   const configPersistenceService =
     createConfigDomainPersistenceService<IWidgetConfig>("dashboard-widgets");
@@ -50,6 +50,6 @@ export const setupDashboardTestData = async (
     HOME_DASHBOARD_KEY,
     testDashboard
       .filter(({ id }) => id !== "not-in-dashboard")
-      .map(({ id }) => id)
+      .map(({ id }) => id),
   );
 };

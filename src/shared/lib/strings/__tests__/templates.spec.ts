@@ -6,13 +6,13 @@ describe("Template service", () => {
       compileTemplateString("{{ name }} is {{ age }}", {
         name: "John",
         age: 23,
-      })
+      }),
     ).toEqual("John is 23");
     expect(
       compileTemplateString("{ name } is {{ age }}", {
         name: "John",
         age: 23,
-      })
+      }),
     ).toEqual("{ name } is 23");
   });
 
@@ -20,7 +20,7 @@ describe("Template service", () => {
     expect(
       compileTemplateString("{ name } is {{ age }}", {
         name: "John",
-      })
+      }),
     ).toEqual("{ name } is ");
   });
 
@@ -28,7 +28,7 @@ describe("Template service", () => {
     expect(
       compileTemplateString("{{ person.name }}", {
         person: { name: "John" },
-      })
+      }),
     ).toEqual("John");
   });
 
@@ -36,9 +36,9 @@ describe("Template service", () => {
     expect(
       compileTemplateString(undefined, {
         person: { name: "John" },
-      })
+      }),
     ).toBe(
-      'Invalid template! Template should be a "string" but "undefined" was given as the first argument for mustache#render(template, view, partials)'
+      'Invalid template! Template should be a "string" but "undefined" was given as the first argument for mustache#render(template, view, partials)',
     );
   });
 });

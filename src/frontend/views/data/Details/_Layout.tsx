@@ -61,14 +61,14 @@ export function DetailsLayout({
 
   const getEntitiesDictionPlurals = useEntityDictionPlurals(
     relatedEntities,
-    "name"
+    "name",
   );
 
   const relatedEntitiesMap = Object.fromEntries(
     referenceFields.data.map((relatedEntity) => [
       relatedEntity.table,
       relatedEntity,
-    ])
+    ]),
   );
   const relatedEntitiesCounts = useEntityReferenceCount(
     relatedEntities
@@ -77,7 +77,7 @@ export function DetailsLayout({
     {
       entity,
       entityId,
-    }
+    },
   );
 
   const listItems = [
@@ -119,7 +119,7 @@ export function DetailsLayout({
                   menuItem.referencelabel ||
                   getEntitiesDictionPlurals(
                     menuItem.name,
-                    relatedEntitiesMap[menuItem.name].type === "toOne"
+                    relatedEntitiesMap[menuItem.name].type === "toOne",
                   );
                 if (menuItem.name === DETAILS_LAYOUT_KEY) {
                   const props: IMenuActionItem = {
@@ -135,7 +135,7 @@ export function DetailsLayout({
                   relatedEntitiesMap[menuItem.name]?.type || "toOne";
                 const entityCount = getEntitiesRelationsCount(
                   entityType,
-                  relatedEntitiesCounts.data[menuItem.name]
+                  relatedEntitiesCounts.data[menuItem.name],
                 );
 
                 const props: IMenuActionItem = {
@@ -147,7 +147,7 @@ export function DetailsLayout({
                     entity,
                     entityId,
                     menuItem.name,
-                    entityType === "toOne" ? "one" : "many"
+                    entityType === "toOne" ? "one" : "many",
                   ),
                 };
 

@@ -41,7 +41,7 @@ export function FormSelect(formInput: IFormSelect) {
         isLoading={isLoading}
         options={selectData}
         placeholder={fakeMessageDescriptor(
-          `--- ${_(msg`Select ${_(formLabel)}`)} ---`
+          `--- ${_(msg`Select ${_(formLabel)}`)} ---`,
         )}
         disabled={disabled}
         disabledOptions={disabledOptions}

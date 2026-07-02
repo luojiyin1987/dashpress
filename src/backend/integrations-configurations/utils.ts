@@ -4,7 +4,7 @@ import { appConstantsApiService } from "./services/env-variable.service";
 
 export const getAppCredentialsAndConstants = async () => {
   const appConstants = Object.fromEntries(
-    (await appConstantsApiService.list()).map(({ key, value }) => [key, value])
+    (await appConstantsApiService.list()).map(({ key, value }) => [key, value]),
   );
 
   const credentials: Record<string, string> = Object.fromEntries(
@@ -14,8 +14,8 @@ export const getAppCredentialsAndConstants = async () => {
         .map(async ({ key, value }) => [
           key,
           await credentialsApiService.processDataAfterFetch(value),
-        ])
-    )
+        ]),
+    ),
   );
 
   return {

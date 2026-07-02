@@ -36,15 +36,15 @@ export const dashboardApiHandlers = [
     const widgetId = req.url.searchParams.get("widgetId");
     return res(
       ctx.json(
-        JSON.parse(DASHBOARD_WIDGETS.find(({ id }) => id === widgetId).script)
-      )
+        JSON.parse(DASHBOARD_WIDGETS.find(({ id }) => id === widgetId).script),
+      ),
     );
   }),
   rest.get(
     BASE_TEST_URL("/api/dashboards/:dashboardId"),
     async (_, res, ctx) => {
       return res(ctx.json(DASHBOARD_WIDGETS));
-    }
+    },
   ),
   rest.post(
     BASE_TEST_URL("/api/dashboards/:dashboardId"),
@@ -61,7 +61,7 @@ export const dashboardApiHandlers = [
         return res(ctx.status(204));
       }
       return res(ctx.status(500));
-    }
+    },
   ),
   rest.patch(
     BASE_TEST_URL("/api/dashboards/:dashboardId/:widgetId"),
@@ -75,33 +75,33 @@ export const dashboardApiHandlers = [
         ].includes(JSON.stringify(requestBody))
       ) {
         const index = DASHBOARD_WIDGETS.findIndex(
-          ({ id }) => id === req.params.widgetId
+          ({ id }) => id === req.params.widgetId,
         );
         DASHBOARD_WIDGETS[index] = requestBody;
         return res(ctx.status(204));
       }
       return res(ctx.status(500));
-    }
+    },
   ),
   rest.patch(
     BASE_TEST_URL("/api/dashboards/:dashboardId"),
     async (req, res, ctx) => {
       DASHBOARD_WIDGETS = MutationHelpers.sortOrder(
         DASHBOARD_WIDGETS,
-        await req.json()
+        await req.json(),
       );
       return res(ctx.status(204));
-    }
+    },
   ),
   rest.delete(
     BASE_TEST_URL("/api/dashboards/:dashboardId/:widgetId"),
     async (req, res, ctx) => {
       DASHBOARD_WIDGETS.splice(
         DASHBOARD_WIDGETS.findIndex(({ id }) => id === req.params.widgetId),
-        1
+        1,
       );
 
       return res(ctx.status(204));
-    }
+    },
   ),
 ];

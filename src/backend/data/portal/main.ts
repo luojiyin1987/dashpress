@@ -104,7 +104,7 @@ export class PortalQueryImplementation {
 
   static async query(
     queryFilter: QueryFilterSchema,
-    entity: string
+    entity: string,
   ): Promise<QueryFilterSchema> {
     noop(entity);
     return queryFilter;

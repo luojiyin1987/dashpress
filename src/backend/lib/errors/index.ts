@@ -14,7 +14,7 @@ export class CustomError extends Error {
     code: number,
     name: string,
     message = "An Error Occurred",
-    errorCode: string = undefined
+    errorCode: string = undefined,
   ) {
     super(message);
     this.code = code;

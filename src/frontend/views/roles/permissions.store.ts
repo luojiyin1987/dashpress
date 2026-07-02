@@ -31,7 +31,7 @@ export function useDeleteRolePermissionMutation() {
       await ApiRequest.DELETE(
         `${ADMIN_ROLE_PERMISSION_ENDPOINT(roleId)}${objectToQueryParams({
           permissions,
-        })}`
+        })}`,
       );
     },
     dataQueryPath: ADMIN_ROLE_PERMISSION_ENDPOINT(roleId),

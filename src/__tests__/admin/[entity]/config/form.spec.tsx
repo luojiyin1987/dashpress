@@ -17,7 +17,7 @@ describe("pages/admin/[entity]/config/form", () => {
       query: {
         entity: "entity-1",
       },
-    })
+    }),
   );
 
   describe.each([
@@ -38,15 +38,15 @@ describe("pages/admin/[entity]/config/form", () => {
       render(
         <TestProviders>
           <EntityFormExtensionSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(await screen.findByRole("tab", { name: label }));
 
       expect(
         await within(
-          screen.getByRole("tabpanel", { name: label })
-        ).findByLabelText(`Script`)
+          screen.getByRole("tabpanel", { name: label }),
+        ).findByLabelText(`Script`),
       ).toHaveValue(section);
     });
 
@@ -54,7 +54,7 @@ describe("pages/admin/[entity]/config/form", () => {
       render(
         <TestProviders>
           <EntityFormExtensionSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(await screen.findByRole("tab", { name: label }));
@@ -65,11 +65,11 @@ describe("pages/admin/[entity]/config/form", () => {
 
       await userEvent.type(
         within(currentTab).getByLabelText("Script"),
-        validInput
+        validInput,
       );
 
       await userEvent.click(
-        within(currentTab).getByRole("button", { name: "Save Form Scripts" })
+        within(currentTab).getByRole("button", { name: "Save Form Scripts" }),
       );
 
       expect(await getToastMessage()).toBe("Form Scripts Saved Successfully");
@@ -81,7 +81,7 @@ describe("pages/admin/[entity]/config/form", () => {
       render(
         <TestProviders>
           <EntityFormExtensionSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(await screen.findByRole("tab", { name: label }));
@@ -89,7 +89,7 @@ describe("pages/admin/[entity]/config/form", () => {
       const currentTab = screen.getByRole("tabpanel", { name: label });
 
       expect(within(currentTab).getByLabelText("Script")).toHaveValue(
-        `${valid}`
+        `${valid}`,
       );
     });
 
@@ -97,7 +97,7 @@ describe("pages/admin/[entity]/config/form", () => {
       render(
         <TestProviders>
           <EntityFormExtensionSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(await screen.findByRole("tab", { name: label }));
@@ -106,15 +106,15 @@ describe("pages/admin/[entity]/config/form", () => {
 
       await userEvent.type(
         within(currentTab).getByLabelText("Script"),
-        "Updated"
+        "Updated",
       );
 
       await userEvent.click(
-        within(currentTab).getByRole("button", { name: "Save Form Scripts" })
+        within(currentTab).getByRole("button", { name: "Save Form Scripts" }),
       );
 
       expect(await getToastMessage()).toBe(
-        "Could not parse Javascript•Expression: \\n•JS-Error: SyntaxError: Unexpected identifier"
+        "Could not parse Javascript•Expression: \\n•JS-Error: SyntaxError: Unexpected identifier",
       );
 
       await closeAllToasts();
@@ -124,7 +124,7 @@ describe("pages/admin/[entity]/config/form", () => {
       render(
         <TestProviders>
           <EntityFormExtensionSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(await screen.findByRole("tab", { name: label }));
@@ -132,7 +132,7 @@ describe("pages/admin/[entity]/config/form", () => {
       const currentTab = screen.getByRole("tabpanel", { name: label });
 
       expect(within(currentTab).getByLabelText("Script")).toHaveValue(
-        `${valid}`
+        `${valid}`,
       );
     });
 
@@ -140,7 +140,7 @@ describe("pages/admin/[entity]/config/form", () => {
       render(
         <TestProviders>
           <EntityFormExtensionSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(await screen.findByRole("tab", { name: label }));
@@ -150,7 +150,7 @@ describe("pages/admin/[entity]/config/form", () => {
       await userEvent.clear(within(currentTab).getByLabelText("Script"));
 
       await userEvent.click(
-        within(currentTab).getByRole("button", { name: "Save Form Scripts" })
+        within(currentTab).getByRole("button", { name: "Save Form Scripts" }),
       );
 
       expect(await getToastMessage()).toBe("Form Scripts Saved Successfully");
@@ -160,7 +160,7 @@ describe("pages/admin/[entity]/config/form", () => {
       render(
         <TestProviders>
           <EntityFormExtensionSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(await screen.findByRole("tab", { name: label }));

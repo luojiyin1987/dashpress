@@ -52,15 +52,15 @@ describe("splitSummaryCardWidgetDataToRelativeCount", () => {
 
   it("should split double data arrays correctly", () => {
     expect(
-      splitSummaryCardWidgetDataToRelativeCount([{ count: 5 }, 8])
+      splitSummaryCardWidgetDataToRelativeCount([{ count: 5 }, 8]),
     ).toEqual([5, 8]);
 
     expect(
-      splitSummaryCardWidgetDataToRelativeCount([5, { count: 8 }])
+      splitSummaryCardWidgetDataToRelativeCount([5, { count: 8 }]),
     ).toEqual([5, 8]);
 
     expect(
-      splitSummaryCardWidgetDataToRelativeCount([{ count: 5 }, { count: 8 }])
+      splitSummaryCardWidgetDataToRelativeCount([{ count: 5 }, { count: 8 }]),
     ).toEqual([5, 8]);
 
     expect(splitSummaryCardWidgetDataToRelativeCount([5, 8])).toEqual([5, 8]);

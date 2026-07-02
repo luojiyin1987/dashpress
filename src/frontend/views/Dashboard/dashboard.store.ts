@@ -16,7 +16,7 @@ const DASHBOARD_ENDPOINT = (dashboardId: string) =>
 
 const DASHBOARD_WIDGET_SCRIPT_ENDPOINT = (
   widgetId: string,
-  relativeDate = DASHBOARD_RELATIVE_DAYS[0].value
+  relativeDate = DASHBOARD_RELATIVE_DAYS[0].value,
 ) => {
   const base = `/api/dashboards/script?widgetId=${widgetId}`;
 
@@ -36,14 +36,14 @@ export const useDashboardWidgets = (dashboardId: string) => {
 
 export const useDasboardWidgetScriptData = (
   widgetId: string,
-  relativeDate: string
+  relativeDate: string,
 ) => {
   return useApi<unknown>(
     DASHBOARD_WIDGET_SCRIPT_ENDPOINT(widgetId, relativeDate),
     {
       errorMessage: CRUD_CONFIG_NOT_FOUND(`Script`),
       defaultData: undefined,
-    }
+    },
   );
 };
 
@@ -62,7 +62,7 @@ export function useCreateDashboardWidgetMutation(dashboardId: string) {
 
 export function useUpdateDashboardWidgetMutation(
   dashboardId: string,
-  widgetId: string
+  widgetId: string,
 ) {
   const domainMessages = useDomainMessages(LANG_DOMAINS.DASHBOARD.WIDGETS);
 
@@ -70,7 +70,7 @@ export function useUpdateDashboardWidgetMutation(
     mutationFn: async (widget) => {
       await ApiRequest.PATCH(
         `${DASHBOARD_ENDPOINT(dashboardId)}/${widget.id}`,
-        widget
+        widget,
       );
     },
     dataQueryPath: DASHBOARD_ENDPOINT(dashboardId),

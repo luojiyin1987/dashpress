@@ -59,7 +59,7 @@ export function useEntityCrudConfig(entity: string) {
 export function useEntityFieldLabels(entity: string) {
   const entityFieldLabelsMap = useEntityConfiguration(
     "entity_columns_labels",
-    entity
+    entity,
   );
 
   return useCallback(
@@ -71,16 +71,16 @@ export function useEntityFieldLabels(entity: string) {
         entityFieldLabelsMap.data?.[fieldName] || userFriendlyCase(fieldName)
       );
     },
-    [entityFieldLabelsMap]
+    [entityFieldLabelsMap],
   );
 }
 
 export function useProcessedEntityFieldTypes(
-  entity: string
+  entity: string,
 ): Record<string, FormFieldTypes> {
   const entityFieldTypesMap = useEntityConfiguration(
     "entity_columns_types",
-    entity
+    entity,
   );
 
   const entityFields = useEntityFields(entity);
@@ -99,7 +99,7 @@ export function useProcessedEntityFieldTypes(
 export function useEntityFieldValidations(entity: string) {
   const entityValidationsMap = useEntityConfiguration(
     "entity_validations",
-    entity
+    entity,
   );
   const processedEntityFieldTypes = useProcessedEntityFieldTypes(entity);
   const entityFields = useEntityFields(entity);
@@ -123,11 +123,11 @@ export function useEntityFieldValidations(entity: string) {
         preSelectedValidation.map((validation) => [
           validation.validationType,
           validation,
-        ])
+        ]),
       );
 
       const replaceWithCustomErrorMessages = (
-        validations: IFieldValidationItem[]
+        validations: IFieldValidationItem[],
       ): IFieldValidationItem[] => {
         return validations.map((validation) => {
           return {
@@ -146,23 +146,23 @@ export function useEntityFieldValidations(entity: string) {
           [
             ...replaceWithCustomErrorMessages(
               getFieldTypeBoundedValidations(
-                processedEntityFieldTypes[entityField.name]
-              )
+                processedEntityFieldTypes[entityField.name],
+              ),
             ),
             ...replaceWithCustomErrorMessages(
-              guessEntityValidations(entityField)
+              guessEntityValidations(entityField),
             ),
             ...preSelectedValidation,
           ],
-          uniqKey
+          uniqKey,
         ),
       ];
-    })
+    }),
   );
 }
 
 export function useEntityFieldSelections(
-  entity: string
+  entity: string,
 ): Record<string, IColorableSelection[]> {
   const entitySelections = useEntityConfiguration("entity_selections", entity);
   const processedEntityFieldTypes = useProcessedEntityFieldTypes(entity);
@@ -180,7 +180,7 @@ export function useEntityFieldSelections(
   return getEntitySelections(
     entityFields.data,
     entitySelections.data,
-    processedEntityFieldTypes
+    processedEntityFieldTypes,
   );
 }
 
@@ -195,23 +195,23 @@ export function useEntityCrudSettings(entity: string) {
 
 const filterOutHiddenScalarColumns = (
   scalarFields: IEntityField[],
-  hiddenColumns: string[]
+  hiddenColumns: string[],
 ) => scalarFields.filter(({ name }) => !hiddenColumns.includes(name));
 
 export const useEntityCrudFields = (
   entity: string,
-  crudKey: DataCrudKeys
+  crudKey: DataCrudKeys,
 ): DataStateKeys<IEntityField[]> => {
   const entityFields = useEntityFields(entity);
 
   const entityHiddenList = useEntityConfiguration(
     CRUD_HIDDEN_KEY_CONFIG[crudKey],
-    entity
+    entity,
   );
 
   const entityOrderList = useEntityConfiguration(
     ORDER_FIELD_CONFIG[crudKey],
-    entity
+    entity,
   );
 
   const portalHiddenEntities = usePortalHiddenEntityColumns(entity, crudKey);

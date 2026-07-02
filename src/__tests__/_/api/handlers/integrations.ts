@@ -47,7 +47,7 @@ const update =
   async (
     req: RestRequest<DefaultBodyType, PathParams<string>>,
     res: ResponseComposition<DefaultBodyType>,
-    ctx: RestContext
+    ctx: RestContext,
   ) => {
     const key = req.params.key as string;
     const { value } = await req.json();
@@ -67,13 +67,13 @@ const delete$1 =
   async (
     req: RestRequest<DefaultBodyType, PathParams<string>>,
     res: ResponseComposition<DefaultBodyType>,
-    ctx: RestContext
+    ctx: RestContext,
   ) => {
     const key = req.params.key as string;
 
     DATA.splice(
       DATA.findIndex((permission$1) => permission$1.key === key),
-      1
+      1,
     );
 
     return res(ctx.status(204));
@@ -84,7 +84,7 @@ export const integrationsApiHandlers = [
     BASE_TEST_URL("/api/integrations/constants"),
     async (_, res, ctx) => {
       return res(ctx.json(CONSTANTS));
-    }
+    },
   ),
   rest.get(
     BASE_TEST_URL("/api/integrations/credentials"),
@@ -94,10 +94,10 @@ export const integrationsApiHandlers = [
           CREDENTIALS.map((credential) => ({
             ...credential,
             value: "**********",
-          }))
-        )
+          })),
+        ),
       );
-    }
+    },
   ),
   rest.post(
     BASE_TEST_URL("/api/integrations/credentials/reveal"),
@@ -107,22 +107,22 @@ export const integrationsApiHandlers = [
         return res(ctx.json(CREDENTIALS));
       }
       return res(ctx.status(400), ctx.json({ message: "Invalid Password" }));
-    }
+    },
   ),
   rest.put(
     BASE_TEST_URL("/api/integrations/constants/:key"),
-    update(CONSTANTS)
+    update(CONSTANTS),
   ),
   rest.put(
     BASE_TEST_URL("/api/integrations/credentials/:key"),
-    update(CREDENTIALS)
+    update(CREDENTIALS),
   ),
   rest.delete(
     BASE_TEST_URL("/api/integrations/constants/:key"),
-    delete$1(CONSTANTS)
+    delete$1(CONSTANTS),
   ),
   rest.delete(
     BASE_TEST_URL("/api/integrations/credentials/:key"),
-    delete$1(CREDENTIALS)
+    delete$1(CREDENTIALS),
   ),
 ];

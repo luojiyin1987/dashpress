@@ -24,7 +24,7 @@ export function RenderCode({ input }: IProps) {
               typeof input === "string"
                 ? input
                 : JSON.stringify(input || {}, null, 2),
-              languages.javascript
+              languages.javascript,
             ),
           }}
         />

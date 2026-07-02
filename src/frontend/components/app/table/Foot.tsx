@@ -25,7 +25,7 @@ export function TableFoot({ table, dataLength }: IProps) {
                   ? null
                   : flexRender(
                       header.column.columnDef.footer,
-                      header.getContext()
+                      header.getContext(),
                     )}
               </span>
             </TableHead>

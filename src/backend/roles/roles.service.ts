@@ -18,7 +18,7 @@ export interface IRole {
 
 export class RolesApiService {
   constructor(
-    private readonly _rolesPersistenceService: AbstractConfigDataPersistenceService<IRole>
+    private readonly _rolesPersistenceService: AbstractConfigDataPersistenceService<IRole>,
   ) {}
 
   async listRoles(): Promise<string[]> {
@@ -31,9 +31,8 @@ export class RolesApiService {
     if (isSystemRole(roleId)) {
       return [];
     }
-    const { permissions } = await this._rolesPersistenceService.getItemOrFail(
-      roleId
-    );
+    const { permissions } =
+      await this._rolesPersistenceService.getItemOrFail(roleId);
     return permissions;
   }
 
@@ -42,7 +41,7 @@ export class RolesApiService {
       roleId,
       permission,
       await isGranularCheck(),
-      (roleId$1: string) => this.getRolePermissions(roleId$1)
+      (roleId$1: string) => this.getRolePermissions(roleId$1),
     );
   }
 
@@ -50,20 +49,20 @@ export class RolesApiService {
     userRole: string,
     entities: T[],
     entityField: keyof T,
-    applyMeta = META_USER_PERMISSIONS.APPLIED_CAN_ACCESS_ENTITY
+    applyMeta = META_USER_PERMISSIONS.APPLIED_CAN_ACCESS_ENTITY,
   ): Promise<T[]> {
     const entitiesCheck = await Promise.all(
       entities.map(async (entity) => {
         const entityValue = entity[entityField] as unknown as string;
         const permissionCheck = applyMeta(
           entityValue,
-          GranularEntityPermissions.Show
+          GranularEntityPermissions.Show,
         );
         return {
           entity,
           hasAccess: await this.canRoleDoThis(userRole, permissionCheck),
         };
-      })
+      }),
     );
 
     return entitiesCheck
@@ -128,7 +127,7 @@ export class RolesApiService {
     await this._rolesPersistenceService.upsertItem(roleId, {
       ...role,
       permissions: role.permissions.filter(
-        (loopPermission) => loopPermission !== permission
+        (loopPermission) => loopPermission !== permission,
       ),
     });
   }

@@ -20,7 +20,7 @@ export class UsersApiService {
   constructor(
     private readonly _usersPersistenceService: AbstractConfigDataPersistenceService<IAccountUser>,
     private readonly _configurationApiService: ConfigurationApiService,
-    private _rDBMSApiDataService: RDBMSDataApiService
+    private _rDBMSApiDataService: RDBMSDataApiService,
   ) {}
 
   async tryAuthenticate(authCredentials: {
@@ -31,7 +31,7 @@ export class UsersApiService {
       await this.checkUserPassword(authCredentials);
       return await getPortalAuthenticationResponse(
         authCredentials.username,
-        () => this.generateAuthTokenForUsername(authCredentials.username)
+        () => this.generateAuthTokenForUsername(authCredentials.username),
       );
     } catch (error) {
       throw new UnauthorizedError(INVALID_LOGIN_MESSAGE);
@@ -39,11 +39,11 @@ export class UsersApiService {
   }
 
   async generateAuthTokenForUsername(
-    username: string
+    username: string,
   ): Promise<ISuccessfullAuthenticationResponse> {
     return {
       token: await authTokenApiService.sign(
-        await this.getAccountProfile(username)
+        await this.getAccountProfile(username),
       ),
     };
   }
@@ -109,7 +109,7 @@ export class UsersApiService {
     input: {
       oldPassword: string;
       newPassword: string;
-    }
+    },
   ) {
     try {
       await this.checkUserPassword({
@@ -141,10 +141,10 @@ export class UsersApiService {
   }
 
   async getUserDatabaseLinkedInfo(
-    auth: IAccountProfile
+    auth: IAccountProfile,
   ): Promise<IAccountProfile> {
     const databaseLink = await this._configurationApiService.show(
-      "users_to_database_link"
+      "users_to_database_link",
     );
 
     if (!databaseLink.table) {
@@ -158,8 +158,8 @@ export class UsersApiService {
       ["*"],
       this._rDBMSApiDataService.whereEqualQueryFilterSchema(
         databaseLink.field,
-        auth.username
-      )
+        auth.username,
+      ),
     );
 
     return { ...databaseUser, ...auth };
@@ -169,5 +169,5 @@ export class UsersApiService {
 export const usersApiService = new UsersApiService(
   usersPersistenceService,
   configurationApiService,
-  rDBMSDataApiService
+  rDBMSDataApiService,
 );

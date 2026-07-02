@@ -44,7 +44,7 @@ export class ConfigurationApiController {
     }
     if (configBag.requireEntity && !entity) {
       throw new BadRequestError(
-        `Configuration of key '${key}' requires entity`
+        `Configuration of key '${key}' requires entity`,
       );
     }
     return key as AppConfigurationKeys;
@@ -52,5 +52,5 @@ export class ConfigurationApiController {
 }
 
 export const configurationApiController = new ConfigurationApiController(
-  configurationApiService
+  configurationApiService,
 );

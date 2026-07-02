@@ -21,5 +21,5 @@ export const useDashboardWidgetRelativeDateStore = createStore<IStore>(
         };
       });
     },
-  })
+  }),
 );

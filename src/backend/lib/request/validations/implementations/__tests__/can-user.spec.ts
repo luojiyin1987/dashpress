@@ -16,7 +16,7 @@ const handler = requestHandler(
       _type: "canUser",
       body: UserPermissions.CAN_MANAGE_DASHBOARD,
     },
-  ]
+  ],
 );
 
 describe("Request Validations => canUserValidationImpl", () => {
@@ -69,7 +69,7 @@ describe("Request Validations => canUserValidationImpl", () => {
         {
           _type: "canUser",
         },
-      ]
+      ],
     )(req, res);
 
     expect(res._getStatusCode()).toBe(500);
@@ -99,7 +99,7 @@ describe("Request Validations => canUserValidationImpl", () => {
           _type: "canUser",
           body: "some invalid permission",
         },
-      ]
+      ],
     )(req, res);
 
     expect(res._getStatusCode()).toBe(500);

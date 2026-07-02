@@ -6,7 +6,7 @@ import { entitiesApiService } from "./entities.service";
 export class EntitiesApiController {
   constructor(
     private _entitiesApiService: EntitiesApiService,
-    private _configurationApiService: ConfigurationApiService
+    private _configurationApiService: ConfigurationApiService,
   ) {}
 
   async listAllEntityRelations(entity: string): Promise<string[]> {
@@ -16,7 +16,7 @@ export class EntitiesApiController {
     ]);
 
     const allowedEntityRelation = entityRelations.filter(
-      ({ table }) => !disabledEntities.includes(table)
+      ({ table }) => !disabledEntities.includes(table),
     );
 
     return allowedEntityRelation.map(({ table }) => table);
@@ -25,5 +25,5 @@ export class EntitiesApiController {
 
 export const entitiesApiController = new EntitiesApiController(
   entitiesApiService,
-  configurationApiService
+  configurationApiService,
 );

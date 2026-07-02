@@ -24,8 +24,8 @@ export const runValidationError =
             validation.errorMessage ||
               ENTITY_VALIDATION_CONFIG[validation.validationType].message,
             validation.constraint || {},
-            values
-          )
+            values,
+          ),
         );
 
         return [
@@ -34,25 +34,25 @@ export const runValidationError =
             ? compileTemplateString(
                 firstFailedValidation.errorMessage
                   ? replaceWithBrackets(
-                      i18n._(firstFailedValidation.errorMessage)
+                      i18n._(firstFailedValidation.errorMessage),
                     )
                   : replaceWithBrackets(
                       i18n._(
                         ENTITY_VALIDATION_CONFIG[
                           firstFailedValidation.validationType
-                        ].message
-                      )
+                        ].message,
+                      ),
                     ),
                 {
                   name: config.label
                     ? i18n._(config.label)
                     : userFriendlyCase(String(field)),
                   ...firstFailedValidation.constraint,
-                }
+                },
               )
             : undefined,
         ];
-      })
+      }),
     );
     return validations;
   };

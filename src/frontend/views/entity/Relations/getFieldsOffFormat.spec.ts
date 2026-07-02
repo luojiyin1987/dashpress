@@ -13,7 +13,7 @@ describe("getFieldsOffFormat", () => {
       "age",
     ]);
     expect(
-      getFieldsOffFormat("{{ name  }} - {{ age}} / {{ gender }} ")
+      getFieldsOffFormat("{{ name  }} - {{ age}} / {{ gender }} "),
     ).toEqual(["name", "age", "gender"]);
   });
 

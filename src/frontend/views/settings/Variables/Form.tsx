@@ -50,7 +50,7 @@ export function KeyValueForm({
   const isCreate = !initialValues;
 
   const domainMessages = useDomainMessages(
-    INTEGRATIONS_GROUP_CRUD_CONFIG[group].domainDiction
+    INTEGRATIONS_GROUP_CRUD_CONFIG[group].domainDiction,
   );
 
   return (

@@ -18,7 +18,7 @@ export function TableWidget({ data }: IProps) {
       Header: msg`${userFriendlyCase(column)}`,
       accessor: column,
       disableSortBy: true,
-    })
+    }),
   );
 
   return (

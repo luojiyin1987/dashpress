@@ -13,7 +13,7 @@ export default requestHandler({
     ]);
 
     return integrationsApiService.listIntegrationImplementations(
-      validatedRequest.requestQuery
+      validatedRequest.requestQuery,
     );
   },
 });

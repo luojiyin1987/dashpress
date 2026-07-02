@@ -47,7 +47,7 @@ export function EntityRelationsSettings() {
   const entityRelationList = useEntityRelationsList(entity);
   const referenceFields = useEntityReferenceFields(entity);
   const domainMessages = useAppConfigurationDomainMessages(
-    "entity_relations_labels"
+    "entity_relations_labels",
   );
   useSetPageDetails({
     pageTitle: RELATIONSHIP_SETTINGS,
@@ -57,31 +57,31 @@ export function EntityRelationsSettings() {
 
   const entityRelationTemplate = useEntityConfiguration(
     "entity_relation_template",
-    entity
+    entity,
   );
 
   const hiddenEntityRelations = useEntityConfiguration(
     "hidden_entity_relations",
-    entity
+    entity,
   );
 
   const documentationActionButton = useDocumentationActionButton(
-    RELATIONSHIP_SETTINGS
+    RELATIONSHIP_SETTINGS,
   );
 
   const getEntitiesDictionPlurals = useEntityDictionPlurals(
     entityRelationList.data.map((value) => ({ value })),
-    "value"
+    "value",
   );
 
   const entityRelationsLabelsMap = useEntityConfiguration(
     "entity_relations_labels",
-    entity
+    entity,
   );
 
   const upsertEntityRelationTemplateMutation = useUpsertConfigurationMutation(
     "entity_relation_template",
-    entity
+    entity,
   );
 
   const upsertEntityRelationsLabelsMutation = useUpsertConfigurationMutation(
@@ -89,7 +89,7 @@ export function EntityRelationsSettings() {
     entity,
     {
       otherEndpoints: [ENTITY_RELATIONS_ENDPOINT(entity)],
-    }
+    },
   );
 
   const upsertEntityRelationsOrderMutation = useUpsertConfigurationMutation(
@@ -97,12 +97,12 @@ export function EntityRelationsSettings() {
     entity,
     {
       otherEndpoints: [ENTITY_RELATIONS_ENDPOINT(entity)],
-    }
+    },
   );
 
   const entityRelationsOrder = useEntityConfiguration(
     "entity_relations_order",
-    entity
+    entity,
   );
 
   const upsertHideEntityRelationMutation = useUpsertConfigurationMutation(
@@ -110,7 +110,7 @@ export function EntityRelationsSettings() {
     entity,
     {
       otherEndpoints: [ENTITY_RELATIONS_ENDPOINT(entity)],
-    }
+    },
   );
 
   const error =

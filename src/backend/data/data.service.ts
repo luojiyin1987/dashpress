@@ -24,7 +24,7 @@ export class DataApiService implements IDataApiService {
   constructor(
     private _rDBMSApiDataService: RDBMSDataApiService,
     private _entitiesApiService: EntitiesApiService,
-    private _configurationApiService: ConfigurationApiService
+    private _configurationApiService: ConfigurationApiService,
   ) {}
 
   async runOnLoad() {
@@ -39,45 +39,45 @@ export class DataApiService implements IDataApiService {
     entity: string,
     select: string[],
     queryFilter: QueryFilterSchema,
-    paginationFilters: IPaginationFilters
+    paginationFilters: IPaginationFilters,
   ): Promise<Record<string, unknown>[]> {
     return await this.getDataAccessInstance().list(
       entity,
       select,
       await this.appendPersistentQuery(
         entity,
-        await PortalQueryImplementation.query(queryFilter, entity)
+        await PortalQueryImplementation.query(queryFilter, entity),
       ),
-      paginationFilters
+      paginationFilters,
     );
   }
 
   async countData(
     entity: string,
-    queryFilter: QueryFilterSchema
+    queryFilter: QueryFilterSchema,
   ): Promise<number> {
     return await this.getDataAccessInstance().count(
       entity,
       await this.appendPersistentQuery(
         entity,
-        await PortalQueryImplementation.query(queryFilter, entity)
-      )
+        await PortalQueryImplementation.query(queryFilter, entity),
+      ),
     );
   }
 
   async readData<T>(
     entity: string,
     select: string[],
-    queryFilter: QueryFilterSchema
+    queryFilter: QueryFilterSchema,
   ): Promise<T> {
     progammingError(
       "We dont do that here, Please define the fields you want to select",
-      select.length === 0
+      select.length === 0,
     );
     return await this.getDataAccessInstance().read<T>(
       entity,
       select,
-      queryFilter
+      queryFilter,
     );
   }
 
@@ -101,7 +101,7 @@ export class DataApiService implements IDataApiService {
             },
           },
         ],
-      }
+      },
     );
 
     return compileTemplateString(relationshipSettings.format, data);
@@ -110,7 +110,7 @@ export class DataApiService implements IDataApiService {
   async showData(
     entity: string,
     id: string | number,
-    column?: string
+    column?: string,
   ): Promise<Record<string, unknown>> {
     const [fieldsToShow, columnField] = await Promise.all([
       this._entitiesApiService.getAllowedCrudsFieldsToShow(entity, "details"),
@@ -130,12 +130,12 @@ export class DataApiService implements IDataApiService {
             },
           },
         ],
-      })
+      }),
     );
 
     if (!data) {
       throw new NotFoundError(
-        `Entity '${entity}' with '${columnField}' '${id}' does not exist`
+        `Entity '${entity}' with '${columnField}' '${id}' does not exist`,
       );
     }
     return data;
@@ -144,7 +144,7 @@ export class DataApiService implements IDataApiService {
   async create(
     entity: string,
     data: Record<string, unknown>,
-    accountProfile: IAccountProfile
+    accountProfile: IAccountProfile,
   ): Promise<string | number> {
     const [allowedFields, primaryField] = await Promise.all([
       this._entitiesApiService.getAllowedCrudsFieldsToShow(entity, "create"),
@@ -160,7 +160,7 @@ export class DataApiService implements IDataApiService {
     const id = await this.getDataAccessInstance().create(
       entity,
       this.returnOnlyDataThatAreAllowed(data, allowedFields),
-      primaryField
+      primaryField,
     );
 
     await PortalDataHooksService.afterCreate({
@@ -174,7 +174,7 @@ export class DataApiService implements IDataApiService {
       entity,
       DataEventActions.Create,
       async () => await this.showData(entity, id),
-      accountProfile
+      accountProfile,
     );
 
     return id;
@@ -182,7 +182,7 @@ export class DataApiService implements IDataApiService {
 
   async listData(
     entity: string,
-    searchValue?: string
+    searchValue?: string,
   ): Promise<{ value: string; label: string }[]> {
     const [relationshipSettings, primaryField] = await Promise.all([
       this.getRelationshipSettings(entity),
@@ -205,7 +205,7 @@ export class DataApiService implements IDataApiService {
       {
         take: DEFAULT_LIST_LIMIT,
         page: 1,
-      }
+      },
     );
 
     return data.map((datum: Record<string, unknown>) => {
@@ -219,7 +219,7 @@ export class DataApiService implements IDataApiService {
   async tableData(
     entity: string,
     queryFilters: QueryFilterSchema,
-    paginationFilters: IPaginationFilters
+    paginationFilters: IPaginationFilters,
   ): Promise<PaginatedData<Record<string, unknown>>> {
     return makeTableData(
       await Promise.all([
@@ -227,14 +227,14 @@ export class DataApiService implements IDataApiService {
           entity,
           await this._entitiesApiService.getAllowedCrudsFieldsToShow(
             entity,
-            "table"
+            "table",
           ),
           queryFilters,
-          paginationFilters
+          paginationFilters,
         ),
         this.countData(entity, queryFilters),
       ]),
-      paginationFilters
+      paginationFilters,
     );
   }
 
@@ -245,7 +245,7 @@ export class DataApiService implements IDataApiService {
     accountProfile: IAccountProfile,
     options: {
       skipDataEvents?: boolean;
-    } = {}
+    } = {},
   ): Promise<void> {
     const [allowedFields, primaryField, metadataColumns] = await Promise.all([
       this._entitiesApiService.getAllowedCrudsFieldsToShow(entity, "update"),
@@ -262,7 +262,7 @@ export class DataApiService implements IDataApiService {
 
     const valueToUpdate = this.returnOnlyDataThatAreAllowed(
       data,
-      allowedFields
+      allowedFields,
     );
 
     if (allowedFields.includes(metadataColumns.updatedAt)) {
@@ -273,9 +273,9 @@ export class DataApiService implements IDataApiService {
       entity,
       await this.appendPersistentQuery(
         entity,
-        rDBMSDataApiService.whereEqualQueryFilterSchema(primaryField, id)
+        rDBMSDataApiService.whereEqualQueryFilterSchema(primaryField, id),
       ),
-      valueToUpdate
+      valueToUpdate,
     );
 
     await PortalDataHooksService.afterUpdate({
@@ -291,20 +291,20 @@ export class DataApiService implements IDataApiService {
       entity,
       DataEventActions.Update,
       async () => await this.showData(entity, id),
-      accountProfile
+      accountProfile,
     );
   }
 
   async delete(
     entity: string,
     id: string,
-    accountProfile: IAccountProfile
+    accountProfile: IAccountProfile,
   ): Promise<void> {
     await runFormAction(
       entity,
       DataEventActions.Delete,
       async () => await this.showData(entity, id),
-      accountProfile
+      accountProfile,
     );
 
     const beforeData = await PortalDataHooksService.beforeDelete({
@@ -317,8 +317,8 @@ export class DataApiService implements IDataApiService {
       entity,
       this._rDBMSApiDataService.whereEqualQueryFilterSchema(
         await this._entitiesApiService.getEntityPrimaryField(entity),
-        id
-      )
+        id,
+      ),
     );
 
     await PortalQueryImplementation.delete({
@@ -339,11 +339,11 @@ export class DataApiService implements IDataApiService {
 
   private async appendPersistentQuery(
     entity: string,
-    filterSchema: QueryFilterSchema
+    filterSchema: QueryFilterSchema,
   ): Promise<QueryFilterSchema> {
     const persistentFilter = await this._configurationApiService.show(
       "persistent_query",
-      entity
+      entity,
     );
 
     if (persistentFilter.children.length === 0) {
@@ -363,7 +363,7 @@ export class DataApiService implements IDataApiService {
   }> {
     const relationshipSettings = await this._configurationApiService.show(
       "entity_relation_template",
-      entity
+      entity,
     );
 
     if (relationshipSettings.fields.length > 0) {
@@ -391,17 +391,17 @@ export class DataApiService implements IDataApiService {
     await this._configurationApiService.upsert(
       "entity_relation_template",
       configuration,
-      entity
+      entity,
     );
     return configuration;
   }
 
   private returnOnlyDataThatAreAllowed(
     data: Record<string, unknown>,
-    allowedFields: string[]
+    allowedFields: string[],
   ) {
     return Object.fromEntries(
-      allowedFields.map((field) => [field, data[field]])
+      allowedFields.map((field) => [field, data[field]]),
     );
   }
 }
@@ -409,5 +409,5 @@ export class DataApiService implements IDataApiService {
 export const dataApiService = new DataApiService(
   rDBMSDataApiService,
   entitiesApiService,
-  configurationApiService
+  configurationApiService,
 );

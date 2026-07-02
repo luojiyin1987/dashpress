@@ -13,7 +13,7 @@ export const queryFilterValidationImpl: ValidationImplType<
   const filters = (qs.parse(
     typescriptSafeObjectDotEntries(req.query)
       .map(([key, value]) => `${key}=${value}`)
-      .join("&")
+      .join("&"),
   )?.filters || []) as unknown as FieldQueryFilter[];
 
   const entity = await entityValidationImpl(req);
@@ -21,7 +21,7 @@ export const queryFilterValidationImpl: ValidationImplType<
   if (!ignoreFieldsValidation) {
     await validateEntityFields(
       entity,
-      filters.map(({ id }) => id)
+      filters.map(({ id }) => id),
     );
   }
 

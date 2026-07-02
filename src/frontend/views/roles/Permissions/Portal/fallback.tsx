@@ -16,14 +16,14 @@ export function BaseMutateEntitiesPermissions() {
 
   const getEntitiesDictionPlurals = useEntityDictionPlurals(
     activeEntities.data,
-    "value"
+    "value",
   );
 
   const entitiesAsPermissionList = [
     ...activeEntities.data.map((entity) => ({
       value: META_USER_PERMISSIONS.APPLIED_CAN_ACCESS_ENTITY(
         entity.value,
-        GranularEntityPermissions.Show
+        GranularEntityPermissions.Show,
       ),
       label: fakeMessageDescriptor(getEntitiesDictionPlurals(entity.value)),
     })),

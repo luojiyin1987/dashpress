@@ -16,7 +16,7 @@ describe("pages/admin/[entity]/create", () => {
         query: {
           entity: "entity-1",
         },
-      })
+      }),
     );
   });
 
@@ -24,7 +24,7 @@ describe("pages/admin/[entity]/create", () => {
     render(
       <TestProviders>
         <EntityCreate />
-      </TestProviders>
+      </TestProviders>,
     );
     await waitFor(() => {
       expect(screen.getByText("Create Singular entity-1")).toBeInTheDocument();

@@ -3,6 +3,6 @@ export const getFieldsOffFormat = (format: string): string[] => {
     return [];
   }
   return [...(format.match(/[^{{}]+(?=}})/g) || [])].map((field) =>
-    field.trim()
+    field.trim(),
   );
 };

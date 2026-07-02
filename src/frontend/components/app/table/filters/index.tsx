@@ -41,9 +41,9 @@ export function TableFilter({
       Object.fromEntries(
         typescriptSafeObjectDotEntries(value).filter(
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          ([_, value$1]) => value$1 || typeof value$1 === "boolean"
-        )
-      )
+          ([_, value$1]) => value$1 || typeof value$1 === "boolean",
+        ),
+      ),
     );
   };
 
@@ -63,7 +63,7 @@ export function TableFilter({
       setFilter(localValue);
     },
     debounceWait,
-    [localValue]
+    [localValue],
   );
 
   return (

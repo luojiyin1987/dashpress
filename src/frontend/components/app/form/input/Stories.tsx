@@ -49,7 +49,7 @@ function DemoForm() {
                 value={formProps.input.value}
                 onChange={formProps.input.onChange}
                 label={fakeMessageDescriptor(
-                  "Disabled Example Form Switch Input"
+                  "Disabled Example Form Switch Input",
                 )}
                 {...formProps}
               />
@@ -333,7 +333,7 @@ function DemoForm() {
             <FormButton
               text={(isSubmitting) =>
                 fakeMessageDescriptor(
-                  isSubmitting ? "Making Progress" : "Make Progress"
+                  isSubmitting ? "Making Progress" : "Make Progress",
                 )
               }
               systemIcon="Save"
@@ -342,7 +342,7 @@ function DemoForm() {
             <FormButton
               text={(isSubmitting) =>
                 fakeMessageDescriptor(
-                  isSubmitting ? "Doing Something" : "Do Something"
+                  isSubmitting ? "Doing Something" : "Do Something",
                 )
               }
               isMakingRequest={false}

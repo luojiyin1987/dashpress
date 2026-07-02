@@ -20,33 +20,33 @@ describe("pages/admin/settings/entities", () => {
     render(
       <TestProviders>
         <EntitiesSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await waitFor(async () => {
       expect(
         await screen.findByRole("switch", {
           name: "Plural disabled-entity-1",
-        })
+        }),
       ).not.toBeChecked();
     });
 
     expect(
-      screen.getByRole("switch", { name: "Plural disabled-entity-2" })
+      screen.getByRole("switch", { name: "Plural disabled-entity-2" }),
     ).not.toBeChecked();
 
     expect(
-      screen.getByRole("switch", { name: "Plural entity-1" })
+      screen.getByRole("switch", { name: "Plural entity-1" }),
     ).toBeChecked();
     expect(
-      screen.getByRole("switch", { name: "Plural entity-2" })
+      screen.getByRole("switch", { name: "Plural entity-2" }),
     ).toBeChecked();
     expect(
-      screen.getByRole("switch", { name: "Plural entity-3" })
+      screen.getByRole("switch", { name: "Plural entity-3" }),
     ).toBeChecked();
 
     expect(
-      screen.getByRole("switch", { name: "Plural entity-4" })
+      screen.getByRole("switch", { name: "Plural entity-4" }),
     ).toBeInTheDocument();
   });
 
@@ -54,27 +54,27 @@ describe("pages/admin/settings/entities", () => {
     render(
       <TestProviders>
         <EntitiesSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.click(
-      screen.getByRole("switch", { name: "Plural entity-1" })
+      screen.getByRole("switch", { name: "Plural entity-1" }),
     );
 
     await userEvent.click(
-      screen.getByRole("switch", { name: "Plural entity-1" })
+      screen.getByRole("switch", { name: "Plural entity-1" }),
     );
 
     await userEvent.click(
-      screen.getByRole("switch", { name: "Plural entity-2" })
+      screen.getByRole("switch", { name: "Plural entity-2" }),
     );
 
     await userEvent.click(
-      screen.getByRole("switch", { name: "Plural disabled-entity-2" })
+      screen.getByRole("switch", { name: "Plural disabled-entity-2" }),
     );
 
     expect(await getToastMessage()).toBe(
-      "Enabled Entities Settings Saved Successfully"
+      "Enabled Entities Settings Saved Successfully",
     );
   });
 
@@ -82,28 +82,28 @@ describe("pages/admin/settings/entities", () => {
     render(
       <TestProviders>
         <EntitiesSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(
-      screen.getByRole("switch", { name: "Plural entity-1" })
+      screen.getByRole("switch", { name: "Plural entity-1" }),
     ).toBeChecked();
 
     await waitFor(() => {
       expect(
-        screen.getByRole("switch", { name: "Plural entity-2" })
+        screen.getByRole("switch", { name: "Plural entity-2" }),
       ).not.toBeChecked();
     });
 
     expect(
-      screen.getByRole("switch", { name: "Plural entity-3" })
+      screen.getByRole("switch", { name: "Plural entity-3" }),
     ).toBeChecked();
 
     expect(
-      screen.getByRole("switch", { name: "Plural disabled-entity-1" })
+      screen.getByRole("switch", { name: "Plural disabled-entity-1" }),
     ).not.toBeChecked();
     expect(
-      screen.getByRole("switch", { name: "Plural disabled-entity-2" })
+      screen.getByRole("switch", { name: "Plural disabled-entity-2" }),
     ).toBeChecked();
   });
 });

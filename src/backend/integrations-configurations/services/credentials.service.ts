@@ -8,7 +8,7 @@ import { IntegrationsConfigurationApiService } from "./_base";
 export class CredentialsApiService extends IntegrationsConfigurationApiService {
   constructor(
     _credentialsPersistenceService: AbstractConfigDataPersistenceService<string>,
-    _encryptionApiService: EncryptionApiService
+    _encryptionApiService: EncryptionApiService,
   ) {
     super(_credentialsPersistenceService, _encryptionApiService);
   }
@@ -24,5 +24,5 @@ export class CredentialsApiService extends IntegrationsConfigurationApiService {
 
 export const credentialsApiService = new CredentialsApiService(
   createConfigDomainPersistenceService<string>("credentials"),
-  encryptionApiService
+  encryptionApiService,
 );

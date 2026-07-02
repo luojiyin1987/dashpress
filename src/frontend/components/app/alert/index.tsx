@@ -56,7 +56,7 @@ export function Alert({ type, message, renderJsx, action }: IProps) {
     <div
       className={cn(
         "mb-3 flex w-full items-center gap-3 rounded-md px-4 shadow-md",
-        spectrumVariants({ spectrum })
+        spectrumVariants({ spectrum }),
       )}
       role="alert"
     >
@@ -73,7 +73,7 @@ export function Alert({ type, message, renderJsx, action }: IProps) {
             size="sm"
             className={cn(
               "mt-2 rounded-md border",
-              spectrumVariants({ spectrum })
+              spectrumVariants({ spectrum }),
             )}
             onClick={action.action}
           >
