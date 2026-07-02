@@ -5,7 +5,7 @@ describe("SLACK_ACTION_INTEGRATION", () => {
     expect(
       await SLACK_ACTION_INTEGRATION.connect({
         token: "some-token",
-      })
+      }),
     ).toMatchInlineSnapshot(`
       {
         "token": "some-token",

@@ -58,7 +58,7 @@ export function SchemaForm<T extends Record<string, unknown>>({
       onSubmit={async (formValues) => {
         const modifiedFormValues = runFormBeforeSubmit(
           formExtension?.beforeSubmit,
-          { ...scriptContext, formValues }
+          { ...scriptContext, formValues },
         );
 
         if (typeof modifiedFormValues !== "object") {
@@ -95,7 +95,7 @@ export function SchemaForm<T extends Record<string, unknown>>({
                   resetForm,
                   values,
                   form as any,
-                  initialValues
+                  initialValues,
                 );
               });
             }}
@@ -126,7 +126,7 @@ export function SchemaForm<T extends Record<string, unknown>>({
                           }
                           required={bag.validations.some(
                             (validation) =>
-                              validation.validationType === "required"
+                              validation.validationType === "required",
                           )}
                           form={form}
                           rightActions={bag?.rightActions}

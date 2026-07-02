@@ -17,7 +17,7 @@ const ReactQuill = dynamic<any>(
   () => {
     return import("react-quill");
   },
-  { ssr: false }
+  { ssr: false },
 );
 
 const modules = {

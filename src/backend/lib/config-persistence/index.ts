@@ -10,7 +10,7 @@ import { ConfigAdaptorTypes } from "./types";
 export { AbstractConfigDataPersistenceService };
 
 export function createConfigDomainPersistenceService<T>(
-  configDomain: ConfigDomain
+  configDomain: ConfigDomain,
 ): AbstractConfigDataPersistenceService<T> {
   const configBag: Record<
     ConfigAdaptorTypes,
@@ -18,25 +18,25 @@ export function createConfigDomainPersistenceService<T>(
   > = {
     [ConfigAdaptorTypes.JsonFile]: new JsonFileConfigDataPersistenceAdaptor<T>(
       configDomain,
-      configApiService
+      configApiService,
     ),
     [ConfigAdaptorTypes.Memory]: new MemoryConfigDataPersistenceAdaptor<T>(
       configDomain,
-      configApiService
+      configApiService,
     ),
     [ConfigAdaptorTypes.Redis]: new RedisConfigDataPersistenceAdaptor<T>(
       configDomain,
-      configApiService
+      configApiService,
     ),
     [ConfigAdaptorTypes.Database]: new DatabaseConfigDataPersistenceAdaptor<T>(
       configDomain,
-      configApiService
+      configApiService,
     ),
   };
 
   return configBag[
     configApiService.getConfigValue<ConfigAdaptorTypes>(
-      ConfigKeys.CONFIG_ADAPTOR
+      ConfigKeys.CONFIG_ADAPTOR,
     )
   ];
 }

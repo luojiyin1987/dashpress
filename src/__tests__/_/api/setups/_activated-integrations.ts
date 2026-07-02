@@ -7,14 +7,14 @@ const TEST_ACTIVATED_ACTIONS: ActionIntegrations[] = [
 ];
 
 export const setupActivatedIntegrationsTestData = async (
-  testActivatedIntegrations: ActionIntegrations[] = TEST_ACTIVATED_ACTIONS
+  testActivatedIntegrations: ActionIntegrations[] = TEST_ACTIVATED_ACTIONS,
 ) => {
   const activatedIntegrationsPersistenceService =
     createKeyValueDomainPersistenceService<ActionIntegrations[]>(
-      "activated-integrations"
+      "activated-integrations",
     );
 
   await activatedIntegrationsPersistenceService.persistItem(
-    testActivatedIntegrations
+    testActivatedIntegrations,
   );
 };

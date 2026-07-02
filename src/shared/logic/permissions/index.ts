@@ -22,7 +22,7 @@ const doMetaPermissionCheck =
 export const doesPermissionAllowPermission = (
   permissions: string[],
   requiredPermission: string,
-  checkGranular: boolean
+  checkGranular: boolean,
 ): boolean => {
   if (requiredPermission === META_USER_PERMISSIONS.NO_PERMISSION_REQUIRED) {
     return true;
@@ -33,11 +33,11 @@ export const doesPermissionAllowPermission = (
   }
   const doMetaPermissionCheck$1 = doMetaPermissionCheck(
     permissions,
-    requiredPermission
+    requiredPermission,
   );
 
   const portalMetaPermissionCheckResponse = portalMetaPermissionCheck(
-    doMetaPermissionCheck$1
+    doMetaPermissionCheck$1,
   );
 
   if (typeof portalMetaPermissionCheckResponse === "boolean") {
@@ -46,7 +46,7 @@ export const doesPermissionAllowPermission = (
 
   const entitiesMetaCheck = doMetaPermissionCheck$1(
     CAN_ACCESS_ENTITY,
-    UserPermissions.CAN_MANAGE_ALL_ENTITIES
+    UserPermissions.CAN_MANAGE_ALL_ENTITIES,
   );
 
   if (typeof entitiesMetaCheck === "boolean") {
@@ -57,7 +57,7 @@ export const doesPermissionAllowPermission = (
     // eslint-disable-next-line no-param-reassign
     requiredPermission = replaceGranular(
       requiredPermission,
-      GranularEntityPermissions.Show
+      GranularEntityPermissions.Show,
     );
   }
 
@@ -66,7 +66,7 @@ export const doesPermissionAllowPermission = (
 
 const doSystemRoleCheck = (
   role: string,
-  requiredPermission: string
+  requiredPermission: string,
 ): boolean | void => {
   if (role === SystemRoles.Creator) {
     return true;
@@ -81,7 +81,7 @@ export const canRoleDoThisAsync = async (
   userRole: string,
   permission: string,
   checkGranular: boolean,
-  getRolePermission: (role: string) => Promise<string[]>
+  getRolePermission: (role: string) => Promise<string[]>,
 ): Promise<boolean> => {
   const systemRoleCheck = doSystemRoleCheck(userRole, permission);
 
@@ -94,7 +94,7 @@ export const canRoleDoThisAsync = async (
   return doesPermissionAllowPermission(
     rolePermissions,
     permission,
-    checkGranular
+    checkGranular,
   );
 };
 
@@ -102,7 +102,7 @@ export const canRoleDoThisSync = (
   userRole: string,
   permission: string,
   rolePermissions: string[],
-  checkGranular = false
+  checkGranular = false,
 ): boolean => {
   const systemRoleCheck = doSystemRoleCheck(userRole, permission);
 
@@ -113,6 +113,6 @@ export const canRoleDoThisSync = (
   return doesPermissionAllowPermission(
     rolePermissions,
     permission,
-    checkGranular
+    checkGranular,
   );
 };

@@ -45,7 +45,7 @@ describe("Custom validations", () => {
       it("should return true when valid", () => {
         trueCases.forEach(([value, otherField]) => {
           expect(implementation(value, "otherField", { otherField })).toBe(
-            true
+            true,
           );
         });
       });
@@ -53,10 +53,10 @@ describe("Custom validations", () => {
       it("should return false when invalid", () => {
         falseCases.forEach(([value, otherField]) => {
           expect(implementation(value, "otherField", { otherField })).toBe(
-            false
+            false,
           );
         });
       });
-    }
+    },
   );
 });

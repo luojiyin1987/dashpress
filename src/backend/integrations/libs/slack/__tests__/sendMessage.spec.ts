@@ -17,7 +17,7 @@ describe("SLACK => SEND_MESSAGE", () => {
       {
         channel: "some-slack-channel",
         message: "Some Awesome Message",
-      }
+      },
     );
 
     expect(fetch).toHaveBeenCalledWith(
@@ -29,7 +29,7 @@ describe("SLACK => SEND_MESSAGE", () => {
           "Content-Type": "application/json",
         },
         method: "POST",
-      }
+      },
     );
   });
 });

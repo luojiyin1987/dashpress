@@ -18,14 +18,14 @@ describe("pages/roles/[roleId]/index", () => {
         roleId: "foo",
       },
       replaceMock: jest.fn(),
-    })
+    }),
   );
 
   it("should select all user enabled admin permissions", async () => {
     render(
       <TestProviders>
         <RolePermissions />
-      </TestProviders>
+      </TestProviders>,
     );
 
     const currentTab = await screen.findByRole("tabpanel", { name: "App" });
@@ -40,34 +40,34 @@ describe("pages/roles/[roleId]/index", () => {
       expect(
         await within(currentTab).findByRole("switch", {
           name: "Can Configure App",
-        })
+        }),
       ).not.toBeChecked();
     });
 
     expect(
-      within(currentTab).getByRole("switch", { name: "Can Manage Users" })
+      within(currentTab).getByRole("switch", { name: "Can Manage Users" }),
     ).toBeChecked();
 
     expect(
-      within(currentTab).getByRole("switch", { name: "Can Reset Password" })
+      within(currentTab).getByRole("switch", { name: "Can Reset Password" }),
     ).toBeChecked();
 
     expect(
       within(currentTab).getByRole("switch", {
         name: "Can Manage All Entities",
-      })
+      }),
     ).not.toBeChecked();
 
     expect(
       within(currentTab).getByRole("switch", {
         name: "Can Manage Permissions",
-      })
+      }),
     ).toBeChecked();
 
     expect(
       within(currentTab).getByRole("switch", {
         name: "Can Manage Dashboard",
-      })
+      }),
     ).toBeChecked();
   });
 
@@ -75,7 +75,7 @@ describe("pages/roles/[roleId]/index", () => {
     render(
       <TestProviders>
         <RolePermissions />
-      </TestProviders>
+      </TestProviders>,
     );
     await userEvent.click(await screen.findByRole("tab", { name: "Entities" }));
 
@@ -91,28 +91,28 @@ describe("pages/roles/[roleId]/index", () => {
       expect(
         await within(currentTab).findByRole("switch", {
           name: "Plural entity-3",
-        })
+        }),
       ).not.toBeChecked();
     });
 
     expect(
-      within(currentTab).getByRole("switch", { name: "Plural entity-1" })
+      within(currentTab).getByRole("switch", { name: "Plural entity-1" }),
     ).not.toBeChecked();
 
     expect(
-      within(currentTab).getByRole("switch", { name: "Plural entity-2" })
+      within(currentTab).getByRole("switch", { name: "Plural entity-2" }),
     ).toBeChecked();
 
     expect(
       within(currentTab).getByRole("switch", {
         name: "Plural disabled-entity-1",
-      })
+      }),
     ).not.toBeChecked();
 
     expect(
       within(currentTab).getByRole("switch", {
         name: "Plural disabled-entity-2",
-      })
+      }),
     ).toBeChecked();
   });
 
@@ -120,7 +120,7 @@ describe("pages/roles/[roleId]/index", () => {
     render(
       <TestProviders>
         <RolePermissions />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.click(await screen.findByRole("tab", { name: "Entities" }));
@@ -131,39 +131,27 @@ describe("pages/roles/[roleId]/index", () => {
       expect(
         await within(currentTab).findByRole("switch", {
           name: "Plural entity-3",
-        })
+        }),
       ).not.toBeChecked();
     });
 
     await userEvent.click(
       await within(currentTab).findByRole("switch", {
         name: "Plural entity-2",
-      })
+      }),
     );
     expect(await getToastMessage()).toBe(
-      "Role Permission Deleted Successfully"
+      "Role Permission Deleted Successfully",
     );
 
     await closeAllToasts();
 
     await userEvent.click(
-      within(currentTab).getByRole("switch", { name: "Plural entity-1" })
+      within(currentTab).getByRole("switch", { name: "Plural entity-1" }),
     );
 
     expect(await getToastMessage()).toBe(
-      "Role Permission Created Successfully"
-    );
-
-    await closeAllToasts();
-
-    await userEvent.click(
-      within(currentTab).getByRole("switch", {
-        name: "Plural disabled-entity-2",
-      })
-    );
-
-    expect(await getToastMessage()).toBe(
-      "Role Permission Deleted Successfully"
+      "Role Permission Created Successfully",
     );
 
     await closeAllToasts();
@@ -171,10 +159,22 @@ describe("pages/roles/[roleId]/index", () => {
     await userEvent.click(
       within(currentTab).getByRole("switch", {
         name: "Plural disabled-entity-2",
-      })
+      }),
+    );
+
+    expect(await getToastMessage()).toBe(
+      "Role Permission Deleted Successfully",
+    );
+
+    await closeAllToasts();
+
+    await userEvent.click(
+      within(currentTab).getByRole("switch", {
+        name: "Plural disabled-entity-2",
+      }),
     );
     expect(await getToastMessage()).toBe(
-      "Role Permission Created Successfully"
+      "Role Permission Created Successfully",
     );
   });
 
@@ -182,7 +182,7 @@ describe("pages/roles/[roleId]/index", () => {
     render(
       <TestProviders>
         <RolePermissions />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.click(await screen.findByRole("tab", { name: "Entities" }));
@@ -193,18 +193,18 @@ describe("pages/roles/[roleId]/index", () => {
       expect(
         await within(currentTab).findByRole("switch", {
           name: "Plural entity-2",
-        })
+        }),
       ).not.toBeChecked();
     });
 
     expect(
-      within(currentTab).getByRole("switch", { name: "Plural entity-1" })
+      within(currentTab).getByRole("switch", { name: "Plural entity-1" }),
     ).toBeChecked();
 
     expect(
       within(currentTab).getByRole("switch", {
         name: "Plural disabled-entity-2",
-      })
+      }),
     ).toBeChecked();
   });
 
@@ -212,7 +212,7 @@ describe("pages/roles/[roleId]/index", () => {
     render(
       <TestProviders>
         <RolePermissions />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.click(await screen.findByRole("tab", { name: "Entities" }));
@@ -224,7 +224,7 @@ describe("pages/roles/[roleId]/index", () => {
     await userEvent.click(
       within(currentTab).queryByRole("button", {
         name: "Can Manage All Entities",
-      })
+      }),
     );
 
     await closeAllToasts();
@@ -234,7 +234,7 @@ describe("pages/roles/[roleId]/index", () => {
     await userEvent.click(
       within(currentTab).queryByRole("button", {
         name: "Can Manage All Entities",
-      })
+      }),
     );
 
     expect(await within(currentTab).findAllByRole("switch")).toHaveLength(5);
@@ -246,7 +246,7 @@ describe("pages/roles/[roleId]/index", () => {
     render(
       <TestProviders>
         <RolePermissions />
-      </TestProviders>
+      </TestProviders>,
     );
 
     const currentTab = await screen.findByRole("tabpanel", { name: "App" });
@@ -254,41 +254,41 @@ describe("pages/roles/[roleId]/index", () => {
     await userEvent.click(
       await within(currentTab).findByRole("switch", {
         name: "Can Reset Password",
-      })
+      }),
     );
 
     expect(await getToastMessage()).toBe(
-      "Role Permission Deleted Successfully"
+      "Role Permission Deleted Successfully",
     );
 
     await closeAllToasts();
 
     await userEvent.click(
-      within(currentTab).getByRole("switch", { name: "Can Configure App" })
+      within(currentTab).getByRole("switch", { name: "Can Configure App" }),
     );
 
     expect(await getToastMessage()).toBe(
-      "Role Permission Created Successfully"
+      "Role Permission Created Successfully",
     );
 
     await closeAllToasts();
 
     await userEvent.click(
-      within(currentTab).getByRole("switch", { name: "Can Manage Users" })
+      within(currentTab).getByRole("switch", { name: "Can Manage Users" }),
     );
 
     expect(await getToastMessage()).toBe(
-      "Role Permission Deleted Successfully"
+      "Role Permission Deleted Successfully",
     );
 
     await closeAllToasts();
 
     await userEvent.click(
-      within(currentTab).getByRole("switch", { name: "Can Manage Users" })
+      within(currentTab).getByRole("switch", { name: "Can Manage Users" }),
     );
 
     expect(await getToastMessage()).toBe(
-      "Role Permission Created Successfully"
+      "Role Permission Created Successfully",
     );
   });
 
@@ -296,7 +296,7 @@ describe("pages/roles/[roleId]/index", () => {
     render(
       <TestProviders>
         <RolePermissions />
-      </TestProviders>
+      </TestProviders>,
     );
 
     const currentTab = screen.getByRole("tabpanel", { name: "App" });
@@ -305,24 +305,24 @@ describe("pages/roles/[roleId]/index", () => {
       expect(
         await within(currentTab).findByRole("switch", {
           name: "Can Reset Password",
-        })
+        }),
       ).not.toBeChecked();
     });
 
     expect(
-      within(currentTab).getByRole("switch", { name: "Can Manage Users" })
+      within(currentTab).getByRole("switch", { name: "Can Manage Users" }),
     ).toBeChecked();
 
     expect(
       within(currentTab).getByRole("switch", {
         name: "Can Configure App",
-      })
+      }),
     ).toBeChecked();
 
     expect(
       within(currentTab).getByRole("switch", {
         name: "Can Manage Permissions",
-      })
+      }),
     ).toBeChecked();
   });
 
@@ -331,7 +331,7 @@ describe("pages/roles/[roleId]/index", () => {
       render(
         <TestProviders>
           <RolePermissions />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await closeAllToasts();
@@ -342,11 +342,11 @@ describe("pages/roles/[roleId]/index", () => {
       await userEvent.click(
         await within(currentTab).findByRole("switch", {
           name: "Can Manage All Entities",
-        })
+        }),
       );
 
       expect(await getToastMessage()).toBe(
-        "Role Permission Deleted Successfully"
+        "Role Permission Deleted Successfully",
       );
 
       await closeAllToasts();
@@ -354,18 +354,18 @@ describe("pages/roles/[roleId]/index", () => {
       expect(
         within(currentTab).queryByRole("switch", {
           name: "Can Configure App",
-        })
+        }),
       ).not.toBeChecked();
 
       // Select the parent permission
       await userEvent.click(
         within(currentTab).getByRole("switch", {
           name: "Can Manage App Credentials",
-        })
+        }),
       );
 
       expect(await getToastMessage()).toBe(
-        "Role Permission Created Successfully"
+        "Role Permission Created Successfully",
       );
     });
 
@@ -373,7 +373,7 @@ describe("pages/roles/[roleId]/index", () => {
       render(
         <TestProviders>
           <RolePermissions />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await closeAllToasts();
@@ -384,30 +384,30 @@ describe("pages/roles/[roleId]/index", () => {
       expect(
         within(currentTab).getByRole("switch", {
           name: "Can Manage App Credentials",
-        })
+        }),
       ).toBeChecked();
 
       expect(
         within(currentTab).getByRole("switch", {
           name: "Can Configure App",
-        })
+        }),
       ).toBeChecked();
 
       expect(
         within(currentTab).getByRole("switch", {
           name: "Can Manage All Entities",
-        })
+        }),
       ).toBeChecked();
 
       // De-select the parent permission
       await userEvent.click(
         await within(currentTab).findByRole("switch", {
           name: "Can Manage All Entities",
-        })
+        }),
       );
 
       expect(await getToastMessage()).toBe(
-        "Role Permission Deleted Successfully"
+        "Role Permission Deleted Successfully",
       );
     });
 
@@ -415,7 +415,7 @@ describe("pages/roles/[roleId]/index", () => {
       render(
         <TestProviders>
           <RolePermissions />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const currentTab = await screen.findByRole("tabpanel", { name: "App" });
@@ -424,19 +424,19 @@ describe("pages/roles/[roleId]/index", () => {
       expect(
         within(currentTab).queryByRole("switch", {
           name: "Can Manage App Credentials",
-        })
+        }),
       ).not.toBeChecked();
 
       expect(
         within(currentTab).queryByRole("switch", {
           name: "Can Configure App",
-        })
+        }),
       ).not.toBeChecked();
 
       expect(
         within(currentTab).queryByRole("switch", {
           name: "Can Manage All Entities",
-        })
+        }),
       ).not.toBeChecked();
     });
   });

@@ -126,7 +126,7 @@ export default requestHandler(
         },
       ]);
       return await setupApiService.setUpDBCredentials(
-        validatedRequest.requestBody
+        validatedRequest.requestBody,
       );
     },
   },
@@ -134,5 +134,5 @@ export default requestHandler(
     {
       _type: "guest",
     },
-  ]
+  ],
 );

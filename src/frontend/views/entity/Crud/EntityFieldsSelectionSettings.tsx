@@ -90,12 +90,12 @@ export function EntityFieldsSelectionSettings({
 
   const entityHiddenList = useEntityConfiguration(
     CRUD_HIDDEN_KEY_CONFIG[crudKey],
-    entity
+    entity,
   );
 
   const entityOrderList = useEntityConfiguration(
     ORDER_FIELD_CONFIG[crudKey],
-    entity
+    entity,
   );
 
   const upsertHiddenColumnsMutation = useUpsertConfigurationMutation(
@@ -103,7 +103,7 @@ export function EntityFieldsSelectionSettings({
     entity,
     {
       otherEndpoints,
-    }
+    },
   );
 
   const upsertColumnsOrderMutation = useUpsertConfigurationMutation(
@@ -111,11 +111,11 @@ export function EntityFieldsSelectionSettings({
     entity,
     {
       otherEndpoints,
-    }
+    },
   );
 
   const { toggleSelection, selectMutiple, isSelected } = useStringSelections(
-    makeEntityFieldsSelectionKey(entity, crudKey)
+    makeEntityFieldsSelectionKey(entity, crudKey),
   );
 
   useEffect(() => {
@@ -161,7 +161,7 @@ export function EntityFieldsSelectionSettings({
                   onChange: () => {
                     toggleSelection(
                       menuItem.name,
-                      upsertHiddenColumnsMutation.mutate
+                      upsertHiddenColumnsMutation.mutate,
                     );
                   },
                 },

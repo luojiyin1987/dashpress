@@ -83,7 +83,7 @@ describe("<SchemaForm />", () => {
           systemIcon="Save"
           fields={BASE_FIELDS}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(screen.getByLabelText("Name"), "Mary");
@@ -110,7 +110,7 @@ describe("<SchemaForm />", () => {
           fields={BASE_FIELDS}
           resetForm
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(screen.getByLabelText("Name"), "Mary");
@@ -136,7 +136,7 @@ describe("<SchemaForm />", () => {
             beforeSubmit: "",
           }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(screen.getByLabelText("Name"), "Mary");
@@ -163,7 +163,7 @@ describe("<SchemaForm />", () => {
             beforeSubmit: BEFORE_SUBMIT,
           }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(screen.getByLabelText("Name"), "Mary");
@@ -191,7 +191,7 @@ describe("<SchemaForm />", () => {
             beforeSubmit: "sm ks ks dsldm sl dm",
           }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(screen.getByLabelText("Name"), "Mary");
@@ -218,7 +218,7 @@ describe("<SchemaForm />", () => {
             beforeSubmit: BEFORE_SUBMIT,
           }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(screen.getByLabelText("Name"), "Invalid");
@@ -228,7 +228,7 @@ describe("<SchemaForm />", () => {
     expect(mockOnSubmit).not.toHaveBeenCalled();
 
     expect(await getToastMessage()).toBe(
-      "Input ValidationA Custom Validation Failed"
+      "Input ValidationA Custom Validation Failed",
     );
   });
 
@@ -250,7 +250,7 @@ describe("<SchemaForm />", () => {
             beforeSubmit: BEFORE_SUBMIT,
           }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.getByLabelText("Name")).toHaveValue("John Doe");
@@ -285,7 +285,7 @@ describe("<SchemaForm />", () => {
             fieldsState: FIELD_STATE,
           }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.getByLabelText("Email")).not.toBeDisabled();
@@ -316,7 +316,7 @@ describe("<SchemaForm />", () => {
             fieldsState: FIELD_STATE,
           }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.getByLabelText("Name")).toBeInTheDocument();
@@ -347,7 +347,7 @@ describe("<SchemaForm />", () => {
             fieldsState: FIELD_STATE,
           }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.getByLabelText("Name")).not.toBeDisabled();
@@ -378,7 +378,7 @@ describe("<SchemaForm />", () => {
             fieldsState: FIELD_STATE,
           }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.getByLabelText("Name")).toBeInTheDocument();
@@ -409,7 +409,7 @@ describe("<SchemaForm />", () => {
             fieldsState: "sdmsd smd slmd s;ld sl",
           }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(screen.getByLabelText("Name"), "Hidden");
@@ -436,7 +436,7 @@ describe("<SchemaForm />", () => {
             ...BASE_FIELDS,
           }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(screen.getByLabelText("Name"), "f");
@@ -445,11 +445,11 @@ describe("<SchemaForm />", () => {
     await userEvent.click(screen.getByRole("button", { name: "Submit Form" }));
 
     expect(screen.getAllByRole("alert")[0]).toHaveTextContent(
-      "Name is required"
+      "Name is required",
     );
 
     expect(screen.getAllByRole("alert")[1]).toHaveTextContent(
-      "Email is required"
+      "Email is required",
     );
 
     expect(mockOnSubmit).not.toHaveBeenCalledWith();
@@ -487,12 +487,12 @@ describe("<SchemaForm />", () => {
             },
           }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(
       screen.getByLabelText("Custom Name Label"),
-      "some name"
+      "some name",
     );
 
     await userEvent.click(screen.getByRole("button", { name: "Submit Form" }));
@@ -517,7 +517,7 @@ describe("<SchemaForm />", () => {
             },
           }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.getAllByText("*").length).toBe(2);
@@ -539,13 +539,13 @@ describe("<SchemaForm />", () => {
             },
           }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.getByRole("button", { name: "Submit Form" })).toBeDisabled();
     await userEvent.type(screen.getByLabelText("Name"), "Foo");
     expect(
-      screen.getByRole("button", { name: "Submit Form" })
+      screen.getByRole("button", { name: "Submit Form" }),
     ).not.toBeDisabled();
   });
 
@@ -567,7 +567,7 @@ describe("<SchemaForm />", () => {
             fieldsState: FIELD_STATE,
           }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(screen.getByLabelText("Name"), "Foo");

@@ -21,13 +21,13 @@ describe("pages/roles/create", () => {
     useRouter.mockImplementation(
       USE_ROUTER_PARAMS({
         pushMock,
-      })
+      }),
     );
 
     render(
       <TestProviders>
         <RoleCreate />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(await screen.findByLabelText("Name"), "Some New Role");
@@ -35,12 +35,12 @@ describe("pages/roles/create", () => {
     await userEvent.click(screen.getByRole("button", { name: "Create Role" }));
 
     expect(await getToastMessage()).toBe(
-      "Role Created SuccessfullyView Details"
+      "Role Created SuccessfullyView Details",
     );
 
     await userEvent.click(
       screen.getByRole("button", { name: "View Details" }),
-      { pointerEventsCheck: PointerEventsCheckLevel.Never }
+      { pointerEventsCheck: PointerEventsCheckLevel.Never },
     );
 
     expect(pushMock).toHaveBeenCalledWith("/roles/some-new-role");

@@ -3,7 +3,7 @@ export const MutationHelpers = {
   append: <T, K>(old: T[] | undefined = [], formData: K) => [...old, formData],
   remove: <T>(old: T[] | undefined = [], formData: T) => [
     ...old.filter(
-      (oldItem) => JSON.stringify(formData) !== JSON.stringify(oldItem)
+      (oldItem) => JSON.stringify(formData) !== JSON.stringify(oldItem),
     ),
   ],
   deleteByKey: <T extends Record<string, unknown>>(key: keyof T) => {
@@ -16,11 +16,11 @@ export const MutationHelpers = {
     ...formData,
   ],
   mergeObject: <T, K extends Partial<T>>(old: T | undefined, formData: K): T =>
-    ({ ...old, ...formData } as unknown as T),
+    ({ ...old, ...formData }) as unknown as T,
   replace: <T>(_: T, formData: T) => formData,
   update: <T extends { id: string }, K extends { id: string }>(
     old: T[] | undefined = [],
-    formData: K
+    formData: K,
   ) => {
     const clone = [...old];
     const index = clone.findIndex(({ id }) => id === formData.id);
@@ -31,14 +31,14 @@ export const MutationHelpers = {
   },
   delete: <T extends { id: string }>(
     old: T[] | undefined = [],
-    currentDataId: string
+    currentDataId: string,
   ) => [...old.filter(({ id }) => currentDataId !== id)],
   sortOrder: <T extends { id: string }>(
     old: T[] | undefined = [],
-    order: string[]
+    order: string[],
   ) => {
     const oldMap = Object.fromEntries(
-      old.map((oldItem) => [oldItem.id, oldItem])
+      old.map((oldItem) => [oldItem.id, oldItem]),
     );
     return order.map((orderId) => oldMap[orderId]);
   },

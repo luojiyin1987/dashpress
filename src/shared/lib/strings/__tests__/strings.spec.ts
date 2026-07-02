@@ -13,21 +13,21 @@ describe("pluralize", () => {
         count: 1,
         singular: "complexity",
         plural: "complexities",
-      })
+      }),
     ).toBe("complexity");
     expect(
       pluralize({
         count: 2,
         singular: "complexity",
         plural: "complexities",
-      })
+      }),
     ).toBe("complexities");
     expect(
       pluralize({
         count: 0,
         singular: "complexity",
         plural: "complexities",
-      })
+      }),
     ).toBe("complexities");
   });
 
@@ -38,7 +38,7 @@ describe("pluralize", () => {
         singular: "complexity",
         plural: "complexities",
         inclusive: true,
-      })
+      }),
     ).toBe("1 complexity");
     expect(
       pluralize({
@@ -46,7 +46,7 @@ describe("pluralize", () => {
         singular: "complexity",
         plural: "complexities",
         inclusive: true,
-      })
+      }),
     ).toBe("2 complexities");
     expect(
       pluralize({
@@ -54,7 +54,7 @@ describe("pluralize", () => {
         singular: "complexity",
         plural: "complexities",
         inclusive: true,
-      })
+      }),
     ).toBe("0 complexities");
   });
 });
@@ -66,13 +66,13 @@ describe("arrayToComaSeparatedString", () => {
 
   it("should return two words, separated with `and` for the list of two strings", () => {
     expect(arrayToComaSeparatedString(["Document", "Document"])).toBe(
-      "Document and Document"
+      "Document and Document",
     );
   });
 
   it("should return words, separated with `,` and the last word separated with `and`", () => {
     expect(
-      arrayToComaSeparatedString(["Document", "Document", "Document"])
+      arrayToComaSeparatedString(["Document", "Document", "Document"]),
     ).toBe("Document, Document and Document");
 
     expect(
@@ -81,7 +81,7 @@ describe("arrayToComaSeparatedString", () => {
         "Document",
         "Document",
         "Document",
-      ])
+      ]),
     ).toBe("Document, Document, Document and Document");
   });
 });

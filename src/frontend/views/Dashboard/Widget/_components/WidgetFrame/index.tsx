@@ -36,11 +36,11 @@ interface IProps {
 export const WidgetFrame = forwardRef<HTMLDivElement, IProps>(
   function WidgetFrameCmp(
     { setting, config, type, data, isPreview, Component },
-    ref
+    ref,
   ) {
     const navigationLink = useWidgetNavigationLink(
       config.entity,
-      config.queryId
+      config.queryId,
     );
 
     const {
@@ -71,7 +71,7 @@ export const WidgetFrame = forwardRef<HTMLDivElement, IProps>(
     }
 
     const hasRelativeDate = config.script?.includes(
-      `$.${WIDGET_SCRIPT_RELATIVE_TIME_MARKER}`
+      `$.${WIDGET_SCRIPT_RELATIVE_TIME_MARKER}`,
     );
 
     return (
@@ -115,5 +115,5 @@ export const WidgetFrame = forwardRef<HTMLDivElement, IProps>(
         </Card>
       </WidgetRoot>
     );
-  }
+  },
 );

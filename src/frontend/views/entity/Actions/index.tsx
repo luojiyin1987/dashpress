@@ -17,7 +17,7 @@ import { FormActions } from "./Base";
 export function EntityFormActionsSettings() {
   const entity = useEntitySlug();
   const domainMessages = useDomainMessages(
-    LANG_DOMAINS.INTEGRATIONS.FORM_ACTIONS
+    LANG_DOMAINS.INTEGRATIONS.FORM_ACTIONS,
   );
   useSetPageDetails({
     pageTitle: domainMessages.TEXT_LANG.TITLE,
@@ -26,7 +26,7 @@ export function EntityFormActionsSettings() {
   });
 
   const documentationActionButton = useDocumentationActionButton(
-    domainMessages.TEXT_LANG.TITLE
+    domainMessages.TEXT_LANG.TITLE,
   );
 
   return (

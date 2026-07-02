@@ -12,7 +12,7 @@ function arrayMoveMutable<T>(array: T[], fromIndex: number, toIndex: number) {
 export function arrayMoveImmutable<T>(
   array: T[],
   fromIndex: number,
-  toIndex: number
+  toIndex: number,
 ) {
   const newArray = [...array];
   arrayMoveMutable(newArray, fromIndex, toIndex);

@@ -16,5 +16,5 @@ export default requestHandler(
     {
       _type: "withPassword",
     },
-  ]
+  ],
 );

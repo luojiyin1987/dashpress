@@ -12,7 +12,7 @@ export function OptionTag({ spectrum, label }: IColorableSelection) {
         "inline-block rounded-md border px-2 py-0.5",
         spectrumVariants({
           spectrum,
-        })
+        }),
       )}
     >
       <p className="text-sm">{_(label)}</p>

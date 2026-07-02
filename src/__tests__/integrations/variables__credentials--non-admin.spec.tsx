@@ -27,7 +27,7 @@ describe("pages/integrations/variables => credentials -- non admin", () => {
         query: {
           key: "foo",
         },
-      })
+      }),
     );
 
     const CUSTOM_ROLE_USER: IAuthenticatedUserBag = {
@@ -39,7 +39,7 @@ describe("pages/integrations/variables => credentials -- non admin", () => {
     server.use(
       rest.get(BASE_TEST_URL("/api/account/mine"), async (_, res, ctx) => {
         return res(ctx.json(CUSTOM_ROLE_USER));
-      })
+      }),
     );
   });
 
@@ -48,11 +48,11 @@ describe("pages/integrations/variables => credentials -- non admin", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(
-        await screen.findByRole("tab", { name: "Secrets" })
+        await screen.findByRole("tab", { name: "Secrets" }),
       );
 
       const priviledgeSection = screen.getByRole("tabpanel", {
@@ -63,26 +63,26 @@ describe("pages/integrations/variables => credentials -- non admin", () => {
 
       expect(
         within(priviledgeSection).queryByText(
-          `For security reasons, Please input your account password to be able to manage values`
-        )
+          `For security reasons, Please input your account password to be able to manage values`,
+        ),
       ).not.toBeInTheDocument();
       expect(
         within(priviledgeSection).getByText(
-          `Your account does not have the permission to view secret values or manage them`
-        )
+          `Your account does not have the permission to view secret values or manage them`,
+        ),
       ).toBeInTheDocument();
       expect(
-        within(priviledgeSection).queryByLabelText(`Password`)
+        within(priviledgeSection).queryByLabelText(`Password`),
       ).not.toBeInTheDocument();
       expect(
         within(priviledgeSection).queryByRole(`button`, {
           name: "Reveal Secrets",
-        })
+        }),
       ).not.toBeInTheDocument();
       expect(
         screen.queryByRole("button", {
           name: "Delete Secret",
-        })
+        }),
       ).not.toBeInTheDocument();
     });
 
@@ -90,7 +90,7 @@ describe("pages/integrations/variables => credentials -- non admin", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const priviledgeSection = screen.getByRole("tabpanel", {
@@ -99,26 +99,26 @@ describe("pages/integrations/variables => credentials -- non admin", () => {
 
       expect(
         within(priviledgeSection).queryByText(
-          `For security reasons, Please input your account password to be able to manage values`
-        )
+          `For security reasons, Please input your account password to be able to manage values`,
+        ),
       ).not.toBeInTheDocument();
       expect(
         within(priviledgeSection).queryByText(
-          `Your account does not have the permission to view secret values or manage them`
-        )
+          `Your account does not have the permission to view secret values or manage them`,
+        ),
       ).not.toBeInTheDocument();
       expect(
-        within(priviledgeSection).queryByLabelText(`Password`)
+        within(priviledgeSection).queryByLabelText(`Password`),
       ).not.toBeInTheDocument();
       expect(
         within(priviledgeSection).queryByRole(`button`, {
           name: "Reveal Secrets",
-        })
+        }),
       ).not.toBeInTheDocument();
       expect(
         await screen.findAllByRole("button", {
           name: "Delete Constant",
-        })
+        }),
       ).toHaveLength(3);
     });
   });
@@ -128,11 +128,11 @@ describe("pages/integrations/variables => credentials -- non admin", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(
-        await screen.findByRole("tab", { name: "Secrets" })
+        await screen.findByRole("tab", { name: "Secrets" }),
       );
 
       expect(await getTableRows(screen.getByRole("table")))

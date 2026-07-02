@@ -18,7 +18,7 @@ export default requestHandler(
       ]);
       return await usersApiService.resetPassword(
         validatedRequest.requestQuery,
-        validatedRequest.requestBody
+        validatedRequest.requestBody,
       );
     },
   },
@@ -30,5 +30,5 @@ export default requestHandler(
       _type: "canUser",
       body: UserPermissions.CAN_RESET_PASSWORD,
     },
-  ]
+  ],
 );

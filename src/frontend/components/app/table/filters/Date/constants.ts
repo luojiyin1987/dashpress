@@ -48,5 +48,5 @@ const DATE_FILTER_OPTIONS$1: Record<
 
 export const DATE_FILTER_OPTIONS: IDateFilterOption[] =
   typescriptSafeObjectDotEntries(DATE_FILTER_OPTIONS$1).map(
-    ([value, config]) => ({ ...config, value })
+    ([value, config]) => ({ ...config, value }),
   );

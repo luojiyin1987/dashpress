@@ -15,7 +15,7 @@ import { STORAGE_INTEGRATIONS } from "./integrations";
 export class StorageApiService {
   constructor(
     private readonly _currentStorageKeyValueStoreApiService: KeyValueStoreApiService<string>,
-    private readonly _credentialsApiService: CredentialsApiService
+    private readonly _credentialsApiService: CredentialsApiService,
   ) {}
 
   listStorageIntegrations(): IStorageIntegration[] {
@@ -24,7 +24,7 @@ export class StorageApiService {
         title,
         key,
         configurationSchema: integrationConfigurationSchema,
-      })
+      }),
     );
   }
 
@@ -37,7 +37,7 @@ export class StorageApiService {
   }): Promise<void> {
     validateSchemaRequestBody(
       STORAGE_INTEGRATIONS[storageKey].integrationConfigurationSchema,
-      configuration
+      configuration,
     );
 
     const previousStorageKey = await this.getCurrentActivatedStorage();
@@ -46,7 +46,7 @@ export class StorageApiService {
         key: this.makeCredentialsGroupKey(storageKey),
         fields: typescriptSafeObjectDotKeys(
           STORAGE_INTEGRATIONS[previousStorageKey]
-            .integrationConfigurationSchema
+            .integrationConfigurationSchema,
         ) as string[],
       });
     }
@@ -57,10 +57,10 @@ export class StorageApiService {
       {
         key: this.makeCredentialsGroupKey(storageKey),
         fields: typescriptSafeObjectDotKeys(
-          STORAGE_INTEGRATIONS[storageKey].integrationConfigurationSchema
+          STORAGE_INTEGRATIONS[storageKey].integrationConfigurationSchema,
         ) as string[],
       },
-      configuration
+      configuration,
     );
   }
 
@@ -76,7 +76,7 @@ export class StorageApiService {
     return await this._credentialsApiService.useGroupValue({
       key: this.makeCredentialsGroupKey(storageKey),
       fields: typescriptSafeObjectDotKeys(
-        STORAGE_INTEGRATIONS[storageKey].integrationConfigurationSchema
+        STORAGE_INTEGRATIONS[storageKey].integrationConfigurationSchema,
       ) as string[],
     });
   }
@@ -91,5 +91,5 @@ const _currentStorageKeyValueStoreApiService =
 
 export const storageApiService = new StorageApiService(
   _currentStorageKeyValueStoreApiService,
-  credentialsApiService
+  credentialsApiService,
 );

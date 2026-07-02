@@ -7,8 +7,8 @@ describe("META_USER_PERMISSIONS", () => {
     expect(
       META_USER_PERMISSIONS.APPLIED_CAN_ACCESS_ENTITY(
         "foo",
-        GranularEntityPermissions.Show
-      )
+        GranularEntityPermissions.Show,
+      ),
     ).toBe("CAN_ACCESS_ENTITY:FOO--show");
   });
 });

@@ -144,13 +144,13 @@ export const configApiHandlers = [
     BASE_TEST_URL("/api/config/theme_color/__guest"),
     async (_, res, ctx) => {
       return res(ctx.json(CONFIG_VALUES.theme_color));
-    }
+    },
   ),
   rest.get(
     BASE_TEST_URL("/api/config/site_settings/__guest"),
     async (_, res, ctx) => {
       return res(ctx.json(CONFIG_VALUES.site_settings));
-    }
+    },
   ),
   rest.get(BASE_TEST_URL("/api/config/:key"), async (req, res, ctx) => {
     return res(ctx.json(CONFIG_VALUES[req.params.key as string]));
@@ -172,7 +172,7 @@ export const configApiHandlers = [
     }
 
     throw new Error(
-      `Test API handler for config key (${req.params.key}) is not implemented`
+      `Test API handler for config key (${req.params.key}) is not implemented`,
     );
   }),
   rest.put(BASE_TEST_URL("/api/config/:key/:entity"), async (req, res, ctx) => {

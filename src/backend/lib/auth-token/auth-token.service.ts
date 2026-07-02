@@ -18,10 +18,10 @@ export class AuthTokenApiService {
 
   constructor(
     private readonly _configApiService: ConfigApiService,
-    private readonly _configurationApiService: ConfigurationApiService
+    private readonly _configurationApiService: ConfigurationApiService,
   ) {
     this.authToken = this._configApiService.getConfigValue(
-      ConfigKeys.AUTH_TOKEN_KEY
+      ConfigKeys.AUTH_TOKEN_KEY,
     );
   }
 
@@ -38,7 +38,7 @@ export class AuthTokenApiService {
           const { exp, iat, ...decodedToken } = decoded;
           noop(exp, iat);
           return resolve(decodedToken);
-        }
+        },
       );
     });
   }
@@ -46,7 +46,7 @@ export class AuthTokenApiService {
   async sign(payload: IAccountProfile): Promise<string> {
     const tokenValidityDurationInDays =
       await this._configurationApiService.getSystemSettings(
-        "tokenValidityDurationInDays"
+        "tokenValidityDurationInDays",
       );
 
     return jsonwebtoken.sign(payload, this.authToken, {
@@ -57,5 +57,5 @@ export class AuthTokenApiService {
 
 export const authTokenApiService = new AuthTokenApiService(
   configApiService,
-  configurationApiService
+  configurationApiService,
 );

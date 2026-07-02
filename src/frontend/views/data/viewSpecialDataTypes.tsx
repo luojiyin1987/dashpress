@@ -81,7 +81,7 @@ export const viewSpecialDataTypes = ({
 
   if (entityFieldSelections[fieldName]) {
     const availableOption = entityFieldSelections[fieldName].find(
-      (option) => option.value === value
+      (option) => option.value === value,
     );
     if (availableOption) {
       if (availableOption.spectrum) {

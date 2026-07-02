@@ -86,7 +86,7 @@ export function MenuSection({ menuItems, size = "lg" }: IProps) {
                         "text-muted hover:text-muted": subtle || disabled,
                         "text-red-600 hover:text-red-600 hover:bg-red-100":
                           destructive,
-                      }
+                      },
                     )}
                     key={id}
                     disabled={disabled}
@@ -122,7 +122,7 @@ export function MenuSection({ menuItems, size = "lg" }: IProps) {
                     )}
                   </CommandItem>
                 );
-              }
+              },
             )}
           </div>
         </CommandList>

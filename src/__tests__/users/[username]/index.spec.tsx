@@ -19,13 +19,13 @@ describe("pages/users/[username]/index", () => {
           query: {
             username: "root",
           },
-        })
+        }),
       );
 
       render(
         <TestProviders>
           <UserUpdate />
-        </TestProviders>
+        </TestProviders>,
       );
       await waitFor(() => {
         expect(screen.getByLabelText("Role")).toBeDisabled();
@@ -39,13 +39,13 @@ describe("pages/users/[username]/index", () => {
           query: {
             username: "foo",
           },
-        })
+        }),
       );
 
       render(
         <TestProviders>
           <UserUpdate />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await waitFor(() => {
@@ -55,7 +55,7 @@ describe("pages/users/[username]/index", () => {
       expect(
         screen.getByRole("combobox", {
           name: "Role",
-        })
+        }),
       ).toHaveValue("Viewer");
     });
 
@@ -65,12 +65,12 @@ describe("pages/users/[username]/index", () => {
           query: {
             username: "foo",
           },
-        })
+        }),
       );
       render(
         <TestProviders>
           <UserUpdate />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.clear(await screen.findByLabelText("Name"));
@@ -79,7 +79,7 @@ describe("pages/users/[username]/index", () => {
       await selectCombobox("Role", "Creator");
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Update User" })
+        screen.getByRole("button", { name: "Update User" }),
       );
 
       expect(await getToastMessage()).toBe("User Updated Successfully");
@@ -91,13 +91,13 @@ describe("pages/users/[username]/index", () => {
           query: {
             username: "foo",
           },
-        })
+        }),
       );
 
       render(
         <TestProviders>
           <UserUpdate />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await waitFor(() => {
@@ -106,7 +106,7 @@ describe("pages/users/[username]/index", () => {
       expect(
         screen.getByRole("combobox", {
           name: "Role",
-        })
+        }),
       ).toHaveTextContent("Creator");
     });
   });
@@ -118,12 +118,12 @@ describe("pages/users/[username]/index", () => {
           query: {
             username: "root",
           },
-        })
+        }),
       );
       render(
         <TestProviders>
           <UserUpdate />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await waitFor(() => {
@@ -131,7 +131,7 @@ describe("pages/users/[username]/index", () => {
       });
 
       expect(
-        screen.queryByRole("heading", { name: "Reset User Password" })
+        screen.queryByRole("heading", { name: "Reset User Password" }),
       ).not.toBeInTheDocument();
     });
 
@@ -141,22 +141,22 @@ describe("pages/users/[username]/index", () => {
           query: {
             username: "foo",
           },
-        })
+        }),
       );
       render(
         <TestProviders>
           <UserUpdate />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.type(screen.getByLabelText("Password"), "password");
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Reset Password" })
+        screen.getByRole("button", { name: "Reset Password" }),
       );
 
       expect(
-        await screen.findByText("Password Reset Successfully")
+        await screen.findByText("Password Reset Successfully"),
       ).toBeInTheDocument();
     });
   });

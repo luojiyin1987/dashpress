@@ -25,7 +25,7 @@ describe("pages/users/[username]/index", () => {
     server.use(
       rest.get(BASE_TEST_URL("/api/account/mine"), async (_, res, ctx) => {
         return res(ctx.json(VIEWER));
-      })
+      }),
     );
   });
 
@@ -36,20 +36,20 @@ describe("pages/users/[username]/index", () => {
           query: {
             username: "foo",
           },
-        })
+        }),
       );
 
       render(
         <TestProviders>
           <UserUpdate />
-        </TestProviders>
+        </TestProviders>,
       );
       await waitFor(() => {
         expect(screen.getByLabelText("Role")).toBeInTheDocument();
       });
 
       expect(
-        screen.queryByRole("heading", { name: "Reset User Password" })
+        screen.queryByRole("heading", { name: "Reset User Password" }),
       ).not.toBeInTheDocument();
     });
 
@@ -59,12 +59,12 @@ describe("pages/users/[username]/index", () => {
           query: {
             username: "root",
           },
-        })
+        }),
       );
       render(
         <TestProviders>
           <UserUpdate />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await waitFor(() => {
@@ -72,7 +72,7 @@ describe("pages/users/[username]/index", () => {
       });
 
       expect(
-        screen.queryByRole("heading", { name: "Reset User Password" })
+        screen.queryByRole("heading", { name: "Reset User Password" }),
       ).not.toBeInTheDocument();
     });
   });

@@ -10,7 +10,7 @@ export type IPresentationScriptParams = {
 
 export const evalutePresentationScript = (
   script: string,
-  { field, from, row, value }: IPresentationScriptParams
+  { field, from, row, value }: IPresentationScriptParams,
 ) => {
   if (!script) {
     return value;

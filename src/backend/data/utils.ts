@@ -4,7 +4,7 @@ import type { IPaginationFilters } from "./types";
 
 export const makeTableData = (
   [data, totalRecords]: [Record<string, unknown>[], number],
-  paginationFilters: IPaginationFilters
+  paginationFilters: IPaginationFilters,
 ): PaginatedData<Record<string, unknown>> => ({
   data,
   pageIndex: paginationFilters.page,

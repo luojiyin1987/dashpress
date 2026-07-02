@@ -19,7 +19,7 @@ describe("pages/admin/[entity]/config/relations", () => {
           entity: "entity-1",
           tab: "selection",
         },
-      })
+      }),
     );
   });
 
@@ -28,7 +28,7 @@ describe("pages/admin/[entity]/config/relations", () => {
       render(
         <TestProviders>
           <EntityRelationsSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const currentTab = await screen.findByRole("tabpanel", {
@@ -39,26 +39,26 @@ describe("pages/admin/[entity]/config/relations", () => {
         expect(
           await within(currentTab).findByRole("switch", {
             name: "Plural hidden-related-entity-5",
-          })
+          }),
         ).not.toBeChecked();
       });
 
       expect(
         within(currentTab).getByRole("switch", {
           name: "Custom Label For Entity 2",
-        })
+        }),
       ).toBeChecked();
 
       expect(
         within(currentTab).getByRole("switch", {
           name: "Plural related-entity-3",
-        })
+        }),
       ).toBeChecked();
 
       expect(
         within(currentTab).getByRole("switch", {
           name: "Custom Label For Entity 4",
-        })
+        }),
       ).toBeChecked();
     });
 
@@ -66,7 +66,7 @@ describe("pages/admin/[entity]/config/relations", () => {
       render(
         <TestProviders>
           <EntityRelationsSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const currentTab = await screen.findByRole("tabpanel", {
@@ -76,26 +76,26 @@ describe("pages/admin/[entity]/config/relations", () => {
       await userEvent.click(
         within(currentTab).getByRole("switch", {
           name: "Custom Label For Entity 4",
-        })
+        }),
       );
       await userEvent.click(
         within(currentTab).getByRole("switch", {
           name: "Plural related-entity-3",
-        })
+        }),
       );
       await userEvent.click(
         within(currentTab).getByRole("switch", {
           name: "Plural related-entity-3",
-        })
+        }),
       );
       await userEvent.click(
         within(currentTab).getByRole("switch", {
           name: "Plural hidden-related-entity-5",
-        })
+        }),
       );
 
       expect(await getToastMessage()).toBe(
-        "Enabled Relations Saved Successfully"
+        "Enabled Relations Saved Successfully",
       );
     });
 
@@ -103,7 +103,7 @@ describe("pages/admin/[entity]/config/relations", () => {
       render(
         <TestProviders>
           <EntityRelationsSettings />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const currentTab = await screen.findByRole("tabpanel", {
@@ -114,26 +114,26 @@ describe("pages/admin/[entity]/config/relations", () => {
         expect(
           await within(currentTab).findByRole("switch", {
             name: "Custom Label For Entity 4",
-          })
+          }),
         ).not.toBeChecked();
       });
 
       expect(
         within(currentTab).getByRole("switch", {
           name: "Custom Label For Entity 2",
-        })
+        }),
       ).toBeChecked();
 
       expect(
         within(currentTab).getByRole("switch", {
           name: "Plural related-entity-3",
-        })
+        }),
       ).toBeChecked();
 
       expect(
         within(currentTab).getByRole("switch", {
           name: "Plural hidden-related-entity-5",
-        })
+        }),
       ).toBeChecked();
     });
   });

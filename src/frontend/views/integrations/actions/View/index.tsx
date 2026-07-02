@@ -22,7 +22,7 @@ export function ActionSettingsView({
   activeAction,
 }: IProps) {
   const activateIntegrationMutation = useActivateIntegrationMutation(
-    integrationDetail?.key
+    integrationDetail?.key,
   );
 
   if (!integrationDetail) {

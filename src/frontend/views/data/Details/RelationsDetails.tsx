@@ -42,7 +42,7 @@ export function EntityRelationDetails() {
   const router = useRouter();
 
   const referenceColumn = entityReferenceFields.data.find(
-    ({ table }) => table === childEntity
+    ({ table }) => table === childEntity,
   );
 
   const { _ } = useLingui();
@@ -53,7 +53,7 @@ export function EntityRelationDetails() {
     entityDataReference.isLoading || isQueryIdle(entityDataReference)
       ? childEntityCrudConfig.TEXT_LANG.SINGULAR
       : msg`${entityDataReference.data} - ${_(
-          childEntityCrudConfig.TEXT_LANG.SINGULAR
+          childEntityCrudConfig.TEXT_LANG.SINGULAR,
         )}`;
 
   useSetPageDetails({
@@ -125,8 +125,8 @@ export function EntityRelationDetails() {
               action={() => {
                 router.push(
                   `${NAVIGATION_LINKS.ENTITY.CREATE(
-                    childEntity
-                  )}?${detailsColumn}=${entityId}`
+                    childEntity,
+                  )}?${detailsColumn}=${entityId}`,
                 );
               }}
             />

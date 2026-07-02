@@ -82,7 +82,7 @@ export class RDBMSDataApiService extends BaseDataAccessService<Knex.QueryBuilder
 
     const dbCredentials =
       await credentialsApiService.useGroupValue<IDataSourceCredentials>(
-        DATABASE_CREDENTIAL_GROUP
+        DATABASE_CREDENTIAL_GROUP,
       );
 
     this._dbCredentials = dbCredentials;
@@ -105,14 +105,14 @@ export class RDBMSDataApiService extends BaseDataAccessService<Knex.QueryBuilder
 
   transformQueryFilterSchema = (
     query: Knex.QueryBuilder,
-    queryFilter: QueryFilterSchema
+    queryFilter: QueryFilterSchema,
   ): Knex.QueryBuilder => {
     queryFilter.children.forEach((filter) => {
       if ("id" in filter) {
         query = this.transformQueryFiltersQueryBuilder(
           query,
           filter,
-          queryFilter.operator
+          queryFilter.operator,
         );
       } else {
         const builderQuery = (builder: Knex.QueryBuilder) => {
@@ -135,13 +135,13 @@ export class RDBMSDataApiService extends BaseDataAccessService<Knex.QueryBuilder
   private transformQueryFiltersQueryBuilder = (
     query: Knex.QueryBuilder,
     queryFilter: FieldQueryFilter,
-    operator: "and" | "or"
+    operator: "and" | "or",
   ): Knex.QueryBuilder => {
     return this.filterOperatorToQuery(
       query,
       queryFilter.id,
       queryFilter.value,
-      operator
+      operator,
     );
   };
 
@@ -157,11 +157,11 @@ export class RDBMSDataApiService extends BaseDataAccessService<Knex.QueryBuilder
     entity: string,
     select: string[],
     queryFilter: QueryFilterSchema,
-    dataFetchingModifiers: IPaginationFilters
+    dataFetchingModifiers: IPaginationFilters,
   ) {
     let query = this.transformQueryFilterSchema(
       (await RDBMSDataApiService.getInstance()).select(select).from(entity),
-      queryFilter
+      queryFilter,
     );
 
     if (dataFetchingModifiers.page && dataFetchingModifiers.take) {
@@ -169,14 +169,14 @@ export class RDBMSDataApiService extends BaseDataAccessService<Knex.QueryBuilder
         .limit(Number(dataFetchingModifiers.take))
         .offset(
           (Number(dataFetchingModifiers.page) - 1) *
-            Number(dataFetchingModifiers.take)
+            Number(dataFetchingModifiers.take),
         );
     }
 
     if (dataFetchingModifiers.orderBy && dataFetchingModifiers.sortBy) {
       query = query.orderBy(
         dataFetchingModifiers.sortBy,
-        dataFetchingModifiers.orderBy
+        dataFetchingModifiers.orderBy,
       );
     }
 
@@ -186,11 +186,11 @@ export class RDBMSDataApiService extends BaseDataAccessService<Knex.QueryBuilder
   async read<T>(
     entity: string,
     select: string[],
-    queryFilter: QueryFilterSchema
+    queryFilter: QueryFilterSchema,
   ): Promise<T> {
     const query = this.transformQueryFilterSchema(
       (await RDBMSDataApiService.getInstance()).table(entity).select(select),
-      queryFilter
+      queryFilter,
     );
 
     return await query.first();
@@ -199,7 +199,7 @@ export class RDBMSDataApiService extends BaseDataAccessService<Knex.QueryBuilder
   async create(
     entity: string,
     data: Record<string, unknown>,
-    primaryField: string
+    primaryField: string,
   ): Promise<string | number> {
     const result = await (
       await RDBMSDataApiService.getInstance()
@@ -210,22 +210,18 @@ export class RDBMSDataApiService extends BaseDataAccessService<Knex.QueryBuilder
   async update(
     entity: string,
     queryFilter: QueryFilterSchema,
-    data: Record<string, unknown>
+    data: Record<string, unknown>,
   ): Promise<void> {
     await this.transformQueryFilterSchema(
-      (
-        await RDBMSDataApiService.getInstance()
-      )(entity),
-      queryFilter
+      (await RDBMSDataApiService.getInstance())(entity),
+      queryFilter,
     ).update(data);
   }
 
   async delete(entity: string, queryFilter: QueryFilterSchema): Promise<void> {
     await this.transformQueryFilterSchema(
-      (
-        await RDBMSDataApiService.getInstance()
-      )(entity),
-      queryFilter
+      (await RDBMSDataApiService.getInstance())(entity),
+      queryFilter,
     ).del();
   }
 
@@ -237,13 +233,13 @@ export class RDBMSDataApiService extends BaseDataAccessService<Knex.QueryBuilder
     const dbCredentials = await RDBMSDataApiService.getDbCredentials();
 
     return DATA_SOURCES_CONFIG[dbCredentials.dataSourceType].getQueryData(
-      driverResponse
+      driverResponse,
     );
   }
 
   whereEqualQueryFilterSchema(
     column: string,
-    value: string
+    value: string,
   ): QueryFilterSchema {
     return {
       operator: "and",

@@ -5,7 +5,7 @@ import { BadRequestError } from ".";
 
 export const validateSchemaRequestBody = (
   requestValidation: IAppliedSchemaFormConfig<any>,
-  data: Record<string, unknown>
+  data: Record<string, unknown>,
 ) => {
   const validationsError = runValidationError(requestValidation)(data);
 

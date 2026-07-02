@@ -35,7 +35,7 @@ export function useStringSelections(key: string) {
   return {
     toggleSelection: (
       input: string,
-      withNewSelections?: (newAllSelections: string[]) => void
+      withNewSelections?: (newAllSelections: string[]) => void,
     ) => {
       const newSelections = { ...selections, [input]: !selections[input] };
       setSelections(newSelections);

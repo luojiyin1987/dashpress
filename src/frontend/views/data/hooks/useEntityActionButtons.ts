@@ -25,7 +25,7 @@ export const useEntityActionButtons = ({
       entity,
       entityId,
     },
-    redirectAfterDelete
+    redirectAfterDelete,
   );
   const actionButtons: IGroupActionButton[] = [];
 

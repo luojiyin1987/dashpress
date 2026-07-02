@@ -16,7 +16,7 @@ export default requestHandler(
       ]);
 
       return await storageApiService.activateStorage(
-        validatedRequest.requestBody
+        validatedRequest.requestBody,
       );
     },
   },
@@ -25,5 +25,5 @@ export default requestHandler(
       _type: "canUser",
       body: UserPermissions.CAN_MANAGE_APP_CREDENTIALS,
     },
-  ]
+  ],
 );

@@ -61,7 +61,7 @@ export const NAVIGATION_LINKS = {
       entity: string,
       id: string,
       childEntity: string,
-      relationship: "one" | "many"
+      relationship: "one" | "many",
     ) => `/admin/${entity}/${id}/relation/${childEntity}/${relationship}`,
     UPDATE: (entity: string, id: string) => `/admin/${entity}/${id}/update`,
     CONFIG: {

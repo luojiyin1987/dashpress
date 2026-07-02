@@ -46,7 +46,7 @@ describe("useFEPagination =>", () => {
     it("should settle", async () => {
       const { result } = renderHook(
         () => useFEPagination(END_POINT, { ...TEST_TABLE_STATE }),
-        { wrapper }
+        { wrapper },
       );
       await waitFor(() => result.current.isSuccess);
       expect(1).toBe(1);
@@ -59,7 +59,7 @@ describe("useFEPagination =>", () => {
             ...TEST_TABLE_STATE,
             pageSize: undefined,
           }),
-        { wrapper }
+        { wrapper },
       );
       expect(result.current.data).toMatchInlineSnapshot(`
               {
@@ -102,7 +102,7 @@ describe("useFEPagination =>", () => {
             pageSize: 4,
             sortBy: [{ id: "age", desc: false }],
           }),
-        { wrapper }
+        { wrapper },
       );
       expect(result.current.data).toMatchInlineSnapshot(`
         {
@@ -143,7 +143,7 @@ describe("useFEPagination =>", () => {
             pageSize: 4,
             sortBy: [{ id: "age", desc: true }],
           }),
-        { wrapper }
+        { wrapper },
       );
 
       expect(result.current.data).toMatchInlineSnapshot(`
@@ -185,7 +185,7 @@ describe("useFEPagination =>", () => {
             pageSize: 4,
             sortBy: [{ id: "name", desc: false }],
           }),
-        { wrapper }
+        { wrapper },
       );
 
       expect(result.current.data).toMatchInlineSnapshot(`
@@ -227,7 +227,7 @@ describe("useFEPagination =>", () => {
             pageSize: 4,
             sortBy: [{ id: "name", desc: true }],
           }),
-        { wrapper }
+        { wrapper },
       );
 
       expect(result.current.data).toMatchInlineSnapshot(`
@@ -271,7 +271,7 @@ describe("useFEPagination =>", () => {
             pageIndex: 1,
             pageSize: 1,
           }),
-        { wrapper }
+        { wrapper },
       );
 
       expect(result.current.data).toMatchInlineSnapshot(`
@@ -298,7 +298,7 @@ describe("useFEPagination =>", () => {
             pageIndex: 2,
             pageSize: 1,
           }),
-        { wrapper }
+        { wrapper },
       );
 
       expect(result.current.data).toMatchInlineSnapshot(`
@@ -325,7 +325,7 @@ describe("useFEPagination =>", () => {
             pageIndex: 4,
             pageSize: 1,
           }),
-        { wrapper }
+        { wrapper },
       );
 
       expect(result.current.data).toMatchInlineSnapshot(`
@@ -352,7 +352,7 @@ describe("useFEPagination =>", () => {
             pageIndex: 49,
             pageSize: 1,
           }),
-        { wrapper }
+        { wrapper },
       );
 
       expect(result.current.data).toMatchInlineSnapshot(`
@@ -380,7 +380,7 @@ describe("useFEPagination =>", () => {
               },
             ],
           }),
-        { wrapper }
+        { wrapper },
       );
       await waitFor(() => result.current.isSuccess);
       expect(result.current.data).toMatchInlineSnapshot(`
@@ -420,7 +420,7 @@ describe("useFEPagination =>", () => {
               },
             ],
           }),
-        { wrapper }
+        { wrapper },
       );
       await waitFor(() => result.current.isSuccess);
       expect(result.current.data).toMatchInlineSnapshot(`
@@ -457,7 +457,7 @@ describe("useFEPagination =>", () => {
               },
             ],
           }),
-        { wrapper }
+        { wrapper },
       );
       await waitFor(() => result.current.isSuccess);
       expect(result.current.data).toMatchInlineSnapshot(`
@@ -489,7 +489,7 @@ describe("useFEPagination =>", () => {
               },
             ],
           }),
-        { wrapper }
+        { wrapper },
       );
       await waitFor(() => result.current.isSuccess);
       expect(result.current.data).toMatchInlineSnapshot(`
@@ -526,7 +526,7 @@ describe("useFEPagination =>", () => {
               },
             ],
           }),
-        { wrapper }
+        { wrapper },
       );
       await waitFor(() => result.current.isSuccess);
       expect(result.current.data).toMatchInlineSnapshot(`
@@ -567,7 +567,7 @@ describe("useFEPagination =>", () => {
               },
             ] as FieldQueryFilter[],
           }),
-        { wrapper }
+        { wrapper },
       );
       await waitFor(() => result.current.isSuccess);
       expect(result.current.data).toMatchInlineSnapshot(`
@@ -599,7 +599,7 @@ describe("useFEPagination =>", () => {
               },
             ],
           }),
-        { wrapper }
+        { wrapper },
       );
       await waitFor(() => result.current.isSuccess);
       expect(result.current.data.data).toHaveLength(4);
@@ -618,7 +618,7 @@ describe("useFEPagination =>", () => {
               },
             ],
           }),
-        { wrapper }
+        { wrapper },
       );
       await waitFor(() => result.current.isSuccess);
       expect(result.current.data.data).toHaveLength(4);
@@ -640,7 +640,7 @@ describe("useFEPagination =>", () => {
               },
             ] as FieldQueryFilter[],
           }),
-        { wrapper }
+        { wrapper },
       );
       await waitFor(() => result.current.isSuccess);
       expect(result.current.data).toMatchInlineSnapshot(`

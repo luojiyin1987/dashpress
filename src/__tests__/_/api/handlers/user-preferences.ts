@@ -11,15 +11,15 @@ export const userPreferencesApiHandlers = [
     BASE_TEST_URL("/api/user-preferences/:key"),
     async (req, res, ctx) => {
       return res(
-        ctx.json({ data: USER_PREFERENCES[req.params.key as string] })
+        ctx.json({ data: USER_PREFERENCES[req.params.key as string] }),
       );
-    }
+    },
   ),
   rest.put(
     BASE_TEST_URL("/api/user-preferences/:key"),
     async (req, res, ctx) => {
       USER_PREFERENCES[req.params.key as string] = (await req.json()).data;
       return res(ctx.status(201));
-    }
+    },
   ),
 ];

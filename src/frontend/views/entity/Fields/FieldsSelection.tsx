@@ -89,7 +89,7 @@ export function FieldSelectionCanvas({
                     color: newUseColorValue
                       ? SPECTRUM_COLORS[index % SPECTRUM_COLORS.length]
                       : undefined,
-                  }))
+                  })),
                 );
               }}
             />
@@ -104,7 +104,7 @@ export function FieldSelectionCanvas({
                         <Field
                           name={`${name}.value`}
                           validate={composeValidators((value) =>
-                            isNotEmpty(value) ? undefined : "Required"
+                            isNotEmpty(value) ? undefined : "Required",
                           )}
                           validateFields={[]}
                         >

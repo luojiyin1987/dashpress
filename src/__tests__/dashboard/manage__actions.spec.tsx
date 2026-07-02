@@ -26,12 +26,12 @@ describe("pages/admin/settings/dashboard", () => {
       render(
         <TestProviders>
           <ManageDashboard />
-        </TestProviders>
+        </TestProviders>,
       );
 
       expect(await screen.findByRole("link", { name: "Done" })).toHaveAttribute(
         "href",
-        "/"
+        "/",
       );
     });
 
@@ -41,11 +41,11 @@ describe("pages/admin/settings/dashboard", () => {
       render(
         <TestProviders>
           <ManageDashboard />
-        </TestProviders>
+        </TestProviders>,
       );
 
       expect(
-        await screen.findByRole("link", { name: "Add New Dashboard Widget" })
+        await screen.findByRole("link", { name: "Add New Dashboard Widget" }),
       ).toHaveAttribute("href", "/dashboard/__home__widgets/widget/create");
     });
 
@@ -53,23 +53,23 @@ describe("pages/admin/settings/dashboard", () => {
       render(
         <TestProviders>
           <ManageDashboard />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const widget = await screen.findByLabelText("Foo Table Widget");
 
       await userEvent.click(
-        within(widget).getByRole("button", { name: "Delete Dashboard Widget" })
+        within(widget).getByRole("button", { name: "Delete Dashboard Widget" }),
       );
 
       await confirmDelete();
 
       expect(await getToastMessage()).toBe(
-        "Dashboard Widget Deleted Successfully"
+        "Dashboard Widget Deleted Successfully",
       );
 
       expect(
-        screen.queryByLabelText("Foo Table Widget")
+        screen.queryByLabelText("Foo Table Widget"),
       ).not.toBeInTheDocument();
     });
 
@@ -79,16 +79,16 @@ describe("pages/admin/settings/dashboard", () => {
       render(
         <TestProviders>
           <ManageDashboard />
-        </TestProviders>
+        </TestProviders>,
       );
 
       const widget = await screen.findByLabelText("Bar Card Widget");
 
       expect(
-        within(widget).queryByRole("link", { name: "Edit Dashboard Widget" })
+        within(widget).queryByRole("link", { name: "Edit Dashboard Widget" }),
       ).toHaveAttribute(
         "href",
-        "/dashboard/__home__widgets/widget/summary_card_id_1"
+        "/dashboard/__home__widgets/widget/summary_card_id_1",
       );
     });
   });

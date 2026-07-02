@@ -22,7 +22,7 @@ export function EntityTable() {
     viewKey: "ENTITY_TABLE",
     permission: META_USER_PERMISSIONS.APPLIED_CAN_ACCESS_ENTITY(
       entity,
-      GranularEntityPermissions.Show
+      GranularEntityPermissions.Show,
     ),
   });
 

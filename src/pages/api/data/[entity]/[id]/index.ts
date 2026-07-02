@@ -28,7 +28,7 @@ export default requestHandler({
     return await dataApiController.showData(
       validatedRequest.entity,
       validatedRequest.entityId,
-      validatedRequest.requestQuery
+      validatedRequest.requestQuery,
     );
   },
   PATCH: async (getValidatedRequest) => {
@@ -49,7 +49,7 @@ export default requestHandler({
       validatedRequest.entity,
       validatedRequest.entityId,
       validatedRequest.requestBody.data,
-      validatedRequest.authenticatedUser as IAccountProfile
+      validatedRequest.authenticatedUser as IAccountProfile,
     );
   },
   DELETE: async (getValidatedRequest) => {
@@ -65,7 +65,7 @@ export default requestHandler({
     return await dataApiController.deleteData(
       validatedRequest.entity,
       validatedRequest.entityId,
-      validatedRequest.authenticatedUser as IAccountProfile
+      validatedRequest.authenticatedUser as IAccountProfile,
     );
   },
 });

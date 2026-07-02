@@ -25,15 +25,15 @@ type GetValidatedRequestOptions<T> = Array<T | { _type: T; options: unknown }>;
 
 type RequestFn = (
   getRequest: <T extends ValidationKeys["_type"]>(
-    key: GetValidatedRequestOptions<T>
+    key: GetValidatedRequestOptions<T>,
   ) => Promise<Record<T, any>>,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) => unknown;
 
 export const requestHandler =
   (
     methodHandler: Partial<Record<RequestMethod, RequestFn>>,
-    validations?: ValidationKeys[]
+    validations?: ValidationKeys[],
   ) =>
   async (req: NextApiRequest, res: NextApiResponse) => {
     const before = μs.now();
@@ -50,14 +50,14 @@ export const requestHandler =
       });
 
       const AUTH_VALIDATIONS: ValidationKeys[] = validationsToRun.some(
-        (validation) => validation._type === "anyBody"
+        (validation) => validation._type === "anyBody",
       )
         ? []
         : [
             {
               _type: "isAuthenticated",
               body: !validationsToRun.some(
-                (validation) => validation._type === "guest"
+                (validation) => validation._type === "guest",
               ),
             },
           ];
@@ -69,7 +69,7 @@ export const requestHandler =
 
         if (
           !typescriptSafeObjectDotKeys(methodHandler).includes(
-            req.method as RequestMethod
+            req.method as RequestMethod,
           )
         ) {
           res.setHeader("Allow", typescriptSafeObjectDotKeys(methodHandler));
@@ -78,7 +78,7 @@ export const requestHandler =
 
         const response = await methodHandler[req.method](
           async (
-            requestKeys: GetValidatedRequestOptions<ValidationKeys["_type"]>
+            requestKeys: GetValidatedRequestOptions<ValidationKeys["_type"]>,
           ) => {
             return Object.fromEntries(
               await Promise.all(
@@ -91,11 +91,11 @@ export const requestHandler =
                     requestKey,
                     await ValidationImpl[requestKey](req, requestOptions),
                   ];
-                })
-              )
+                }),
+              ),
             );
           },
-          res
+          res,
         );
 
         if (res.hasHeader("Content-Type")) {
@@ -109,13 +109,13 @@ export const requestHandler =
           .status(
             req.method === "DELETE" && response
               ? 200
-              : RequestMethodResponseCode[req.method]
+              : RequestMethodResponseCode[req.method],
           )
           .json(response);
       } catch (error) {
         const errorResponse = handleResponseError(req, error);
         logger.error(
-          `${req.method} ${req.url} ${JSON.stringify(errorResponse)}`
+          `${req.method} ${req.url} ${JSON.stringify(errorResponse)}`,
         );
 
         return res.status(errorResponse.statusCode).json(errorResponse);

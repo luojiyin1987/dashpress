@@ -75,7 +75,7 @@ export function Presentation({
         {
           disabled,
           [formClassName]: true,
-        }
+        },
       )}
       {...dropZoneProps.getRootProps()}
     >
@@ -86,8 +86,8 @@ export function Presentation({
           {isSubmitting
             ? "Uploading..."
             : value
-            ? "Drag and drop or click to replace"
-            : "Drag and drop a file here, or click to select file"}
+              ? "Drag and drop or click to replace"
+              : "Drag and drop a file here, or click to select file"}
         </p>
         {value && (
           <p className="text-sm text-muted">

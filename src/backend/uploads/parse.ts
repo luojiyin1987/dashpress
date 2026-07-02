@@ -10,10 +10,10 @@ import { sluggify } from "@/shared/lib/strings";
 import { compileTemplateString } from "@/shared/lib/strings/templates";
 
 export async function parseForm(
-  req: NextApiRequest
+  req: NextApiRequest,
 ): Promise<{ fields: formidable.Fields; files: formidable.Files }> {
   const fileUploadSettings = await configurationApiService.show(
-    "file_upload_settings"
+    "file_upload_settings",
   );
   const UPLOAD_CONFIG = {
     entity: sluggify("posts"),
@@ -53,7 +53,7 @@ export async function parseForm(
           random_letters: nanoid(),
           file_name: fileNameSplitted.join("."),
           file_extension: fileExtension,
-        }
+        },
       );
       return fileName;
     },

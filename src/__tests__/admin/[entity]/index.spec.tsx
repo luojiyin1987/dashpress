@@ -16,7 +16,7 @@ describe("pages/admin/[entity]/index", () => {
         query: {
           entity: "entity-1",
         },
-      })
+      }),
     );
   });
 
@@ -24,7 +24,7 @@ describe("pages/admin/[entity]/index", () => {
     render(
       <TestProviders>
         <EntityTable />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(await screen.findByRole("table")).toBeInTheDocument();

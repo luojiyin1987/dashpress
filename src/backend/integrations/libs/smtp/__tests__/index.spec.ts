@@ -16,7 +16,7 @@ describe("SMTP_ACTION_INTEGRATION", () => {
         port: "some-port",
         authUser: "some-auth-user",
         authPassword: "some-auth-password",
-      })
+      }),
     ).toMatchInlineSnapshot(`
           [
             "return-value",

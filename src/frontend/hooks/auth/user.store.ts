@@ -36,7 +36,7 @@ const doPermissionCheck = (
   requiredPermission: string,
   isLoadingUser: boolean,
   userData: IAuthenticatedUserBag,
-  isGranularCheck: boolean
+  isGranularCheck: boolean,
 ) => {
   if (isLoadingUser || !userData) {
     return DataStates.Loading;
@@ -48,7 +48,7 @@ const doPermissionCheck = (
     role,
     requiredPermission,
     permissions,
-    isGranularCheck
+    isGranularCheck,
   );
 };
 
@@ -62,16 +62,16 @@ export function useUserHasPermission(): (permision: string) => boolean {
           permission,
           userProfile.isLoading,
           userProfile.data,
-          isGranularCheck
+          isGranularCheck,
         ) === true
       );
     },
-    [isGranularCheck, userProfile.data, userProfile.isLoading]
+    [isGranularCheck, userProfile.data, userProfile.isLoading],
   );
 }
 
 function useUserPermission(): (
-  permision: string
+  permision: string,
 ) => boolean | DataStates.Loading {
   const userProfile = useAuthenticatedUserBag();
   const isGranularCheck = useIsGranularCheck();
@@ -81,15 +81,15 @@ function useUserPermission(): (
         permission,
         userProfile.isLoading,
         userProfile.data,
-        isGranularCheck
+        isGranularCheck,
       );
     },
-    [userProfile.isLoading, userProfile.data, isGranularCheck]
+    [userProfile.isLoading, userProfile.data, isGranularCheck],
   );
 }
 
 export function usePageRequiresPermission(
-  permission: string
+  permission: string,
 ): DataStates.Loading | void {
   const router = useRouter();
   const { toast } = useToast();

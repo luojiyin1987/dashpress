@@ -49,7 +49,7 @@ describe("Request Validations => authenticatedUserValidationImpl", () => {
         {
           _type: "guest",
         },
-      ]
+      ],
     )(req, res);
 
     expect(res._getStatusCode()).toBe(500);
@@ -82,7 +82,7 @@ describe("Request Validations => authenticatedUserValidationImpl", () => {
         {
           _type: "guest",
         },
-      ]
+      ],
     )(req, res);
 
     expect(res._getStatusCode()).toBe(401);

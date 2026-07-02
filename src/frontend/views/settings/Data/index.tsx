@@ -77,7 +77,7 @@ const DATE_FORMAT_LIB_LINK = "https://date-fns.org/docs/format";
 
 function DateSettings() {
   const domainMessages = useAppConfigurationDomainMessages(
-    "default_date_format"
+    "default_date_format",
   );
 
   const { toast } = useToast();
@@ -85,7 +85,7 @@ function DateSettings() {
   const defaultDateFormat = useAppConfiguration("default_date_format");
 
   const upsertDateFormatConfigurationMutation = useUpsertConfigurationMutation(
-    "default_date_format"
+    "default_date_format",
   );
 
   return (

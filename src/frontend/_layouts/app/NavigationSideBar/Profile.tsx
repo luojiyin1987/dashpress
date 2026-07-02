@@ -55,7 +55,7 @@ export function ProfileOnNavigation({ isFullWidth }: IProps) {
             label,
             systemIcon,
             action,
-          })
+          }),
         )}
       />
     </div>

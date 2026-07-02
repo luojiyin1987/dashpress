@@ -39,7 +39,7 @@ export function useApiQueries<T, P>({
 
   const recordedData = (): Record<keyof T, UseQueryResult<P, unknown>> =>
     Object.fromEntries(
-      input.map((_, index) => [input[index][accessor], queryResults[index]])
+      input.map((_, index) => [input[index][accessor], queryResults[index]]),
     );
 
   const findFirst = (key: keyof UseQueryResult) =>

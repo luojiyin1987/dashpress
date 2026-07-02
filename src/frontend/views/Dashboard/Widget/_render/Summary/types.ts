@@ -7,7 +7,7 @@ export const SummaryCardWidgetSchema = z.union([
         count: z.coerce.number(),
       }),
       z.coerce.number(),
-    ])
+    ]),
   ),
   z.coerce.number(),
 ]);

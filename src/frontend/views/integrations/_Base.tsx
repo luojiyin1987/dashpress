@@ -24,7 +24,7 @@ interface IProps {
 
 export function BaseActionsLayout({ children }: IProps) {
   const fileStorageDomainMessages = useDomainMessages(
-    LANG_DOMAINS.INTEGRATIONS.FILE_STORAGE
+    LANG_DOMAINS.INTEGRATIONS.FILE_STORAGE,
   );
 
   const currentKey = useRouteParam("key");

@@ -23,12 +23,12 @@ describe("pages/users/create", () => {
     render(
       <TestProviders>
         <UserCreate />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(
       await screen.findByLabelText("Username"),
-      "someusername"
+      "someusername",
     );
     await userEvent.type(screen.getByLabelText("Name"), "Some Name");
 
@@ -39,12 +39,12 @@ describe("pages/users/create", () => {
     await userEvent.click(screen.getByRole("button", { name: "Create User" }));
 
     expect(await getToastMessage()).toBe(
-      "User Created SuccessfullyView Details"
+      "User Created SuccessfullyView Details",
     );
 
     await userEvent.click(
       screen.getByRole("button", { name: "View Details" }),
-      { pointerEventsCheck: PointerEventsCheckLevel.Never }
+      { pointerEventsCheck: PointerEventsCheckLevel.Never },
     );
     expect(pushMock).toHaveBeenCalledWith("/users/someusername");
   });

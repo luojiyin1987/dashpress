@@ -6,7 +6,7 @@ export const useWidgetNavigationLink = (entity?: string, queryId?: string) => {
   const canUserPerformCrudAction = useCanUserPerformCrudAction(entity);
   const tableViews = useEntityConfiguration(
     "table_views",
-    queryId ? entity : undefined
+    queryId ? entity : undefined,
   );
 
   if (!entity) {

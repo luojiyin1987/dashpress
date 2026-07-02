@@ -60,10 +60,10 @@ export function Table<T extends unknown>({
           typeof value === "object"
             ? JSON.stringify(value)
             : typeof value === "number"
-            ? `${value}`
-            : value,
-        ])
-      )
+              ? `${value}`
+              : value,
+        ]),
+      ),
     );
   }, [data.data]);
 
@@ -80,7 +80,7 @@ export function Table<T extends unknown>({
   useSyncTableState(
     table,
     overridePaginatedDataState,
-    syncPaginatedDataStateOut
+    syncPaginatedDataStateOut,
   );
 
   if (error) {

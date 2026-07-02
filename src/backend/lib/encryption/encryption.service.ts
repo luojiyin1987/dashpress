@@ -9,8 +9,8 @@ export class EncryptionApiService {
   constructor(private readonly _configApiService: ConfigApiService) {
     this.encyptionInstance = new Cryptr(
       this._configApiService.getConfigValue(
-        ConfigKeys.CREDENTIALS_ENCRYPTION_KEY
-      )
+        ConfigKeys.CREDENTIALS_ENCRYPTION_KEY,
+      ),
     );
   }
 

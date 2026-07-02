@@ -12,17 +12,17 @@ describe("user role checks", () => {
 
     it("should return true for only check starting with 'CAN_ACCESS_ENTITY' for viewer", () => {
       expect(canRoleDoThisSync("viewer", "CAN_ACCESS_ENTITY:HELLO", [])).toBe(
-        true
+        true,
       );
       expect(canRoleDoThisSync("viewer", "ANY_OTHER", [])).toBe(false);
     });
 
     it("should return true for custom permission when permission is present", () => {
       expect(
-        canRoleDoThisSync("custom", "PRESENT_ENTITY", ["PRESENT_ENTITY"])
+        canRoleDoThisSync("custom", "PRESENT_ENTITY", ["PRESENT_ENTITY"]),
       ).toBe(true);
       expect(canRoleDoThisSync("custom", "ANY_OTHER", ["PRESENT_ENTITY"])).toBe(
-        false
+        false,
       );
     });
   });
@@ -32,7 +32,7 @@ describe("user role checks", () => {
       expect(
         await canRoleDoThisAsync("creator", "ANY_PERMISSSION", false, () => {
           throw new Error("Do not call me");
-        })
+        }),
       ).toBe(true);
     });
 
@@ -44,13 +44,13 @@ describe("user role checks", () => {
           false,
           () => {
             throw new Error("Do not call me");
-          }
-        )
+          },
+        ),
       ).toBe(true);
       expect(
         await canRoleDoThisAsync("viewer", "ANY_OTHER", false, () => {
           throw new Error("Do not call me");
-        })
+        }),
       ).toBe(false);
     });
 
@@ -60,13 +60,13 @@ describe("user role checks", () => {
           "custom",
           "PRESENT_ENTITY",
           false,
-          async () => ["PRESENT_ENTITY"]
-        )
+          async () => ["PRESENT_ENTITY"],
+        ),
       ).toBe(true);
       expect(
         await canRoleDoThisAsync("custom", "ANY_OTHER", false, async () => [
           "PRESENT_ENTITY",
-        ])
+        ]),
       ).toBe(false);
     });
   });
@@ -75,7 +75,7 @@ describe("user role checks", () => {
     describe("Basic", () => {
       it("should return true when permission is 'NO_PERMISSION_REQUIRED'", () => {
         expect(
-          doesPermissionAllowPermission([], "NO_PERMISSION_REQUIRED", true)
+          doesPermissionAllowPermission([], "NO_PERMISSION_REQUIRED", true),
         ).toBe(true);
       });
 
@@ -84,8 +84,8 @@ describe("user role checks", () => {
           doesPermissionAllowPermission(
             ["PERMISSION_1", "PERMISSION_2"],
             "PERMISSION_2",
-            false
-          )
+            false,
+          ),
         ).toBe(true);
       });
 
@@ -94,11 +94,11 @@ describe("user role checks", () => {
           doesPermissionAllowPermission(
             ["PERMISSION_1", "PERMISSION_2"],
             "SUPER_DUPER_PERMISSION",
-            false
-          )
+            false,
+          ),
         ).toBe(false);
         expect(
-          doesPermissionAllowPermission([], "SUPER_DUPER_PERMISSION", false)
+          doesPermissionAllowPermission([], "SUPER_DUPER_PERMISSION", false),
         ).toBe(false);
       });
     });
@@ -109,8 +109,8 @@ describe("user role checks", () => {
           doesPermissionAllowPermission(
             ["CAN_MANAGE_ALL_ENTITIES", "PERMISSION_2"],
             "CAN_ACCESS_ENTITY:FOO--show",
-            false
-          )
+            false,
+          ),
         ).toBe(true);
       });
 
@@ -119,8 +119,8 @@ describe("user role checks", () => {
           doesPermissionAllowPermission(
             ["CAN_MANAGE_ALL_ENTITIES", "PERMISSION_2"],
             "XXX:FOO",
-            false
-          )
+            false,
+          ),
         ).toBe(false);
       });
     });
@@ -131,8 +131,8 @@ describe("user role checks", () => {
           doesPermissionAllowPermission(
             ["CAN_ACCESS_ENTITY:FOO--update"],
             "CAN_ACCESS_ENTITY:FOO--update",
-            true
-          )
+            true,
+          ),
         ).toBe(true);
       });
 
@@ -141,8 +141,8 @@ describe("user role checks", () => {
           doesPermissionAllowPermission(
             ["CAN_ACCESS_ENTITY:FOO--show"],
             "CAN_ACCESS_ENTITY:FOO--update",
-            true
-          )
+            true,
+          ),
         ).toBe(false);
       });
 
@@ -151,8 +151,8 @@ describe("user role checks", () => {
           doesPermissionAllowPermission(
             ["CAN_ACCESS_ENTITY:FOO--update"],
             "CAN_ACCESS_ENTITY:FOO--update",
-            false
-          )
+            false,
+          ),
         ).toBe(false);
       });
 
@@ -161,8 +161,8 @@ describe("user role checks", () => {
           doesPermissionAllowPermission(
             ["CAN_ACCESS_ENTITY:FOO--show"],
             "CAN_ACCESS_ENTITY:FOO--update",
-            false
-          )
+            false,
+          ),
         ).toBe(true);
       });
 
@@ -171,29 +171,29 @@ describe("user role checks", () => {
           doesPermissionAllowPermission(
             ["CAN_ACCESS_FOOD:FOO--update"],
             "CAN_ACCESS_FOOD:FOO--update",
-            false
-          )
+            false,
+          ),
         ).toBe(true);
         expect(
           doesPermissionAllowPermission(
             ["CAN_ACCESS_FOOD:FOO--update"],
             "CAN_ACCESS_FOOD:FOO--update",
-            true
-          )
+            true,
+          ),
         ).toBe(true);
         expect(
           doesPermissionAllowPermission(
             ["CAN_ACCESS_FOOD:FOO--show"],
             "CAN_ACCESS_FOOD:FOO--update",
-            false
-          )
+            false,
+          ),
         ).toBe(false);
         expect(
           doesPermissionAllowPermission(
             ["CAN_ACCESS_FOOD:FOO--show"],
             "CAN_ACCESS_FOOD:FOO--update",
-            true
-          )
+            true,
+          ),
         ).toBe(false);
       });
     });

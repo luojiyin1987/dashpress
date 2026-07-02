@@ -50,7 +50,7 @@ describe("<IconInputField />", () => {
     render(
       <TestProviders>
         <TestComponent onSubmit={onSubmit} initialValues={{}} />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.queryByLabelText("Icon")).not.toBeInTheDocument();
@@ -62,7 +62,7 @@ describe("<IconInputField />", () => {
     expect(onSubmit).toHaveBeenCalledWith(
       { icon: "some test SVG" },
       expect.anything(),
-      expect.anything()
+      expect.anything(),
     );
   });
 
@@ -74,7 +74,7 @@ describe("<IconInputField />", () => {
           onSubmit={onSubmit}
           initialValues={{ icon: "PieChart" }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.queryByLabelText("SVG")).not.toBeInTheDocument();
@@ -86,7 +86,7 @@ describe("<IconInputField />", () => {
     expect(onSubmit).toHaveBeenCalledWith(
       { icon: "CreditCard" },
       expect.anything(),
-      expect.anything()
+      expect.anything(),
     );
   });
 
@@ -98,7 +98,7 @@ describe("<IconInputField />", () => {
           onSubmit={onSubmit}
           initialValues={{ icon: "Some invalid icon" }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.queryByLabelText("Icon")).not.toBeInTheDocument();
@@ -110,7 +110,7 @@ describe("<IconInputField />", () => {
     expect(onSubmit).toHaveBeenCalledWith(
       { icon: "Some invalid icon-updated" },
       expect.anything(),
-      expect.anything()
+      expect.anything(),
     );
   });
 
@@ -122,7 +122,7 @@ describe("<IconInputField />", () => {
           onSubmit={onSubmit}
           initialValues={{ icon: "Some invalid icon" }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.queryByLabelText("Icon")).not.toBeInTheDocument();
@@ -139,7 +139,7 @@ describe("<IconInputField />", () => {
     expect(onSubmit).toHaveBeenCalledWith(
       { icon: "CreditCard" },
       expect.anything(),
-      expect.anything()
+      expect.anything(),
     );
   });
 
@@ -151,7 +151,7 @@ describe("<IconInputField />", () => {
           onSubmit={onSubmit}
           initialValues={{ icon: "CreditCard" }}
         />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.queryByLabelText("SVG")).not.toBeInTheDocument();
@@ -168,7 +168,7 @@ describe("<IconInputField />", () => {
     expect(onSubmit).toHaveBeenCalledWith(
       { icon: "some custom icon" },
       expect.anything(),
-      expect.anything()
+      expect.anything(),
     );
   });
 });

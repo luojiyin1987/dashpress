@@ -22,7 +22,7 @@ export function PasswordToReveal({ isLoading }: { isLoading: boolean }) {
     <div>
       <p className="mb-3 text-sm italic">
         {_(
-          msg`For security reasons, Please input your account password to reveal credentials`
+          msg`For security reasons, Please input your account password to reveal credentials`,
         )}
       </p>
 

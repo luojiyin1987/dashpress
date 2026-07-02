@@ -20,7 +20,7 @@ describe("SEND_GRID => SEND_MAIL", () => {
         body: "<p>some-body</p>",
         senderEmail: "some-email",
         senderName: "some-name",
-      }
+      },
     );
 
     expect(fetch).toHaveBeenCalledWith(
@@ -32,7 +32,7 @@ describe("SEND_GRID => SEND_MAIL", () => {
           "Content-Type": "application/json",
         },
         method: "POST",
-      }
+      },
     );
   });
 });

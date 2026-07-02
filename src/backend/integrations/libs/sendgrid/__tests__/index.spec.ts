@@ -5,7 +5,7 @@ describe("SEND_GRID_ACTION_INTEGRATION", () => {
     expect(
       await SEND_GRID_ACTION_INTEGRATION.connect({
         apiKey: "some-apikey",
-      })
+      }),
     ).toMatchInlineSnapshot(`
       {
         "apiKey": "some-apikey",

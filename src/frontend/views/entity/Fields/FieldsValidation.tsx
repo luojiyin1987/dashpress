@@ -59,9 +59,9 @@ export function FieldValidationCanvas({
           values.validations.map((validation) => ({
             ...validation,
             errorMessage: fakeMessageDescriptor(
-              validation.errorMessage.message
+              validation.errorMessage.message,
             ),
-          }))
+          })),
         );
       }}
       mutators={{
@@ -100,7 +100,7 @@ export function FieldValidationCanvas({
                         {validationInput && (
                           <>
                             {typescriptSafeObjectDotEntries(
-                              validationInput
+                              validationInput,
                             ).map(([inputKey, inputValue]) => (
                               <Field
                                 key={inputKey}
@@ -133,7 +133,7 @@ export function FieldValidationCanvas({
                           name={`${name}.errorMessage.message`}
                           validate={composeValidators(
                             required,
-                            maxLength(ERROR_MESSAGE_LENGTH)
+                            maxLength(ERROR_MESSAGE_LENGTH),
                           )}
                           validateFields={[]}
                         >

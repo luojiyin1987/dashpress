@@ -20,7 +20,7 @@ export default requestHandler({
     return await dataApiController.createData(
       validatedRequest.entity,
       validatedRequest.requestBody.data,
-      validatedRequest.authenticatedUser as IAccountProfile
+      validatedRequest.authenticatedUser as IAccountProfile,
     );
   },
 });

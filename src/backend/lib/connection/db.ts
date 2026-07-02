@@ -10,7 +10,7 @@ const verify = async (connection: Knex) => {
 };
 
 export const getDbConnection = async (
-  credentials: IDataSourceCredentials | string
+  credentials: IDataSourceCredentials | string,
 ): Promise<Knex<any, any[]>> => {
   return await connectionManager<
     IDataSourceCredentials | string,

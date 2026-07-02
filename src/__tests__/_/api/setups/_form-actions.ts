@@ -27,7 +27,7 @@ const TEST_FORM_ACTIONS: IFormAction[] = [
 ];
 
 export const setupFormActionsTestData = async (
-  formActions: IFormAction[] = TEST_FORM_ACTIONS
+  formActions: IFormAction[] = TEST_FORM_ACTIONS,
 ) => {
   const configPersistenceService =
     createConfigDomainPersistenceService<IFormAction>("form-actions");

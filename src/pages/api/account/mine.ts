@@ -15,13 +15,13 @@ export default requestHandler({
     ]);
     return await usersApiService.updateUser(
       (validatedRequest.authenticatedUser as IAccountProfile).username,
-      validatedRequest.requestBody
+      validatedRequest.requestBody,
     );
   },
   GET: async (getValidatedRequest) => {
     const validatedRequest = await getValidatedRequest(["authenticatedUser"]);
     return await usersApiController.getAuthenticatedUserBag(
-      (validatedRequest.authenticatedUser as IAccountProfile).username
+      (validatedRequest.authenticatedUser as IAccountProfile).username,
     );
   },
 });

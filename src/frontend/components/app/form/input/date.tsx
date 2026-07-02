@@ -60,7 +60,7 @@ export function ControlledFormDateInput({
               "ring-1 ring-primary": isOpen.isOn,
             },
             generateClassNames(meta),
-            className
+            className,
           )}
           id={id}
           disabled={disabled}

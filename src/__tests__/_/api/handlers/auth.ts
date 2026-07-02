@@ -9,14 +9,14 @@ export const authApiHandlers = [
       return res(
         ctx.json({
           token: "some valid jwt token",
-        })
+        }),
       );
     }
     return res(
       ctx.status(401),
       ctx.json({
         message: "Invalid Login",
-      })
+      }),
     );
   }),
 ];

@@ -16,23 +16,23 @@ const ALL_PERMISSIONS = Object.values({
 
 export const canUserValidationImpl: ValidationImplType<void> = async (
   req,
-  requiredPermission: UserPermissions
+  requiredPermission: UserPermissions,
 ): Promise<void> => {
   progammingError(
     "Please provide the required permission",
-    !requiredPermission
+    !requiredPermission,
   );
 
   progammingError(
     "The provided permission seems to be invalid",
-    !ALL_PERMISSIONS.includes(requiredPermission)
+    !ALL_PERMISSIONS.includes(requiredPermission),
   );
 
   if (
     !(await rolesApiService.canRoleDoThis(req.user.role, requiredPermission))
   ) {
     throw new ForbiddenError(
-      `${ERROR_MESSAGE}: (${userFriendlyCase(requiredPermission)})`
+      `${ERROR_MESSAGE}: (${userFriendlyCase(requiredPermission)})`,
     );
   }
 };

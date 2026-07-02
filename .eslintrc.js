@@ -67,6 +67,7 @@ module.exports = {
         "no-unused-vars": "off",
         "react/no-danger": "off",
         "react/no-unstable-nested-components": "off",
+        "react/no-unknown-property": ["error", { ignore: ["cmdk-input-wrapper"] }],
         "import/no-extraneous-dependencies": "off",
         "import/no-cycle": "off",
         "consistent-return": "off",

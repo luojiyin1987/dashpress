@@ -24,7 +24,7 @@ export class IntegrationsApiService {
       ActionIntegrations[]
     >,
     private readonly _credentialsApiService: CredentialsApiService,
-    private readonly _formActionsApiService: FormActionsApiService
+    private readonly _formActionsApiService: FormActionsApiService,
   ) {}
 
   listActionIntegrations(): IIntegrationsList[] {
@@ -34,15 +34,15 @@ export class IntegrationsApiService {
         title,
         key,
         configurationSchema,
-      })
+      }),
     );
   }
 
   listIntegrationImplementations(
-    integration: ActionIntegrations
+    integration: ActionIntegrations,
   ): IIntegrationImplementationList[] {
     return typescriptSafeObjectDotEntries(
-      ACTION_INTEGRATIONS[integration].performsImplementation
+      ACTION_INTEGRATIONS[integration].performsImplementation,
     ).map(([key, { configurationSchema, label }]) => ({
       label,
       key,
@@ -59,11 +59,11 @@ export class IntegrationsApiService {
 
   async activateIntegration(
     integration: ActionIntegrations,
-    configuration: Record<string, string>
+    configuration: Record<string, string>,
   ): Promise<void> {
     validateSchemaRequestBody(
       ACTION_INTEGRATIONS[integration].configurationSchema,
-      configuration
+      configuration,
     );
 
     const credentialsGroupKey = this.makeCredentialsGroupKey(integration);
@@ -80,10 +80,10 @@ export class IntegrationsApiService {
       {
         key: credentialsGroupKey,
         fields: typescriptSafeObjectDotKeys(
-          ACTION_INTEGRATIONS[integration].configurationSchema
+          ACTION_INTEGRATIONS[integration].configurationSchema,
         ) as string[],
       },
-      configuration
+      configuration,
     );
   }
 
@@ -92,7 +92,7 @@ export class IntegrationsApiService {
   }
 
   async getIntegrationCredentials(
-    integration: ActionIntegrations
+    integration: ActionIntegrations,
   ): Promise<Record<string, unknown>> {
     if (integration === ActionIntegrations.HTTP) {
       return {};
@@ -101,28 +101,28 @@ export class IntegrationsApiService {
     return await this._credentialsApiService.useGroupValue({
       key: this.makeCredentialsGroupKey(integration),
       fields: typescriptSafeObjectDotKeys(
-        ACTION_INTEGRATIONS[integration].configurationSchema
+        ACTION_INTEGRATIONS[integration].configurationSchema,
       ) as string[],
     });
   }
 
   async updateIntegrationConfig(
     integration: ActionIntegrations,
-    configuration: Record<string, string>
+    configuration: Record<string, string>,
   ): Promise<void> {
     validateSchemaRequestBody(
       ACTION_INTEGRATIONS[integration].configurationSchema,
-      configuration
+      configuration,
     );
 
     await this._credentialsApiService.upsertGroup(
       {
         key: this.makeCredentialsGroupKey(integration),
         fields: typescriptSafeObjectDotKeys(
-          ACTION_INTEGRATIONS[integration].configurationSchema
+          ACTION_INTEGRATIONS[integration].configurationSchema,
         ) as string[],
       },
-      configuration
+      configuration,
     );
   }
 
@@ -130,7 +130,7 @@ export class IntegrationsApiService {
     await this._credentialsApiService.deleteGroup({
       key: this.makeCredentialsGroupKey(integration),
       fields: typescriptSafeObjectDotKeys(
-        ACTION_INTEGRATIONS[integration].configurationSchema
+        ACTION_INTEGRATIONS[integration].configurationSchema,
       ) as string[],
     });
 
@@ -139,8 +139,8 @@ export class IntegrationsApiService {
 
     await this._activatedIntegrationsPersistenceService.persistItem(
       activatedIntegrations.filter(
-        (activatedIntegration) => activatedIntegration !== integration
-      )
+        (activatedIntegration) => activatedIntegration !== integration,
+      ),
     );
 
     const formActions = await this._formActionsApiService.getAllFormAction();
@@ -155,11 +155,11 @@ export class IntegrationsApiService {
 
 const activatedIntegrationsPersistenceService =
   createKeyValueDomainPersistenceService<ActionIntegrations[]>(
-    "activated-integrations"
+    "activated-integrations",
   );
 
 export const integrationsApiService = new IntegrationsApiService(
   activatedIntegrationsPersistenceService,
   credentialsApiService,
-  formActionsApiService
+  formActionsApiService,
 );

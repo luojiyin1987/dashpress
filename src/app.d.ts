@@ -9,3 +9,7 @@ declare module "*.svg" {
   export default content;
   export const ReactComponent = content;
 }
+
+declare module "*.css";
+declare module "*.scss";
+declare module "*.less";

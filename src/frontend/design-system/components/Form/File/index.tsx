@@ -39,7 +39,7 @@ export function FormFileInput({
           typescriptSafeObjectDotEntries(metadata).forEach(
             ([key, keyValue]) => {
               formData.append(key, keyValue as string);
-            }
+            },
           );
         }
         try {
@@ -48,13 +48,13 @@ export function FormFileInput({
           setError(null);
         } catch (e) {
           setError(
-            e.response.data.message || "Ooops, something wrong happened."
+            e.response.data.message || "Ooops, something wrong happened.",
           );
         }
         submissionMode.off();
       });
     },
-    [input, metadata, submissionMode, uploadUrl]
+    [input, metadata, submissionMode, uploadUrl],
   );
   const dropZoneProps = useDropzone({
     onDrop,

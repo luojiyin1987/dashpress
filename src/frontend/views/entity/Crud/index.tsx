@@ -43,7 +43,7 @@ function useEntityCrudView(entity: string) {
 
   const upsertCrudSettingsMutation = useUpsertConfigurationMutation(
     "entity_crud_settings",
-    entity
+    entity,
   );
 
   const [entityCrudSettingsState, setEntityCrudSettingsState] =
@@ -197,7 +197,7 @@ export function EntityCrudSettings() {
               id: key,
               content: render,
               muted: disabled,
-            })
+            }),
           )}
         />
       </SectionBox>

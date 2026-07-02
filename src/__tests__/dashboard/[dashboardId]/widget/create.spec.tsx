@@ -25,7 +25,7 @@ describe("pages/dashboard/[dashboardId]/widget/create", () => {
         query: {
           dashboardId: "test-dashboard-id",
         },
-      })
+      }),
     );
   });
 
@@ -33,12 +33,12 @@ describe("pages/dashboard/[dashboardId]/widget/create", () => {
     render(
       <TestProviders>
         <CreateDashboardWidget />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(
       await screen.findByLabelText("Title"),
-      "New Summary Card"
+      "New Summary Card",
     );
 
     await selectCombobox("Type", "Summary Card");
@@ -58,11 +58,11 @@ describe("pages/dashboard/[dashboardId]/widget/create", () => {
     await selectCombobox("Icon", "Download");
 
     await userEvent.click(
-      screen.getByRole("button", { name: "Create Dashboard Widget" })
+      screen.getByRole("button", { name: "Create Dashboard Widget" }),
     );
 
     expect(await getToastMessage()).toBe(
-      "Dashboard Widget Created Successfully"
+      "Dashboard Widget Created Successfully",
     );
 
     await closeAllToasts();
@@ -72,7 +72,7 @@ describe("pages/dashboard/[dashboardId]/widget/create", () => {
     render(
       <TestProviders>
         <CreateDashboardWidget />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(await screen.findByLabelText("Title"), "New Table");
@@ -90,19 +90,19 @@ describe("pages/dashboard/[dashboardId]/widget/create", () => {
     await userEvent.type(screen.getByLabelText("Script"), "return 2");
 
     expect(
-      screen.queryByRole("button", { name: "green" })
+      screen.queryByRole("button", { name: "green" }),
     ).not.toBeInTheDocument();
 
     expect(
-      screen.queryByRole("combobox", { name: "Icon" })
+      screen.queryByRole("combobox", { name: "Icon" }),
     ).not.toBeInTheDocument();
 
     await userEvent.click(
-      screen.getByRole("button", { name: "Create Dashboard Widget" })
+      screen.getByRole("button", { name: "Create Dashboard Widget" }),
     );
 
     expect(await getToastMessage()).toBe(
-      "Dashboard Widget Created Successfully"
+      "Dashboard Widget Created Successfully",
     );
   });
 });

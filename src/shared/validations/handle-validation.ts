@@ -6,15 +6,15 @@ export const handleValidation =
     validate: (
       value: unknown,
       parameter?: unknown,
-      allValues?: Record<string, unknown>
+      allValues?: Record<string, unknown>,
     ) => boolean,
-    parameterKey?: string
+    parameterKey?: string,
   ) =>
   (
     value: unknown,
     errorMessage: MessageDescriptor,
     constraints: Record<string, unknown>,
-    allValues: Record<string, unknown>
+    allValues: Record<string, unknown>,
   ) => {
     if (isEmpty(value)) {
       return undefined;
@@ -25,7 +25,7 @@ export const handleValidation =
       parameterKey === "pattern"
         ? new RegExp(constraints[parameterKey] as string)
         : constraints[parameterKey],
-      allValues
+      allValues,
     )
       ? undefined
       : errorMessage;

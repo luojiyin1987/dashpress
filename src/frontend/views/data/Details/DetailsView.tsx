@@ -42,7 +42,7 @@ export function EntityDetailsView({
   const entityFieldSelections = useEntityFieldSelections(entity);
   const entityPresentationScript = useEntityConfiguration(
     "entity_presentation_script",
-    entity
+    entity,
   );
 
   const error =
@@ -97,7 +97,7 @@ export function EntityDetailsView({
               row: dataDetails?.data,
               value: rawValue,
               ...evaluateScriptContext,
-            }
+            },
           );
 
           const specialDataTypeRender = viewSpecialDataTypes({

@@ -51,15 +51,15 @@ describe("Config Service", () => {
 
     it("should validate `CONFIG_ADAPTOR`", () => {
       expect(() =>
-        bootstrapConfig({ CONFIG_ADAPTOR: "invalid-value" })
+        bootstrapConfig({ CONFIG_ADAPTOR: "invalid-value" }),
       ).toThrow(
-        `Invalid Config Adaptor name provided 'invalid-value'. Valid values are json-file,database,memory,redis`
+        `Invalid Config Adaptor name provided 'invalid-value'. Valid values are json-file,database,memory,redis`,
       );
     });
 
     it("should validate `CACHE_ADAPTOR`", () => {
       expect(() => bootstrapConfig({ CACHE_ADAPTOR: "invalid-value" })).toThrow(
-        `Invalid Cache Adaptor name provided 'invalid-value'. Valid values are memory,redis`
+        `Invalid Cache Adaptor name provided 'invalid-value'. Valid values are memory,redis`,
       );
     });
 
@@ -68,9 +68,9 @@ describe("Config Service", () => {
         bootstrapConfig({
           CREDENTIALS_ENCRYPTION_KEY:
             "less-than-64-chars-no-uppercase-no-numbers",
-        })
+        }),
       ).toThrow(
-        `Encryption Key must contain uppercase letters, lowercase letters, numbers and be more than 64 characters`
+        `Encryption Key must contain uppercase letters, lowercase letters, numbers and be more than 64 characters`,
       );
     });
 
@@ -80,7 +80,7 @@ describe("Config Service", () => {
           AUTH_TOKEN_KEY: "less-than-64-chars-no-uppercase-no-numbers",
         });
       }).toThrow(
-        `Auth token Key must contain uppercase letters, lowercase letters, numbers and be more than 64 characters`
+        `Auth token Key must contain uppercase letters, lowercase letters, numbers and be more than 64 characters`,
       );
     });
 
@@ -104,7 +104,7 @@ describe("Config Service", () => {
           new ConfigApiService({
             ENV_LOCAL_FILE,
             NODE_ENV: "production",
-          })
+          }),
       ).toThrow();
     });
 
@@ -118,7 +118,7 @@ describe("Config Service", () => {
           .split("\n")
           .filter((value) => value)
           .filter((value) => !value.startsWith("#"))
-          .map((value) => value.split("="))
+          .map((value) => value.split("=")),
       );
 
       expect(() => new ConfigApiService(newEnv)).not.toThrow();
@@ -128,7 +128,7 @@ describe("Config Service", () => {
       newEnv.CONFIG_ADAPTOR = "hello";
 
       expect(() => new ConfigApiService(newEnv)).toThrow(
-        "Invalid Config Adaptor name provided 'hello'. Valid values are json-file,database,memory,redis"
+        "Invalid Config Adaptor name provided 'hello'. Valid values are json-file,database,memory,redis",
       );
     });
 
@@ -144,7 +144,7 @@ describe("Config Service", () => {
         fullPath,
         typescriptSafeObjectDotEntries(oldEnv)
           .map(([key, value]) => `${key}=${value}`)
-          .join("\n")
+          .join("\n"),
       );
 
       new ConfigApiService({
@@ -159,7 +159,7 @@ describe("Config Service", () => {
           .split("\n")
           .filter((value) => value)
           .filter((value) => !value.startsWith("#"))
-          .map((value) => value.split("="))
+          .map((value) => value.split("=")),
       );
 
       expect(() => new ConfigApiService(newEnv)).not.toThrow();
@@ -167,7 +167,7 @@ describe("Config Service", () => {
       expect(newEnv.CONFIG_ADAPTOR_CONNECTION_STRING).toBe("test");
       expect(newEnv.CACHE_ADAPTOR).toBe("redis");
       expect(newEnv.CREDENTIALS_ENCRYPTION_KEY).toBe(
-        "TEST123*!@#foobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobtesttesttesttest"
+        "TEST123*!@#foobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobfoobtesttesttesttest",
       );
     });
   });

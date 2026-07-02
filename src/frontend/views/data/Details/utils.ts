@@ -5,7 +5,7 @@ export const getEntitiesRelationsCount = (
   type: IEntityRelation["type"],
   countData: DataStateKeys<{
     count: number;
-  }>
+  }>,
 ): string => {
   if (type === "toOne") {
     return "";

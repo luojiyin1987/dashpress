@@ -8,7 +8,7 @@ import { SchemasApiService } from "../schema.service";
 
 const setupTestDatabaseData = async (modified: boolean) => {
   const connection = await getDbConnection(
-    `sqlite:./test-introspection.sqlite`
+    `sqlite:./test-introspection.sqlite`,
   );
 
   await connection.schema.dropTableIfExists("users");
@@ -47,7 +47,7 @@ describe("SchemaService", () => {
 
   const schemasService = new SchemasApiService(
     schemaPersistenceService,
-    credentialsApiService
+    credentialsApiService,
   );
 
   beforeAll(async () => {

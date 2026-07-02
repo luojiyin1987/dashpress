@@ -18,7 +18,7 @@ export type IAccountUserSetupFields = Pick<
 export class SetupApiService {
   constructor(
     private _usersApiService: UsersApiService,
-    private _credentialsApiService: CredentialsApiService
+    private _credentialsApiService: CredentialsApiService,
   ) {}
 
   async check(): Promise<ISetupCheck> {
@@ -51,7 +51,7 @@ export class SetupApiService {
       await this._credentialsApiService.hasGroupKey(DATABASE_CREDENTIAL_GROUP)
     ) {
       throw new BadRequestError(
-        "Primary database credentials already configured"
+        "Primary database credentials already configured",
       );
     }
 
@@ -59,18 +59,18 @@ export class SetupApiService {
       await getDbConnection(dbCredentials);
     } catch (error: unknown) {
       throw new BadRequestError(
-        `Couldn't not connect to database '${(error as Error).message}'`
+        `Couldn't not connect to database '${(error as Error).message}'`,
       );
     }
 
     await this._credentialsApiService.upsertGroup(
       DATABASE_CREDENTIAL_GROUP,
-      dbCredentials as unknown as Record<string, string>
+      dbCredentials as unknown as Record<string, string>,
     );
   }
 }
 
 export const setupApiService = new SetupApiService(
   usersApiService,
-  credentialsApiService
+  credentialsApiService,
 );

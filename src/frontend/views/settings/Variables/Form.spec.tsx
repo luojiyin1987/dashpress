@@ -17,7 +17,7 @@ describe("CAPITAL_AND_UNDERSCORE_REGEX", () => {
 
   it.each(cases)("should validate '$input' correctly", ({ input, value }) => {
     expect(matches(input, new RegExp(CAPITAL_AND_UNDERSCORE_REGEX))).toBe(
-      value
+      value,
     );
   });
 });

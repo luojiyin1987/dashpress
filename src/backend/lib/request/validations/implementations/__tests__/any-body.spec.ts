@@ -12,7 +12,7 @@ const handler = requestHandler(
     {
       _type: "anyBody",
     },
-  ]
+  ],
 );
 
 describe("Request Validations => anyBodyValidationImpl", () => {

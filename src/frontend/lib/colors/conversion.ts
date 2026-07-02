@@ -15,7 +15,7 @@ export const hexToOklch = (hex: string) => {
     const b = rgb.b / 255;
 
     const [linearR, linearG, linearB] = [r, g, b].map((c: number) =>
-      c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4
+      c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4,
     );
 
     // Convert Linear RGB to CIE XYZ
@@ -28,7 +28,7 @@ export const hexToOklch = (hex: string) => {
 
     // Convert CIE XYZ to CIELAB
     [x, y, z] = [x, y, z].map((c: number) =>
-      c > 0.008856 ? c ** (1 / 3) : (903.3 * c + 16) / 116
+      c > 0.008856 ? c ** (1 / 3) : (903.3 * c + 16) / 116,
     );
     let l: number = 116 * y - 16;
     const a: number = 500 * (x - y);

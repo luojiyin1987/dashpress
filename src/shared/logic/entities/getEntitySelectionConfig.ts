@@ -14,7 +14,7 @@ import { isUseColorsFlagOn } from "./selection.utils";
 export const getEntitySelectionConfig = (
   entityType: EntityTypesForSelection,
   preSelectedType: IColorableSelection[],
-  enumList$1: string[]
+  enumList$1: string[],
 ): IColorableSelection[] => {
   switch (entityType) {
     case "boolean":
@@ -52,7 +52,7 @@ export const getEntitySelectionConfig = (
               : undefined,
           })),
         ],
-        "value"
+        "value",
       );
     }
   }

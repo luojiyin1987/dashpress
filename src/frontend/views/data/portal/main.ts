@@ -4,15 +4,15 @@ import { noop } from "@/shared/lib/noop";
 
 export const usePortalExtendEntityFormConfig = (
   entity: string,
-  crudAction: "update" | "create"
+  crudAction: "update" | "create",
 ):
   | "loading"
   | ((
-      formConfig: IAppliedSchemaFormConfig<any>
+      formConfig: IAppliedSchemaFormConfig<any>,
     ) => IAppliedSchemaFormConfig<any>) => {
   noop(crudAction, entity);
   return (
-    formConfig: IAppliedSchemaFormConfig<any>
+    formConfig: IAppliedSchemaFormConfig<any>,
   ): IAppliedSchemaFormConfig<any> => {
     return formConfig;
   };

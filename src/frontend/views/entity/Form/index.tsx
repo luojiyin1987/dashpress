@@ -30,7 +30,7 @@ function useEntityFormView(entity: string): Record<
 > {
   const entityFormExtensionSettings = useEntityConfiguration(
     "entity_form_extension",
-    entity
+    entity,
   );
 
   const upsertEntityFormExtensionSettingsMutation =
@@ -125,13 +125,13 @@ export function EntityFormExtensionSettings() {
   const entity = useEntitySlug();
 
   const domainMessages = useAppConfigurationDomainMessages(
-    "entity_form_extension"
+    "entity_form_extension",
   );
 
   const entityFormView = useEntityFormView(entity);
 
   const documentationActionButton = useDocumentationActionButton(
-    domainMessages.TEXT_LANG.TITLE
+    domainMessages.TEXT_LANG.TITLE,
   );
 
   useSetPageDetails({
@@ -151,7 +151,7 @@ export function EntityFormExtensionSettings() {
               id: key,
               label,
               content: Cmp,
-            })
+            }),
           )}
         />
       </SectionBox>

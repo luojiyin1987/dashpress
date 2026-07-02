@@ -12,7 +12,7 @@ export const getEntityCreateLink = (
   reference?: {
     referenceField: string;
     entityId: string;
-  }
+  },
 ) => {
   let baseUrl = NAVIGATION_LINKS.ENTITY.CREATE(entity);
   if (reference) {
@@ -27,7 +27,7 @@ export const useTableMenuItems = (
   reference?: {
     referenceField: string;
     entityId: string;
-  }
+  },
 ): IMenuActionItem[] => {
   const router = useRouter();
   const entityCrudConfig = useEntityCrudConfig(entity);

@@ -28,7 +28,7 @@ const allData = ({
       [`${entity}-boolean-field`]: bool,
       [`${entity}-date-field`]: date,
       [`${entity}-enum-field`]: enum$1,
-    })
+    }),
   );
 };
 
@@ -47,7 +47,7 @@ export const dataApiHandlers = [
     return res(
       ctx.json({
         count: reduceStringToNumber(req.params.entity as string) + filterCount,
-      })
+      }),
     );
   }),
   rest.get(BASE_TEST_URL("/api/data/:entity/table"), async (req, res, ctx) => {
@@ -73,7 +73,7 @@ export const dataApiHandlers = [
         pageIndex: 1,
         pageSize: 10,
         totalRecords: 10,
-      })
+      }),
     );
   }),
   rest.get(BASE_TEST_URL("/api/data/:entity/list"), async (req, res, ctx) => {
@@ -82,8 +82,8 @@ export const dataApiHandlers = [
 
     return res(
       ctx.json(
-        allData({ entity: entity as string, idPrefix: 1, stringPrefix: "" })
-      )
+        allData({ entity: entity as string, idPrefix: 1, stringPrefix: "" }),
+      ),
     );
   }),
   rest.get(BASE_TEST_URL("/api/data/:entity/:id"), async (req, res, ctx) => {
@@ -95,8 +95,8 @@ export const dataApiHandlers = [
           entity: entity as string,
           idPrefix: id as unknown as number,
           stringPrefix: "",
-        })[0]
-      )
+        })[0],
+      ),
     );
   }),
 ];

@@ -4,6 +4,6 @@ export interface IBaseNavigationMenuApiService {
   generateMenuItems(): Promise<INavigationMenuItem[]>;
   filterOutUserMenuItems(
     userRole: string,
-    navItems: INavigationMenuItem[]
+    navItems: INavigationMenuItem[],
   ): Promise<INavigationMenuItem[]>;
 }

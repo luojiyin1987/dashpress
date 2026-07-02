@@ -20,7 +20,7 @@ describe("MAIL_GUN => SEND_MAIL", () => {
         subject: "some-subject",
         body: "<p>some-body</p>",
         senderEmail: "sender-email",
-      }
+      },
     );
 
     expect(fetch).toHaveBeenCalled();

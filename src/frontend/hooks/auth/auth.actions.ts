@@ -45,7 +45,7 @@ export const AuthActions = {
     removeAuthToken();
     TemporayStorageService.setString(
       STORAGE_CONSTANTS.PREVIOUS_AUTH_URL,
-      window.location.href
+      window.location.href,
     );
     if (
       [
@@ -62,7 +62,7 @@ export const AuthActions = {
   signIn: () => {
     replaceWithLocale(
       // TemporayStorageService.getString(STORAGE_CONSTANTS.PREVIOUS_AUTH_URL) ||
-      NAVIGATION_LINKS.DASHBOARD.HOME
+      NAVIGATION_LINKS.DASHBOARD.HOME,
     );
   },
 };

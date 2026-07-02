@@ -11,5 +11,5 @@ export default requestHandler(
     {
       _type: "guest",
     },
-  ]
+  ],
 );

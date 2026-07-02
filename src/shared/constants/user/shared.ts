@@ -13,7 +13,7 @@ export const APPLIED_CAN_ACCESS =
 
 export const replaceGranular = (
   permissionString: string,
-  granular: GranularEntityPermissions
+  granular: GranularEntityPermissions,
 ) => {
   const [firstPart] = permissionString.split("--");
 

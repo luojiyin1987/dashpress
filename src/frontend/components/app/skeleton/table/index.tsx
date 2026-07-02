@@ -21,7 +21,7 @@ export function TableSkeleton({ lean }: IProps) {
                     key={key$1}
                     style={{ flex: key$1 % 3 ? 2 : 1 }}
                   />
-                )
+                ),
               )}
               {!lean && (
                 <div className="my-1 flex basis-16 gap-2">
@@ -31,7 +31,7 @@ export function TableSkeleton({ lean }: IProps) {
               )}
             </div>
           </div>
-        )
+        ),
       )}
     </div>
   );

@@ -28,7 +28,7 @@ export const entitiesApiHandlers = [
           value: "disabled-entity-2",
           label: "disabled-entity-2",
         },
-      ])
+      ]),
     );
   }),
   rest.get(BASE_TEST_URL("/api/entities/user-menu"), async (_, res, ctx) => {
@@ -42,7 +42,7 @@ export const entitiesApiHandlers = [
           value: "entity-2",
           label: "entity-2",
         },
-      ])
+      ]),
     );
   }),
   rest.get(BASE_TEST_URL("/api/entities/list"), async (_, res, ctx) => {
@@ -72,7 +72,7 @@ export const entitiesApiHandlers = [
           value: "disabled-entity-2",
           label: "disabled-entity-2",
         },
-      ])
+      ]),
     );
   }),
 
@@ -98,9 +98,9 @@ export const entitiesApiHandlers = [
             field: "foo-1",
             type: "toOne",
           },
-        ])
+        ]),
       );
-    }
+    },
   ),
 
   rest.get(
@@ -112,9 +112,9 @@ export const entitiesApiHandlers = [
           "related-entity-3",
           "related-entity-4",
           "hidden-related-entity-5",
-        ])
+        ]),
       );
-    }
+    },
   ),
 
   rest.get(
@@ -158,6 +158,6 @@ export const entitiesApiHandlers = [
         },
       ];
       return res(ctx.json(fields));
-    }
+    },
   ),
 ];

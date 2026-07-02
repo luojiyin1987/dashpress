@@ -8,7 +8,7 @@ import { IntegrationsConfigurationApiService } from "./_base";
 class PlainConfigurationService extends IntegrationsConfigurationApiService {
   constructor(
     _credentialsPersistenceService: AbstractConfigDataPersistenceService<string>,
-    _encryptionService: EncryptionApiService
+    _encryptionService: EncryptionApiService,
   ) {
     super(_credentialsPersistenceService, _encryptionService);
   }
@@ -16,10 +16,10 @@ class PlainConfigurationService extends IntegrationsConfigurationApiService {
 
 export const environmentVariablesApiService = new PlainConfigurationService(
   createConfigDomainPersistenceService<string>("environment-variables"),
-  encryptionApiService
+  encryptionApiService,
 );
 
 export const appConstantsApiService = new PlainConfigurationService(
   createConfigDomainPersistenceService<string>("constants"),
-  encryptionApiService
+  encryptionApiService,
 );

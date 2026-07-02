@@ -37,12 +37,12 @@ const PERMISSION_HEIRACHIES: [string, string][] = [
 export const getPermissionChildren = (
   permission: string,
   mainKey: 1 | 0,
-  permissions: string[] = []
+  permissions: string[] = [],
 ): string[] => {
   permissions.push(permission);
 
   const permissionHeirachies = PERMISSION_HEIRACHIES.filter(
-    (value) => value[mainKey === 1 ? 0 : 1] === permission
+    (value) => value[mainKey === 1 ? 0 : 1] === permission,
   );
 
   permissionHeirachies.forEach((permissionHeirachy) => {
@@ -95,7 +95,7 @@ export function MutatePermission({
           permissionList.map((permission) => ({
             ...permission,
             label: _(permission.label),
-          }))
+          })),
         )}
         listLengthGuess={10}
         labelField="label"
@@ -104,7 +104,7 @@ export function MutatePermission({
         }}
         render={(menuItem) => {
           const isPermissionSelected = rolePermissions.data.includes(
-            menuItem.value
+            menuItem.value,
           );
 
           const props: IListMangerItemProps = {
@@ -118,11 +118,11 @@ export function MutatePermission({
                   onChange: () => {
                     if (isPermissionSelected) {
                       rolePermissionDeletionMutation.mutate(
-                        getPermissionChildren(menuItem.value, 1)
+                        getPermissionChildren(menuItem.value, 1),
                       );
                     } else {
                       rolePermissionCreationMutation.mutate(
-                        getPermissionChildren(menuItem.value, 0)
+                        getPermissionChildren(menuItem.value, 0),
                       );
                     }
                   },

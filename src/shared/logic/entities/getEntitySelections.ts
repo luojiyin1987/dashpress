@@ -21,7 +21,7 @@ const FIELD_TYPE_TO_ENTITY_TYPES_MAP: Record<
 
 export const guessEntityType = (
   type: IEntityField["type"],
-  isReference?: IEntityField["isReference"]
+  isReference?: IEntityField["isReference"],
 ): FormFieldTypes => {
   if (isReference) {
     return "reference";
@@ -38,21 +38,21 @@ export const guessEntityType = (
 export const getEntitySelections = (
   entityFields: IEntityField[],
   entitySelections: Record<string, IColorableSelection[]>,
-  entityFieldTypes: Record<string, FormFieldTypes>
+  entityFieldTypes: Record<string, FormFieldTypes>,
 ): Record<string, IColorableSelection[]> => {
   const enumOptions = Object.fromEntries(
     entityFields
       .filter((field) => {
         return field.enumeration;
       })
-      .map((field) => [field.name, field.enumeration])
+      .map((field) => [field.name, field.enumeration]),
   );
 
   return Object.fromEntries(
     entityFields
       .filter(
         ({ name }) =>
-          FIELD_TYPES_CONFIG_MAP[entityFieldTypes[name]]?.configureSelection
+          FIELD_TYPES_CONFIG_MAP[entityFieldTypes[name]]?.configureSelection,
       )
       .map(({ name }) => {
         const preSelectedType = (entitySelections || {})[name];
@@ -64,22 +64,22 @@ export const getEntitySelections = (
           getEntitySelectionConfig(
             entityType,
             preSelectedType,
-            enumOptions[name]
+            enumOptions[name],
           ),
         ];
-      })
+      }),
   );
 };
 
 export const getEntityFieldTypes = (
   entityFields: IEntityField[],
-  entityFieldTypesMap: Record<string, FormFieldTypes>
+  entityFieldTypesMap: Record<string, FormFieldTypes>,
 ) => {
   return Object.fromEntries(
     entityFields.map(({ name, type, isReference }) => {
       const preSelectedType = entityFieldTypesMap[name];
 
       return [name, preSelectedType ?? guessEntityType(type, isReference)];
-    })
+    }),
   );
 };

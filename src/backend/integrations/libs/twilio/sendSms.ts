@@ -55,7 +55,7 @@ export const SEND_SMS = {
       headers: JSON.stringify({
         "Content-Type": "application/x-www-form-urlencoded",
         Authorization: `Basic ${btoa(
-          `${config.accountSid}:${config.authToken}`
+          `${config.accountSid}:${config.authToken}`,
         )}`,
       }),
     });

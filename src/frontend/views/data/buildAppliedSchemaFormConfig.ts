@@ -36,7 +36,7 @@ export const buildAppliedSchemaFormConfig = (
   {
     allOptional,
     fieldsToShow,
-  }: { allOptional?: boolean; fieldsToShow?: string[] } = {}
+  }: { allOptional?: boolean; fieldsToShow?: string[] } = {},
 ): IAppliedSchemaFormConfig<any> => {
   return Object.fromEntries(
     fields
@@ -71,10 +71,10 @@ export const buildAppliedSchemaFormConfig = (
                 return validationType !== "required";
               }
               return true;
-            }
+            },
           ),
         };
         return [field, formConfig];
-      })
+      }),
   );
 };

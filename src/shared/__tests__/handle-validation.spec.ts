@@ -9,22 +9,22 @@ const errorMessage = fakeMessageDescriptor("Error Message");
 describe("Handle Validation", () => {
   it("should return error message when validation expectation are not met", () => {
     expect(handleValidation(isBoolean)("false", errorMessage, {}, {})).toBe(
-      errorMessage
+      errorMessage,
     );
   });
 
   it("should return undefined when validations expectation are met", () => {
     expect(
-      handleValidation(isBoolean)(false, errorMessage, {}, {})
+      handleValidation(isBoolean)(false, errorMessage, {}, {}),
     ).toBeUndefined();
   });
 
   it("should not run validations when values are falsy", () => {
     expect(
-      handleValidation(isBoolean)("", errorMessage, {}, {})
+      handleValidation(isBoolean)("", errorMessage, {}, {}),
     ).toBeUndefined();
     expect(
-      handleValidation(isBoolean)(undefined, errorMessage, {}, {})
+      handleValidation(isBoolean)(undefined, errorMessage, {}, {}),
     ).toBeUndefined();
   });
 
@@ -34,16 +34,16 @@ describe("Handle Validation", () => {
         "should error out",
         errorMessage,
         { length: 5 },
-        {}
-      )
+        {},
+      ),
     ).toBe(errorMessage);
     expect(
       handleValidation(maxLength, "length")(
         "less5",
         errorMessage,
         { length: 5 },
-        {}
-      )
+        {},
+      ),
     ).toBeUndefined();
   });
 });
@@ -51,7 +51,12 @@ describe("Handle Validation", () => {
 describe("Validation Checks", () => {
   it("should check required correctly", () => {
     expect(
-      ENTITY_VALIDATION_CONFIG.required.implementation("", errorMessage, {}, {})
+      ENTITY_VALIDATION_CONFIG.required.implementation(
+        "",
+        errorMessage,
+        {},
+        {},
+      ),
     ).toBe(errorMessage);
 
     expect(
@@ -59,8 +64,8 @@ describe("Validation Checks", () => {
         "dddd",
         errorMessage,
         {},
-        {}
-      )
+        {},
+      ),
     ).toBeUndefined();
   });
 });

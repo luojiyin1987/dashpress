@@ -21,14 +21,14 @@ export default requestHandler(
           : `. Version v${latestVersion$1} is now available.`;
 
       let cacheAdaptor = `${configApiService.getConfigValue<CacheAdaptorTypes>(
-        ConfigKeys.CACHE_ADAPTOR
+        ConfigKeys.CACHE_ADAPTOR,
       )}`;
 
       if (cacheAdaptor !== CacheAdaptorTypes.Redis) {
         cacheAdaptor += " (Kindly use 'redis' when running multiple instances)";
       }
       let configAdaptor = `${configApiService.getConfigValue<ConfigAdaptorTypes>(
-        ConfigKeys.CONFIG_ADAPTOR
+        ConfigKeys.CONFIG_ADAPTOR,
       )}`;
 
       if (configAdaptor !== ConfigAdaptorTypes.Database) {
@@ -51,5 +51,5 @@ export default requestHandler(
     {
       _type: "anyBody",
     },
-  ]
+  ],
 );

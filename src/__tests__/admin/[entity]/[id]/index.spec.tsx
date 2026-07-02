@@ -17,7 +17,7 @@ describe("pages/admin/[entity]/[id]/index", () => {
           entity: "entity-1",
           id: "2",
         },
-      })
+      }),
     );
   });
 
@@ -25,11 +25,11 @@ describe("pages/admin/[entity]/[id]/index", () => {
     render(
       <TestProviders>
         <EntityDetails />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(await screen.findByLabelText("Details Section")).toHaveTextContent(
-      "Entity 1 Id Field12Entity 1 Reference FieldEntity 1 String FieldhelloEntity 1 Number Field34Entity 1 Boolean FieldEntity 1 Date Field7th May 2022Entity 1 Enum Fieldfoo"
+      "Entity 1 Id Field12Entity 1 Reference FieldEntity 1 String FieldhelloEntity 1 Number Field34Entity 1 Boolean FieldEntity 1 Date Field7th May 2022Entity 1 Enum Fieldfoo",
     );
   });
 });

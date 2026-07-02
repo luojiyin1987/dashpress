@@ -15,7 +15,7 @@ describe("guessEntityType", () => {
 
   it("should default to `text` when type is unknown", () => {
     expect(guessEntityType("an unknown type" as IEntityField["type"])).toBe(
-      "text"
+      "text",
     );
   });
 });
@@ -92,8 +92,8 @@ describe("getEntitySelections", () => {
           isVerified: "boolean",
           "plain-text": "text",
           customSelect: "selection",
-        }
-      )
+        },
+      ),
     ).toMatchInlineSnapshot(`
       {
         "customSelect": [
@@ -190,8 +190,8 @@ describe("getEntitySelections", () => {
           isVerified: "boolean",
           "plain-text": "text",
           customSelect: "selection",
-        }
-      )
+        },
+      ),
     ).toMatchInlineSnapshot(`
       {
         "customSelect": [],

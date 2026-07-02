@@ -49,7 +49,7 @@ export const accountApiHandlers = [
 
     return res(
       ctx.status(401),
-      ctx.json({ errorCode: REQUEST_ERROR_CODES.NOT_AUTHENTICATED })
+      ctx.json({ errorCode: REQUEST_ERROR_CODES.NOT_AUTHENTICATED }),
     );
   }),
 
@@ -77,7 +77,7 @@ export const accountApiHandlers = [
         return res(ctx.status(204));
       }
       return res(ctx.status(500));
-    }
+    },
   ),
 
   rest.post(BASE_TEST_URL("/api/account"), async (req, res, ctx) => {
@@ -95,7 +95,7 @@ export const accountApiHandlers = [
     async (req, res, ctx) => {
       USERS = USERS.filter(({ username }) => username !== req.params.username);
       return res(ctx.status(204));
-    }
+    },
   ),
   rest.patch(
     BASE_TEST_URL("/api/account/change-password"),
@@ -107,6 +107,6 @@ export const accountApiHandlers = [
         return res(ctx.status(204));
       }
       return res(ctx.status(500));
-    }
+    },
   ),
 ];

@@ -39,7 +39,7 @@ export function FormSelectButton(formInput: IFormSelect) {
                 "rounded-none border-l-0 first:rounded-l-sm first:border-l last:rounded-r-sm",
                 {
                   "bg-primary text-primary-text": isChecked,
-                }
+                },
               )}
               onClick={() => input.onChange(value)}
             >
@@ -52,7 +52,7 @@ export function FormSelectButton(formInput: IFormSelect) {
                     ? value
                       ? "true"
                       : "false"
-                    : value
+                    : value,
                 )}`}
                 readOnly
                 checked={isChecked}

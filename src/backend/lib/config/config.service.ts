@@ -61,9 +61,9 @@ export class ConfigApiService {
       fs.appendFileSync(
         path.resolve(
           process.cwd(),
-          (this.processEnv.ENV_LOCAL_FILE as string) || ".env.local"
+          (this.processEnv.ENV_LOCAL_FILE as string) || ".env.local",
         ),
-        envContent.join("\n")
+        envContent.join("\n"),
       );
     }
     typescriptSafeObjectDotEntries(ConfigBag).forEach(([key, configBag]) => {

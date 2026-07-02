@@ -43,9 +43,9 @@ describe("pages/setup/credentials", () => {
           ctx.json({
             hasUsers: false,
             hasDbCredentials: false,
-          })
+          }),
         );
-      })
+      }),
     );
   });
 
@@ -60,17 +60,17 @@ describe("pages/setup/credentials", () => {
     useRouter.mockImplementation(
       USE_ROUTER_PARAMS({
         replaceMock,
-      })
+      }),
     );
 
     const { container } = render(
       <TestProviders>
         <CredentialsSetup />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(
-      screen.queryByRole("button", { name: "Toggle Connection URL" })
+      screen.queryByRole("button", { name: "Toggle Connection URL" }),
     ).not.toBeInTheDocument();
 
     await waitFor(() => {
@@ -87,23 +87,23 @@ describe("pages/setup/credentials", () => {
     useRouter.mockImplementation(
       USE_ROUTER_PARAMS({
         replaceMock,
-      })
+      }),
     );
 
     const { container } = render(
       <TestProviders>
         <CredentialsSetup />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(
-      screen.queryByRole("button", { name: "Toggle Connection URL" })
+      screen.queryByRole("button", { name: "Toggle Connection URL" }),
     ).not.toBeInTheDocument();
 
     await selectCombobox("Database Type", "Postgres");
 
     await userEvent.click(
-      await screen.findByRole("button", { name: "Toggle Connection URL" })
+      await screen.findByRole("button", { name: "Toggle Connection URL" }),
     );
 
     expect(screen.getByLabelText("Connection URL")).toBeInTheDocument();
@@ -117,7 +117,7 @@ describe("pages/setup/credentials", () => {
     await selectCombobox("Database Type", "Mssql");
 
     await userEvent.click(
-      await screen.findByRole("button", { name: "Toggle Connection URL" })
+      await screen.findByRole("button", { name: "Toggle Connection URL" }),
     );
 
     expect(screen.getByLabelText("Connection URL")).toBeInTheDocument();
@@ -133,13 +133,13 @@ describe("pages/setup/credentials", () => {
       useRouter.mockImplementation(
         USE_ROUTER_PARAMS({
           replaceMock,
-        })
+        }),
       );
 
       const { container } = render(
         <TestProviders>
           <CredentialsSetup />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await selectCombobox("Database Type", "Sqlite");
@@ -148,19 +148,19 @@ describe("pages/setup/credentials", () => {
 
       await userEvent.type(
         screen.getByLabelText("File Name"),
-        "some-sqlite-file-name"
+        "some-sqlite-file-name",
       );
 
       expect(
-        screen.queryByRole("button", { name: "Toggle Connection URL" })
+        screen.queryByRole("button", { name: "Toggle Connection URL" }),
       ).not.toBeInTheDocument();
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Setup Credentials" })
+        screen.getByRole("button", { name: "Setup Credentials" }),
       );
 
       expect(await getToastMessage()).toBe(
-        "Credentials Was Successfully Setup"
+        "Credentials Was Successfully Setup",
       );
 
       expect(replaceMock).toHaveBeenCalledWith("/setup/user", "/setup/user", {
@@ -175,13 +175,13 @@ describe("pages/setup/credentials", () => {
       useRouter.mockImplementation(
         USE_ROUTER_PARAMS({
           replaceMock,
-        })
+        }),
       );
 
       const { container } = render(
         <TestProviders>
           <CredentialsSetup />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await selectCombobox("Database Type", title);
@@ -200,7 +200,7 @@ describe("pages/setup/credentials", () => {
       await userEvent.type(screen.getByLabelText("Port"), "8080");
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Setup Credentials" })
+        screen.getByRole("button", { name: "Setup Credentials" }),
       );
 
       expect(replaceMock).toHaveBeenCalledWith("/setup/user", "/setup/user", {
@@ -214,29 +214,29 @@ describe("pages/setup/credentials", () => {
       useRouter.mockImplementation(
         USE_ROUTER_PARAMS({
           replaceMock,
-        })
+        }),
       );
       const { container } = render(
         <TestProviders>
           <CredentialsSetup />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await selectCombobox("Database Type", title);
 
       await userEvent.click(
-        await screen.findByRole("button", { name: "Toggle Connection URL" })
+        await screen.findByRole("button", { name: "Toggle Connection URL" }),
       );
 
       expect(container.querySelectorAll("label")).toHaveLength(2);
 
       await userEvent.type(
         screen.getByLabelText("Connection URL"),
-        "some-connection-url"
+        "some-connection-url",
       );
 
       await userEvent.click(
-        screen.getByRole("button", { name: "Setup Credentials" })
+        screen.getByRole("button", { name: "Setup Credentials" }),
       );
 
       expect(replaceMock).toHaveBeenCalledWith("/setup/user", "/setup/user", {
@@ -256,7 +256,7 @@ describe("pages/setup/credentials", () => {
       useRouter.mockImplementation(
         USE_ROUTER_PARAMS({
           replaceMock,
-        })
+        }),
       );
 
       server.use(
@@ -265,15 +265,15 @@ describe("pages/setup/credentials", () => {
             ctx.json({
               hasUsers: false,
               hasDbCredentials: true,
-            })
+            }),
           );
-        })
+        }),
       );
 
       render(
         <TestProviders>
           <CredentialsSetup />
-        </TestProviders>
+        </TestProviders>,
       );
       await waitFor(() => {
         expect(replaceMock).toHaveBeenCalledWith("/setup/user", "/setup/user", {

@@ -16,7 +16,7 @@ describe("pages/integrations/actions/[key]", () => {
         query: {
           key: "slack",
         },
-      })
+      }),
     );
   });
 
@@ -25,15 +25,15 @@ describe("pages/integrations/actions/[key]", () => {
       render(
         <TestProviders>
           <ActionsIntegrations />
-        </TestProviders>
+        </TestProviders>,
       );
 
       expect(
-        await screen.findByRole("option", { name: "Slack" })
+        await screen.findByRole("option", { name: "Slack" }),
       ).toBeInTheDocument();
       expect(screen.getByRole("option", { name: "HTTP" })).toBeInTheDocument();
       expect(
-        screen.getByRole("option", { name: "Non Activated Actions" })
+        screen.getByRole("option", { name: "Non Activated Actions" }),
       ).toBeInTheDocument();
     });
   });

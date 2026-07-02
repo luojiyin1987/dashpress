@@ -17,7 +17,7 @@ export default requestHandler({
     return await dataApiController.tableData(
       validatedRequest.entity,
       validatedRequest.queryFilters,
-      validatedRequest.paginationFilter
+      validatedRequest.paginationFilter,
     );
   },
 });

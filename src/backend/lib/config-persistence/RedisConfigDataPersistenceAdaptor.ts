@@ -9,7 +9,7 @@ import { AbstractConfigDataPersistenceService } from "./AbstractConfigDataPersis
 import type { ConfigDomain } from "./types";
 
 export class RedisConfigDataPersistenceAdaptor<
-  T
+  T,
 > extends AbstractConfigDataPersistenceService<T> {
   static _redisConnection: Record<string, RedisClientType | null> = {};
 
@@ -24,8 +24,8 @@ export class RedisConfigDataPersistenceAdaptor<
     RedisConfigDataPersistenceAdaptor._redisConnection[this._configDomain] =
       await getRedisConnection(
         this._configApiService.getConfigValue(
-          ConfigKeys.CONFIG_ADAPTOR_CONNECTION_STRING
-        )
+          ConfigKeys.CONFIG_ADAPTOR_CONNECTION_STRING,
+        ),
       );
     return RedisConfigDataPersistenceAdaptor._redisConnection[
       this._configDomain
@@ -57,7 +57,7 @@ export class RedisConfigDataPersistenceAdaptor<
       typescriptSafeObjectDotEntries(allData).map(([key, value]) => [
         key,
         JSON.parse(value),
-      ])
+      ]),
     );
   }
 
@@ -71,7 +71,7 @@ export class RedisConfigDataPersistenceAdaptor<
     ).hmGet(this.wrapWithConfigDomain(), itemIds);
 
     return Object.fromEntries(
-      allData.map((value, index) => [itemIds[index], JSON.parse(value)])
+      allData.map((value, index) => [itemIds[index], JSON.parse(value)]),
     );
   }
 
@@ -79,7 +79,7 @@ export class RedisConfigDataPersistenceAdaptor<
     return JSON.parse(
       await (
         await this.getRedisInstance()
-      ).hGet(this.wrapWithConfigDomain(), key)
+      ).hGet(this.wrapWithConfigDomain(), key),
     );
   }
 
@@ -101,8 +101,8 @@ export class RedisConfigDataPersistenceAdaptor<
     ).hSet(
       this.wrapWithConfigDomain(),
       Object.fromEntries(
-        data.map((datum) => [datum[keyField], JSON.stringify(datum)])
-      )
+        data.map((datum) => [datum[keyField], JSON.stringify(datum)]),
+      ),
     );
   }
 }

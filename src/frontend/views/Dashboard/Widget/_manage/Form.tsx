@@ -55,7 +55,7 @@ const baseDashboardTypesOptions: {
   ([value, { label }]) => ({
     label,
     value: value as IWidgetConfig["_type"],
-  })
+  }),
 );
 
 export function useRunWidgetScript() {
@@ -78,7 +78,7 @@ export function DashboardWidgetForm({
   const runWidgetScript = useRunWidgetScript();
 
   const documentationActionButton = useDocumentationActionButton(
-    msg`Widget Script`
+    msg`Widget Script`,
   );
 
   const domainMessages = useDomainMessages(LANG_DOMAINS.DASHBOARD.WIDGETS);
@@ -100,7 +100,7 @@ export function DashboardWidgetForm({
           // eslint-disable-next-line react-hooks/rules-of-hooks
           const tableViews = useEntityConfiguration(
             "table_views",
-            values.entity
+            values.entity,
           );
 
           const formFields = FormSchema[values._type] || [];
@@ -115,7 +115,7 @@ export function DashboardWidgetForm({
                       action === "create",
                       values as unknown as Record<string, unknown>,
                       form as any,
-                      initialValues
+                      initialValues,
                     );
                   } catch (error) {
                     // Do nothing
@@ -179,7 +179,7 @@ export function DashboardWidgetForm({
                             ({ id, title }) => ({
                               label: fakeMessageDescriptor(title),
                               value: id,
-                            })
+                            }),
                           )}
                           meta={meta}
                           input={input}

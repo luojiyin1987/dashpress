@@ -34,7 +34,7 @@ const OPERATOR_SELECTORS = [
 ];
 
 const filterOperatorSelections = typescriptSafeObjectDotEntries(
-  FILTER_OPERATOR_CONFIG
+  FILTER_OPERATOR_CONFIG,
 )
   .filter(([, value]) => !value.disabled)
   .map(([key, value]) => ({ value: key, label: value.label }));
@@ -120,7 +120,7 @@ export function EntityPersistentQueryForm({
   tableColumns,
 }: IFormProps<QueryFilterSchema> & { tableColumns: ITableColumn[] }) {
   const columns = tableColumns.filter(
-    ({ accessor, filter }) => ACTIONS_ACCESSOR !== accessor && filter
+    ({ accessor, filter }) => ACTIONS_ACCESSOR !== accessor && filter,
   );
   const domainMessages = useAppConfigurationDomainMessages("persistent_query");
 
@@ -188,12 +188,12 @@ export function EntityPersistentQueryForm({
                                             action: () => {
                                               if (queryFilters.length === 1) {
                                                 queryFields.remove(
-                                                  queryFieldIndex
+                                                  queryFieldIndex,
                                                 );
                                                 return;
                                               }
                                               queryFilters.remove(
-                                                queryFilterIndex
+                                                queryFilterIndex,
                                               );
                                             },
                                             label: msg`Remove Nested Filter`,
@@ -203,7 +203,7 @@ export function EntityPersistentQueryForm({
                                         />
                                       </div>
                                     </div>
-                                  )
+                                  ),
                                 )}
                                 <SoftButton
                                   systemIcon="Plus"

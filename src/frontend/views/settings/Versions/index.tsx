@@ -53,7 +53,7 @@ export function VersionInfo() {
                 <p className="text-xs font-semibold">{label}</p>
                 <p className="text-sm">{value}</p>
               </div>
-            )
+            ),
           )}
         </ViewStateMachine>
       </SectionBox>

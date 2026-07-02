@@ -6,7 +6,7 @@ export function resetFormValues<T extends Record<string, unknown>>(
   resetForm: boolean,
   values: T,
   form: FormApi<T, Partial<T>>,
-  initialValues: Partial<T> = {}
+  initialValues: Partial<T> = {},
 ) {
   form.batch(() => {
     if (resetForm && values) {

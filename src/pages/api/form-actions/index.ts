@@ -13,7 +13,7 @@ export default requestHandler(
       ]);
 
       return await formActionsApiService.createFormAction(
-        validatedRequest.requestBody
+        validatedRequest.requestBody,
       );
     },
   },
@@ -22,5 +22,5 @@ export default requestHandler(
       _type: "canUser",
       body: UserPermissions.CAN_CONFIGURE_APP,
     },
-  ]
+  ],
 );

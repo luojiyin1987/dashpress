@@ -12,7 +12,7 @@ const TEST_CONSTANTS: Record<string, string> = {
 };
 
 export const setupIntegrationsConstantsTestData = async (
-  testConstants = TEST_CONSTANTS
+  testConstants = TEST_CONSTANTS,
 ) => {
   const configPersistenceService =
     createConfigDomainPersistenceService<string>("constants");

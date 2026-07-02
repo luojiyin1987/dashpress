@@ -24,7 +24,7 @@ const TableHeader = React.forwardRef<
     ref={ref}
     className={cn(
       "bg-hover [&_span]:whitespace-nowrap [&_tr]:border-b",
-      className
+      className,
     )}
     {...props}
   />
@@ -59,7 +59,7 @@ const TableRow = React.forwardRef<
     ref={ref}
     className={cn(
       "break-inside-avoid-page border-b border-border transition-colors hover:bg-hover data-[state=selected]:bg-soft",
-      className
+      className,
     )}
     {...props}
   />
@@ -74,7 +74,7 @@ const TableHead = React.forwardRef<
     ref={ref}
     className={cn(
       "h-10 border-r border-border px-2 text-left align-middle font-medium text-main [&:last-child]:border-r-0",
-      className
+      className,
     )}
     {...props}
   />
@@ -89,7 +89,7 @@ const TableCell = React.forwardRef<
     ref={ref}
     className={cn(
       "border-r border-border p-2 align-middle [&:last-child]:border-r-0",
-      className
+      className,
     )}
     {...props}
   />

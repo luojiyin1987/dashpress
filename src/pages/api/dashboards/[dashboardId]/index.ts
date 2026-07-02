@@ -15,7 +15,7 @@ export default requestHandler(
 
       return await dashboardWidgetsApiService.listDashboardWidgets(
         validatedRequest.requestQuery,
-        (validatedRequest.authenticatedUser as IAccountProfile).role
+        (validatedRequest.authenticatedUser as IAccountProfile).role,
       );
     },
     POST: async (getValidatedRequest) => {
@@ -25,7 +25,7 @@ export default requestHandler(
       ]);
       return await dashboardWidgetsApiService.createWidget(
         validatedRequest.requestBody,
-        validatedRequest.requestQuery
+        validatedRequest.requestQuery,
       );
     },
     PATCH: async (getValidatedRequest) => {
@@ -35,7 +35,7 @@ export default requestHandler(
       ]);
       return await dashboardWidgetsApiService.updateWidgetList(
         validatedRequest.requestQuery,
-        validatedRequest.requestBody
+        validatedRequest.requestBody,
       );
     },
   },
@@ -49,5 +49,5 @@ export default requestHandler(
       _type: "canUser",
       body: UserPermissions.CAN_MANAGE_DASHBOARD,
     },
-  ]
+  ],
 );

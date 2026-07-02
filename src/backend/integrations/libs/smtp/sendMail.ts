@@ -62,7 +62,7 @@ export const SEND_MAIL = {
   configurationSchema: CONFIG_SCHEMA,
   do: async (
     instance: [Partial<Transporter>, IActionConfig],
-    config: IConfig
+    config: IConfig,
   ) => {
     return await instance[0].sendMail({
       from: `${config.senderName} <${config.senderEmail}>`,

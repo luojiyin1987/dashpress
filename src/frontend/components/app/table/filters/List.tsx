@@ -20,7 +20,7 @@ export function FilterTableByListSelection({
 
   const [cosmeticValues, setCosmeticValues] = useSessionStorage<ILabelValue[]>(
     `cosmetic-multi-select-values-${sluggify(url)}`,
-    []
+    [],
   );
 
   const [search, setSearch] = useState("");
@@ -31,7 +31,7 @@ export function FilterTableByListSelection({
     debounceSearch ? `${url}?search=${debounceSearch}` : url,
     {
       defaultData: [],
-    }
+    },
   );
 
   const appendCosmeticValues = (value: string) => {
@@ -41,7 +41,7 @@ export function FilterTableByListSelection({
         value,
         label:
           selectOptions.data.find(
-            (option) => String(option.value) === String(value)
+            (option) => String(option.value) === String(value),
           )?.label || value,
       },
     ]);
@@ -52,7 +52,7 @@ export function FilterTableByListSelection({
       setDebounceSearch(search);
     },
     700,
-    [search]
+    [search],
   );
 
   return (

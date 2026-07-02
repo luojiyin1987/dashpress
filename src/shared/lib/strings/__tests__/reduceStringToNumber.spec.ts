@@ -27,7 +27,7 @@ describe("reduceStringToNumber", () => {
     expect(reduceStringToNumber("foo**")).toBe(33);
     expect(reduceStringToNumber("I am you")).toBe(78);
     expect(reduceStringToNumber("some very very very long charecters")).toBe(
-      380
+      380,
     );
     expect(reduceStringToNumber("a")).toBe(0);
     expect(reduceStringToNumber("z")).toBe(25);

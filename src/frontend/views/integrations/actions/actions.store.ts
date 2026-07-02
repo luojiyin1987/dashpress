@@ -52,7 +52,7 @@ export const useActivationConfiguration = (activationId: string) => {
         !!rootPassword &&
         activationId !== ActionIntegrations.HTTP,
       defaultData: undefined,
-    }
+    },
   );
 };
 
@@ -76,7 +76,7 @@ export function useActivateIntegrationMutation(integration: string) {
     mutationFn: async (configuration) =>
       await ApiRequest.POST(
         `/api/integrations/actions/${integration}`,
-        configuration
+        configuration,
       ),
     endpoints: [ACTIVE_ACTIONS_INTEGRATIONS_ENDPOINT],
     successMessage: {

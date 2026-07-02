@@ -23,7 +23,7 @@ describe("pages/users/database-link", () => {
     render(
       <TestProviders>
         <UsersLinkToDatabase />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await waitForSkeletonsToVanish();
@@ -32,15 +32,15 @@ describe("pages/users/database-link", () => {
 
     await selectCombobox(
       "Field Corresponding To Dashpress Usernames",
-      "entity-2-string-field"
+      "entity-2-string-field",
     );
 
     await userEvent.click(
-      screen.getByRole("button", { name: "Save Users Link To Database" })
+      screen.getByRole("button", { name: "Save Users Link To Database" }),
     );
 
     expect(await getToastMessage()).toBe(
-      "Users to Database Link Saved Successfully"
+      "Users to Database Link Saved Successfully",
     );
   });
 
@@ -48,17 +48,17 @@ describe("pages/users/database-link", () => {
     render(
       <TestProviders>
         <UsersLinkToDatabase />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(
-      screen.getByRole("combobox", { name: "Your Users Table" })
+      screen.getByRole("combobox", { name: "Your Users Table" }),
     ).toHaveTextContent("entity-2");
 
     expect(
       screen.getByRole("combobox", {
         name: "Field Corresponding To Dashpress Usernames",
-      })
+      }),
     ).toHaveTextContent("entity-2-string-field");
   });
 });

@@ -17,11 +17,11 @@ export function GeneralStorageSettings() {
   const fileUploadSettings = useAppConfiguration("file_upload_settings");
 
   const upsertFileUploadSettingsMutation = useUpsertConfigurationMutation(
-    "file_upload_settings"
+    "file_upload_settings",
   );
 
   const domainMessages = useAppConfigurationDomainMessages(
-    "file_upload_settings"
+    "file_upload_settings",
   );
 
   return (

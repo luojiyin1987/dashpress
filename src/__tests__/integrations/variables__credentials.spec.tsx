@@ -30,7 +30,7 @@ describe("pages/integrations/variables => credentials", () => {
         query: {
           key: "foo",
         },
-      })
+      }),
     );
   });
 
@@ -39,7 +39,7 @@ describe("pages/integrations/variables => credentials", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await waitForSkeletonsToVanish();
@@ -50,21 +50,21 @@ describe("pages/integrations/variables => credentials", () => {
 
       expect(
         within(priviledgeSection).queryByText(
-          `For security reasons, Please input your account password to reveal credentials`
-        )
+          `For security reasons, Please input your account password to reveal credentials`,
+        ),
       ).not.toBeInTheDocument();
       expect(
         within(priviledgeSection).queryByText(
-          `Your account does not have the permission to view secret values or manage them`
-        )
+          `Your account does not have the permission to view secret values or manage them`,
+        ),
       ).not.toBeInTheDocument();
       expect(
-        within(priviledgeSection).queryByLabelText(`Password`)
+        within(priviledgeSection).queryByLabelText(`Password`),
       ).not.toBeInTheDocument();
       expect(
         within(priviledgeSection).queryByRole(`button`, {
           name: "Reveal Credentials",
-        })
+        }),
       ).not.toBeInTheDocument();
     });
 
@@ -72,7 +72,7 @@ describe("pages/integrations/variables => credentials", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(screen.getByRole("tab", { name: "Secrets" }));
@@ -83,21 +83,21 @@ describe("pages/integrations/variables => credentials", () => {
 
       expect(
         within(priviledgeSection).getByText(
-          `For security reasons, Please input your account password to reveal credentials`
-        )
+          `For security reasons, Please input your account password to reveal credentials`,
+        ),
       ).toBeInTheDocument();
       expect(
         within(priviledgeSection).queryByText(
-          `Your account does not have the permission to view secret values or manage them`
-        )
+          `Your account does not have the permission to view secret values or manage them`,
+        ),
       ).not.toBeInTheDocument();
       expect(
-        within(priviledgeSection).getByLabelText(`Password`)
+        within(priviledgeSection).getByLabelText(`Password`),
       ).toBeInTheDocument();
       expect(
         within(priviledgeSection).getByRole(`button`, {
           name: "Reveal Credentials",
-        })
+        }),
       ).toBeInTheDocument();
     });
   });
@@ -107,7 +107,7 @@ describe("pages/integrations/variables => credentials", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(screen.getByRole("tab", { name: "Secrets" }));
@@ -115,9 +115,9 @@ describe("pages/integrations/variables => credentials", () => {
       expect(
         await getTableRows(
           within(screen.getByRole("tabpanel", { name: "Secrets" })).getByRole(
-            "table"
-          )
-        )
+            "table",
+          ),
+        ),
       ).toMatchInlineSnapshot(`
         [
           "Key|Value",
@@ -134,7 +134,7 @@ describe("pages/integrations/variables => credentials", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(screen.getByRole("tab", { name: "Secrets" }));
@@ -142,17 +142,17 @@ describe("pages/integrations/variables => credentials", () => {
       expect(
         screen.queryByRole("button", {
           name: "Delete Secret",
-        })
+        }),
       ).not.toBeInTheDocument();
       expect(
         screen.queryByRole("button", {
           name: "Edit Secret",
-        })
+        }),
       ).not.toBeInTheDocument();
       expect(
         screen.queryByRole("button", {
           name: "Add New Secret",
-        })
+        }),
       ).not.toBeInTheDocument();
     });
 
@@ -160,7 +160,7 @@ describe("pages/integrations/variables => credentials", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(screen.getByRole("tab", { name: "Secrets" }));
@@ -171,12 +171,12 @@ describe("pages/integrations/variables => credentials", () => {
 
       await userEvent.type(
         within(priviledgeSection).getByLabelText("Password"),
-        "invalid password"
+        "invalid password",
       );
       await userEvent.click(
         within(priviledgeSection).getByRole("button", {
           name: "Reveal Credentials",
-        })
+        }),
       );
 
       expect(await getToastMessage()).toBe("Invalid Password");
@@ -184,19 +184,19 @@ describe("pages/integrations/variables => credentials", () => {
       await closeAllToasts();
 
       const table = within(
-        screen.getByRole("tabpanel", { name: "Secrets" })
+        screen.getByRole("tabpanel", { name: "Secrets" }),
       ).getByRole("table");
 
       expect(
         await within(table).findByRole("row", {
           name: "{{ SECRET.ROOT_PASSWORD }} **********",
-        })
+        }),
       ).toBeInTheDocument();
 
       expect(
         within(table).queryByRole("row", {
           name: "{{ SECRET.ROOT_PASSWORD }} confidential",
-        })
+        }),
       ).not.toBeInTheDocument();
     });
 
@@ -204,7 +204,7 @@ describe("pages/integrations/variables => credentials", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(screen.getByRole("tab", { name: "Secrets" }));
@@ -215,21 +215,21 @@ describe("pages/integrations/variables => credentials", () => {
 
       await userEvent.type(
         within(priviledgeSection).getByLabelText("Password"),
-        "password"
+        "password",
       );
       await userEvent.click(
         within(priviledgeSection).getByRole("button", {
           name: "Reveal Credentials",
-        })
+        }),
       );
 
       await waitFor(async () => {
         expect(
           await getTableRows(
             await within(
-              screen.getByRole("tabpanel", { name: "Secrets" })
-            ).findByRole("table")
-          )
+              screen.getByRole("tabpanel", { name: "Secrets" }),
+            ).findByRole("table"),
+          ),
         ).toEqual([
           "Key|Value|Action",
           "{{ SECRET.PAYMENT_API_KEY }}|super-secret",
@@ -240,16 +240,16 @@ describe("pages/integrations/variables => credentials", () => {
 
       expect(
         within(priviledgeSection).queryByText(
-          `For security reasons, Please input your account password to reveal credentials`
-        )
+          `For security reasons, Please input your account password to reveal credentials`,
+        ),
       ).not.toBeInTheDocument();
       expect(
-        within(priviledgeSection).queryByLabelText(`Password`)
+        within(priviledgeSection).queryByLabelText(`Password`),
       ).not.toBeInTheDocument();
       expect(
         within(priviledgeSection).queryByRole(`button`, {
           name: "Reveal Credentials",
-        })
+        }),
       ).not.toBeInTheDocument();
     });
 
@@ -257,7 +257,7 @@ describe("pages/integrations/variables => credentials", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(screen.getByRole("tab", { name: "Secrets" }));
@@ -265,20 +265,20 @@ describe("pages/integrations/variables => credentials", () => {
       expect(
         screen.queryAllByRole("button", {
           name: "Delete Secret",
-        })
+        }),
       ).toHaveLength(3);
 
       expect(
         screen.queryAllByRole("button", {
           name: "Edit Secret",
-        })
+        }),
       ).toHaveLength(3);
       expect(
         await screen.findByRole(
           "button",
           { name: "Add New Secret" },
-          { timeout: 2000 }
-        )
+          { timeout: 2000 },
+        ),
       ).toBeInTheDocument();
 
       await closeAllToasts();
@@ -290,7 +290,7 @@ describe("pages/integrations/variables => credentials", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(screen.getByRole("tab", { name: "Secrets" }));
@@ -299,8 +299,8 @@ describe("pages/integrations/variables => credentials", () => {
         await screen.findByRole(
           "button",
           { name: "Add New Secret" },
-          { timeout: 2000 }
-        )
+          { timeout: 2000 },
+        ),
       );
 
       const dialog = await screen.findByRole(
@@ -308,7 +308,7 @@ describe("pages/integrations/variables => credentials", () => {
         {},
         {
           timeout: 10000,
-        }
+        },
       );
 
       expect(within(dialog).getByText("Create Secret")).toBeInTheDocument();
@@ -321,14 +321,14 @@ describe("pages/integrations/variables => credentials", () => {
         "new secret",
         {
           pointerEventsCheck: PointerEventsCheckLevel.Never,
-        }
+        },
       );
 
       await userEvent.click(
         within(dialog).getByRole("button", { name: "Create Secret" }),
         {
           pointerEventsCheck: PointerEventsCheckLevel.Never,
-        }
+        },
       );
 
       expect(await getToastMessage()).toBe("Secret Saved Successfully");
@@ -344,8 +344,8 @@ describe("pages/integrations/variables => credentials", () => {
           {
             timeout: 2000,
             interval: 100,
-          }
-        )
+          },
+        ),
       ).toBeInTheDocument();
     });
   });
@@ -355,13 +355,13 @@ describe("pages/integrations/variables => credentials", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(screen.getByRole("tab", { name: "Secrets" }));
 
       const table = within(
-        screen.getByRole("tabpanel", { name: "Secrets" })
+        screen.getByRole("tabpanel", { name: "Secrets" }),
       ).getByRole("table");
 
       expect(
@@ -373,8 +373,8 @@ describe("pages/integrations/variables => credentials", () => {
           {
             interval: 100,
             timeout: 2000,
-          }
-        )
+          },
+        ),
       ).toBeInTheDocument();
 
       await userEvent.click(
@@ -382,8 +382,8 @@ describe("pages/integrations/variables => credentials", () => {
           "button",
           {
             name: "Edit Secret",
-          }
-        )
+          },
+        ),
       );
 
       const dialog = screen.getByRole("dialog");
@@ -397,12 +397,12 @@ describe("pages/integrations/variables => credentials", () => {
         "__updated",
         {
           pointerEventsCheck: PointerEventsCheckLevel.Never,
-        }
+        },
       );
 
       await userEvent.click(
         within(dialog).getByRole("button", { name: "Update Secret" }),
-        { pointerEventsCheck: PointerEventsCheckLevel.Never }
+        { pointerEventsCheck: PointerEventsCheckLevel.Never },
       );
 
       expect(await getToastMessage()).toBe("Secret Saved Successfully");
@@ -426,7 +426,7 @@ describe("pages/integrations/variables => credentials", () => {
       render(
         <TestProviders>
           <ManageVariables />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(screen.getByRole("tab", { name: "Secrets" }));
@@ -440,7 +440,7 @@ describe("pages/integrations/variables => credentials", () => {
       await userEvent.click(
         within(tableRows[2]).getByRole("button", {
           name: "Delete Secret",
-        })
+        }),
       );
 
       await confirmDelete();

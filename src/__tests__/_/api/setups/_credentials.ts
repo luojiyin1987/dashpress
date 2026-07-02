@@ -18,7 +18,7 @@ const TEST_CREDENTIALS: Record<string, string> = {
 };
 
 export const setupCredentialsTestData = async (
-  credentials: Record<string, string> | false = TEST_CREDENTIALS
+  credentials: Record<string, string> | false = TEST_CREDENTIALS,
 ) => {
   const configPersistenceService =
     createConfigDomainPersistenceService("credentials");

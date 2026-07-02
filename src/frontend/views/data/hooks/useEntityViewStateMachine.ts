@@ -32,7 +32,7 @@ export const useEntityViewStateMachine = ({
     return {
       type: DataStates.Error,
       message: `The '${userFriendlyCase(
-        crudAction
+        crudAction,
       )}' Action For This Resource Is Not Available`,
     };
   }

@@ -7,18 +7,18 @@ export const requestQueriesValidationImpl: ValidationImplType<
 > = async (req, requestOption: unknown) => {
   progammingError(
     "Please provide the field to pull off the request queries",
-    !requestOption
+    !requestOption,
   );
 
   progammingError(
     "Invalid request queries fields",
-    !Array.isArray(requestOption)
+    !Array.isArray(requestOption),
   );
 
   return Object.fromEntries(
     (requestOption as string[]).map((key) => {
       const value = req.query[key];
       return [key, value as string];
-    })
+    }),
   );
 };

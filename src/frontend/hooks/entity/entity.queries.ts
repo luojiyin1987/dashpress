@@ -8,7 +8,7 @@ import { configurationApiPath } from "../configuration/configuration.store";
 
 export function useEntityDictionPlurals<T, P extends keyof T>(
   input: T[],
-  field: P
+  field: P,
 ) {
   const entityDictions = useApiQueries<
     T,
@@ -32,6 +32,6 @@ export function useEntityDictionPlurals<T, P extends keyof T>(
       }
       return data.plural || userFriendlyCase(fieldName);
     },
-    [entityDictions.data]
+    [entityDictions.data],
   );
 }

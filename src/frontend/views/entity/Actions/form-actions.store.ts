@@ -29,12 +29,12 @@ export const useIntegrationImplementationsList = (integration: string) =>
       errorMessage: CRUD_CONFIG_NOT_FOUND(`Integration Implementations`),
       enabled: !!integration,
       defaultData: [],
-    }
+    },
   );
 
 export function useDeleteFormActionMutation(entity: string) {
   const domainMessages = useDomainMessages(
-    LANG_DOMAINS.INTEGRATIONS.FORM_ACTIONS
+    LANG_DOMAINS.INTEGRATIONS.FORM_ACTIONS,
   );
   return useApiMutateOptimisticOptions<IFormAction[], string>({
     mutationFn: async (formActionId) =>
@@ -43,14 +43,14 @@ export function useDeleteFormActionMutation(entity: string) {
     successMessage: { description: domainMessages.MUTATION_LANG.DELETE },
     onMutate: MutationHelpers.deleteByKey("id") as unknown as (
       oldData: IFormAction[],
-      form: string
+      form: string,
     ) => IFormAction[],
   });
 }
 
 export function useCreateFormActionMutation(entity: string) {
   const domainMessages = useDomainMessages(
-    LANG_DOMAINS.INTEGRATIONS.FORM_ACTIONS
+    LANG_DOMAINS.INTEGRATIONS.FORM_ACTIONS,
   );
   return useWaitForResponseMutationOptions<IFormAction>({
     mutationFn: async (configuration) => {
@@ -63,13 +63,13 @@ export function useCreateFormActionMutation(entity: string) {
 
 export function useUpdateFormActionMutation(entity: string) {
   const domainMessages = useDomainMessages(
-    LANG_DOMAINS.INTEGRATIONS.FORM_ACTIONS
+    LANG_DOMAINS.INTEGRATIONS.FORM_ACTIONS,
   );
   return useWaitForResponseMutationOptions<IFormAction>({
     mutationFn: async (formAction) =>
       await ApiRequest.PATCH(
         FORM_ACTION_ENDPOINT.UPDATE(formAction.id),
-        formAction
+        formAction,
       ),
     endpoints: [LIST_ENTITY_FORM_ACTIONS(entity)],
     successMessage: { description: domainMessages.MUTATION_LANG.EDIT },

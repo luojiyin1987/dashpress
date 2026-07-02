@@ -45,8 +45,8 @@ describe("getEntitySelectionConfig", () => {
             },
           ],
 
-          []
-        )
+          [],
+        ),
       ).toMatchInlineSnapshot(`
         [
           {
@@ -73,7 +73,7 @@ describe("getEntitySelectionConfig", () => {
   describe("selection", () => {
     it("should return empty options when there is no preselections", () => {
       expect(
-        getEntitySelectionConfig("selection", null, [])
+        getEntitySelectionConfig("selection", null, []),
       ).toMatchInlineSnapshot(`[]`);
     });
 
@@ -89,8 +89,8 @@ describe("getEntitySelectionConfig", () => {
             },
           ],
 
-          []
-        )
+          [],
+        ),
       ).toMatchInlineSnapshot(`
         [
           {
@@ -113,7 +113,7 @@ describe("getEntitySelectionConfig", () => {
           "pending",
           "approved",
           "rejected",
-        ])
+        ]),
       ).toMatchInlineSnapshot(`
         [
           {
@@ -161,8 +161,8 @@ describe("getEntitySelectionConfig", () => {
             },
           ],
 
-          null
-        )
+          null,
+        ),
       ).toMatchInlineSnapshot(`
         [
           {
@@ -203,8 +203,8 @@ describe("getEntitySelectionConfig", () => {
             },
           ],
 
-          ["pending", "approved", "rejected"]
-        )
+          ["pending", "approved", "rejected"],
+        ),
       ).toMatchInlineSnapshot(`
         [
           {
@@ -269,8 +269,8 @@ describe("getEntitySelectionConfig", () => {
             },
           ],
 
-          ["pending", "approved", "rejected"]
-        )
+          ["pending", "approved", "rejected"],
+        ),
       ).toMatchInlineSnapshot(`
         [
           {
@@ -325,8 +325,8 @@ describe("getEntitySelectionConfig", () => {
             },
           ],
 
-          ["pending", "approved", "rejected"]
-        )
+          ["pending", "approved", "rejected"],
+        ),
       ).toMatchInlineSnapshot(`
         [
           {

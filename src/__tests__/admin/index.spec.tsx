@@ -18,7 +18,7 @@ describe("pages/admin", () => {
     render(
       <TestProviders>
         <Dashboard />
-      </TestProviders>
+      </TestProviders>,
     );
 
     const widget = await screen.findByLabelText("Foo Table Widget");
@@ -27,7 +27,7 @@ describe("pages/admin", () => {
 
     expect(within(widget).getByRole("link", { name: "View" })).toHaveAttribute(
       "href",
-      "/admin/entity-1"
+      "/admin/entity-1",
     );
 
     expect(await getTableRows(widget)).toMatchInlineSnapshot(`
@@ -43,31 +43,31 @@ describe("pages/admin", () => {
     render(
       <TestProviders>
         <Dashboard />
-      </TestProviders>
+      </TestProviders>,
     );
 
     const widget = await screen.findByLabelText("Bar Card Widget");
 
     expect(await within(widget).findByText("Bar Card")).toBeInTheDocument();
     expect(within(widget).getByLabelText("Bar Card Icon")).toHaveTextContent(
-      "Some SVG Here"
+      "Some SVG Here",
     );
 
     expect(within(widget).getByLabelText("Total Count")).toHaveTextContent(
-      "10"
+      "10",
     );
 
     expect(within(widget).getByLabelText("Relative Count")).toHaveTextContent(
-      "100%"
+      "100%",
     );
 
     expect(within(widget).getByLabelText("Relative Direction")).toHaveClass(
-      "bg-green-100"
+      "bg-green-100",
     );
 
     expect(within(widget).getByRole("link", { name: "View" })).toHaveAttribute(
       "href",
-      "/admin/entity-1"
+      "/admin/entity-1",
     );
   });
 
@@ -75,20 +75,20 @@ describe("pages/admin", () => {
     render(
       <TestProviders>
         <Dashboard />
-      </TestProviders>
+      </TestProviders>,
     );
 
     const widget = await screen.findByLabelText("Foo Table Widget");
 
     expect(within(widget).getByRole("link", { name: "View" })).toHaveAttribute(
       "href",
-      "/admin/entity-1"
+      "/admin/entity-1",
     );
     expect(
-      within(widget).queryByRole("button", { name: "Delete Button" })
+      within(widget).queryByRole("button", { name: "Delete Button" }),
     ).not.toBeInTheDocument();
     expect(
-      within(widget).queryByRole("button", { name: "Edit Widget" })
+      within(widget).queryByRole("button", { name: "Edit Widget" }),
     ).not.toBeInTheDocument();
   });
 
@@ -96,16 +96,16 @@ describe("pages/admin", () => {
     render(
       <TestProviders>
         <Dashboard />
-      </TestProviders>
+      </TestProviders>,
     );
 
     const widget = await screen.findByLabelText("Bar Card Widget");
 
     expect(
-      within(widget).queryByRole("button", { name: "Delete Button" })
+      within(widget).queryByRole("button", { name: "Delete Button" }),
     ).not.toBeInTheDocument();
     expect(
-      within(widget).queryByRole("button", { name: "Edit Widget" })
+      within(widget).queryByRole("button", { name: "Edit Widget" }),
     ).not.toBeInTheDocument();
   });
 
@@ -118,11 +118,11 @@ describe("pages/admin", () => {
       render(
         <TestProviders>
           <Dashboard />
-        </TestProviders>
+        </TestProviders>,
       );
 
       await userEvent.click(
-        await screen.findByRole("button", { name: "Edit Dashboard" })
+        await screen.findByRole("button", { name: "Edit Dashboard" }),
       );
 
       expect(replaceMock).toHaveBeenCalledWith("/dashboard/manage");

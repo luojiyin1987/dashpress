@@ -26,7 +26,7 @@ export function SystemSettings() {
   const domainMessages = useAppConfigurationDomainMessages("system_settings");
 
   const documentationActionButton = useDocumentationActionButton(
-    domainMessages.TEXT_LANG.TITLE
+    domainMessages.TEXT_LANG.TITLE,
   );
 
   const upsertConfigurationMutation =

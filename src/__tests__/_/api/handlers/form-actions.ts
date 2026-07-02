@@ -64,7 +64,7 @@ export const formActionsApiHandlers = [
       FORM_ACTIONS[index] = formAction;
 
       return res(ctx.status(204));
-    }
+    },
   ),
   rest.delete(
     BASE_TEST_URL("/api/form-actions/:formActionId"),
@@ -73,10 +73,10 @@ export const formActionsApiHandlers = [
 
       FORM_ACTIONS.splice(
         FORM_ACTIONS.findIndex(({ id }) => id === formActionId),
-        1
+        1,
       );
 
       return res(ctx.status(204));
-    }
+    },
   ),
 ];

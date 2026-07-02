@@ -67,7 +67,7 @@ export function FilterTableByDate({
             field="value"
             defaultValue={DATE_FILTER_VALUE.BEGINNING_OF_TIME_VALUE}
             dateOptions={DATE_FILTER_OPTIONS.filter(
-              ({ hideOnFrom }) => !hideOnFrom
+              ({ hideOnFrom }) => !hideOnFrom,
             )}
           />
           <DateSelection
@@ -76,7 +76,7 @@ export function FilterTableByDate({
             field="value2"
             defaultValue={DATE_FILTER_VALUE.NOW}
             dateOptions={DATE_FILTER_OPTIONS.filter(
-              ({ hideOnTo }) => !hideOnTo
+              ({ hideOnTo }) => !hideOnTo,
             )}
           />
         </>

@@ -17,12 +17,12 @@ describe("Error pages", () => {
     render(
       <TestProviders>
         <ServerError />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("500");
     expect(screen.getByRole("heading", { level: 3 })).toHaveTextContent(
-      "Internal Server Error"
+      "Internal Server Error",
     );
   });
 
@@ -30,12 +30,12 @@ describe("Error pages", () => {
     render(
       <TestProviders>
         <UnAuthorized />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("403");
     expect(screen.getByRole("heading", { level: 3 })).toHaveTextContent(
-      "Unauthorized"
+      "Unauthorized",
     );
   });
 
@@ -43,12 +43,12 @@ describe("Error pages", () => {
     render(
       <TestProviders>
         <NotFound />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("404");
     expect(screen.getByRole("heading", { level: 3 })).toHaveTextContent(
-      "Page Not Found"
+      "Page Not Found",
     );
   });
 });

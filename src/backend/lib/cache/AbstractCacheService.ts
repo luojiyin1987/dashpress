@@ -29,7 +29,7 @@ export abstract class AbstractCacheService {
   async getItem<T>(
     rawKey: string,
     domain: ConfigDomain,
-    fetcher: () => Promise<T>
+    fetcher: () => Promise<T>,
   ) {
     const key = this.prefixKey(rawKey, domain);
 

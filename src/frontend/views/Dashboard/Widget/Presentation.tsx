@@ -20,7 +20,7 @@ export const DashboardWidgetPresentation = forwardRef<
   IDashboardWidgetPresentationProps
 >(function DashboardWidgetPresentationCmp(
   { config, setting, data, isPreview },
-  ref
+  ref,
 ) {
   const frameProps = {
     config,

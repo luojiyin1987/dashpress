@@ -12,7 +12,7 @@ import { rolesApiService } from "./roles.service";
 export class RolesApiController {
   constructor(
     private _usersApiService: UsersApiService,
-    private _rolesApiService: RolesApiService
+    private _rolesApiService: RolesApiService,
   ) {}
 
   async listRoles(): Promise<IRolesList[]> {
@@ -47,8 +47,8 @@ export class RolesApiController {
       allUsers
         .filter(({ role }) => role === fromRole)
         .map(({ username }) =>
-          this._usersApiService.updateUser(username, { role: toRole })
-        )
+          this._usersApiService.updateUser(username, { role: toRole }),
+        ),
     );
   }
 
@@ -72,5 +72,5 @@ export class RolesApiController {
 
 export const rolesApiController = new RolesApiController(
   usersApiService,
-  rolesApiService
+  rolesApiService,
 );

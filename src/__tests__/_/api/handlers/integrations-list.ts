@@ -79,15 +79,15 @@ export const integrationsListApiHandlers = [
               },
             },
           },
-        ])
+        ]),
       );
-    }
+    },
   ),
   rest.get(
     BASE_TEST_URL("/api/integrations/actions/active"),
     async (_, res, ctx) => {
       return res(ctx.json(["http", "slack", "smtp"]));
-    }
+    },
   ),
   rest.get(
     BASE_TEST_URL("/api/integrations/actions/:integration/implementations"),
@@ -143,8 +143,8 @@ export const integrationsListApiHandlers = [
               },
             },
           },
-        ])
+        ]),
       );
-    }
+    },
   ),
 ];

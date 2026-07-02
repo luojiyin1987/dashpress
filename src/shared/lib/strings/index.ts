@@ -4,7 +4,7 @@ export function upperCaseFirstLetter(word: string): string {
 
 export const arrayToComaSeparatedString = (list: string[]): string =>
   [list.slice(0, -1).join(", "), list.slice(-1)[0]].join(
-    list.length < 2 ? "" : " and "
+    list.length < 2 ? "" : " and ",
   );
 
 export function pluralize({
@@ -69,7 +69,7 @@ const ALPHABETS = Object.fromEntries(
     "8",
     "9",
     "0",
-  ].map((char, index) => [char, index])
+  ].map((char, index) => [char, index]),
 );
 
 export const reduceStringToNumber = (input: string): number => {

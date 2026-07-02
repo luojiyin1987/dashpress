@@ -27,7 +27,7 @@ describe("pages/setup/user", () => {
     useRouter.mockImplementation(
       USE_ROUTER_PARAMS({
         replaceMock,
-      })
+      }),
     );
 
     SETUP_CHECK_DATA.data = {
@@ -38,18 +38,18 @@ describe("pages/setup/user", () => {
     render(
       <TestProviders>
         <UserSetup />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(
       await screen.findByLabelText("Username"),
-      "testusername"
+      "testusername",
     );
     await userEvent.type(screen.getByLabelText("Name"), "testname");
     await userEvent.type(screen.getByLabelText("Password"), "Some Password");
 
     await userEvent.click(
-      screen.getByRole("button", { name: "Setup Account" })
+      screen.getByRole("button", { name: "Setup Account" }),
     );
 
     expect(await getToastMessage()).toBe("Account Was Successfully Setup");

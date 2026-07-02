@@ -4,16 +4,16 @@ import type { ValidationImplType } from "./types";
 
 export const requestQueryValidationImpl: ValidationImplType<string> = async (
   req,
-  requestOption: unknown
+  requestOption: unknown,
 ) => {
   progammingError(
     "Please provide the field to pull off the request query",
-    !requestOption
+    !requestOption,
   );
 
   progammingError(
     "Invalid request query field",
-    typeof requestOption !== "string"
+    typeof requestOption !== "string",
   );
 
   const value = req.query[requestOption as string];

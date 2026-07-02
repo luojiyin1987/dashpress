@@ -49,7 +49,7 @@ export async function makeRawRequest(path: string, errorMessage?: string) {
   await handleRequestError(
     response,
     errorMessage ||
-      "An error occurred downloading your data, Please try again later"
+      "An error occurred downloading your data, Please try again later",
   );
 
   return response;
@@ -63,7 +63,7 @@ const makeActionRequest = async (
   method: "POST" | "PATCH" | "DELETE" | "PUT",
   path: string,
   data?: unknown,
-  options: IActionRequestOptions = {}
+  options: IActionRequestOptions = {},
 ) => {
   const response = await fetch(pathWithBaseUrl(path), {
     method,
@@ -75,7 +75,7 @@ const makeActionRequest = async (
 
   await handleRequestError(
     response,
-    options.errorMessage || "An error occurred processing your request"
+    options.errorMessage || "An error occurred processing your request",
   );
 
   try {

@@ -3,7 +3,7 @@ import { noop } from "@/shared/lib/noop";
 
 export const useMutateBaseEntitySettingsMenu = (
   entity: string,
-  baseMenu: IMenuActionItem[]
+  baseMenu: IMenuActionItem[],
 ) => {
   noop(entity);
   return baseMenu;

@@ -14,7 +14,7 @@ export function UpdateDashboardWidget() {
 
   const updateDashboardWidgetMutation = useUpdateDashboardWidgetMutation(
     dashboardId,
-    widgetId
+    widgetId,
   );
 
   useSetPageDetails({

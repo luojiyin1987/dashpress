@@ -4,7 +4,7 @@ import { createLogger, format, transports } from "winston";
 const myFormat = format.printf(({ level, message }) => {
   return `${dateFNSformat(
     new Date(),
-    "d/MM/yyyy, h:mm:ss aa"
+    "d/MM/yyyy, h:mm:ss aa",
   )} [${level}]: ${message} `;
 });
 

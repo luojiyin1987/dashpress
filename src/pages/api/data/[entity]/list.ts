@@ -17,7 +17,7 @@ export default requestHandler({
     ]);
     return await dataApiController.listData(
       validatedRequest.entity,
-      validatedRequest.requestQuery
+      validatedRequest.requestQuery,
     );
   },
 });

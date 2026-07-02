@@ -6,7 +6,7 @@ import { AbstractConfigDataPersistenceService } from "./AbstractConfigDataPersis
 import type { ConfigDomain } from "./types";
 
 export class JsonFileConfigDataPersistenceAdaptor<
-  T
+  T,
 > extends AbstractConfigDataPersistenceService<T> {
   constructor(configDomain: ConfigDomain, configApiService: ConfigApiService) {
     super(configDomain, configApiService);
@@ -20,7 +20,7 @@ export class JsonFileConfigDataPersistenceAdaptor<
     return path.resolve(
       process.env.CURRENT_WORKING_DIRECTORY || process.cwd(),
       process.env.JSON_CONFIG_DATA_PATH || ".config-data",
-      file
+      file,
     );
   };
 
@@ -62,7 +62,7 @@ export class JsonFileConfigDataPersistenceAdaptor<
     const allIndexedItems = await this.getDomainData();
 
     return Object.fromEntries(
-      itemIds.map((itemId) => [itemId, allIndexedItems[itemId]])
+      itemIds.map((itemId) => [itemId, allIndexedItems[itemId]]),
     );
   }
 
@@ -89,7 +89,7 @@ export class JsonFileConfigDataPersistenceAdaptor<
 
   async saveAllItems(keyField: keyof T, data: T[]) {
     await this.persist(
-      Object.fromEntries(data.map((datum) => [datum[keyField], datum]))
+      Object.fromEntries(data.map((datum) => [datum[keyField], datum])),
     );
   }
 }

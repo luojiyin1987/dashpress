@@ -24,13 +24,13 @@ describe("pages/dashboard/[dashboardId]/widget/[widgetId]/index", () => {
           dashboardId: "test-dashboard-id",
           widgetId: "summary_card_id_1",
         },
-      })
+      }),
     );
 
     render(
       <TestProviders>
         <UpdateDashboardWidget />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await waitForSkeletonsToVanish();
@@ -54,11 +54,11 @@ describe("pages/dashboard/[dashboardId]/widget/[widgetId]/index", () => {
     await userEvent.type(screen.getByLabelText("Script"), "return 1");
 
     await userEvent.click(
-      screen.getByRole("button", { name: "Update Dashboard Widget" })
+      screen.getByRole("button", { name: "Update Dashboard Widget" }),
     );
 
     expect(await getToastMessage()).toBe(
-      "Dashboard Widget Updated Successfully"
+      "Dashboard Widget Updated Successfully",
     );
 
     await closeAllToasts();
@@ -71,13 +71,13 @@ describe("pages/dashboard/[dashboardId]/widget/[widgetId]/index", () => {
           dashboardId: "test-dashboard-id",
           widgetId: "table_id_1",
         },
-      })
+      }),
     );
 
     render(
       <TestProviders>
         <UpdateDashboardWidget />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(await screen.findByLabelText("Title"), "Updated");
@@ -95,11 +95,11 @@ describe("pages/dashboard/[dashboardId]/widget/[widgetId]/index", () => {
     await userEvent.type(screen.getByLabelText("Script"), "return 1");
 
     await userEvent.click(
-      screen.getByRole("button", { name: "Update Dashboard Widget" })
+      screen.getByRole("button", { name: "Update Dashboard Widget" }),
     );
 
     expect(await getToastMessage()).toBe(
-      "Dashboard Widget Updated Successfully"
+      "Dashboard Widget Updated Successfully",
     );
   });
 
@@ -110,17 +110,17 @@ describe("pages/dashboard/[dashboardId]/widget/[widgetId]/index", () => {
           dashboardId: "test-dashboard-id",
           widgetId: "invalid-widget-id",
         },
-      })
+      }),
     );
 
     render(
       <TestProviders>
         <UpdateDashboardWidget />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(await screen.findByRole("alert")).toHaveTextContent(
-      `Widget with id 'invalid-widget-id' not found`
+      `Widget with id 'invalid-widget-id' not found`,
     );
     expect(screen.queryByLabelText("Title")).not.toBeInTheDocument();
   });

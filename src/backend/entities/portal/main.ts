@@ -5,7 +5,7 @@ export class PortalFieldsFilterService {
   static async getFieldsToHide(
     entity: string,
     crudKey: DataCrudKeys,
-    entityFieldList: string[]
+    entityFieldList: string[],
   ): Promise<string[]> {
     noop(entity, crudKey, entityFieldList);
     return [];

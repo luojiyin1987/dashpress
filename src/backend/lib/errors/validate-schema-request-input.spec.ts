@@ -19,8 +19,8 @@ describe("validateSchemaRequestBody", () => {
         },
         {
           name: "Foo",
-        }
-      )
+        },
+      ),
     ).not.toThrow();
   });
 
@@ -38,8 +38,8 @@ describe("validateSchemaRequestBody", () => {
             ],
           },
         },
-        {}
-      )
+        {},
+      ),
     ).toThrow("Invalid Request");
   });
 });

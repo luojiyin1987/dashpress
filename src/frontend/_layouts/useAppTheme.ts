@@ -18,7 +18,7 @@ export const useAppTheme = () => {
     if (isClient) {
       document.documentElement.style.setProperty(
         "--app-primary",
-        `${l}% ${c} ${h}`
+        `${l}% ${c} ${h}`,
       );
     }
   }, [isClient, themeColor.data.primary]);

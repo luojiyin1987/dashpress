@@ -51,7 +51,7 @@ export class NavigationMenuApiService implements IBaseNavigationMenuApiService {
   constructor(
     private readonly _entitiesApiService: EntitiesApiService,
     private readonly _configurationApiService: ConfigurationApiService,
-    private readonly _rolesApiService: RolesApiService
+    private readonly _rolesApiService: RolesApiService,
   ) {}
 
   async getMenuItems(userRole: string) {
@@ -87,10 +87,10 @@ export class NavigationMenuApiService implements IBaseNavigationMenuApiService {
           value.value,
           await this._configurationApiService.show(
             "entity_diction",
-            value.value
+            value.value,
           ),
-        ])
-      )
+        ]),
+      ),
     );
 
     navItems = navItems.concat([
@@ -111,7 +111,7 @@ export class NavigationMenuApiService implements IBaseNavigationMenuApiService {
         icon: "File",
         type: NavigationMenuItemType.Entities,
         link: entity.value,
-      }))
+      })),
     );
 
     navItems = navItems.concat([
@@ -179,7 +179,7 @@ export class NavigationMenuApiService implements IBaseNavigationMenuApiService {
 
   async filterOutUserMenuItems(
     userRole: string,
-    menuItems: INavigationMenuItem[]
+    menuItems: INavigationMenuItem[],
   ): Promise<INavigationMenuItem[]> {
     const allowedMenuItems: INavigationMenuItem[] = [];
     for (const menuItem of menuItems) {
@@ -187,7 +187,7 @@ export class NavigationMenuApiService implements IBaseNavigationMenuApiService {
         // eslint-disable-next-line no-param-reassign
         menuItem.children = await this.filterOutUserMenuItems(
           userRole,
-          menuItem.children
+          menuItem.children,
         );
       }
 
@@ -200,7 +200,7 @@ export class NavigationMenuApiService implements IBaseNavigationMenuApiService {
 
   private async isMenuItemAllowed(
     menuItem: INavigationMenuItem,
-    userRole: string
+    userRole: string,
   ): Promise<boolean> {
     const isMenuAllowed = await portalCheckIfIsMenuAllowed(menuItem, userRole);
 
@@ -214,7 +214,7 @@ export class NavigationMenuApiService implements IBaseNavigationMenuApiService {
       case NavigationMenuItemType.System:
         return await this._rolesApiService.canRoleDoThis(
           userRole,
-          SYSTEM_LINKS_CONFIG_MAP[menuItem.link as SystemLinks].permission
+          SYSTEM_LINKS_CONFIG_MAP[menuItem.link as SystemLinks].permission,
         );
 
       case NavigationMenuItemType.Entities:
@@ -222,8 +222,8 @@ export class NavigationMenuApiService implements IBaseNavigationMenuApiService {
           userRole,
           META_USER_PERMISSIONS.APPLIED_CAN_ACCESS_ENTITY(
             menuItem.link,
-            GranularEntityPermissions.Show
-          )
+            GranularEntityPermissions.Show,
+          ),
         );
       default:
         return false;
@@ -234,5 +234,5 @@ export class NavigationMenuApiService implements IBaseNavigationMenuApiService {
 export const navigationMenuApiService = new NavigationMenuApiService(
   entitiesApiService,
   configurationApiService,
-  rolesApiService
+  rolesApiService,
 );

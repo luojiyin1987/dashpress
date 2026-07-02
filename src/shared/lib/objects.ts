@@ -6,7 +6,7 @@ export const typescriptSafeObjectDotEntries = <T extends object>(obj: T) =>
   Object.entries(obj) as Entries<T>;
 
 export function typescriptSafeObjectDotKeys<T extends object>(
-  object: T
+  object: T,
 ): (keyof T)[] {
   return Object.keys(object) as (keyof T)[];
 }

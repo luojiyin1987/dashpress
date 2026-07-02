@@ -34,7 +34,7 @@ interface IUpsertConfigMutationOptions {
 
 export function useUpsertUserPreferenceMutation<T extends UserPreferencesKeys>(
   key: T,
-  mutationOptions?: IUpsertConfigMutationOptions
+  mutationOptions?: IUpsertConfigMutationOptions,
 ) {
   const domainMessages = useDomainMessages(LANG_DOMAINS.ACCOUNT.PREFERENCES);
   return useWaitForResponseMutationOptions<

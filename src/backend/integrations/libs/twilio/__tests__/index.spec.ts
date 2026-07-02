@@ -6,7 +6,7 @@ describe("TWILIO_ACTION_INTEGRATION", () => {
       await TWILIO_ACTION_INTEGRATION.connect({
         authToken: "some-auth-token",
         accountSid: "some-account-SID",
-      })
+      }),
     ).toMatchInlineSnapshot(`
       {
         "accountSid": "some-account-SID",

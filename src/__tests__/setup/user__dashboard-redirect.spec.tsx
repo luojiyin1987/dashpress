@@ -23,7 +23,7 @@ describe("pages/setup/user", () => {
     useRouter.mockImplementation(
       USE_ROUTER_PARAMS({
         replaceMock,
-      })
+      }),
     );
 
     server.use(
@@ -32,15 +32,15 @@ describe("pages/setup/user", () => {
           ctx.json({
             hasUsers: true,
             hasDbCredentials: true,
-          })
+          }),
         );
-      })
+      }),
     );
 
     render(
       <TestProviders>
         <UserSetup />
-      </TestProviders>
+      </TestProviders>,
     );
     await waitFor(() => {
       expect(replaceMock).toHaveBeenCalledWith("/", "/", { locale: "en" });

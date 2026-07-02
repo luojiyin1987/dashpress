@@ -14,9 +14,7 @@ export interface ISummaryWidgetConfig extends ISharedWidgetConfig {
 }
 
 export type IWidgetConfig =
-  | ITableWidgetConfig
-  | ISummaryWidgetConfig
-  | IPortalWidgetConfig;
+  ITableWidgetConfig | ISummaryWidgetConfig | IPortalWidgetConfig;
 
 export const HOME_DASHBOARD_KEY = "__home__widgets";
 

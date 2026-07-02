@@ -12,7 +12,7 @@ export const usePluginTableMenuItems = (
   reference?: {
     referenceField: string;
     entityId: string;
-  }
+  },
 ): IMenuActionItem[] => {
   const menuItems: IMenuActionItem[] = [];
   noop(entity, reference);
@@ -37,7 +37,7 @@ export const usePortalTableColumns = (entity: string) => {
 };
 
 export const usePortalTableTabs = (
-  entity: string
+  entity: string,
 ): DataStateKeys<ITableView[]> => {
   noop(entity);
   return loadedDataState<ITableView[]>([]);

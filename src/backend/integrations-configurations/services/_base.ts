@@ -10,7 +10,7 @@ export const INTEGRATION_CONFIG_GROUP_DEMILITER = "___";
 export abstract class IntegrationsConfigurationApiService {
   constructor(
     protected _persistenceService: AbstractConfigDataPersistenceService<string>,
-    protected _encryptionApiService: EncryptionApiService
+    protected _encryptionApiService: EncryptionApiService,
   ) {}
 
   static GROUP_DEMILITER = INTEGRATION_CONFIG_GROUP_DEMILITER;
@@ -21,7 +21,7 @@ export abstract class IntegrationsConfigurationApiService {
 
   async hasGroupKey(group: IGroupCredential): Promise<boolean> {
     return await this.hasKey(
-      this.generateGroupKeyPrefix(group.key, group.fields[0])
+      this.generateGroupKeyPrefix(group.key, group.fields[0]),
     );
   }
 
@@ -35,26 +35,26 @@ export abstract class IntegrationsConfigurationApiService {
 
   async list() {
     return typescriptSafeObjectDotEntries(
-      await this._persistenceService.getAllAsKeyValuePair()
+      await this._persistenceService.getAllAsKeyValuePair(),
     ).map(([key, value]) => ({ key, value }));
   }
 
   async useGroupValue<T extends Record<string, unknown>>(
-    group: IGroupCredential
+    group: IGroupCredential,
   ): Promise<T> {
     progammingError(
       "You are trying to access group credentials with empty fields",
-      group.fields.length === 0
+      group.fields.length === 0,
     );
 
     const allGroupKeys = group.fields.map((field) =>
-      this.generateGroupKeyPrefix(group.key, field)
+      this.generateGroupKeyPrefix(group.key, field),
     );
 
     const values = await Promise.all(
       allGroupKeys.map(async (key) => {
         return [key, await this.getValue(key)];
-      })
+      }),
     );
 
     const filteredValues = values.filter(([, value]) => value);
@@ -67,7 +67,7 @@ export abstract class IntegrationsConfigurationApiService {
       filteredValues.map(([key, value]) => [
         key.split(IntegrationsConfigurationApiService.GROUP_DEMILITER)[1],
         value,
-      ])
+      ]),
     ) as T;
   }
 
@@ -83,16 +83,16 @@ export abstract class IntegrationsConfigurationApiService {
 
   async upsertGroup(
     group: IGroupCredential,
-    groupValue: Record<string, string>
+    groupValue: Record<string, string>,
   ) {
     const fieldsToUpsert = group.fields.filter(
-      (field) => groupValue[field] !== undefined
+      (field) => groupValue[field] !== undefined,
     );
 
     for (const field of fieldsToUpsert) {
       await this.upsert(
         this.generateGroupKeyPrefix(group.key, field),
-        groupValue[field]
+        groupValue[field],
       );
     }
   }
@@ -106,7 +106,7 @@ export abstract class IntegrationsConfigurationApiService {
   async upsert(key: string, value: string) {
     await this._persistenceService.upsertItem(
       key,
-      await this.processDataToSave(value)
+      await this.processDataToSave(value),
     );
   }
 

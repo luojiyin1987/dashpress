@@ -24,5 +24,5 @@ export default requestHandler(
       _type: "canUser",
       body: UserPermissions.CAN_MANAGE_PERMISSIONS,
     },
-  ]
+  ],
 );

@@ -20,11 +20,11 @@ describe("pages/admin/settings/system", () => {
     render(
       <TestProviders>
         <SystemSettings />
-      </TestProviders>
+      </TestProviders>,
     );
     await waitFor(async () => {
       expect(
-        await screen.findByLabelText("Token Validity Duration In Days")
+        await screen.findByLabelText("Token Validity Duration In Days"),
       ).toHaveValue(5);
     });
   });
@@ -33,16 +33,16 @@ describe("pages/admin/settings/system", () => {
     render(
       <TestProviders>
         <SystemSettings />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(
       screen.getByLabelText("Token Validity Duration In Days"),
-      "9"
+      "9",
     );
 
     await userEvent.click(
-      screen.getByRole("button", { name: "Save System Settings" })
+      screen.getByRole("button", { name: "Save System Settings" }),
     );
 
     expect(await getToastMessage()).toBe("System Settings Saved Successfully");
@@ -52,11 +52,11 @@ describe("pages/admin/settings/system", () => {
     render(
       <TestProviders>
         <SystemSettings />
-      </TestProviders>
+      </TestProviders>,
     );
     await waitFor(() => {
       expect(
-        screen.getByLabelText("Token Validity Duration In Days")
+        screen.getByLabelText("Token Validity Duration In Days"),
       ).toHaveValue(59);
     });
   });

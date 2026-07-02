@@ -6,7 +6,7 @@ import type { IFormAction } from "@/shared/types/actions";
 
 export class FormActionsApiService {
   constructor(
-    private readonly _formActionsPersistenceService: AbstractConfigDataPersistenceService<IFormAction>
+    private readonly _formActionsPersistenceService: AbstractConfigDataPersistenceService<IFormAction>,
   ) {}
 
   async createFormAction(action: Omit<IFormAction, "id">) {
@@ -35,7 +35,7 @@ export class FormActionsApiService {
 
   async listEntityFormActions(entity$1: string) {
     return (await this._formActionsPersistenceService.getAllItems()).filter(
-      ({ entity }) => entity === entity$1
+      ({ entity }) => entity === entity$1,
     );
   }
 }
@@ -44,5 +44,5 @@ const formActionsPersistenceService =
   createConfigDomainPersistenceService<IFormAction>("form-actions");
 
 export const formActionsApiService = new FormActionsApiService(
-  formActionsPersistenceService
+  formActionsPersistenceService,
 );

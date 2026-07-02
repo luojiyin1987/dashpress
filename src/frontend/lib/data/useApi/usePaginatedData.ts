@@ -13,7 +13,7 @@ import { tableDataParamsToQueryString } from "./tableDataParamsToQueryString";
 export function usePaginatedData<T extends Record<string, unknown>>(
   endPoint: string,
   dataState: IPaginatedDataState<T>,
-  options: IUseApiOptions<PaginatedData<T>>
+  options: IUseApiOptions<PaginatedData<T>>,
 ): UseQueryResult<PaginatedData<T>> {
   const builtOptions = buildApiOptions(options);
   const router = useRouter();
@@ -23,7 +23,7 @@ export function usePaginatedData<T extends Record<string, unknown>>(
     queryFn: async () => {
       return await ApiRequest.GET(
         endPoint + tableDataParamsToQueryString(dataState),
-        "Data could not be retrieved"
+        "Data could not be retrieved",
       );
     },
     enabled: router.isReady && builtOptions.enabled,

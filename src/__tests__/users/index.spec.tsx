@@ -17,7 +17,7 @@ describe("pages/users", () => {
     render(
       <TestProviders>
         <ListUsers />
-      </TestProviders>
+      </TestProviders>,
     );
 
     expect(await getTableRows(await screen.findByRole("table")))
@@ -35,11 +35,11 @@ describe("pages/users", () => {
     render(
       <TestProviders>
         <ListUsers />
-      </TestProviders>
+      </TestProviders>,
     );
     expect(screen.getByRole("link", { name: "Add New User" })).toHaveAttribute(
       "href",
-      "/users/create"
+      "/users/create",
     );
   });
 
@@ -51,7 +51,7 @@ describe("pages/users", () => {
     render(
       <TestProviders>
         <ListUsers />
-      </TestProviders>
+      </TestProviders>,
     );
 
     const tableRows = await screen.findAllByRole("link", { name: "Edit User" });
@@ -69,7 +69,7 @@ describe("pages/users", () => {
     render(
       <TestProviders>
         <ListUsers />
-      </TestProviders>
+      </TestProviders>,
     );
 
     const tableRows = await screen.findAllByRole("row");
@@ -79,7 +79,7 @@ describe("pages/users", () => {
     await userEvent.click(
       within(tableRows[1]).getByRole("button", {
         name: "Delete User",
-      })
+      }),
     );
 
     await confirmDelete();

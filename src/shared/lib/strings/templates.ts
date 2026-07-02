@@ -2,7 +2,7 @@ import Mustache from "mustache";
 
 export function compileTemplateString(
   input: string,
-  data: Record<string, unknown>
+  data: Record<string, unknown>,
 ) {
   try {
     return Mustache.render(input, data);

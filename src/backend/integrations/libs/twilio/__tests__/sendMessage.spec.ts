@@ -19,7 +19,7 @@ describe("TWILIO => SEND_SMS", () => {
         from: "some from",
         to: "some to",
         body: "some body",
-      }
+      },
     );
 
     expect(fetch).toHaveBeenCalledWith(
@@ -31,7 +31,7 @@ describe("TWILIO => SEND_SMS", () => {
           "Content-Type": "application/x-www-form-urlencoded",
         },
         method: "POST",
-      }
+      },
     );
   });
 });

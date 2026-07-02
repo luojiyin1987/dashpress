@@ -38,10 +38,10 @@ export function ActionForm({
   entity,
 }: IProps) {
   const domainMessages = useDomainMessages(
-    LANG_DOMAINS.INTEGRATIONS.FORM_ACTIONS
+    LANG_DOMAINS.INTEGRATIONS.FORM_ACTIONS,
   );
   const integrationsListMap = Object.fromEntries(
-    integrationsList.map((action) => [action.key, action])
+    integrationsList.map((action) => [action.key, action]),
   );
   const activatedOptions = activatedIntegrations.map((integration) => ({
     label: fakeMessageDescriptor(integrationsListMap[integration].title),
@@ -57,14 +57,14 @@ export function ActionForm({
   const selectedImplementation = Object.fromEntries(
     typescriptSafeObjectDotEntries(
       implementations.data.find(({ key }) => key === action)
-        ?.configurationSchema || {}
+        ?.configurationSchema || {},
     ).map(([key, value]) => [
       `${CONFIGURATION_FORM_PREFIX}${String(key)}`,
       {
         ...value,
         label: `${currentActionTitle}: ${userFriendlyCase(String(key))}`,
       },
-    ])
+    ]),
   );
 
   useEffect(() => {
@@ -128,7 +128,7 @@ export function ActionForm({
   initialValues = { ...initialValues, entity };
 
   const initialValues$1 = typescriptSafeObjectDotEntries(
-    initialValues.configuration || {}
+    initialValues.configuration || {},
   ).reduce((values, [key, value]) => {
     return { ...values, [`${CONFIGURATION_FORM_PREFIX}${key}`]: value };
   }, initialValues);
@@ -146,7 +146,7 @@ export function ActionForm({
       action={formAction}
       onSubmit={async (value) => {
         const cleanedConfigurationForm = typescriptSafeObjectDotEntries(
-          value
+          value,
         ).reduce(
           (cleanForm, [formKey, formValue]) => {
             if (formKey.startsWith(CONFIGURATION_FORM_PREFIX)) {
@@ -158,7 +158,7 @@ export function ActionForm({
             }
             return { ...cleanForm, [formKey]: formValue };
           },
-          { configuration: {} }
+          { configuration: {} },
         ) as IFormAction;
 
         await onSubmit(cleanedConfigurationForm);

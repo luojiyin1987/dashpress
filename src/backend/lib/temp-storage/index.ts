@@ -10,7 +10,7 @@ interface ITempStorage {
 
 export class TempStorageApiService {
   constructor(
-    private readonly _tempStoragePersistenceService: AbstractConfigDataPersistenceService<ITempStorage>
+    private readonly _tempStoragePersistenceService: AbstractConfigDataPersistenceService<ITempStorage>,
   ) {}
 
   async clearItem(key: string) {
@@ -41,5 +41,5 @@ const tempStoragePersistenceService =
   createConfigDomainPersistenceService<ITempStorage>("temp-storage");
 
 export const tempStorageApiService = new TempStorageApiService(
-  tempStoragePersistenceService
+  tempStoragePersistenceService,
 );

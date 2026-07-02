@@ -56,7 +56,7 @@ export function SummaryWidgetPresentation({
           "size-10 min-w-10 rounded-full p-2",
           spectrumVariants({
             spectrum: color,
-          })
+          }),
         )}
         label={`${title} Icon`}
       />
@@ -75,9 +75,9 @@ export function SummaryWidgetPresentation({
                     direction === "up"
                       ? "green"
                       : direction === "down"
-                      ? "red"
-                      : "gray",
-                })
+                        ? "red"
+                        : "gray",
+                }),
               )}
               aria-label="Relative Direction"
             >

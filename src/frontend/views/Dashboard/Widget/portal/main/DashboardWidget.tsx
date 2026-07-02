@@ -17,5 +17,5 @@ export const PortalDashboardWidget = forwardRef<HTMLDivElement, IProps>(
   function PortalDashboardWidgetCmp({ config, setting, data, isPreview }, ref) {
     noop(config, setting, ref, data, isPreview);
     return null;
-  }
+  },
 );

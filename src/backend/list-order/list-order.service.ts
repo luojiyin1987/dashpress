@@ -5,7 +5,7 @@ export class ListOrderApiService {
   constructor(
     private readonly _listOrderPersistenceService: AbstractConfigDataPersistenceService<
       string[]
-    >
+    >,
   ) {}
 
   async getItemOrder(listId: string): Promise<string[]> {
@@ -29,7 +29,7 @@ export class ListOrderApiService {
     const listOrder = await this.getItemOrder(listId);
 
     const newListOrder = listOrder.filter(
-      (widgetId$1) => widgetId$1 !== toRemoveId
+      (widgetId$1) => widgetId$1 !== toRemoveId,
     );
 
     await this.upsertOrder(listId, newListOrder);
@@ -44,5 +44,5 @@ const listOrderPersistenceService =
   createConfigDomainPersistenceService<string[]>("list-order");
 
 export const listOrderApiService = new ListOrderApiService(
-  listOrderPersistenceService
+  listOrderPersistenceService,
 );

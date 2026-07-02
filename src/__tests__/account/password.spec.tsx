@@ -29,20 +29,20 @@ describe("pages/account/password", () => {
     render(
       <TestProviders>
         <AccountPassword />
-      </TestProviders>
+      </TestProviders>,
     );
     await userEvent.type(
       await screen.findByLabelText("Old Password"),
-      "Old Password"
+      "Old Password",
     );
     await userEvent.type(screen.getByLabelText("New Password"), "New Password");
     await userEvent.type(
       screen.getByLabelText("New Password Again"),
-      "New Password"
+      "New Password",
     );
 
     await userEvent.click(
-      screen.getByRole("button", { name: "Update Password" })
+      screen.getByRole("button", { name: "Update Password" }),
     );
 
     expect(await getToastMessage()).toBe("Password Updated Successfully");
@@ -56,27 +56,27 @@ describe("pages/account/password", () => {
     render(
       <TestProviders>
         <AccountPassword />
-      </TestProviders>
+      </TestProviders>,
     );
 
     await userEvent.type(
       await screen.findByLabelText("Old Password"),
-      "Old Password"
+      "Old Password",
     );
     await userEvent.type(screen.getByLabelText("New Password"), "New Password");
     await userEvent.type(
       screen.getByLabelText("New Password Again"),
-      "New Password"
+      "New Password",
     );
 
     await closeAllToasts();
 
     await userEvent.click(
-      screen.getByRole("button", { name: "Update Password" })
+      screen.getByRole("button", { name: "Update Password" }),
     );
 
     expect(await getToastMessage()).toBe(
-      "Password will not be changed on demo account"
+      "Password will not be changed on demo account",
     );
   });
 });

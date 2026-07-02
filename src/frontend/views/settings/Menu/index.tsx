@@ -21,7 +21,7 @@ import { EntitiesSelection } from "../Entities/Selection";
 
 export function MenuSettings() {
   const domainMessages = useAppConfigurationDomainMessages(
-    "disabled_menu_entities"
+    "disabled_menu_entities",
   );
 
   useSetPageDetails({
@@ -41,7 +41,7 @@ export function MenuSettings() {
     "",
     {
       otherEndpoints: [ACTIVE_ENTITIES_ENDPOINT, NAVIGATION_MENU_ENDPOINT],
-    }
+    },
   );
 
   const upsertEntitiesOrderMutation = useUpsertConfigurationMutation(
@@ -49,12 +49,12 @@ export function MenuSettings() {
     "",
     {
       otherEndpoints: [ACTIVE_ENTITIES_ENDPOINT, NAVIGATION_MENU_ENDPOINT],
-    }
+    },
   );
 
   const getEntitiesDictionPlurals = useEntityDictionPlurals(
     activeEntities.data,
-    "value"
+    "value",
   );
 
   const error =

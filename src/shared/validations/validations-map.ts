@@ -34,7 +34,7 @@ type ImplementationFn = (
   value: unknown,
   errorMessage: MessageDescriptor,
   constraints: Record<string, unknown>,
-  allValues: Record<string, unknown>
+  allValues: Record<string, unknown>,
 ) => undefined | MessageDescriptor;
 
 export const ENTITY_VALIDATION_CONFIG: Record<
@@ -220,7 +220,7 @@ export const SLUG_VALIDATION = (delimiter: "hyphens" | "underscores") => ({
   validationType: "regex" as const,
   constraint: {
     pattern: LOWERCASE_NUMBERS_HYPEN_AND_UNDERSCORE_REGEX(
-      delimiter === "hyphens" ? "-" : "_"
+      delimiter === "hyphens" ? "-" : "_",
     ),
   },
   errorMessage: msg`Only lowercase letters, numbers and ${delimiter} are allowed`,

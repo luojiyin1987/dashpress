@@ -11,7 +11,7 @@ export function getPageCount(totalRecords: number, pageSize?: number) {
 }
 
 export function buildTableStateToRefreshPageNumber(
-  input: IPaginatedDataState<unknown> | undefined
+  input: IPaginatedDataState<unknown> | undefined,
 ) {
   return JSON.stringify([
     input?.filters || [],
@@ -21,7 +21,7 @@ export function buildTableStateToRefreshPageNumber(
 }
 
 export function internalTableStateToStandard<T>(
-  tableState: TableState
+  tableState: TableState,
 ): IPaginatedDataState<T> {
   return {
     pageIndex: tableState.pagination.pageIndex,

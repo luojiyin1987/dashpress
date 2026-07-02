@@ -5,7 +5,7 @@ import type { IBaseNavigationMenuApiService } from "../types";
 
 export const portalCheckIfIsMenuAllowed = async (
   menuItem: INavigationMenuItem,
-  userRole: string
+  userRole: string,
 ): Promise<boolean | undefined> => {
   noop(menuItem, userRole);
   return undefined;
@@ -13,7 +13,7 @@ export const portalCheckIfIsMenuAllowed = async (
 
 export const getPortalMenuItems = (
   userRole: string,
-  navigationMenuApiService: IBaseNavigationMenuApiService
+  navigationMenuApiService: IBaseNavigationMenuApiService,
 ): Promise<INavigationMenuItem[] | null> => {
   noop(userRole, navigationMenuApiService);
   return null;

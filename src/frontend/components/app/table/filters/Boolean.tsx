@@ -28,8 +28,8 @@ export function FilterTableByBooleans({
         filterValue?.value === undefined
           ? ""
           : filterValue?.value
-          ? "true"
-          : "false"
+            ? "true"
+            : "false"
       }
     />
   );

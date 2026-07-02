@@ -28,8 +28,7 @@ export type SelectableAbleValidations =
   | "postiveNumber";
 
 export type ValidationTypes =
-  | ValidationsBoundToType
-  | SelectableAbleValidations;
+  ValidationsBoundToType | SelectableAbleValidations;
 
 export interface IFieldValidationItem {
   validationType: ValidationTypes;
